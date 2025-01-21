@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0ce4abb1-506a-47de-9bf9-f057df0ab05c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2Qn8cB6PC35bY0g2mZNfXTWsd1p" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Twon-App/Twon-App" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Abdul Sittar\Downloads\Folder\client" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ce4abb1-506a-47de-9bf9-f057df0ab05c" name="Default Changelist" comment="" />
+      <created>1685978061628</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685978061628</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="822" y="582" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1686565648312">
+      <screen x="0" y="0" width="3840" height="1552" />
+    </state>
+    <state x="822" y="582" key="#com.intellij.fileTypes.FileTypeChooser/0.0.3840.1552@0.0.3840.1552" timestamp="1686565648312" />
+    <state x="822" y="585" key="#com.intellij.fileTypes.FileTypeChooser/0.0.3840.1560@0.0.3840.1560" timestamp="1686051419641" />
+    <state x="676" y="538" key="FileChooserDialogImpl" timestamp="1686059825444">
+      <screen x="0" y="0" width="3840" height="1560" />
+    </state>
+    <state x="676" y="538" key="FileChooserDialogImpl/0.0.3840.1560@0.0.3840.1560" timestamp="1686059825444" />
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1686058728278">
+      <screen x="0" y="0" width="3840" height="1560" />
+    </state>
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.3840.1560@0.0.3840.1560" timestamp="1686058728278" />
+    <state x="975" y="45" width="2016" height="1549" key="search.everywhere.popup" timestamp="1686575111269">
+      <screen x="0" y="0" width="3840" height="1552" />
+    </state>
+    <state x="307" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1686000874506" />
+    <state x="975" y="45" width="2016" height="1549" key="search.everywhere.popup/0.0.3840.1552@0.0.3840.1552" timestamp="1686575111269" />
+    <state x="975" y="45" width="2016" height="1556" key="search.everywhere.popup/0.0.3840.1560@0.0.3840.1560" timestamp="1686065552097" />
+  </component>
+</project>
