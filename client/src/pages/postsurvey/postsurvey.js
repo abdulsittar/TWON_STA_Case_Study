@@ -347,7 +347,7 @@ const fetchTimeSpent2 = async () => {
     if(currentUser.pool === "1" || currentUser.pool ==="2"){
       setPostSpecificText("6. Wie wahrscheinlich wäre es, dass Sie sich mit einem mRNA Impfstoff impfen lassen würden?");
       
-    }else if(currentUser.pool == "3" || currentUser.pool ==="4"){
+    }else if(currentUser.pool == "3" || currentUser.pool ==="4" || currentUser.pool ==="5"){
       setPostSpecificText("6. Wie wahrscheinlich wäre es, dass Sie sich gegen Mpox (Affenpocken) impfen lassen würden?");
       
     }
@@ -1832,8 +1832,8 @@ const handleUserNameChange = async (e) => {
         {!is_NoSurvey_visible && (<textarea  className={classes.label2} id="someelse2" rows={4} placeholder={post_q21}/>)}
         <p  className={classes.secon_disclaimor}>{post_info_8}</p>
 
-        {!is_NoSurvey_visible && (<button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Überprüfen Sie Ihre Auswahl</button>)}
-            
+        {!is_NoSurvey_visible && (<button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Antworten bearbeiten</button>)}
+           
 				<button onClick={handleClick} type="submit" className={classes.button}> {Submit_Post_Survey} </button>
         </div></SlideDiv>
         </CSSTransition>

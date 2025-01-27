@@ -49,7 +49,7 @@ const crypto = require('crypto');
 
 const port = process.env.PORT;
 
-const SOCKET_PORT = 1077;
+const SOCKET_PORT = 1075;
 dotenv.config();
 
 const uuid = require('uuid');
@@ -72,7 +72,7 @@ const userIdentifiers = Array.from({ length: 10 }, () => uuid.v4());
 
 
 const corsOptions = {
-  origin: ['https://socialapp.ijs.si', 'http://socialapp.ijs.si'],
+  origin: ['https://socialapp2.ijs.si', 'http://socialapp2.ijs.si'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true

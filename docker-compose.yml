@@ -27,7 +27,7 @@ services:
     #  - ./server:/app
     #  - ./client/build:/app/client/build
     ports:
-      - "1077:1077"
+      - "1075:1075"
     networks:
       - mern-network-v2
     depends_on:

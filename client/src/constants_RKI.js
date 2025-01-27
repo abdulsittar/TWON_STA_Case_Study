@@ -15,14 +15,14 @@ export const dataprotHEADING_12 = [<strong>- ein Like zu vergeben. </strong>];
 export const dataprot_13 = "Zu Beginn und am Ende der Studie füllen Sie einen kurzen Fragebogen zu Ihrer Nutzungserfahrung und einigen allgemeinen demografischen Informationen aus. Insgesamt dauert diese Studie circa 30 Minuten und einer Stunde, wenn Sie die tägliche Nutzung und die Zeit für die Fragebögen zusammenrechnen. Insgesamt dauert diese Studie zwischen 10 und 15 Minuten. Nachdem Sie die Teilnahmebedingungen auf unserer Plattform erfüllt haben, erhalten Sie die mit Prolific vereinbarte Vergütung.";
 export const datasharingHEADING_14 = [<strong>Freiwillige Teilnahme</strong>];
 
-export const datasharing_15 = "Ihre Teilnahme an dieser Studie ist freiwillig: Sie sind nicht zur Teilnahme verpflichtet. Sie können Ihre Teilnahme während der Studie jederzeit. Sie müssen dafür keinen Grund angeben.";
+export const datasharing_15 = "Ihre Teilnahme an dieser Studie ist freiwillig: Sie sind nicht zur Teilnahme verpflichtet. Sie können Ihre Teilnahme während der Studie jederzeit beendet. Sie müssen dafür keinen Grund angeben.";
 
 export const retentionHEADING_16 = [<strong>Datenschutz</strong>];
 export const retention_17 = "Wir erheben keine personenbezogenen Daten in dieser Studie.";
 export const furtherHEADING_18 = "In dieser Studie werden Ihre personenbezogenen Daten von unserem Kooperationspartner, dem Jozef Stefan Institut (JSI), als Drittpartei verarbeitet, d.h. dort werden Ihre Daten gesammelt und gespeichert, sowohl bei der Nutzung der Twon-Plattform als auch bei der Beantwortung unserer Fragebögen. Wir haben mit diesen Parteien Verträge abgeschlossen, um Ihre Privatsphäre zu gewährleisten. ";
 
 export const further_19 = [<strong>Gemeinsame Nutzung von Daten</strong>];
-export const complaints_20 = "Die Ergebnisse dieser Studie können mit anderen Forscherinnen und Forschern und/oder werden über eine öffentliche Datenbank (open access) geteilt werden. Dies beinhaltet keine personenbezogenen Daten oder individuell identifizierende Informationen. Die Ergebnisse können in anderen zukünftigen Forschungsarbeiten zu einem anderen Thema als dieser Studie verwendet werden.";
+export const complaints_20 = "Die Ergebnisse dieser Studie können mit anderen Forscherinnen und Forschern und/oder über eine öffentliche Datenbank (open access) geteilt werden. Dies beinhaltet keine personenbezogenen Daten oder individuell identifizierende Informationen. Die Ergebnisse können in anderen zukünftigen Forschungsarbeiten zu einem anderen Thema als dieser Studie verwendet werden.";
 
 export const best_21 = [<strong>Aufbewahrungsfrist</strong>];
 export const nme_22 = "Die Forschungsdaten werden für mindestens 10 Jahre aufbewahrt. ";
@@ -84,7 +84,7 @@ export const q5_op1 = "Ja";
 export const q5_op2 = "Nein";
 
 export const q6 = "6. Bitte nennen die die ersten beiden Ziffern der Postleitzahl Ihres Hauptwohnsitzes.";
-export const q6_info = [<italic>Hinweis: Lautet ihre Postleitzahl zum Beispiel \"10117\", dann tragen Sie bitte in das Feld \"10\" ein.</italic>];
+export const q6_info = [<italic>Hinweis: Lautet ihre Postleitzahl zum Beispiel "10117", dann tragen Sie bitte in das Feld "10" ein.</italic>];
 
 export const q7 = "7. Einmal ganz allgemein gesprochen. Wie sehr interessieren Sie sich für Politik?";
 export const q7_op1 = "1 Ich interessiere mich überhaupt nicht";
@@ -96,13 +96,13 @@ export const q7_op6 = "6";
 export const q7_op7 = "7 Ich interessiere mich sehr";
 
 export const q8 = "8. Wie oft nutzen Sie soziale Medien (z.B. X/Twitter, Facebook, Instagram) in Ihrem Alltag?";
-export const q8_op1 = "(Fast) die ganze Zeit / ständig";
-export const q8_op2 = "Mehrmals täglich ";
-export const q8_op3 = "Etwa einmal täglich ";
+export const q8_op1 = "Nie ";
+export const q8_op2 = "Weniger häufig ";
+export const q8_op3 = "Mindestens einmal pro Monat    ";
 export const q8_op4 = "Mindestens einmal pro Woche ";
-export const q8_op5 = "Mindestens einmal pro Monat    ";
-export const q8_op6 = "Weniger häufig ";
-export const q8_op7 = "Nie ";
+export const q8_op5 = "Etwa einmal täglich ";
+export const q8_op6 = "Mehrmals täglich ";
+export const q8_op7 = "(Fast) die ganze Zeit / ständig";
 
 export const dank = "Vielen Dank!";
 export const login1 = "Sie werden nun auf die Plattform TWON weitergeleitet. Bitte wählen Sie einen der vier Accountnamen und Avatare, die Ihnen unten angezeigt werden. "; 
