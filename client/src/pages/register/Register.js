@@ -1444,8 +1444,8 @@ const handle_feedback_Changed = async (e) => {
 				      <TextField className={classes.textField} id="password" label="Password" type="password" minLength="6" autoComplete="current-password"/>
 				      <TextField className={classes.textField} id='passwordAgain' name='passwordAgain' label="Password Again" type="password" required/>
               <p className={classes.errorMessage}>{passwordErr}</p>*/}
-            <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Überprüfen Sie Ihre Auswahl</button>.
-            <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Senden</button>.
+            <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Antworten bearbeiten</button>.
+            <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Antworten abschicken</button>.
           </div></SlideDiv>
         </CSSTransition>
 

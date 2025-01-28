@@ -18,7 +18,11 @@ RUN npm install
 
 COPY . . 
 
+<<<<<<< HEAD
 EXPOSE 3001
+=======
+EXPOSE 1075
+>>>>>>> ea8eb667949a243477d21813b05b8a0f73d4d1c0
 
 CMD ["npm", "start"]
 

@@ -72,7 +72,7 @@ const userIdentifiers = Array.from({ length: 10 }, () => uuid.v4());
 
 
 const corsOptions = {
-  origin: ['http://127.0.0.1', 'http://127.0.0.1'],
+  origin: ['https://socialapp.ijs.si', 'http://socialapp.ijs.si'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true

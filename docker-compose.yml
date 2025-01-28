@@ -27,7 +27,11 @@ services:
     #  - ./server:/app
     #  - ./client/build:/app/client/build
     ports:
+<<<<<<< HEAD
       - "3001:3001"
+=======
+      - "1075:1075"
+>>>>>>> ea8eb667949a243477d21813b05b8a0f73d4d1c0
     networks:
       - mern-network-v2
     depends_on:
