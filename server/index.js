@@ -49,7 +49,7 @@ const crypto = require('crypto');
 
 const port = process.env.PORT;
 
-const SOCKET_PORT = 1077;
+const SOCKET_PORT = 3001;
 dotenv.config();
 
 const uuid = require('uuid');
@@ -72,7 +72,7 @@ const userIdentifiers = Array.from({ length: 10 }, () => uuid.v4());
 
 
 const corsOptions = {
-  origin: ['https://socialapp.ijs.si', 'http://socialapp.ijs.si'],
+  origin: ['http://127.0.0.1', 'http://127.0.0.1'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true
@@ -335,7 +335,7 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.static(__dirname + '/public'));
 
 // Serve frontend
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
   console.log("Production!");
 
   //app.use(express.static(path.join(__dirname, 'build')));
@@ -416,5 +416,5 @@ app.use((req, res, next) => {
 
 console.log(process.env.MONGO_URI);
 app.listen(port, () => console.log(`Server started on port ${port} and ${nodeSiteUrl} and ${nodeSiteUrl}`));
-server.listen(8080, () => console.log(`Server started on port ${port} and ${nodeSiteUrl}`));
+server.listen(8081, () => console.log(`Server started on port ${port} and ${nodeSiteUrl}`));
 

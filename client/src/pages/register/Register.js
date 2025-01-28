@@ -321,7 +321,8 @@ function Register({classes}) {
       setProgress(30);
       const token = localStorage.getItem('token');
       const res = await axios.post(`/presurvey/isSubmitted/${val}`,{ headers: { 'auth-token': token }}); 
-      
+      console.log(res);
+      console.log(res.data);
       if(res.data == ""){ 
         setIsVisibleBasic(false);
         setIsVisibleSignUp(false);

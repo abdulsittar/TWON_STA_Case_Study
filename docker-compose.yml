@@ -15,7 +15,7 @@ services:
     #volumes:
     #  - ./client:/app
     ports:
-      - "3000:3000"
+      - "3002:3002"
 
   server:
     build: ./server
@@ -27,7 +27,7 @@ services:
     #  - ./server:/app
     #  - ./client/build:/app/client/build
     ports:
-      - "1077:1077"
+      - "3001:3001"
     networks:
       - mern-network-v2
     depends_on:
