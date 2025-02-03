@@ -25,6 +25,7 @@ function Home() {
     const [shouldSendAlert, setShouldSendAlert] = useState(true);
     const { user: currentUser, dispatch } = useContext(AuthContext);
     var location = useLocation();
+    const [webViewVisible, setWebViewVisible] = useState(false);
     
 
     const [day_One_Percent, setDay_One_Percent] = useState(0);
@@ -48,6 +49,7 @@ function Home() {
     const toastIdRef = useRef(null);
     
     let intervalId = null;
+    
     
     const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
     

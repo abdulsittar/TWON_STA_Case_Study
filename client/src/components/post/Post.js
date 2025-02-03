@@ -29,6 +29,7 @@ import { COLORS } from "../values/colors";
 import linkifyit from 'linkify-it';
 import { Write_something, comments } from '../../constants';
 import './post.css';
+import { toast } from 'react-toastify';
 //import User from "../../../../server/models/User";
 
 function Post({onScrolling,  post, classes, isDetail }) {
@@ -52,6 +53,9 @@ function Post({onScrolling,  post, classes, isDetail }) {
   const [rank, setRank] = useState(parseFloat(post.rank.toFixed(2)));//useState(post.reposts? post.reposts.length: 0);
 
   const [isReposted, setIsReposted] = useState(false);
+  const [webViewVisible, setWebViewVisible] = useState(false);
+const [webViewUrl, setWebViewUrl] = useState('');
+
   
   const [isNew, setIsNew] = useState(false);
 
@@ -71,6 +75,9 @@ function Post({onScrolling,  post, classes, isDetail }) {
   const [thumbnail, setThumbnail] = useState('');
   //const [thumbnail, setThumbnail] = useState('/images/16251726578112.jpeg');
   var cover = true;
+  // State for controlling popup visibility
+  
+  
 
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -249,6 +256,13 @@ function Post({onScrolling,  post, classes, isDetail }) {
       console.log(err); }
   }
 };
+
+const submitHandler2 = async (e) => {
+  e.preventDefault();
+  
+};
+
+
   // submit a comment
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -407,6 +421,68 @@ function Post({onScrolling,  post, classes, isDetail }) {
   }*/
   };
 
+
+  const toggleWebView = () => {
+    const screenWidth = window.innerWidth; // Get the screen width
+    //const iframeWidth = screenWidth <= 800 ? '65vh' : '125vh'; // Adjust width based on screen size
+  
+    let iframeWidth;
+    if (screenWidth < 550) {
+        iframeWidth = '33vh';  // Very small screens
+    } else if (screenWidth >= 550 && screenWidth < 600) {
+        iframeWidth = '40vh';  // Small screens
+    } else if (screenWidth >= 600 && screenWidth < 730) {
+        iframeWidth = '50vh';  // Slightly larger screens
+    } else if (screenWidth >= 731 && screenWidth < 800) {
+        iframeWidth = '60vh';  // Medium screens
+    } else if (screenWidth >= 801 && screenWidth < 1200) {
+        iframeWidth = '80vh';  // Large screens
+    } else {
+        iframeWidth = '100vh';  // Extra large screens
+    }
+  
+    toast.info(
+        <div style={{ position: 'relative', width: '120%', height: 'auto' }}>
+            <iframe
+                src="https://socialapp2.ijs.si/news/news_1"
+                title="WebView"
+                style={{
+                  width: iframeWidth,
+                  height: 'calc(100vh - 40px)', // Make sure it's responsive
+                    border: 'none',
+                    display: 'block',
+                    borderRadius: '10px',
+                    boxSizing: 'border-box',
+                }}
+            />
+            <button
+                onClick={() => setWebViewVisible(false)}
+                style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    padding: '8px 12px',
+                    backgroundColor: 'red',
+                    color: 'white',
+                    border: 'none',
+                    cursor: 'pointer',
+                    zIndex: 1001,
+                    borderRadius: '5px',
+                }}
+            >
+                Close
+            </button>
+        </div>,
+        {
+            position: "top-center",
+            autoClose: false, // Prevent auto-close
+            hideProgressBar: true,
+            closeButton: true,
+            className: "webview-toast-container", // Ensure this class is applied
+        }
+    );
+};
+
   const showCommentsHandler = () => {
     var bottomdiv = document.getElementsByClassName("form")
     bottomdiv.style.display="none";
@@ -457,6 +533,8 @@ const triangleOverlayStyle = {
     <InView as="div" onChange={(inView, entry) => handleViewedChange(inView, post)}>
     <div className={classes.post} style={{ position: "relative", margin: isDetail && "5px 0",  background: repost>0 ? "#F5F5F5" : "#ffffff"}}  >
       <div className={classes.postWrapper} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
+      
+
       <div style={triangleOverlayStyle}></div>
         <div className={classes.postTop} style={{ background: repost>0 ? "#ffffff" : "#ffffff" }}>
         {(repost > 0)? 
@@ -508,13 +586,19 @@ const triangleOverlayStyle = {
         <div className={classes.postCenter} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
         <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (<a target="blank" rel="noopener noreferrer" href={decoratedHref} key={key} > {decoratedText} </a>)}>
           <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
-            {!isDetail && post?.desc.length > 0? 
+            {/*!isDetail && post?.desc.length > 0? */}
               <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }} dangerouslySetInnerHTML={{ __html: post?.desc }}> 
+              
                   {/*<Link to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}></Link>*/}
                 </div>
-            :
+            {<button 
+                onClick={toggleWebView} 
+                style={{ display: 'inline-block', verticalAlign: 'middle', padding: '0px 20px', margin: '0px 20px'}}>
+                Read full article
+            </button>}
+            {/*}:
             <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }} dangerouslySetInnerHTML={{ __html: post?.desc }}>
-             </div>}
+             </div>}*/}
             
             
             {thumbnail && (
@@ -534,7 +618,9 @@ const triangleOverlayStyle = {
                   
             <img src={`${PF}cdislike.png`} alt="" className={classes.likeIcon} onClick={dislikeHandler} />
             <span className={classes.postDislikeCounter}>{dislike}</span>
-             
+            <form class = "form">
+            <SendIcon className={classes.sendButton2} style={{ display:"flex", margin:"0px 20px"}} type="submit" onClick={submitHandler2}/>
+            </form>
           </div>
           <div className={classes.postBottomRight} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
           <Link style={{textDecoration: 'none', color: COLORS.textColor}} to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}> <div className={classes.postCommentText} >{comments.length} {"Kommentare"}</div></Link>

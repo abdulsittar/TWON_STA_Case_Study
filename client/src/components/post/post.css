@@ -7,3 +7,34 @@
 .react-input-emoji--wrapper {
     height: 40px; /* Set the desired height */
   }
+
+/* Default Toast size for smaller screens (mobile and tablet) */
+.webview-toast-container {
+    width: 90vw;  /* 90% of the viewport width */
+    height: 60vh;  /* 60% of the viewport height */
+    max-width: 600px; /* Max width for mobile-friendly size */
+    max-height: 80vh;  /* Max height for better display */
+    border-radius: 10px; /* Optional: rounded corners */
+    overflow: hidden;  /* Prevent overflowing content */
+}
+
+/* Larger Toast size for desktop screens */
+@media (min-width: 768px) {
+    .webview-toast-container {
+        width: 80vw;  /* 80% of the viewport width */
+        height: 70vh;  /* 70% of the viewport height */
+        max-width: 900px;  /* Increase width for larger screens */
+        max-height: 80vh;  /* Keep height consistent */
+    }
+}
+
+/* Even Larger Toast for high-resolution screens (big desktops) */
+@media (min-width: 1200px) {
+    .webview-toast-container {
+        width: 70vw;  /* 70% of the viewport width */
+        height: 80vh;  /* 80% of the viewport height */
+        max-width: 1000px;  /* Larger max width */
+        max-height: 85vh;  /* Allow a bit more height */
+    }
+}
+

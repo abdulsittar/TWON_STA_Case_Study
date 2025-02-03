@@ -40,6 +40,9 @@ const authRoute = require('./routes/auth.js');
 const postRoute = require('./routes/posts.js');
 const storageRoute = require('./routes/idstorage.js');
 const commentRoute = require('./routes/comments.js');
+const newsHTMLRoute = require('./routes/news.js');
+const breakingHTMLRoute = require('./routes/breaking.js');
+const uncensoredHTMLRoute = require('./routes/uncensoredtruth.js');
 const presurRoute = require('./routes/presurvey.js');
 const postsurRoute = require('./routes/postsurvey.js');
 const path = require('path');
@@ -72,7 +75,7 @@ const userIdentifiers = Array.from({ length: 10 }, () => uuid.v4());
 
 
 const corsOptions = {
-  origin: ['https://socialapp.ijs.si', 'http://socialapp.ijs.si'],
+  origin: ['https://socialapp2.ijs.si', 'http://socialapp2.ijs.si'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true
@@ -317,6 +320,9 @@ app.use('/users', apiRouter);
 app.use('/presurvey', presurRoute);
 app.use('/postsurvey', postsurRoute);
 app.use('/idstorage', storageRoute);
+app.use('/news', newsHTMLRoute);
+app.use('/breaking', breakingHTMLRoute);
+app.use('/uncensored', uncensoredHTMLRoute);
 
 app._router.stack.forEach(function (r) {
   if (r.route && r.route.path) {
@@ -335,7 +341,7 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.static(__dirname + '/public'));
 
 // Serve frontend
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   console.log("Production!");
 
   //app.use(express.static(path.join(__dirname, 'build')));
@@ -416,5 +422,5 @@ app.use((req, res, next) => {
 
 console.log(process.env.MONGO_URI);
 app.listen(port, () => console.log(`Server started on port ${port} and ${nodeSiteUrl} and ${nodeSiteUrl}`));
-server.listen(8081, () => console.log(`Server started on port ${port} and ${nodeSiteUrl}`));
+server.listen(8080, () => console.log(`Server started on port ${port} and ${nodeSiteUrl}`));
 
