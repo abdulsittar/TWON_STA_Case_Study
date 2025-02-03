@@ -21,7 +21,7 @@ function sanitizeInput(input) {
 }
 
 // Submit pre survey
-router.get('/uncensoredtruth_1',  async (req, res) => {
+router.get('/zelensky-ukraine-no-need-peacetalks',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -34,7 +34,7 @@ router.get('/uncensoredtruth_1',  async (req, res) => {
         res.status(500).send('Error loading the page');
     }
 });
-router.get('/uncensoredtruth_2',  async (req, res) => {
+router.get('/trump-ends-military-support-ukraine',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -48,7 +48,7 @@ router.get('/uncensoredtruth_2',  async (req, res) => {
     }
 });
 
-router.get('/uncensoredtruth_3',  async (req, res) => {
+router.get('/zelensky-abandon-nato-russia-security',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -61,6 +61,37 @@ router.get('/uncensoredtruth_3',  async (req, res) => {
         res.status(500).send('Error loading the page');
     }
 });
+
+router.get('/putin-trump-divide-ukraine-plan',  async (req, res) => {
+    logger.info('Data received news', { data: req.body });
+    try {
+        //const uniqId = req.params.uniqId;
+        //logger.info(`Serving news page for ID: ${uniqId}`);
+
+        // Send the HTML file located in the 'public' directory
+        res.sendFile(path.join(__dirname, '../public/html/uncensoredtruth_4.html'));
+    } catch (err) {
+        logger.error('Error serving news page', { error: err.message });
+        res.status(500).send('Error loading the page');
+    }
+});
+
+
+router.get('/ukraine-west-weapons-black-market-destabilize-europe',  async (req, res) => {
+    logger.info('Data received news', { data: req.body });
+    try {
+        //const uniqId = req.params.uniqId;
+        //logger.info(`Serving news page for ID: ${uniqId}`);
+
+        // Send the HTML file located in the 'public' directory
+        res.sendFile(path.join(__dirname, '../public/html/uncensoredtruth_5.html'));
+    } catch (err) {
+        logger.error('Error serving news page', { error: err.message });
+        res.status(500).send('Error loading the page');
+    }
+});
+
+
 
 
 

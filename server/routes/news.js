@@ -21,7 +21,7 @@ function sanitizeInput(input) {
 }
 
 // Submit pre survey
-router.get('/news_1',  async (req, res) => {
+router.get('/zelensky-ukraine-must-be-included',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -34,7 +34,7 @@ router.get('/news_1',  async (req, res) => {
         res.status(500).send('Error loading the page');
     }
 });
-router.get('/news_2',  async (req, res) => {
+router.get('/us-freezes-foreign-aid',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -48,7 +48,7 @@ router.get('/news_2',  async (req, res) => {
     }
 });
 
-router.get('/news_3',  async (req, res) => {
+router.get('/zelensky-davos-unified-european-defence-policy',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -62,7 +62,7 @@ router.get('/news_3',  async (req, res) => {
     }
 });
 
-router.get('/news_4',  async (req, res) => {
+router.get('/putin-trump-talks-ukraine',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -76,7 +76,7 @@ router.get('/news_4',  async (req, res) => {
     }
 });
 
-router.get('/news_5',  async (req, res) => {
+router.get('/20-arrested-ukraine-weapons-trafficking',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;

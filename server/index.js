@@ -42,7 +42,7 @@ const storageRoute = require('./routes/idstorage.js');
 const commentRoute = require('./routes/comments.js');
 const newsHTMLRoute = require('./routes/news.js');
 const breakingHTMLRoute = require('./routes/breaking.js');
-const uncensoredHTMLRoute = require('./routes/uncensoredtruth.js');
+const uncensoredHTMLRoute = require('./routes/info.js');
 const presurRoute = require('./routes/presurvey.js');
 const postsurRoute = require('./routes/postsurvey.js');
 const path = require('path');
@@ -322,7 +322,7 @@ app.use('/postsurvey', postsurRoute);
 app.use('/idstorage', storageRoute);
 app.use('/news', newsHTMLRoute);
 app.use('/breaking', breakingHTMLRoute);
-app.use('/uncensored', uncensoredHTMLRoute);
+app.use('/info', uncensoredHTMLRoute);
 
 app._router.stack.forEach(function (r) {
   if (r.route && r.route.path) {

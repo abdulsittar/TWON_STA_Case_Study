@@ -444,7 +444,7 @@ const submitHandler2 = async (e) => {
     toast.info(
         <div style={{ position: 'relative', width: '120%', height: 'auto' }}>
             <iframe
-                src="https://socialapp2.ijs.si/news/news_1"
+                src="https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
                 title="WebView"
                 style={{
                   width: iframeWidth,

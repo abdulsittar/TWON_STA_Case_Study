@@ -21,7 +21,7 @@ function sanitizeInput(input) {
 }
 
 // Submit pre survey
-router.get('/breaking_1',  async (req, res) => {
+router.get('/zelensky-europe-us-must-take-lead',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -34,7 +34,7 @@ router.get('/breaking_1',  async (req, res) => {
         res.status(500).send('Error loading the page');
     }
 });
-router.get('/breaking_2',  async (req, res) => {
+router.get('/us-freezes-aid-questions-ukraine-funding',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -48,7 +48,7 @@ router.get('/breaking_2',  async (req, res) => {
     }
 });
 
-router.get('/breaking_3',  async (req, res) => {
+router.get('/zelensky-davos-europe-nato-independence',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {
         //const uniqId = req.params.uniqId;
@@ -56,6 +56,32 @@ router.get('/breaking_3',  async (req, res) => {
 
         // Send the HTML file located in the 'public' directory
         res.sendFile(path.join(__dirname, '../public/html/breaking_3.html'));
+    } catch (err) {
+        logger.error('Error serving news page', { error: err.message });
+        res.status(500).send('Error loading the page');
+    }
+});
+router.get('/putin-trump-secret-deal-ukraine',  async (req, res) => {
+    logger.info('Data received news', { data: req.body });
+    try {
+        //const uniqId = req.params.uniqId;
+        //logger.info(`Serving news page for ID: ${uniqId}`);
+
+        // Send the HTML file located in the 'public' directory
+        res.sendFile(path.join(__dirname, '../public/html/breaking_4.html'));
+    } catch (err) {
+        logger.error('Error serving news page', { error: err.message });
+        res.status(500).send('Error loading the page');
+    }
+});
+router.get('/ukraine-western-weapons-fuel-black-market',  async (req, res) => {
+    logger.info('Data received news', { data: req.body });
+    try {
+        //const uniqId = req.params.uniqId;
+        //logger.info(`Serving news page for ID: ${uniqId}`);
+
+        // Send the HTML file located in the 'public' directory
+        res.sendFile(path.join(__dirname, '../public/html/breaking_5.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
