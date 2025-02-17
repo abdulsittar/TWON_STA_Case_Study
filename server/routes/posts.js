@@ -8,6 +8,7 @@
     const fs = require('fs');
     const PostSurvey = require('../models/PostSurvey');
     const Repost = require('../models/Repost');
+    const IDStorage = require('../models/IDStorage');
     //var ObjectId = require('mongodb').ObjectID;
     
     const Comment = require('../models/Comment');
@@ -343,17 +344,22 @@ const DOMPurifyInstance = DOMPurify(window);
             ];
             
             const trainPosts3 = [
-                `<p>Zeit, das Dating Game in Deutschland auf ein neues Level zu heben. </p> <br /> <p>Love is Blind Germany: ab Anfang 2025, nur auf Netflix.</p> <br /><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>Das ist die Tabelle in der Bundesliga nach dem 7. Spieltag! 📈⚽ #SkyBundesliga</p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>#Berlin muss Milliarden kürzen, um den Haushalt in den Griff zu bekommen. Doch Schwarz-Rot verschleppt nötige Entscheidungen – und lähmt damit die Stadt. Ein Kommentar.</p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`
+                `<p>Zeit, das Dating Game in Deutschland auf ein neues Level zu heben. </p> <br /> <p>Love is Blind Germany: ab Anfang 2025, nur auf Netflix.</p> <br />`,
+                `<p>Das ist die Tabelle in der Bundesliga nach dem 7. Spieltag! 📈⚽ #SkyBundesliga</p>`,
+                `<p>#Berlin muss Milliarden kürzen, um den Haushalt in den Griff zu bekommen. Doch Schwarz-Rot verschleppt nötige Entscheidungen – und lähmt damit die Stadt. Ein Kommentar.</p>`,
+                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                
             ];
             
             const trainPosts = [
-                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br /><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                `<p>2000 Menschen waren angekündigt, mehr als 10.000 kamen. In Hamburg haben Tausende Menschen gegen einen Auftritt von AfD-Chefin Alice Weidel im Rathaus demonstriert. Auch Bürgermeister Tschentscher äußerte sich.<br /></p><a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`
+                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`
+                
             ];
             
             
@@ -424,7 +430,10 @@ const DOMPurifyInstance = DOMPurify(window);
                 "620620.png",       //Netflix
                 "023023_2.png",       //Sky Sport
                 "146146_2.png",       //Tagesspeigel
-                "070070_2.png"        //Der Speigel
+                "070070_2.png",        //Der Speigel
+                "faznet_p.png",     //faznet
+                "zeit_p.png",       //zeit
+                "handle_p.png",     //handel
             ];
             
             const userIds = [
@@ -432,14 +441,17 @@ const DOMPurifyInstance = DOMPurify(window);
                 process.env.SkySport,   //Sky Sport
                 process.env.Tagesspeigel,   //Tagesspeigel
                 process.env.DerSpeigel,    //Der Speigel
+                process.env.faznet,     //faznet
+                process.env.zeit,      //zeit
+                process.env.handle,     //handel
             ];
         
             const dummyPosts = [
                 `<p>1/5</p><p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
                 `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
                 `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p> <br /><p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.<a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`,
-                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.<a href="https://thebigsm.github.io/Fake_News_WebP/">Read more</a>`
+                `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`,
+                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`
             ];
         
             try {
@@ -548,7 +560,19 @@ const DOMPurifyInstance = DOMPurify(window);
                         phtoAdd = "070070.png";
                         isUserSelected = true;
                     
-                }
+                    } else if (item.userId === userIds[4]) { 
+                        phtoAdd = "faznet_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[5]) { 
+                        phtoAdd = "zeit_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[6]) { 
+                        phtoAdd = "handle_p.png";
+                        isUserSelected = true;
+                    
+                    }
                 
                 //if(isUserSelected == true){
                                 
@@ -1408,6 +1432,32 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }
     });
 
+
+
+    router.post('/random_id', async (req, res) => {
+        try {
+      
+          // Get a random document's 'yourID' from the collection
+          const randomDoc = await IDStorage.aggregate([
+            { $match: { available: true } }, // Only include documents with available: true
+            { $sample: { size: 1 } } // Get a random document
+        ]);
+
+          logger.info("randomDoc");
+          logger.info(randomDoc);
+          
+          if (randomDoc.length > 0) {
+            res.status(200).json({ yourID: randomDoc[0].yourID });
+          } else {
+            res.status(404).json({ message: "No data found" });
+          }
+    
+        } catch (err) {
+            console.log("Error details:", err.message); // Log just the error message
+            logger.error("Stack trace:", err.stack); // Log the stack trace explicitly
+            res.status(500).json({ error: "Failed to fetch data" });
+        }
+      });
 
    // posts of only followings
    router.get('/:id/getUserPost/', verifyToken, async (req, res) => {

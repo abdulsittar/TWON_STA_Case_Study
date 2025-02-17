@@ -6,7 +6,6 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const PostSurvey = require('../models/PostSurvey');
-const conn = mongoose.createConnection('mongodb+srv://abdulsittar72:2106010991As@cluster0.gsnbbwq.mongodb.net/test?retryWrites=true&w=majority');
 var ObjectId = require('mongodb').ObjectID;
 const sanitizeHtml = require('sanitize-html');
 const logger = require('../logs/logger');
@@ -52,6 +51,11 @@ router.post('/psurvey/:uniqId',  async (req, res) => {
         //console.log(newSurvey)
         // save user and send response
         const survey = await newSurvey.save();
+        await IDStorage.updateOne(
+            { _id: fid._id },
+            { $set: { available: false } }
+        );
+        
         //console.log(survey)
         res.status(200).json(survey);
 

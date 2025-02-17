@@ -1222,7 +1222,7 @@ const handleUserNameChange = async (e) => {
     if(is_NoSurvey_visible == false){
 
      survey = {
-      q2: value_q1,
+      q1: value_q1,
       q2: value_q2,
       q3: value_q3,
       q4: value_q4,
@@ -1251,13 +1251,13 @@ const handleUserNameChange = async (e) => {
       "feedback": feedback,
     };
   }
-
     try {
       setProgress(30);
       console.log(survey)
+      let uniqueId = currentUser.uniqueId;
       console.log(currentUser)
       const token = localStorage.getItem('token');
-      const res = await axios.post(`/postsurvey/pstsurvey/${currentUser._id}`, {survey, headers: { 'auth-token': token }});
+      const res = await axios.post(`/postsurvey/pstsurvey/${currentUser._id}`, {uniqueId, survey, headers: { 'auth-token': token }});
 
       try {
         console.log(survey)
@@ -1267,6 +1267,10 @@ const handleUserNameChange = async (e) => {
         //const urlParts = window.location.pathname.split('/');
         //const valu = urlParts[urlParts.length-1]
         //window.open('https://survey.maximiles.com/static-complete?p=123929_0b2e7809', '_blank');
+        
+        const surveyUrl = `https://app.prolific.com/submissions/complete?${res.data.message}`;
+
+        window.open(surveyUrl, '_blank');
         set_Is_code_visible(true) 
         setIsSurveySubmitted(true)
         stStatus_msg2(res.data.message);

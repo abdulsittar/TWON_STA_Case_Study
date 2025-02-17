@@ -434,15 +434,15 @@ const submitHandler2 = async (e) => {
     } else if (screenWidth >= 600 && screenWidth < 730) {
         iframeWidth = '50vh';  // Slightly larger screens
     } else if (screenWidth >= 731 && screenWidth < 800) {
-        iframeWidth = '60vh';  // Medium screens
+        iframeWidth = '70vh';  // Medium screens
     } else if (screenWidth >= 801 && screenWidth < 1200) {
-        iframeWidth = '80vh';  // Large screens
+        iframeWidth = '70vh';  // Large screens
     } else {
-        iframeWidth = '100vh';  // Extra large screens
+        iframeWidth = '84vh';  // Extra large screens
     }
   
     toast.info(
-        <div style={{ position: 'relative', width: '120%', height: 'auto' }}>
+        <div style={{ position: 'relative', width: '100%', height: 'auto' }}>
             <iframe
                 src="https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
                 title="WebView"
@@ -455,7 +455,7 @@ const submitHandler2 = async (e) => {
                     boxSizing: 'border-box',
                 }}
             />
-            <button
+            {/*<button
                 onClick={() => setWebViewVisible(false)}
                 style={{
                     position: 'absolute',
@@ -471,7 +471,7 @@ const submitHandler2 = async (e) => {
                 }}
             >
                 Close
-            </button>
+            </button>*/}
         </div>,
         {
             position: "top-center",

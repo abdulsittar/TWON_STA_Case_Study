@@ -17,6 +17,7 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Postdetail from "./pages/postDetail/Postdetail";
+import LandingPage from "./pages/landingPage/landingPage.js";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Postsurvey from './pages/postsurvey/postsurvey';
@@ -30,9 +31,10 @@ function App() {
     
     <Router>
     <Switch>
+    <Route path="/landingPage"><LandingPage/></Route>
 		<Route exact path="/">{user ? <Home /> : <Login />}</Route>
 		<Route path="/login/:userId"><Login /></Route>
-		<Route path="/register/:userId"><Register /></Route>
+		<Route path="/register/:userId"><Register /></Route> 
 		<Route path="/profile/:username"><Profile /></Route>
     <Route path="/progress/:username"><Progress /></Route>
     <Route path="/postsurvey/:username"><Postsurvey /></Route>

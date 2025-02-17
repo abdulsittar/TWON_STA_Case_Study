@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const conn = mongoose.createConnection('mongodb+srv://abdulsittar72:2106010991As@cluster0.gsnbbwq.mongodb.net/test?retryWrites=true&w=majority');
 const { ObjectId } = require('mongodb');
 const IDStorage = require('../models/IDStorage');
+const PreSurvey = require('../models/PreSurvey');
 const verifyToken = require('../middleware/verifyToken');
 const sanitizeHtml = require('sanitize-html');
 const logger = require('../logs/logger');
@@ -33,7 +34,18 @@ router.post('/pstsurvey/:userId', verifyToken, async (req, res) => {
             return res.status(400).json({ code: existingSurvey.prolific_code, message: "User has already submitted a post-survey." });
         }
         
-        var gen_code = generateSevenDigitRandomNumber()
+        //var gen_code = generateSevenDigitRandomNumber()
+        
+        const preSurvey = await PreSurvey.findOne({ uniqueId: req.body.uniqueId });
+
+        if (!preSurvey) {
+            return res.status(404).json({ message: "PreSurvey not found for the given userId." });
+        }
+
+        // Use prolific_Code from PreSurvey
+        const gen_code = preSurvey.prolific_Code;
+        
+        
         const newSurvey = new PostSurvey({
             "userId": req.params.userId,
             "q1": req.body.survey.q1,
