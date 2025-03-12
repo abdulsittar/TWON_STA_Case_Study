@@ -77,8 +77,6 @@ const [webViewUrl, setWebViewUrl] = useState('');
   var cover = true;
   // State for controlling popup visibility
   
-  
-
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isHovered, setIsHovered] = useState(false);
@@ -98,7 +96,7 @@ const [webViewUrl, setWebViewUrl] = useState('');
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post('/posts/fetch-thumbnail', { 
-        urls: post.thumb, 
+       urls: post.thumb, 
         headers: { 'auth-token': token }
       });
       setThumbnail(response.data.thumbnail);
@@ -428,59 +426,82 @@ const submitHandler2 = async (e) => {
   
     let iframeWidth;
     if (screenWidth < 550) {
-        iframeWidth = '33vh';  // Very small screens
+        iframeWidth = '45vh';  // Very small screens
     } else if (screenWidth >= 550 && screenWidth < 600) {
-        iframeWidth = '40vh';  // Small screens
-    } else if (screenWidth >= 600 && screenWidth < 730) {
-        iframeWidth = '50vh';  // Slightly larger screens
+        iframeWidth = '45vh';  // Small screens
+    } else if (screenWidth >= 731 && screenWidth < 730) {
+        iframeWidth = '45vh';  // Slightly larger screens
     } else if (screenWidth >= 731 && screenWidth < 800) {
-        iframeWidth = '70vh';  // Medium screens
+        iframeWidth = '45vh';  // Medium screens
     } else if (screenWidth >= 801 && screenWidth < 1200) {
-        iframeWidth = '70vh';  // Large screens
+        iframeWidth = '45vh';  // Large screens
     } else {
-        iframeWidth = '84vh';  // Extra large screens
+        iframeWidth = '45vh';  // Extra large screens
     }
   
     toast.info(
-        <div style={{ position: 'relative', width: '100%', height: 'auto' }}>
-            <iframe
-                src="https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
-                title="WebView"
-                style={{
-                  width: iframeWidth,
-                  height: 'calc(100vh - 40px)', // Make sure it's responsive
-                    border: 'none',
-                    display: 'block',
-                    borderRadius: '10px',
-                    boxSizing: 'border-box',
-                }}
-            />
-            {/*<button
-                onClick={() => setWebViewVisible(false)}
-                style={{
-                    position: 'absolute',
-                    top: '10px',
-                    right: '10px',
-                    padding: '8px 12px',
-                    backgroundColor: 'red',
-                    color: 'white',
-                    border: 'none',
-                    cursor: 'pointer',
-                    zIndex: 1001,
-                    borderRadius: '5px',
-                }}
-            >
-                Close
-            </button>*/}
-        </div>,
-        {
-            position: "top-center",
-            autoClose: false, // Prevent auto-close
-            hideProgressBar: true,
-            closeButton: true,
-            className: "webview-toast-container", // Ensure this class is applied
-        }
-    );
+      <div 
+          style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              //justifyContent: 'center',
+              width: '80vw', 
+              height: '80vh', 
+              backgroundColor: 'white', 
+              overflow: 'hidden',
+              //padding: '10px',
+          }}
+      >
+          <div style={{
+              width: '85vw', // Keeps it within screen bounds
+              maxWidth: '1500px', // Prevents extra stretching
+              height: '90vh',
+              overflow: 'auto',
+              position: 'relative',
+          }}>
+              <iframe
+                  src="https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
+                  title="WebView"
+                  style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      //zoom: '0.95', // Shrinks content slightly to fit
+                      objectFit: 'cover', // Ensures full visibility
+                      overflow: 'auto',
+                      display:'block'
+                  }}
+              />
+          </div>
+          
+          <button 
+              onClick={() => toast.dismiss()} 
+              style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  padding: '10px 20px',
+                  backgroundColor: '#ff4d4f',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontSize: '16px'
+              }}
+          >
+              Close
+          </button>
+      </div>,
+      {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: true,
+          closeButton: false, // Using a custom close button
+          className: "webview-toast-container",
+      }
+  );
+
 };
 
   const showCommentsHandler = () => {
@@ -570,7 +591,7 @@ const triangleOverlayStyle = {
             </span>
             </Link>
             <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt)}</span>
-            {/*<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{" Reposted by: "+ repost}</span>*/}
+            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{post.weight}</span>}
           </div>
           
           { /*(repost < 1)?

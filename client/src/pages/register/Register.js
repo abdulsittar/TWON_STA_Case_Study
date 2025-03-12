@@ -38,7 +38,7 @@ import {
   q1_op3,
   q1_op4,
   q1_op5,
-  q1_op6,
+  //q1_op6,
   q8_op7,
   q8_op6,
   A_user_with,
@@ -49,6 +49,10 @@ import {
   aim_6,
   procedureHEADING_7,
   procedure_8,
+  procedure_8_1,
+  procedure_8_2,
+  procedure_8_3,
+  procedure_8_4,
   voluntaryHEADING_9,
   question0,
   name,
@@ -314,7 +318,9 @@ function Register({classes}) {
 
 	}, []);
 
-  const labels = [q1_op1, q1_op2, q1_op3, q1_op4, q1_op5, q1_op6];
+  const labels = [q1_op1, q1_op2, q1_op3, q1_op4, q1_op5];
+  const labels2 = [procedure_8_2, procedure_8_3, procedure_8_4];
+  
   const getRandomNumber = () => Math.floor(Math.random() * 4) + 1;
   const isUserAlreadySubmittedSurvey = async (val) => {
     try {
@@ -327,8 +333,7 @@ function Register({classes}) {
         setIsVisibleBasic(false);
         setIsVisibleSignUp(false);
         setProgress(100);
-      }
-      else{
+      } else {
       console.log(res.data.data);
       setIsSurveyChecked(false);
       console.log(isSurveyChecked);
@@ -939,10 +944,10 @@ const handle_feedback_Changed = async (e) => {
       e.preventDefault()
       toast.error("Frage 4. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
       return
-    }else if (value_q5 == ""){
-      e.preventDefault()
-      toast.error("Frage 5. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
+    //}else if (value_q5 == ""){
+    //  e.preventDefault()
+    //  toast.error("Frage 5. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+    //  return
     }else if(zipcode == ""){
       e.preventDefault()
       toast.error("Frage 6. Bitte Postleitzahl eingeben!");
@@ -1220,15 +1225,23 @@ const handle_feedback_Changed = async (e) => {
         <p className={classes.secon_disclaimor}>{other_11}</p>
         <p className={classes.secon_disclaimor}>{dataprotHEADING_12}</p>*/}
  
+        <p className={classes.secon_disclaimor}>{procedure_8_1}</p>
+        <ul>
+        {labels2.map((label, index) => (
+          <li className={classes.secon_disclaimor} key={index}>{label}</li>
+        ))}
+      </ul>
+ 
         <p className={classes.secon_disclaimor}>{dataprot_13}</p>
 
         <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{datasharingHEADING_14}</h1>
         <p className={classes.secon_disclaimor}>{datasharing_15}</p>
+        
 
         <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{retentionHEADING_16}</h1>
         <p className={classes.secon_disclaimor}>{retention_17}</p>
 
-        {/*<p className={classes.secon_disclaimor}>{furtherHEADING_18}</p>*/}
+        {<p className={classes.secon_disclaimor}>{furtherHEADING_18}</p>}
         {/*<p className={classes.secon_disclaimor}>{}</p>*/}
         <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{further_19}</h1>
         <p className={classes.secon_disclaimor}>{complaints_20}</p> 
@@ -1236,11 +1249,7 @@ const handle_feedback_Changed = async (e) => {
         
         
         <p className={classes.disclaimor2}>{nme_22}</p>
-        
-        
         <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{consentHEADING_23}</h1>
-        
-        
         
         </div></SlideDiv>
         </CSSTransition>
@@ -1250,6 +1259,8 @@ const handle_feedback_Changed = async (e) => {
         <div id='sixBlock'>
         
         <p className={classes.disclaimor2}>{weitere}</p>
+        <p className={classes.disclaimor2}>{consent_24}</p>
+        
         {/*<p className={classes.disclaimor2}>{jaa}</p>*/}
         <p className={classes.disclaimor2}>{neinn}</p>
         <p className={classes.disclaimor2}>{name}</p>
@@ -1292,7 +1303,7 @@ const handle_feedback_Changed = async (e) => {
         <CSSTransition in={is_review_is_onward} timeout={1000} classNames="slide" unmountOnExit>
         <div id='Qrolific'>
         <p className={classes.secon_disclaimor}>{review_is_onward}</p>
-        <p className={classes.label}> <input type="text" className="age-input" id="prolificcode" maxLength="7" onChange={handle_prolific_code} value={prolific_Code} placeholder="Geben Sie den Prolific-Code ein"/> </p>
+        <p className={classes.label}> <input type="text" className="age-input" id="prolificcode" maxLength="7" onChange={handle_prolific_code} value={prolific_Code} placeholder="Upišite prolific code"/> </p>
         </div></CSSTransition>
 
 
@@ -1302,7 +1313,7 @@ const handle_feedback_Changed = async (e) => {
         <p className={classes.secon_disclaimor}>{q0_info}</p>
         <p className={classes.secon_disclaimor}>{q0}</p> 
         
-        <p className={classes.label}> Ich bin <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="Alter in Jahren"/>  Jahre alt. Um an dieser Studie teilzunehmen, sollten Sie mindestens 18 Jahre alt sein</p>
+        <p className={classes.label}> Imam <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="upišite broj"/> godina. Um an dieser Studie teilzunehmen, sollten Sie mindestens 18 Jahre alt sein</p>
         
         </div>
          
@@ -1350,6 +1361,7 @@ const handle_feedback_Changed = async (e) => {
         </div></SlideDiv>
         </CSSTransition>
 
+        {/*
         <CSSTransition in={is_Q5_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q5'>
         <p className={classes.secon_disclaimor}>{q5}</p>
@@ -1359,13 +1371,14 @@ const handle_feedback_Changed = async (e) => {
         </form>
         </div></SlideDiv>
         </CSSTransition>
+        */}
 
         <CSSTransition in={is_Q6_visible} timeout={1000} classNames="slide" unmountOnExit > 
         <div id='Q6'>
         <p className={classes.secon_disclaimor}>{q6}</p>
         <p className={classes.secon_disclaimor} style={{ fontStyle: 'italic' }}>{q6_info}</p>
         <form  className={classes.question}> 
-        <p className={classes.label}> Meine Postleitzahl beginnt mit den zwei Ziffern  <input type="text" className="age-input" id="age2"  value={zipcode} maxLength="2" onChange={handle_age_Changed2} placeholder="Postleitzahl"/> </p>
+        <p className={classes.label}> Moj poštanski kod počinje sa ova dva broja:  <input type="text" className="age-input" id="age2"  value={zipcode} maxLength="2" onChange={handle_age_Changed2} placeholder="Poštanski broj"/> </p>
         <hr style={{ borderTop: '1px solid #000' }}/>
         </form>
         </div> 
@@ -1380,10 +1393,11 @@ const handle_feedback_Changed = async (e) => {
         <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q7 === 'option3'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op3}</span></label></div>
         <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q7 === 'option4'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op4}</span></label></div>
         <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q7 === 'option5'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op5}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option6"  checked={value_q7 === 'option6'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op6}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q7 === 'option7'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op7}</span></label></div>
+        {/*<div className={classes.label}><label><input type="radio" value="option6"  checked={value_q7 === 'option6'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op6}</span></label></div>
+        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q7 === 'option7'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op7}</span></label></div>*/}
         </form>
-        </div></SlideDiv>
+        </div>
+        </SlideDiv>
         </CSSTransition>
 
         <CSSTransition in={is_Q8_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
@@ -1444,8 +1458,8 @@ const handle_feedback_Changed = async (e) => {
 				      <TextField className={classes.textField} id="password" label="Password" type="password" minLength="6" autoComplete="current-password"/>
 				      <TextField className={classes.textField} id='passwordAgain' name='passwordAgain' label="Password Again" type="password" required/>
               <p className={classes.errorMessage}>{passwordErr}</p>*/}
-            <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Antworten bearbeiten</button>.
-            <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Antworten abschicken</button>.
+            <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Izmeni odgovore</button>.
+            <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Nastavi</button>.
           </div></SlideDiv>
         </CSSTransition>
 
@@ -1467,7 +1481,7 @@ const handle_feedback_Changed = async (e) => {
         <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q11 === 'option3'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic3 : PF+"person/noCover.png"} alt="" />{usrName3}</span></label></div>
         <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q11 === 'option4'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic4 : PF+"person/noCover.png"} alt="" />{usrName4}</span></label></div>
         
-        <button hidden={isNextDisplays} className={classes.button} onClick={submitNext}> Weiter  </button>
+        <button hidden={isNextDisplays} className={classes.button} onClick={submitNext}> nastavi  </button>
         </form>
         
         </div></SlideDiv>

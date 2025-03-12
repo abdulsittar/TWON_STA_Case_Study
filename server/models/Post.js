@@ -33,6 +33,10 @@ rank: {
     type: Number,
     default: 1000.0
 },
+weight: {
+    type: Number,
+    default: 0.0
+},
 likes: [{
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'PostLike'

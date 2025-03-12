@@ -28,7 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function Feed({username, classes, selectedValue, searchTerm}) {
+function Feed({username, classes, selectedValue, searchTerm, actionTriggered}) {
 const [posts, setPosts] = useState([]);
 const [hasMore, setHasMore] = useState(true);
 const [index, setIndex] = useState(0);
@@ -45,6 +45,16 @@ const [open, setOpen] = React.useState(false);
  
 let postCallCount = 0; 
 let maxCalls = 5; 
+
+
+const handleFeedAction = async (e) => {
+    console.log("Feed received action from Topbar!");
+    const token = localStorage.getItem('token');
+    
+    const lc = await axios.post("/posts/" + currentUser._id + "/createRefreshData", { version: user.pool, userId: user._id, headers: { 'auth-token': token }});
+    fetchPosts(0); 
+    
+};
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -116,6 +126,12 @@ const [windowSize, setWindowSize] = useState(getWindowSize());
     
 //}, [])
 
+useEffect(() => { 
+    if (actionTriggered) {
+        handleFeedAction();
+    }
+}, [actionTriggered]);
+
 useEffect(() => {
     console.log('Posts updated: ', posts);
 }, [posts]);
@@ -132,7 +148,9 @@ useEffect(() => {
         console.log('active data: >>', res.data );
         if(res.data.pool == user.pool){
             const arr = [res.data]
-            setPosts((prevItems) => [...arr, ...prevItems]);
+            setPosts([])
+            setPosts(res.data)
+            //setPosts((prevItems) => [...arr, ...prevItems]);
             console.log('posts data: >>', posts );
         }
         
@@ -150,7 +168,8 @@ const showPostsInOrder = async () => {
     if(res.data['no']){
         const arr = [{"_id": res.data["_id"], "desc":res.data["desc"], "pool":res.data["pool"] , "userId": "66f590ae38f16e2cea8d0646", "thumb":"https://fastly.picsum.photos/id/451/200/300.jpg?blur=5&hmac=Cs_EydLmPTWdSMrzBl8vXIG9b3CaH9iP_yVdDFiXUhU", "likes":[],
         "dislikes":[], "comments":[], "reposts":[], "rank":1000}]
-        setPosts((prevItems) => [...arr, ...prevItems]);
+        //setPosts((prevItems) => [...arr, ...prevItems]);
+        setPosts(arr);
         console.log('posts data: >>', posts );
 
         //postCallCount++;
@@ -272,12 +291,14 @@ if (preProfile === " ") {
     console.log("fetch posts");
     if(res.data.length){
     if(res.data.length > 0){
-        setPosts((prevItems) => [...prevItems, ...res.data
+        setPosts([])
+        setPosts(res.data)
+        //setPosts((prevItems) => [...prevItems, ...res.data
             //.sort((p1,p2) => {return new Date(p2.createdAt) - new Date(p1.createdAt);})
-        ]); 
+        //]); 
         res.data.length%20 > 0 ? setHasMore(false) : setHasMore(true);
         //setIndex((index) => index + 1);
-        increment(index, 1);
+        increment(index, 0);
         setProgress(100);
     } else {
         setHasMore(false);
@@ -338,11 +359,13 @@ const fetchMoreData = async () => {
     //console.log(res.data);
     
     if(res.data.length > 0){
-        setPosts((prevItems) => [...prevItems, ...res.data
+        //setPosts((prevItems) => [...prevItems, ...res.data
             //.sort((p1,p2) => {return new Date(p2.createdAt) - new Date(p1.createdAt);})
-        ]); 
+        //]);
+        setPosts([])
+        setPosts(res.data)
          res.data.length%20 > 0 ? setHasMore(false) : setHasMore(true);
-        increment(index, 1);
+        increment(index, 0);
         setProgress(100);
     }else {
         setHasMore(false);
@@ -360,10 +383,8 @@ function getWindowSize() {
 
 useEffect(() => {
     //registerAndSubscribe();
-
     console.log("use effects!");
     //showPostsInOrder();
-    
     if (selectedValue !=10){
     ///// Remove this breakpoint during the casestudy
         //filterLoadedPosts()
@@ -374,20 +395,17 @@ useEffect(() => {
         } else {
             //filterLoadedPosts()
             fetchPosts(selectedValue);
-    }
+        }
     }
 
     function handleWindowResize() {
         setWindowSize(getWindowSize());
-        }
+    }
+    window.addEventListener('resize', handleWindowResize);
     
-        window.addEventListener('resize', handleWindowResize);
-    
-        return () => {
+    return () => {
         window.removeEventListener('resize', handleWindowResize);
-        };
-
-        
+    };
 
 }, [username, user._id, selectedValue, searchTerm])
 
@@ -437,12 +455,14 @@ if (preProfile === " ") {
     console.log("fetch posts");
     if(res.data.length){
     if(res.data.length > 0){
-        setPosts((prevItems) => [...prevItems, ...res.data
+        //setPosts((prevItems) => [...prevItems, ...res.data
             //.sort((p1,p2) => {return new Date(p2.createdAt) - new Date(p1.createdAt);})
-        ]); 
+        //]);
+        setPosts([])
+        setPosts(res.data)
         res.data.length%20 > 0 ? setHasMore(false) : setHasMore(true);
         //setIndex((index) => index + 1);
-        increment(0, 1);
+        increment(0, 0);
     } else {
         setHasMore(false)
         //setPosts([]);

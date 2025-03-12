@@ -26,6 +26,7 @@ function Home() {
     const { user: currentUser, dispatch } = useContext(AuthContext);
     var location = useLocation();
     const [webViewVisible, setWebViewVisible] = useState(false);
+    const [actionTriggered, setActionTriggered] = useState(false);
     
 
     const [day_One_Percent, setDay_One_Percent] = useState(0);
@@ -59,6 +60,12 @@ function Home() {
     const handleActivityRecorder = () => {
         axios.put("/users/" + currentUser._id + "/activity", { page: "Home", seconds: TimeMe.getTimeOnCurrentPageInSeconds(), headers: { 'auth-token': token } });
     };
+
+
+    const handleActionFromTopbar = () => {
+      console.log("Action triggered from Topbar!");
+      setActionTriggered(true); // Toggle the state
+  };
 
     useEffect(() => {
        
@@ -150,13 +157,9 @@ function Home() {
         }, [location.pathname]);
 
         const handleNotificationClick = () => {
-          
           history.push(`/postsurvey/${currentUser.username}`);
-
         };
         
-        
-
         const fetchTimeSpent = async () => {
           const token = localStorage.getItem('token');
             const res = await axios.get("/users/" + currentUser._id + "/getTimeSpent", {headers: { 'auth-token': token }})
@@ -177,7 +180,6 @@ function Home() {
                   //toast.success("Denken Sie daran, dass Sie unser System an 10 Minuten pro Tag nutzen müssen um Ihre Vergütung zu erhalten");
               }
           };
-        
         
           const fetchTimeSpent2 = async (pathname) => {
             const token = localStorage.getItem("token");
@@ -331,11 +333,11 @@ function Home() {
     return (
         <>
         <ToastContainer autoClose={600000} style={{ 'width': !isMobileDevice && !isTabletDevice ? deviceWidth  :'500px'  }}></ToastContainer>
-            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm}/>
+            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm} onAction={handleActionFromTopbar} />
             <ToastProvider placement="top-center" style={{ 'margin': !isMobileDevice && !isTabletDevice && '0px 1px' }}>
             <div className="homeContainer" style={{ 'margin': !isMobileDevice && !isTabletDevice && '50px 1px' }}>
                 { /*isMobileDevice && isTabletDevice && <Sidebar />*/}
-                <Feed selectedValue={selectedValue} searchTerm={searchTerm} />
+                <Feed selectedValue={selectedValue} searchTerm={searchTerm} actionTriggered={actionTriggered}/>
                 {/* isMobileDevice && isTabletDevice && <Rightbar2 />*/}
             </div>
             </ToastProvider>

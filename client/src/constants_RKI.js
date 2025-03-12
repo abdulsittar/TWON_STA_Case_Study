@@ -1,4 +1,125 @@
-export const disclaimor_1 = "Sehr geehrte Teilnehmerin, sehr geehrter Teilnehmer,";
+export const disclaimor_1 = "Poštovani/a,";
+export const dear_part_2 = "Dobrodošli u istraživačku studiju naučnog projekta “TWON – Twin of an online social network” (TWON – Dvojnik onlajn društvene mreže), koji finansira EU, a sprovodi Fakultet društvenih i bihejvioralnih nauka Univerziteta u Amsterdamu (UvA) u saradnji sa Univerzitetom u Triru u Nemačkoj, Institutom Robert Koh i Institutom Jožef Stefan (JSI) u Sloveniji.";
+export const bitte_4 = "Molimo Vas da pažljivo pročitate sledeći tekst pre nego što započnete učešće. Ako Vam nešto nije jasno, slobodno nas kontaktirajte preko kolege Majkla Hazeltajna (Michael Heseltine) na mejl adresu: m.j.heseltine@uva.nl. Rado ćemo odgovoriti na Vaša pitanja.";
+
+export const aimHEADING_5 = [<strong>Cilj istraživanja</strong>];
+export const aim_6 = "Cilj ovog istraživanja je da dođe do boljeg razumevanja uticaja platformi društvenih mreža na aktivnosti svojih korisnika i njihove interakcije sa drugim korisnicima, kako bi se objasnili i sprečili negativni uticaji na demokratiju.";
+export const procedureHEADING_7 = [<strong>Procedura studije</strong>]; 
+//„TWON“¬-
+export const procedure_8 = "Od Vas se traži da koristite TWON  platformu društvene mreže koju je razvila naša istraživačka grupa. Deo sadržaja na ovoj platformi potiče sa drugih postojećih platformi, dok je neki sadržaj automatski generisan. Platformu treba da koristite na isti način na koji biste koristili bilo koju drugu društvenu mrežu – na primer, lajkujući, deljenjem sadržaja i komentarišući objave drugih korisnika ili kliktanjem na link kako biste pročitali postavljenu vest.";
+export const procedure_8_1 = [<strong>Kako bi studija bila uspešna, molimo Vas da:</strong>];
+export const procedure_8_2 = [<strong>napišete bar jednu objavu na mreži </strong>]; 
+export const procedure_8_3 = [<strong>objavite bar tri komentara </strong>];
+export const procedure_8_4 = [<strong>date bar jedan “lajk” </strong>];
+
+export const dataprot_13 = "Na početku i na kraju studije biće potrebno da popunite kratak upitnik o Vašem korisničkom iskustvu i nekim opštim demografskim podacima o Vama. U celini, vreme koje se od Vas zahteva tokom studije je približno 30 minuta, odnosno sat vremena ako se sabere dnevno korišćenje mreže i vreme potrebno za popunjavanje upitnika. Nakon učešća u studiji, dobićete naknadu koja je dogovorena sa _________.";
+export const datasharingHEADING_14 = [<strong>Dobrovoljnost učešća</strong>];
+
+export const datasharing_15 = "Vaše učešće u ovoj studiji je dobrovoljno – niste obavezni da učestvujete. Možete prekinuti svoje učešće u bilo kom trenutku tokom studije, kao i povući svoje podatke nakon završetka studije. Ako želite da povučete svoje podatke, molimo vas da kontaktirate Known, navodeći link koji Vam je dodeljen za učešće. Kako bismo očuvali Vašu anonimnost, molimo Vas da nam ne šaljete direktne mejlove. Ne morate navesti razlog za povlačenje. Osim činjenice da nećete dobiti naknadu, povlačenje iz učešća ili povlačenje podataka neće imati nikakve negativne posledice po Vas. ";
+
+export const datasharing_15_new   = "Kako bi studija bila uspešna, molimo Vas da:"
+export const datasharing_15_opt1  = "napišete bar jednu objavu na mreži"
+export const datasharing_15_opt2  = "objavite bar tri komentara"
+export const datasharing_15_opt3  = "date bar jedan “lajk”"
+
+export const retentionHEADING_16 = [<strong>Zaštita podataka</strong>];
+export const retention_17 = "Vaše lične podatke tretiramo potpuno anonimno u skladu sa zakonskim propisima (Opšta uredba o zaštiti podataka – GDPR u Evropskoj uniji i Evropskom ekonomskom prostoru).";
+export const furtherHEADING_18 = "Vaše lične podatke će obrađivati partnerska institucija Institut Jožef Stefan (JSI) kao treće lice. To znači da će Vaši podaci prikupljeni prilikom korišćenja platforme TWON i prilikom odgovaranja na naše upitnike biti pohranjeni u toj organizaciji. Imamo ugovore sa ovim partnerima kako bismo osigurali zaštitu Vaše privatnosti.";
+
+export const further_19 = [<strong>Deljenje podataka</strong>];
+export const complaints_20 = "Rezultati ove studije mogu biti podeljeni sa drugim istraživačima i/ili objavljeni putem javne baze podataka (open access), bez ličnih podataka ili informacija koje mogu pojedinačno identifikovati učesnike. Rezultati mogu biti korišćeni i u budućim istraživanjima na teme koje nisu nužno povezane sa ovom studijom.";
+
+export const best_21 = [<strong>Period čuvanja podataka</strong>];
+export const nme_22 = "Istraživački podaci biće čuvani najmanje 10 godina. Veza između ličnih podataka koji Vas direktno identifikuju (Vaših kontakt podataka i potpisanog informativnog pisma) i istraživačkih podataka biće uništena što je pre moguće.";
+export const consentHEADING_23 = [<strong>Dodatne informacije</strong>];
+
+export const weitere = "Podsećamo Vas da ukoliko imate bilo kakva pitanja u vezi sa studijom možete kontaktirati odgovornog istraživača Majkla Hezeltajna (Michael Heseltine) putem mejla: m.j.heseltine@uva.nl. Ako imate bilo kakve žalbe u vezi sa studijom ili istraživanjem, molimo Vas da se obratite ASCoR Etičkom odboru na sledeću adresu: Sekretarijat Etičkog odbora ASCoR, Univerzitet u Amsterdamu, poštanski broj 15793, 1001 NG Amsterdam; Telefon: +31 20 525 3680; E-pošta: ascor-secr-fmg@uva.nl. Vaša žalba će biti tretirana poverljivo. "
+export const consent_24 = "Ako imate bilo kakve žalbe u vezi sa vašim ličnim podacima, molimo vas da kontaktirate Službenika za zaštitu podataka Univerziteta u Amsterdamu na fg@uva.nl.";
+
+export const question0 = "Ihre Beschwerde wird vertraulich behandelt." ;
+export const jaa = "Bei Beschwerden über Ihre persönlichen Daten wenden Sie sich bitte an den Datenschutzbeauftragten der Universität Amsterdam unter fg@uva.nl.";
+export const neinn = "Srdačan pozdrav ispred TWON istraživačkog tima,";
+
+export const name = "Majkl Hezeltajn";
+
+export const heading_one = [<strong>IZJAVA O SAGLASNOSTI</strong>];
+
+export const q1 = "Ako želite da učestvujete u anketi, kliknite na „Da“ ispod. Time potvrđujete sledeće:";
+export const q1_op1 = "Imam 18 godina ili više.";
+export const q1_op2 = "Pročitao/la sam i razumeo/la sve informacije";
+export const q1_op3 = "Slažem se da učestvujem u studiji i da se podaci dobijeni iz nje koriste";
+export const q1_op4 = "Zadržavam pravo da povučem ovu saglasnost bez navođenja razloga";
+export const q1_op5 = "Zadržavam pravo da prekinem učešće u studiji u bilo kom trenutku ako to želim";
+//export const q1_op6 = "Ich bin damit einverstanden, dass meine Kontaktdaten verwendet werden, um mich für Folgeumfragen zu kontaktieren.";
+
+export const ja2 = "Da, pristajem da učestvujem ";
+export const nein2 = "Ne, ne pristajem da učestvujem";
+
+export const review_is_onward = [<strong>Napomena: Na kraju ankete možete još jednom proveriti i izmeniti svoje odgovore.</strong>];
+
+
+export const q0_info =  [<strong>Za početak Vas molimo da navedete nekoliko podataka o sebi.</strong>];
+export const q0 = "1. Koliko imate godina?";
+ 
+export const q2 = "2. Molimo Vas da navedete svoj pol.";
+export const q2_op1 = "Muško";
+export const q2_op2 = "Žensko";
+export const q2_op3 = "Ni jedno ni drugo";
+
+export const q3 = "3. Koji je Vaš najviši stepen formalnog obrazovanja?";
+export const q3_op1 = "Bez formalnog obrazovanja";
+export const q3_op2 = "Osnovno obrazovanje";
+export const q3_op3 = "Srednje obrazovanje";
+export const q3_op4 = "Visoko obrazovanje";
+export const q3_op5 = "Obrazovanje za odrasle";
+export const q3_op6 = "Još uvek sam student (nisam na obuci)";
+export const q3_op7 = "Drugo";
+
+export const q4 = "4. Šta se najviše odnosi na Vas?";
+export const q4_op1 = "Zaposlen/a sam (uključujući pripravnike, osobe na roditeljskom odsustvu ili u delimičnoj penziji)";
+export const q4_op2 = "Obavljam osnovnu vojnu/službenu dužnost";
+export const q4_op3 = "Student/kinja sam";
+export const q4_op4 = "Penzioner/ka sam";
+export const q4_op5 = "Živim od prihoda iz kapitalne imovine, izdavanja ili zakupa";
+export const q4_op6 = "Domaćica/domaćin sam ili se brinem o deci i/ili osobama kojima je potrebna nega";
+export const q4_op7 = "Nezaposlen/a sam";
+
+//export const q5 = "5. Sprechen Sie Deutsch auf muttersprachlichem Niveau?";
+//export const q5_op1 = "Ja";
+//export const q5_op2 = "Nein";
+
+export const q6 = "5. Molimo Vas da navedete prva dva broja poštanskog broja Vašeg glavnog prebivališta.";
+export const q6_info = [<italic>Napomena: Na primer, ako je Vaš poštanski broj „11000“, unesite „11“ u polje.</italic>];
+
+export const q7 = "6. Govoreći uopšteno, koliko ste zainteresovani za politiku? ";
+export const q7_op1 = "1 Uopšte me ne zanima";
+export const q7_op2 = "2";
+export const q7_op3 = "3";
+export const q7_op4 = "4";
+export const q7_op5 = "5 Jako me zanima";
+export const q7_op6 = "6";
+export const q7_op7 = "7 ";
+
+export const q8 = "7. Koliko često koristite društvene mreže (npr. X/Tviter, Fejsbuk, Instagram) u svom svakodnevnom životu?";
+export const q8_op7 = "Uopšte ne koristim";
+export const q8_op6 = "Retko";
+export const q8_op5 = "Bar jednom mesečno";
+export const q8_op4 = "Bar jednom nedeljno";
+export const q8_op3 = "Otprilike jednom dnevno";
+export const q8_op2 = "Nekoliko puta dnevno";
+export const q8_op1 = "(Skoro) stalno / sve vreme";
+
+export const dank = "Hvala Vam!";
+export const login1 = "Sada ćete biti preusmereni na platformu TWON. Molimo vas da odaberete jedno od četiri ponuđena imena naloga i avatara."; 
+export const login2 = [<strong>Zatim kliknite na „Nastavi“ kako biste bili preusmereni na TWON.</strong>];
+
+
+export const welcome = "Hvala Vam što ste aktivno koristili platformu TWON!"
+
+
+
+
+/*export const disclaimor_1 = "Sehr geehrte Teilnehmerin, sehr geehrter Teilnehmer,";
 export const dear_part_2 = "herzlich willkommen zur EU-finanzierten Studie \"Twon-Twin of an online social network\" der Fakultät für Sozial- und Verhaltenswissenschaften der Universität Amsterdam (UvA) in Zusammenarbeit mit der Universität Trier in Deutschland, dem Robert Koch Institut und dem Jozef Stefan Institut (JSI) in Slowenien.";
 export const bitte_4 = "Bitte lesen Sie den folgenden Text sorgfältig durch, bevor Sie beginnen. Sollte Ihnen etwas unklar sein, können Sie uns gerne per E-Mail kontaktieren: Michael Heseltine (m.j.heseltine@uva.nl). Wir sind gerne bereit, Ihre Fragen zu beantworten.";
 
@@ -109,7 +230,7 @@ export const login1 = "Sie werden nun auf die Plattform TWON weitergeleitet. Bit
 export const login2 = [<strong>Klicken Sie dann auf weiter, um zu TWON weitergeleitet zu werden. </strong>];
 
 
-export const welcome = "Ganz herzlichen Dank für die aktive Nutzung der TWON-Plattform!!"
+export const welcome = "Ganz herzlichen Dank für die aktive Nutzung der TWON-Plattform!!"*/
 export const welcome2 = "Willkommen!"
 
 export const note = [<strong>Achtung!</strong>,<br />, <strong>Bitte notieren</strong>, " Sie sich diesen Benutzernamen ","(","=", "Name Ihres Avatars, ", " z.B.", " Magischer Fuchs) ", "und das Passwort, da Sie diese für den Zugang zur Plattform benötigen. Um Ihre Anonymität in dieser Studie zu gewährleisten, speichern wir diese Information nicht ab."];
@@ -121,8 +242,98 @@ export const plzCon = [<strong>Bitte bestätigen Sie, dass Sie Ihren Benutzernam
 
 export const infoPass = "Im Folgenden möchten wir Ihnen gern einige Fragen zu Ihrer Erfahrung auf TWON sowie zu Ihren persönlichen Einstellungen stellen. Am Schluss des Fragebogens werden Sie zurück zu Prolific geleitet, um Ihre Vergütung zu erhalten.";
 
+
+
 export const post_info_0 = [<strong>Uncertainty</strong>]; 
-export const post_info_1 = [<strong>Experimental Condition erhält den Uncertainty Post aus der experimentellen Bedingung, die Control Condition erhält den Uncertainty Post aus der Control Condition. </strong>];
+
+export const post_info_1 = [<strong>Eksperimentalni uslov prima objavu o neizvesnosti iz eksperimentalnog uslova, dok kontrolni uslov prima objavu o neizvesnosti iz kontrolnog uslova. (Experimental condition receives the uncertainty post from the experimental condition, the control condition receives the uncertainty post from the control condition.)</strong>];
+export const post_q1 = "1. Da li ste primetili sledeću objavu na TWON platformi?";
+export const post_q1_op1 = "DA";
+export const post_q1_op2 = "Ne";
+
+
+export const post_info_2 = "Hvala Vam što ste aktivno koristili platformu TWON!";
+export const post_info_3 = "U nastavku ćemo Vam postaviti nekoliko pitanja o Vašem iskustvu na TWON i Vašim ličnim preferencijama. Na kraju upitnika bićete preusmereni nazad na Bilendi kako biste primili svoju naknadu.";
+
+export const post_q2 = "2. Koliko pouzdanim smatrate ove informacije? ";
+export const post_q2_op1 = "1 Nimalo pouzdanim  ";
+export const post_q2_op2 = "2";
+export const post_q2_op3 = "3";
+export const post_q2_op4 = "4";
+export const post_q2_op5 = "5";
+export const post_q2_op6 = "6";
+export const post_q2_op7 = "7 Veoma pouzdanim";
+
+export const post_q3 = "3. Koliko pouzdanim smatrate ove informacije? ";
+export const post_q3_op1 = "1 Nimalo pouzdanim ";
+export const post_q3_op2 = "2";
+export const post_q3_op3 = "3";
+export const post_q3_op4 = "4";
+export const post_q3_op5 = "5";
+export const post_q3_op6 = "6";
+export const post_q3_op7 = "7 Veoma pouzdanim";
+
+export const post_q4 = "4. Koliko tačnim smatrate ove informacije?";
+export const post_q4_op1 = "1 Nimalo tačnim";
+export const post_q4_op2 = "2";
+export const post_q4_op3 = "3";
+export const post_q4_op4 = "4";
+export const post_q4_op5 = "5";
+export const post_q4_op6 = "6";
+export const post_q4_op7 = "7 Veoma tačnim";
+
+export const post_q5 = "5. Koliko pouzdanim smatrate nalog koji je podelio ovu informaciju? ";
+export const post_q5_op1 = "1 Nimalo pouzdanim";
+export const post_q5_op2 = "2";
+export const post_q5_op3 = "3";
+export const post_q5_op4 = "4";
+export const post_q5_op5 = "5";
+export const post_q5_op6 = "6";
+export const post_q5_op7 = "7 Veoma pouzdanim";
+
+export const post_q5_0 = "U nastavku bismo želeli da saznamo nešto više o Vašim političkim i društvenim stavovima.";
+export const post_q5_1 = "U politici se često govori o spektru „levo“ i „desno“. Gde biste sebe smestili na ovoj skali od „levo“ do „desno“? ";
+export const post_q5_1_op1 = "1 Levo";
+export const post_q5_1_op2 = "2";
+export const post_q5_1_op3 = "3";
+export const post_q5_1_op4 = "4";
+export const post_q5_1_op5 = "5";
+export const post_q5_1_op6 = "6";
+export const post_q5_1_op7 = "7 Desno";
+
+export const post_q5_2 = "Koliko ste lično zabrinuti zbog ruske invazije na Ukrajinu?";
+export const post_q5_2_op1 = "1 Veoma zabrinut/a";
+export const post_q5_2_op2 = "2";
+export const post_q5_2_op3 = "3";
+export const post_q5_2_op4 = "4";
+export const post_q5_2_op5 = "5 Nimalo zabrinut/a"; 
+
+
+export const post_q5_3_0 = "Kako ocenjujete sledeće izjave:";
+export const post_q5_3 = "Ruska invazija na Ukrajinu predstavlja direktnu pretnju za celu Evropu.";
+export const post_q5_3_op1 = "1 Nimalo se ne slažem";
+export const post_q5_3_op2 = "2";
+export const post_q5_3_op3 = "3";
+export const post_q5_3_op4 = "4";
+export const post_q5_3_op5 = "5 U potpunosti se slažem"; 
+
+export const post_q5_4 = "Rusija je imala legitimne zabrinutosti za svoju bezbednost koje su opravdale njihove vojne akcije.";
+export const post_q5_4_op1 = "1 Nimalo se ne slažem";
+export const post_q5_4_op2 = "2";
+export const post_q5_4_op3 = "3";
+export const post_q5_4_op4 = "4";
+export const post_q5_4_op5 = "5 U potpunosti se slažem"; 
+
+export const post_q5_5 = "Ukrajina bi trebalo da učestvuje u mirovnim pregovorima samo ako je njena teritorijalna suverenost garantovana.";
+export const post_q5_5_op1 = "1 Nimalo se ne slažem";
+export const post_q5_5_op2 = "2";
+export const post_q5_5_op3 = "3";
+export const post_q5_5_op4 = "4";
+export const post_q5_5_op5 = "5 U potpunosti se slažem";
+
+
+
+/*export const post_info_1 = [<strong>Experimental Condition erhält den Uncertainty Post aus der experimentellen Bedingung, die Control Condition erhält den Uncertainty Post aus der Control Condition. </strong>];
 export const post_q1 = "1. Ist Ihnen der folgenden Post auf TWON aufgefallen? ";
 export const post_q1_op1 = "Ja";
 export const post_q1_op2 = "Nein";
@@ -165,36 +376,49 @@ export const post_q5_op3 = "3";
 export const post_q5_op4 = "4";
 export const post_q5_op5 = "5";
 export const post_q5_op6 = "6";
-export const post_q5_op7 = "7 sehr vertrauenswürdig";
+export const post_q5_op7 = "7 sehr vertrauenswürdig";*/
 
 //  
 // Question 6 Post Surves: For Condition 1 (Truth Sandwich with Misinfo) & 2 (Truth Sandwich without Misinfo): "Wie wahrscheinlich wäre es, 
 //dass Sie sich mit einem mRNA Impfstoff impfen lassen würden?" For Condition 3 (Uncertainty) & 4 (No Uncertainty): "Wie wahrscheinlich wäre es, 
 //dass Sie sich gegen Mpox (Affenpocken) impfen lassen würden?" 
 
-export const post_q6 = "6. Wie wahrscheinlich wäre es, dass Sie sich gegen Affenpocken impfen lassen würden? ";
-export const post_q6_op1 = "1 überhaupt nicht wahrscheinlich";
-export const post_q6_op2 = "2";
-export const post_q6_op3 = "3";
-export const post_q6_op4 = "4";
-export const post_q6_op5 = "5";
-export const post_q6_op6 = "6";
-export const post_q6_op7 = "7 sehr wahrscheinlich"
+export const post_q6_0 ="6. Koliko lično imate poverenja u sledeće institucije?";
+export const post_q6 = "Prepoznate/tradicionalne/… medijske institucije koje za emitovanje uglavnom koriste TV i radio";
+export const post_q6_op1 = "1 Uopšte im ne verujem";
+export const post_q6_op2 = "2 Ne verujem im";
+export const post_q6_op3 = "3 Delimično im verujem";
+export const post_q6_op4 = "4 Prilično im verujem";
+export const post_q6_op5 = "5 Potpuno im verujem";
 
-export const post_q7 = "7. Wenn Sie diesen Satz lesen, wählen Sie bitte „sehr wahrscheinlich“ aus. ";
-export const post_q7_op1 = "1 überhaupt nicht wahrscheinlich";
+export const post_q6_1 ="Naučne institucije kao što su univerziteti i instituti";
+export const post_q6_1_op1 = "1 Uopšte im ne verujem";
+export const post_q6_1_op2 = "2 Ne verujem im";
+export const post_q6_1_op3 = "3 Delimično im verujem";
+export const post_q6_1_op4 = "4 Prilično im verujem";
+export const post_q6_1_op5 = "5 Potpuno im verujem";
+
+export const post_q6_2 ="Državne institucije";
+export const post_q6_2_op1 = "1 Uopšte im ne verujem";
+export const post_q6_2_op2 = "2 Ne verujem im";
+export const post_q6_2_op3 = "3 Delimično im verujem";
+export const post_q6_2_op4 = "4 Prilično im verujem";
+export const post_q6_2_op5 = "5 Potpuno im verujem";
+
+export const post_q7_0 = "Zanima nas Vaše mišljenje o tehničkoj upotrebljivosti TWON-a.";
+export const post_q7 = "7. Govoreći veoma uopšteno, kako biste ocenili dizajn TWON-a u smislu prilagođenosti korisnicima?";
+export const post_q7_op1 = "1 Nije uopšte prilagođen korisnicima";
 export const post_q7_op2 = "2";
 export const post_q7_op3 = "3";
 export const post_q7_op4 = "4";
-export const post_q7_op5 = "5";
-export const post_q7_op6 = "6";
-export const post_q7_op7 = "7 sehr wahrscheinlich"
+export const post_q7_op5 = "5 Veoma je prilagođen korisnicima"; 
 
-
-export const post_q8_in = [<strong>Prebunking </strong>]; 
-export const post_q8 = "8. Ist Ihnen die folgende Aussage schon einmal begegnet? „Die mRNA aus Impfstoffen verändert das menschliche Erbgut – unsere DNA“";
-export const post_q8_op1 = "Ja";
-export const post_q8_op2 = "Nein";
+export const post_q8 = "8. Da li su se neki tehnički problemi pojavili tokom studije?";
+export const post_q8_op1 = "1 Nije bilo nikakvih tehničkih problema";
+export const post_q8_op2 = "2";
+export const post_q8_op3 = "3";
+export const post_q8_op4 = "4";
+export const post_q8_op5 = "5 Ogromni tehnički problemi"; 
 
 
 //export const post_q9 = "9.	Wie vertrauenswürdig finden Sie die Aussage? "
@@ -207,126 +431,194 @@ export const post_q8_op2 = "Nein";
 //export const post_q9_op7 = "7 sehr vertrauenswürdig"
 
 
-export const post_q9 = "9. Wie stehen Sie persönlich zu dieser Aussage?";
-export const post_q9_op1 = "1 Stimme überhaupt nicht zu";
-export const post_q9_op2 = "2";
-export const post_q9_op3 = "3";
-export const post_q9_op4 = "4";
-export const post_q9_op5 = "5 ";
-export const post_q9_op6 = "6";
-export const post_q9_op7 = "5 Stimme voll und ganz zu";
-
-export const post_q10 = [<strong>10. Lesen Sie sich die Aussagen durch und kreuzen Sie dann anhand der Skala an, inwiefern Sie den Aussagen zustimmen.</strong>]
-export const postq_info_1 = "mRNA-Impfstoffe gehören zu den am besten untersuchten Medikamenten der Welt.";
-export const postq_info_2 = "Es besteht kein Risiko, dass die mRNA aus dem Impfstoff in das Genom (DNA) von Körperzellen oder Keimbahnzellen (Eizellen oder Samenzellen) eingebaut wird.";
-export const postq_info_3 = "Wenn Sie diesen Satz lesen, wählen Sie bitte „Stimme überhaupt nicht zu“ aus.";
-export const postq_info_4 = "Die mRNA kann in den Zellkern eindringen. ";
-
-export const post_q10_op1 = "1 Stimme überhaupt nicht zu";
-export const post_q10_op2 = "2";
-export const post_q10_op3 = "3";
-export const post_q10_op4 = "4";
-export const post_q10_op5 = "5";
-export const post_q10_op6 = "6";
-export const post_q10_op7 = "7 Stimme voll und ganz zu";
-
-export const post_q10_op1_1 = "1 Stimme überhaupt nicht zu";
-export const post_q10_op2_1 = "2";
-export const post_q10_op3_1 = "3";
-export const post_q10_op4_1 = "4";
-export const post_q10_op5_1 = "5";
-export const post_q10_op6_1 = "6";
-export const post_q10_op7_1 = "7 Stimme voll und ganz zu";
-
-export const post_q10_op1_2 = "1 Stimme überhaupt nicht zu";
-export const post_q10_op2_2 = "2";
-export const post_q10_op3_2 = "3";
-export const post_q10_op4_2 = "4";
-export const post_q10_op5_2 = "5";
-export const post_q10_op6_2 = "6";
-export const post_q10_op7_2 = "7 Stimme voll und ganz zu";
-
-export const post_q10_op1_3 = "1 Stimme überhaupt nicht zu";
-export const post_q10_op2_3 = "2";
-export const post_q10_op3_3 = "3";
-export const post_q10_op4_3 = "4";
-export const post_q10_op5_3 = "5";
-export const post_q10_op6_3 = "6";
-export const post_q10_op7_3 = "7 Stimme voll und ganz zu";
+export const post_q9 = "9. Rekli ste da je bilo tehničkih problema tokom studije. Možete li ih opisati detaljnije?";
 
 
-export const post_q11_info = [<strong>Im Folgenden würden wir gerne mehr über Ihre politischen und gesellschaftlichen Ansichten erfahren.</strong>]
-export const post_q11 = "12. In der Politik reden die Leute häufig von \"links\" und \"rechts\". Wo würden Sie sich auf dieser Skala von ”links” nach ”rechts” einordnen?";
-export const post_q11_op1 = "1 links";
+export const post_q10_0 = [<strong>Sada bismo želeli da saznamo kako ocenjujete sadržaj na TWON-u.</strong>]
+
+export const post_q10_1 = "10. Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_1_op1 = "1 Veoma negativna";
+export const post_q10_1_op2 = "2";
+export const post_q10_1_op3 = "3";
+export const post_q10_1_op4 = "4";
+export const post_q10_1_op5 = "5";
+export const post_q10_1_op6 = "6";
+export const post_q10_1_op7 = "7 Veoma pozitivna ";
+
+export const post_q10_2 = "Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_2_op1 = "1 Nije kredibilna";
+export const post_q10_2_op2 = "2";
+export const post_q10_2_op3 = "3";
+export const post_q10_2_op4 = "4";
+export const post_q10_2_op5 = "5";
+export const post_q10_2_op6 = "6";
+export const post_q10_2_op7 = "7 Kredibilna";
+
+export const post_q10_3 = "Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_3_op1 = "1 Nije značajna";
+export const post_q10_3_op2 = "2";
+export const post_q10_3_op3 = "3";
+export const post_q10_3_op4 = "4";
+export const post_q10_3_op5 = "5";
+export const post_q10_3_op6 = "6";
+export const post_q10_3_op7 = "7 Značajna";
+
+export const post_q10_4 = "Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_4_op1 = "1 Nije bitna za mene";
+export const post_q10_4_op2 = "2";
+export const post_q10_4_op3 = "3";
+export const post_q10_4_op4 = "4";
+export const post_q10_4_op5 = "5";
+export const post_q10_4_op6 = "6";
+export const post_q10_4_op7 = "7 Bitna za mene";
+
+export const post_q10_5 = "Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_5_op1 = "1 Nije aktuelna";
+export const post_q10_5_op2 = "2";
+export const post_q10_5_op3 = "3";
+export const post_q10_5_op4 = "4";
+export const post_q10_5_op5 = "5";
+export const post_q10_5_op6 = "6";
+export const post_q10_5_op7 = "7 Aktuelna";
+
+export const post_q10_6 = "Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q10_6_op1 = "1 Neprijateljska";
+export const post_q10_6_op2 = "2";
+export const post_q10_6_op3 = "3";
+export const post_q10_6_op4 = "4";
+export const post_q10_6_op5 = "5";
+export const post_q10_6_op6 = "6";
+export const post_q10_6_op7 = "7 Prijateljska";
+
+
+export const post_q11_info = [<strong>Kako biste ocenili interakcije sa drugim korisnicima TWON-a?</strong>]
+export const post_q11 = "11. U komentarima korisnika bila su predstavljena mnoga različita mišljenja";
+export const post_q11_op1 = "1 Uopšte se ne slažem";
 export const post_q11_op2 = "2";
 export const post_q11_op3 = "3";
 export const post_q11_op4 = "4";
-export const post_q11_op5 = "5";
-export const post_q11_op6 = "6";
-export const post_q11_op7 = "7";
-export const post_q11_op8 = "8";
-export const post_q11_op9 = "9";
-export const post_q11_op10 = "10";
-export const post_q11_op11 = "11 rechts";
-
-export const post_q12 = "11. Wenn am kommenden Sonntag Bundestagswahl wäre, welche Partei würden Sie wählen?";
-export const post_q12_op1 = "CDU/CSU";
-export const post_q12_op2 = "SPD";
-export const post_q12_op3 = "Bündnis 90/Die Grünen";
-export const post_q12_op4 = "BSW";
-export const post_q12_op5 = "FDP";
-export const post_q12_op6 = "Die Linke";
-export const post_q12_op7 = "AfD";
-export const post_q12_op8 = "Andere Partei, nämlich:";
-export const post_q12_op9 = "Ich würde nicht wählen ";
-export const post_q12_op10 = "Ich möchte dazu keine Angabe machen ";
-
-export const post_q13 = "13. Wie sehr vertrauen Sie persönlich den folgenden Einrichtungen?";
-export const post_q13_info1 = "Robert Koch-Institut";
-export const post_q13_info2 = "Wissenschaftliche Einrichtungen, wie Universitäten und Institute";
-export const post_q13_info3 = "Deutsche Bundesregierung";
+export const post_q11_op5 = "5 U potpunosti se slažem";
 
 
+export const post_q12 = "12. Diskusije na TWON-u su bile visoko kvalitetne";
+export const post_q12_op1 = "1 Uopšte se ne slažem";
+export const post_q12_op2 = "2";
+export const post_q12_op3 = "3";
+export const post_q12_op4 = "4";
+export const post_q12_op5 = "5 U potpunosti se slažem";
 
-export const post_q13_op1 = "1 Vertraue ich überhaupt nicht";
-export const post_q13_op2 = "2 ";
-export const post_q13_op3 = "3 ";
-export const post_q13_op4 = "4 ";
-export const post_q13_op5 = "5 ";
-export const post_q13_op6 = "6 "; 
-export const post_q13_op7 = "7 Vertraue ich voll und ganz";
+export const post_q13 = "13. Osećao/la sam se uključenim u diskusije";
+export const post_q13_op1 = "1 Uopšte se ne slažem";
+export const post_q13_op2 = "2";
+export const post_q13_op3 = "3";
+export const post_q13_op4 = "4";
+export const post_q13_op5 = "5 U potpunosti se slažem";
 
-
-export const post_q14_info1 = [<strong>Nun interessieren wir uns für Ihr Einschätzung der technischen Bedienbarkeit von TWON.</strong>]
-export const post_q14 = "14. Einmal ganz allgemein gesprochen. Wie nutzerfreundlich bewerten Sie die Gestaltung von TWON?";
-export const post_q14_op1 = "1 Überhaupt nicht nutzerfreundlich";
+export const post_q14 = "14. Naučio/la sam nešto iz diskusija na TWON-u";
+export const post_q14_op1 = "1 Uopšte se ne slažem";
 export const post_q14_op2 = "2";
 export const post_q14_op3 = "3";
 export const post_q14_op4 = "4";
-export const post_q14_op5 = "5 Sehr nutzerfreundlich";
+export const post_q14_op5 = "5 U potpunosti se slažem";
 
-export const post_q15 = "15. Sind während der Studie technische Probleme aufgetreten?";
-export const post_q15_op1 = "1 Gar keine technischen Probleme";
-export const post_q15_op2 = "2";
-export const post_q15_op3 = "3";
-export const post_q15_op4 = "4";
-export const post_q15_op5 = "5 Große technische Probleme";
+export const post_q15_0 = [<strong>"Please indicate how much you agree or disagree with the following statements:"</strong>]
+export const post_q15 = "I enjoy trying new and different things. ";
+export const post_q15_op1 = "1 Strongly disagree";
+export const post_q15_op2 = "2 Disagree";
+export const post_q15_op3 = "3 Neither agree nor disagree";
+export const post_q15_op4 = "4 Agree";
+export const post_q15_op5 = "5 Strongly agree";
+
+export const post_q15_1 = "I am organized and like to plan ahead. ";
+export const post_q15_1_op1 = "1 Strongly disagree";
+export const post_q15_1_op2 = "2 Disagree";
+export const post_q15_1_op3 = "3 Neither agree nor disagree";
+export const post_q15_1_op4 = "4 Agree";
+export const post_q15_1_op5 = "5 Strongly agree";
+
+export const post_q15_2 = "I am outgoing and sociable. ";
+export const post_q15_2_op1 = "1 Strongly disagree";
+export const post_q15_2_op2 = "2 Disagree";
+export const post_q15_2_op3 = "3 Neither agree nor disagree";
+export const post_q15_2_op4 = "4 Agree";
+export const post_q15_2_op5 = "5 Strongly agree";
+
+export const post_q15_3 = "I am considerate and get along well with others. ";
+export const post_q15_3_op1 = "1 Strongly disagree";
+export const post_q15_3_op2 = "2 Disagree";
+export const post_q15_3_op3 = "3 Neither agree nor disagree";
+export const post_q15_3_op4 = "4 Agree";
+export const post_q15_3_op5 = "5 Strongly agree";
+
+export const post_q15_4 = "I often feel anxious or stressed. ";
+export const post_q15_4_op1 = "1 Strongly disagree";
+export const post_q15_4_op2 = "2 Disagree";
+export const post_q15_4_op3 = "3 Neither agree nor disagree";
+export const post_q15_4_op4 = "4 Agree";
+export const post_q15_4_op5 = "5 Strongly agree";
 
 
-export const post_q16 = "16. Sie haben angegeben, dass während der Studie technische Probleme aufgetreten sind. Können Sie diese näher beschreiben?";
+export const post_q16 = "16. Which of the following types of news sources do you regularly use? (Select all that apply)";
+export const post_q16_op1 = "1 Traditional newspapers and magazines";
+export const post_q16_op2 = "2 Television news broadcasts";
+export const post_q16_op3 = "3 Online news websites";
+export const post_q16_op4 = "4 Social media platforms";
+export const post_q16_op5 = "5 Blogs and independent news sites";
+export const post_q16_op6 = "6 Radio news broadcasts";
+export const post_q16_op7 = "7 Podcasts";
+export const post_q16_op8 = "8 Newsletters or email subscriptions";
 
-export const post_info_17 = [<strong>"Und wie bewerten Sie die Interaktionen mit den anderen Nutzern von TWON?"</strong>]
-export const post_q17 = "17. In den Nutzerkommentaren waren sehr viele verschiedene Meinungen vertreten.";
-export const post_q18 = "18. Die auf TWON geführten Diskussionen waren qualitativ hochwertig.";
-export const post_q19 = "19. Ich habe mich in die Diskussionen einbezogen gefühlt.";
-export const post_q20 = "20. Ich habe aus den Diskussionen auf TWON etwas gelernt.";
+export const post_q17 = "When reading news stories, how often do you critically evaluate the information before forming an opinion?";
+export const post_q17_op1 = "1 Always";
+export const post_q17_op2 = "2 Often";
+export const post_q17_op3 = "3 Sometimes";
+export const post_q17_op4 = "4 Rarely";
+export const post_q17_op5 = "5 Never";
+
+export const post_q18 = "How confident are you in your ability to distinguish between real and fake news?";
+export const post_q18_op1 = "1 Not confident at all";
+export const post_q18_op2 = "2 Slightly confident";
+export const post_q18_op3 = "3 Moderately confident";
+export const post_q18_op4 = "4 Very confident";
+export const post_q18_op5  = "5 Never";
+
+export const post_q19 = "How strongly do you typically react emotionally to news stories?";
+export const post_q19_op1 = "1 Not confident at all";
+export const post_q19_op2 = "2 Slightly";
+export const post_q19_op3 = "3 Moderately";
+export const post_q19_op4 = "4 Strongly";
+export const post_q19_op5  = "5 Very Strongly";
 
 
-export const last_info1 = "Debrief";
-export const last_info2 = "Vielen Dank für Ihre Teilnahme an unserer Studie. Sie haben damit einen großen Beitrag zum Erfolg unseres Projekts geleistet.";
-export const last_info3 = "In der Studie haben Sie einige Posts gesehen, in denen bestimmte Themen aus dem Gesundheitskontext thematisiert wurden. Im Folgenden finden Sie Links, die weitere Informationen zu diesen Themen beinhalten. Sollten Sie weitere Fragen haben, können Sie uns gerne per E-Mail kontaktieren: Michael Heseltine (m.j.heseltine@uva.nl).";
-export const last_info4 = "Mehr Informationen zum Thema Affenpocken finden Sie hier: ";
-export const last_info5 = "https://www.rki.de/DE/Content/InfAZ/A/Affenpocken/Affenpocken_node.html ";
+export const post_q20 = "To what extent do you agree with the following statement: \"I feel that my political opinions can influence government decisions.\"";
+export const post_q20_op1 = "1 Strongly disagree";
+export const post_q20_op2 = "2 Disagree";
+export const post_q20_op3 = "3 Neither agree nor disagree";
+export const post_q20_op4 = "4 Agree";
+export const post_q20_op5 = "5 Strongly agree";
+
+export const post_q21 = "How do you primarily use social media platforms? (Select all that apply)";
+export const post_q21_op1 = "1 To read news and stay informed";
+export const post_q21_op2 = "2 To connect with friends and family";
+export const post_q21_op3 = "3 To share my opinions and content";
+export const post_q21_op4 = "4 To follow public figures or celebrities";
+export const post_q21_op5  = "5 To join groups or communities of interest";
+export const post_q21_op6  = "6 For entertainment purposes";
+
+export const post_q22 = "How comfortable are you with the use of artificial intelligence in everyday technologies?";
+export const post_q22_op1 = "1 Very uncomfortable";
+export const post_q22_op2 = "2 Somewhat uncomfortable";
+export const post_q22_op3 = "3 Neutral";
+export const post_q22_op4 = "4 Somewhat comfortable";
+export const post_q22_op5 = "5 Very comfortable";
+
+
+
+export const last_info1 = "Na kraju";
+export const last_info2 = "Hvala Vam što ste učestvovali u našoj studiji! Vaš doprinos je ključan za uspeh našeg projekta.";
+export const last_info3 = "Studija je sprovedena u okviru projekta finansiranog od strane EU pod nazivom “TWON – Twin of an online social network”, koji ima za cilj istraživanje potencijalno štetnih efekata onlajn društvenih mreža (OSN) na demokratske debate. Kreiranjem digitalnog dvojnika onlajn društvene mreže i populisanjem iste generativnom veštačkom inteligencijom, tim TWON-a primenjuje jedinstveni pristup u proučavanju demokratskih onlajn debata koji je nezavisan od dobre volje kompanija poput X-a, Mete ili Tiktoka. Partneri u projektu su Univerzitet u Amsterdamu, Univerzitet u Trieru, Institut Jožef Stefan, Tehnološki institut Karlsruhe (KIT), Institut Robert Koh, Univerzitet u Beogradu, Slovenačka novinska agencija, Istraživački centar za računarske nauke i DialoguePerspectives e.V.";
+export const last_info4 = "Više informacija o TWON projektu možete pronaći ovde:";
+export const last_info5 = "https://www.twon-project.eu/ ";
 export const last_info6 = "Mehr Informationen zu mRNA Impfstoffen finden Sie hier: ";
 export const last_info7 = "https://www.rki.de/DE/Content/Infekt/Impfen/Materialien/Impfmythen/Sicherheit_DNA.html ";
 export const last_info8 = "https://www.rki.de/SharedDocs/FAQ/COVID-Impfen/FAQ_Liste_Impfstofftypen.html ";
@@ -334,10 +626,8 @@ export const last_info9 = "Die Studie wurde im Rahmen des EU-finanzierten Projek
 export const last_info10 = "Mehr Informationen zu TWON finden Sie hier: ";
 export const last_info10_link = " https://www.twon-project.eu/";
 
-export const post_q21 = "17. Gibt es zum Schluss noch etwas, dass Sie uns gern zur Studie mitteilen würden?";
-
-
-export const post_q8_info = [<strong>Bitte klicken Sie hier, um den Fragebogen abzuschließen und Ihre Vergütung zu erhalten. </strong>];
+export const post_q23 = "23. Na kraju, da li postoji još nešto što biste želiti da nam kažete o studiji?";
+export const post_q8_info = [<strong>Molimo Vas da kliknete ovde kako biste završili upitnik i primili svoju nadoknadu. </strong>];
 
 
 export const followers = "Follower";

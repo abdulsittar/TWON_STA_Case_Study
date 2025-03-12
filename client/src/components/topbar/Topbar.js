@@ -14,15 +14,13 @@ import {Searche } from '../../constants';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SimplePopover from '../popover/SimplePopover';
 
-function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm }) {
+function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction }) {
     const [fv, setFv] = useState(0);
     const { user }    = useContext(AuthContext);
     const PF          = process.env.REACT_APP_PUBLIC_FOLDER;
     const [anchorEl, setAnchorEl] = useState(null);
     const { user: currentUser, dispatch } = useContext(AuthContext);
     
-
-
     useEffect(() => {
         //console.log("is Profile value");
         //console.log(isProfile);
@@ -49,7 +47,26 @@ function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm }) {
 
     function setSearchTermFunction(value) {
         setSearchTerm(value);
-      }
+    }
+
+const handleRefreshFeed23 = (e) => {
+    e.preventDefault();
+    //const email = document.getElementById('email').value;
+    //const password = document.getElementById('password').value;
+    //const username =  usrname;
+
+    //if (email == password) {
+    //	setPasswordErr("Check you password and email again!");
+    //}
+    //loginCall({ username: username, password: password }, dispatch);
+    //if(error == true){
+    //    setPasswordErr("Check you password and email again!");
+    //}
+    //console.log(error);
+    //if(error == false){history.push("/");}
+    
+  };
+
 
     const onRadioChanged = e => {
         //console.log("radio avlues")
@@ -84,6 +101,8 @@ function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm }) {
                     {isMobileDevice && isTabletDevice && <span className={classes.logo}>TWON</span>}
                 </Link>
             </div>
+            
+            <button className={classes.button} onClick={onAction}>Refresh Feed</button>
 
             {!isMobileDevice && !isTabletDevice && 
             <div style={{'display': 'flex', alignItems: 'flex-end', 'margin': '5px 5px'}}>

@@ -275,8 +275,8 @@ const DOMPurifyInstance = DOMPurify(window);
 
     // create a post
     router.post('/:id/create', verifyToken,   async(req, res) => { //verifyToken, 
-        console.log(req.params);
-        console.log(req.body);
+        //console.log(req.params);
+        //console.log(req.body);
         logger.info('Data received', { data: req.body });
         var linktoAdd = ""
         var urls = extractUrls(req.body.desc);
@@ -294,19 +294,20 @@ const DOMPurifyInstance = DOMPurify(window);
             const savedPost = await newPost.save(); 
             res.status(200).json(savedPost);
         }catch(err) {
-            logger.error('Error saving data', { error: err.message });
+            logger.error('Error saving data 23', { error: err.message });
             res.status(500).json(err);
         }
         })
         
         const createAndSavePost = async (data) => {
             try {
+                //console.log(data);
                 const newPost = new Post(data);
                 const savedPost = await newPost.save();
                 console.log("Post saved successfully:", savedPost);
                 return savedPost;
             } catch (error) {
-                logger.error('Error saving data', { error: error.message });
+                logger.error('Error saving data 10', { error: error.message });
                 console.error("Error creating or saving post:", error);
                 throw error;
             }
@@ -333,6 +334,1162 @@ const DOMPurifyInstance = DOMPurify(window);
             return array;
         };
         
+        router.post('/:id/createRefreshData', verifyToken, async (req, res) => {
+            console.log("Values"); 
+            const dummyPosts = [
+                `<p>1/5</p><p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
+                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
+                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p> <br /><p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
+                `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`,
+                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`
+            ];
+            
+            const trainPostsImg = [
+                "620620.png",       //Netflix
+                "023023_2.png",       //Sky Sport
+                "146146_2.png",       //Tagesspeigel
+                "070070_2.png",        //Der Speigel
+                "faznet_p.png",     //faznet
+                "zeit_p.png",       //zeit
+                "handle_p.png",     //handel
+                "handle_p.png",     //handel
+            ];
+            
+            
+            const comments_RKI2 = [
+                `<p>5/5</p>
+                <br /><p>mRNA transportiert einen Teil des Bauplans des SARS-Coronavirus-2 ausschließlich in das Zellplasma, kann aber nicht in den Zellkern menschlicher Zellen eindringen.</p> 
+                <br />
+                <p>Fakt ist also: Die mRNA der Impfstoffe kann nicht in das Erbgut unserer Zellen eingebaut werden.</p>
+                <br />
+                <p>#ImpfenSchuetzt</p>`,
+                
+                `<p>4/5</p>
+                <br /><p>Wichtig zu wissen ist, dass mRNA (messenger RNA) natürlicherweise in jeder Zelle des menschlichen Körpers vorhanden ist – im sogenannten Zellplasma. Die menschliche DNA hingegen liegt immer im Inneren des Zellkerns. Dorthin gelangt die mRNA aus Impfstoffen jedoch nicht.</p>`,
+                
+                `<p>3/5</p>
+                <br /><p>mRNA-Impfungen sind eine relativ neue Technologie und wurden vielen Millionen Menschen innerhalb kurzer Zeit verabreicht. Eine gewisse Skepsis und Verunsicherung, welche Effekte das haben könnte, ist daher nachvollziehbar.</p>`,
+                
+                `<p>2/5</p>
+                <br />
+                <p>Obwohl mRNA-Impfstoffe relativ neu sind, gehören sie bereits zu den am besten untersuchten Medikamenten der Welt.</p>
+                 <br />
+                 <p>Es besteht kein erkennbares Risiko, dass die verimpfte mRNA in das Genom (DNA) von Körperzellen oder Keimbahnzellen (Eizellen oder Samenzellen) eingebaut wird.</p>`     
+            ];
+            //console.log(req.body.userId);
+            //console.log(req.body.version);
+            try {
+                //console.log(req.body.userId); 
+                const currentUser = await User.findById(req.body.userId);   
+                console.log(currentUser.id);
+                const posts = await Post.find({"reactorUser": currentUser.id }).populate([{path : "likes", model: "PostLike", match: { "userId": req.body.userId}}, {path : "dislikes", model: "PostDislike", match: { "userId": req.body.userId}}]).sort({ createdAt: 'descending' }).exec();
+                console.log("posts.length");
+                console.log(posts.length);
+                console.log(posts.length);
+                
+            if(req.body.version === "1"){ 
+                
+                
+            if(posts.length == 9){
+                const trainPosts = [
+                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                ];
+                const userIds = [
+                    process.env.Netflix, //Netflix
+                    process.env.SkySport,   //Sky Sport
+                    process.env.Tagesspeigel,   //Tagesspeigel
+                    process.env.DerSpeigel,    //Der Speigel
+                    process.env.faznet,     //faznet
+                    process.env.zeit,      //zeit
+                    process.env.handle,     //handel
+                    process.env.handle,     //handel
+                ];
+                const dummyWeights = [
+                    0.99,
+                    0.49,
+                    0.49,
+                    0.5,
+                    0.65,
+                    0.87,
+                    0.89,
+                    0.50,
+                    0.56,
+                ];
+                try {
+                    // Determine the version-specific post
+                    let selectedPost = dummyPosts[0];
+                    let linkToAdd = "default.png"; // Default thumbnail
+                    let weight = dummyWeights[0]
+                    
+                    if (req.body.version === "1") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[0]
+                        
+                    } else if (req.body.version === "2") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[1]
+                        
+                    } else if (req.body.version === "3") {
+                        selectedPost = dummyPosts[2];
+                        linkToAdd = "post12.png";
+                        weight = dummyWeights[2]
+                        
+                    } else if (req.body.version === "4") {
+                        selectedPost = dummyPosts[3];
+                        linkToAdd = "post13.png";
+                        weight = dummyWeights[3]
+                        
+                        
+                    } else if (req.body.version === "5") {
+                        selectedPost = dummyPosts[4];
+                        linkToAdd = "post14.png";
+                        weight = dummyWeights[4]
+                        
+                    }
+            
+                    const newPostData = {
+                        userId:  process.env.RKI,
+                        reactorUser:  req.body.userId?  req.body.userId:null,
+                        pool: req.body.version,
+                        desc: selectedPost,
+                        thumb: linkToAdd,
+                        weight:weight
+                    }; 
+            
+                    trainPosts.push(newPostData.desc);
+                    userIds.push(process.env.RKI);
+                    trainPostsImg.push(newPostData.thumb);
+                    dummyWeights.push(newPostData.weight);
+                    // Shuffle posts and userIds together
+                    
+                    const combined = trainPosts.map((post, index) => ({
+                        post,
+                        userId: userIds[index],
+                        thumb:trainPostsImg[index],
+                        weight:dummyWeights[index]
+                    }));
+                    
+                    const shuffled = combined;//shuffleArray(combined);
+                    ///console.log(shuffled);
+                    
+                    // Save the shuffled posts
+                    for (const item of combined) {
+                    
+                        let phtoAdd = "default.png"; // Default thumbnail
+                        var isUserSelected = false;
+                        
+                        if (item.userId === userIds[0]) { 
+                            phtoAdd = "620620.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[1]) {
+                            phtoAdd = "023023.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[2]) { 
+                            phtoAdd = "146146.jpg";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[3]) { 
+                            phtoAdd = "070070.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[4]) { 
+                            phtoAdd = "faznet_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[5]) { 
+                            phtoAdd = "zeit_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[6]) { 
+                            phtoAdd = "handle_p.png";
+                            isUserSelected = true;
+                        
+                        }
+                                  
+                        const newPost = {
+                            userId: new mongoose.Types.ObjectId(item.userId),
+                            reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                            pool: req.body.version,
+                            desc: item.post,
+                            thumb: item.thumb,
+                            weight: item.weight
+                        };
+                        
+                        const savedPost = await createAndSavePost(newPost);
+                        
+                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                    
+                            console.log("Posting comments!!!")
+                            //console.log(req.body.version)
+                            const shuffledComments = comments_RKI2;
+                                    
+                                    var count = 0;
+                                    for (const it of shuffledComments) { 
+                                        console.log(process.env.RKI)
+                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                            console.log("Is RKI a valid ObjectId?", isValidId);
+                                            const randomBot = await User.findById(String(process.env.RKI));
+                                            console.log(randomBot);
+                                        count = count + 1
+                                        const comment = new Comment({
+                                            body:it, 
+                                            userId: randomBot.id, 
+                                            postId:savedPost.id, 
+                                            username: randomBot.username
+                                        });
+                                        
+                                        try { 
+                                            const savedComment = await comment.save();
+                                            await savedPost.updateOne({$push: { comments: savedComment } });
+                                            console.log("Comment saved successfully:", savedComment);
+                                             
+                                        } catch (error) {
+                                            logger.error('Error saving data 1', { error: error.message });
+                                            console.error("Error creating or saving comment:", error);
+                                            throw error;
+                                        }
+                                    }
+                            }  
+                    }
+                
+                
+            } catch (error) {
+                logger.error('Error saving data 2', { error: error.message });
+                console.error("Error creating or saving comment:", error);
+                res.status(500).json({ success: false, error });
+            }
+            } else if (posts.length == 18){
+            const trainPosts = [
+                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+            ];
+            const userIds = [
+                process.env.Netflix, //Netflix
+                process.env.SkySport,   //Sky Sport
+                process.env.Tagesspeigel,   //Tagesspeigel
+                process.env.DerSpeigel,    //Der Speigel
+                process.env.faznet,     //faznet
+                process.env.zeit,      //zeit
+                process.env.handle,     //handel
+                process.env.handle,     //handel
+            ];
+            const dummyWeights = [
+                -0.2,
+                -0.6,
+                -0.8,
+                -0.7,
+                -0.1,
+                -0.7,
+                -0.9,
+                0.5,
+                0.0,
+            ];
+            try {
+                // Determine the version-specific post
+                let selectedPost = dummyPosts[0];
+                let linkToAdd = "default.png"; // Default thumbnail
+                let weight = dummyWeights[0]
+                
+                if (req.body.version === "1") {
+                    selectedPost = dummyPosts[0];
+                    linkToAdd = "post11.png";
+                    weight = dummyWeights[0]
+                    
+                } else if (req.body.version === "2") {
+                    selectedPost = dummyPosts[0];
+                    linkToAdd = "post11.png";
+                    weight = dummyWeights[1]
+                    
+                } else if (req.body.version === "3") {
+                    selectedPost = dummyPosts[2];
+                    linkToAdd = "post12.png";
+                    weight = dummyWeights[2]
+                    
+                } else if (req.body.version === "4") {
+                    selectedPost = dummyPosts[3];
+                    linkToAdd = "post13.png";
+                    weight = dummyWeights[3]
+                    
+                    
+                } else if (req.body.version === "5") {
+                    selectedPost = dummyPosts[4];
+                    linkToAdd = "post14.png";
+                    weight = dummyWeights[4]
+                    
+                }
+        
+                const newPostData = {
+                    userId:  process.env.RKI,
+                    reactorUser:  req.body.userId?  req.body.userId:null,
+                    pool: req.body.version,
+                    desc: selectedPost,
+                    thumb: linkToAdd,
+                    weight:weight
+                }; 
+        
+                trainPosts.push(newPostData.desc);
+                userIds.push(process.env.RKI);
+                trainPostsImg.push(newPostData.thumb);
+                dummyWeights.push(newPostData.weight);
+                // Shuffle posts and userIds together
+                
+                const combined = trainPosts.map((post, index) => ({
+                    post,
+                    userId: userIds[index],
+                    thumb:trainPostsImg[index],
+                    weight:dummyWeights[index]
+                }));
+                
+                const shuffled = combined;//shuffleArray(combined);
+                console.log(shuffled);
+                
+                // Save the shuffled posts
+                for (const item of shuffled) {
+                
+                    let phtoAdd = "default.png"; // Default thumbnail
+                    var isUserSelected = false;
+                    
+                    if (item.userId === userIds[0]) { 
+                        phtoAdd = "620620.png";
+                        isUserSelected = true; 
+                    
+                    } else if (item.userId === userIds[1]) {
+                        phtoAdd = "023023.png";
+                        isUserSelected = true; 
+                    
+                    } else if (item.userId === userIds[2]) { 
+                        phtoAdd = "146146.jpg";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[3]) { 
+                        phtoAdd = "070070.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[4]) { 
+                        phtoAdd = "faznet_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[5]) { 
+                        phtoAdd = "zeit_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[6]) { 
+                        phtoAdd = "handle_p.png";
+                        isUserSelected = true;
+                    
+                    }
+                              
+                    const newPost = {
+                        userId: new mongoose.Types.ObjectId(item.userId),
+                        reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                        pool: req.body.version,
+                        desc: item.post,
+                        thumb: item.thumb,
+                        weight: item.weight
+                    };
+                    
+                    const savedPost = await createAndSavePost(newPost);
+                    
+                    if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                
+                        console.log("Posting comments!!!")
+                        //console.log(req.body.version)
+                        const shuffledComments = comments_RKI2;
+                                
+                                var count = 0;
+                                for (const it of shuffledComments) { 
+                                    console.log(process.env.RKI)
+                                    const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                        console.log("Is RKI a valid ObjectId?", isValidId);
+                                        const randomBot = await User.findById(String(process.env.RKI));
+                                        console.log(randomBot);
+                                    count = count + 1
+                                    const comment = new Comment({
+                                        body:it, 
+                                        userId: randomBot.id, 
+                                        postId:savedPost.id, 
+                                        username: randomBot.username
+                                    });
+                                    
+                                    try { 
+                                        const savedComment = await comment.save();
+                                        await savedPost.updateOne({$push: { comments: savedComment } });
+                                        console.log("Comment saved successfully:", savedComment);
+                                         
+                                    } catch (error) {
+                                        logger.error('Error saving data 3', { error: error.message });
+                                        console.error("Error creating or saving comment:", error);
+                                        throw error;
+                                    }
+                                }
+                        }  
+                }
+            
+            
+        } catch (error) {
+            logger.error('Error saving data 4', { error: error.message });
+            console.error(error);
+            res.status(500).json({ success: false, error });
+        }
+                
+            }    
+            } else if(req.body.version == "2"){
+                const posts = await Post.find({"reactorUser": currentUser.id });
+                console.log("posts.length");
+                console.log(posts.length);
+                
+                if(posts.length == 9){
+                    const trainPosts = [
+                        `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                        `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                        `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                        `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                        `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                        `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                        `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                        `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                    ];
+                    const userIds = [
+                        process.env.Netflix, //Netflix
+                        process.env.SkySport,   //Sky Sport
+                        process.env.Tagesspeigel,   //Tagesspeigel
+                        process.env.DerSpeigel,    //Der Speigel
+                        process.env.faznet,     //faznet
+                        process.env.zeit,      //zeit
+                        process.env.handle,     //handel
+                        process.env.handle,     //handel
+                    ];
+                    const dummyWeights = [
+                        0.99,
+                        0.49,
+                        0.49,
+                        0.5,
+                        0.65,
+                        0.87,
+                        0.89,
+                        0.50,
+                        0.56,
+                    ];
+                    try {
+                        // Determine the version-specific post
+                        let selectedPost = dummyPosts[0];
+                        let linkToAdd = "default.png"; // Default thumbnail
+                        let weight = dummyWeights[0]
+                        
+                        if (req.body.version === "1") {
+                            selectedPost = dummyPosts[0];
+                            linkToAdd = "post11.png";
+                            weight = dummyWeights[0]
+                            
+                        } else if (req.body.version === "2") {
+                            selectedPost = dummyPosts[0];
+                            linkToAdd = "post11.png";
+                            weight = dummyWeights[1]
+                            
+                        } else if (req.body.version === "3") {
+                            selectedPost = dummyPosts[2];
+                            linkToAdd = "post12.png";
+                            weight = dummyWeights[2]
+                            
+                        } else if (req.body.version === "4") {
+                            selectedPost = dummyPosts[3];
+                            linkToAdd = "post13.png";
+                            weight = dummyWeights[3]
+                            
+                            
+                        } else if (req.body.version === "5") {
+                            selectedPost = dummyPosts[4];
+                            linkToAdd = "post14.png";
+                            weight = dummyWeights[4]
+                            
+                        }
+                
+                        const newPostData = {
+                            userId:  process.env.RKI,
+                            reactorUser:  req.body.userId?  req.body.userId:null,
+                            pool: req.body.version,
+                            desc: selectedPost,
+                            thumb: linkToAdd,
+                            weight:weight
+                        }; 
+                
+                        trainPosts.push(newPostData.desc);
+                        userIds.push(process.env.RKI);
+                        trainPostsImg.push(newPostData.thumb);
+                        dummyWeights.push(newPostData.weight);
+                        // Shuffle posts and userIds together
+                        
+                        const combined = trainPosts.map((post, index) => ({
+                            post,
+                            userId: userIds[index],
+                            thumb:trainPostsImg[index],
+                            weight:dummyWeights[index]
+                        }));
+                        
+                        const shuffled = combined;//shuffleArray(combined);
+                        console.log("shuffled items ");
+                        console.log(shuffled.length);
+                        
+                        // Save the shuffled posts
+                        for (const item of shuffled) {
+                        
+                            let phtoAdd = "default.png"; // Default thumbnail
+                            var isUserSelected = false;
+                            
+                            if (item.userId === userIds[0]) { 
+                                phtoAdd = "620620.png";
+                                isUserSelected = true; 
+                            
+                            } else if (item.userId === userIds[1]) {
+                                phtoAdd = "023023.png";
+                                isUserSelected = true; 
+                            
+                            } else if (item.userId === userIds[2]) { 
+                                phtoAdd = "146146.jpg";
+                                isUserSelected = true;
+                            
+                            } else if (item.userId === userIds[3]) { 
+                                phtoAdd = "070070.png";
+                                isUserSelected = true;
+                            
+                            } else if (item.userId === userIds[4]) { 
+                                phtoAdd = "faznet_p.png";
+                                isUserSelected = true;
+                            
+                            } else if (item.userId === userIds[5]) { 
+                                phtoAdd = "zeit_p.png";
+                                isUserSelected = true;
+                            
+                            } else if (item.userId === userIds[6]) { 
+                                phtoAdd = "handle_p.png";
+                                isUserSelected = true;
+                            
+                            }
+                                      
+                            const newPost = {
+                                userId: new mongoose.Types.ObjectId(item.userId),
+                                reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                                pool: req.body.version,
+                                desc: item.post,
+                                thumb: item.thumb,
+                                weight: item.weight
+                            };
+                            
+                            const savedPost = await createAndSavePost(newPost);
+                            
+                            if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                        
+                                console.log("Posting comments!!!")
+                                //console.log(req.body.version)
+                                const shuffledComments = comments_RKI2;
+                                        
+                                        var count = 0;
+                                        for (const it of shuffledComments) { 
+                                            console.log(process.env.RKI)
+                                            const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                                console.log("Is RKI a valid ObjectId?", isValidId);
+                                                const randomBot = await User.findById(String(process.env.RKI));
+                                                console.log(randomBot);
+                                            count = count + 1
+                                            const comment = new Comment({
+                                                body:it, 
+                                                userId: randomBot.id, 
+                                                postId:savedPost.id, 
+                                                username: randomBot.username
+                                            });
+                                            
+                                            try { 
+                                                const savedComment = await comment.save();
+                                                await savedPost.updateOne({$push: { comments: savedComment } });
+                                                console.log("Comment saved successfully:", savedComment);
+                                                 
+                                            } catch (error) {
+                                                logger.error('Error saving data 5 ', { error: error.message });
+                                                console.error("Error creating or saving comment:", error);
+                                                throw error;
+                                            }
+                                        }
+                                }  
+                        }
+                    
+                    
+                } catch (error) {
+                    logger.error('Error saving data 6 ', { error: error.message });
+                    console.error(error);
+                    res.status(500).json({ success: false, error });
+                }
+                } else if (posts.length == 18){
+                const trainPosts = [
+                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                ];
+                const userIds = [
+                    process.env.Netflix, //Netflix
+                    process.env.SkySport,   //Sky Sport
+                    process.env.Tagesspeigel,   //Tagesspeigel
+                    process.env.DerSpeigel,    //Der Speigel
+                    process.env.faznet,     //faznet
+                    process.env.zeit,      //zeit
+                    process.env.handle,     //handel
+                    process.env.handle,     //handel
+                ];
+                const dummyWeights = [
+                    -0.2,
+                    -0.6,
+                    -0.8,
+                    -0.7,
+                    -0.1,
+                    -0.7,
+                    -0.9,
+                    0.5,
+                    0.0,
+                ];
+                try {
+                    // Determine the version-specific post
+                    let selectedPost = dummyPosts[0];
+                    let linkToAdd = "default.png"; // Default thumbnail
+                    let weight = dummyWeights[0]
+                    
+                    if (req.body.version === "1") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[0]
+                        
+                    } else if (req.body.version === "2") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[1]
+                        
+                    } else if (req.body.version === "3") {
+                        selectedPost = dummyPosts[2];
+                        linkToAdd = "post12.png";
+                        weight = dummyWeights[2]
+                        
+                    } else if (req.body.version === "4") {
+                        selectedPost = dummyPosts[3];
+                        linkToAdd = "post13.png";
+                        weight = dummyWeights[3]
+                        
+                        
+                    } else if (req.body.version === "5") {
+                        selectedPost = dummyPosts[4];
+                        linkToAdd = "post14.png";
+                        weight = dummyWeights[4]
+                        
+                    }
+            
+                    const newPostData = {
+                        userId:  process.env.RKI,
+                        reactorUser:  req.body.userId?  req.body.userId:null,
+                        pool: req.body.version,
+                        desc: selectedPost,
+                        thumb: linkToAdd,
+                        weight:weight
+                    }; 
+            
+                    trainPosts.push(newPostData.desc);
+                    userIds.push(process.env.RKI);
+                    trainPostsImg.push(newPostData.thumb);
+                    dummyWeights.push(newPostData.weight);
+                    // Shuffle posts and userIds together
+                    
+                    const combined = trainPosts.map((post, index) => ({
+                        post,
+                        userId: userIds[index],
+                        thumb:trainPostsImg[index],
+                        weight:dummyWeights[index]
+                    }));
+                    
+                    const shuffled = combined;//shuffleArray(combined);
+                    console.log(shuffled);
+                    
+                    // Save the shuffled posts
+                    for (const item of shuffled) {
+                    
+                        let phtoAdd = "default.png"; // Default thumbnail
+                        var isUserSelected = false;
+                        
+                        if (item.userId === userIds[0]) { 
+                            phtoAdd = "620620.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[1]) {
+                            phtoAdd = "023023.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[2]) { 
+                            phtoAdd = "146146.jpg";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[3]) { 
+                            phtoAdd = "070070.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[4]) { 
+                            phtoAdd = "faznet_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[5]) { 
+                            phtoAdd = "zeit_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[6]) { 
+                            phtoAdd = "handle_p.png";
+                            isUserSelected = true;
+                        
+                        }
+                                  
+                        const newPost = {
+                            userId: new mongoose.Types.ObjectId(item.userId),
+                            reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                            pool: req.body.version,
+                            desc: item.post,
+                            thumb: item.thumb,
+                            weight: item.weight
+                        };
+                        
+                        const savedPost = await createAndSavePost(newPost);
+                        
+                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                    
+                            console.log("Posting comments!!!")
+                            //console.log(req.body.version)
+                            const shuffledComments = comments_RKI2;
+                                    
+                                    var count = 0;
+                                    for (const it of shuffledComments) { 
+                                        console.log(process.env.RKI)
+                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                            console.log("Is RKI a valid ObjectId?", isValidId);
+                                            const randomBot = await User.findById(String(process.env.RKI));
+                                            console.log(randomBot);
+                                        count = count + 1
+                                        const comment = new Comment({
+                                            body:it, 
+                                            userId: randomBot.id, 
+                                            postId:savedPost.id, 
+                                            username: randomBot.username
+                                        });
+                                        
+                                        try { 
+                                            const savedComment = await comment.save();
+                                            await savedPost.updateOne({$push: { comments: savedComment } });
+                                            console.log("Comment saved successfully:", savedComment);
+                                             
+                                        } catch (error) {
+                                            logger.error('Error saving data 7', { error: error.message });
+                                            console.error("Error creating or saving comment:", error);
+                                            throw error;
+                                        }
+                                    }
+                            }  
+                    }
+                
+                
+            } catch (error) {
+                logger.error('Error saving data 8', { error: error.message });
+                console.error(error);
+                res.status(500).json({ success: false, error });
+            }
+                    
+        }} else if(req.body.version == "3"){
+            const posts = await Post.find({"reactorUser": currentUser.id });
+            console.log("posts.length");
+            console.log(posts.length);
+            
+            if(posts.length == 9){
+                const trainPosts = [
+                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                ];
+                const userIds = [
+                    process.env.Netflix, //Netflix
+                    process.env.SkySport,   //Sky Sport
+                    process.env.Tagesspeigel,   //Tagesspeigel
+                    process.env.DerSpeigel,    //Der Speigel
+                    process.env.faznet,     //faznet
+                    process.env.zeit,      //zeit
+                    process.env.handle,     //handel
+                    process.env.handle,     //handel
+                ];
+                const dummyWeights = [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ];
+                try {
+                    // Determine the version-specific post
+                    let selectedPost = dummyPosts[0];
+                    let linkToAdd = "default.png"; // Default thumbnail
+                    let weight = dummyWeights[0]
+                    
+                    if (req.body.version === "1") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[0]
+                        
+                    } else if (req.body.version === "2") {
+                        selectedPost = dummyPosts[0];
+                        linkToAdd = "post11.png";
+                        weight = dummyWeights[1]
+                        
+                    } else if (req.body.version === "3") {
+                        selectedPost = dummyPosts[2];
+                        linkToAdd = "post12.png";
+                        weight = dummyWeights[2]
+                        
+                    } else if (req.body.version === "4") {
+                        selectedPost = dummyPosts[3];
+                        linkToAdd = "post13.png";
+                        weight = dummyWeights[3]
+                        
+                        
+                    } else if (req.body.version === "5") {
+                        selectedPost = dummyPosts[4];
+                        linkToAdd = "post14.png";
+                        weight = dummyWeights[4]
+                        
+                    }
+            
+                    const newPostData = {
+                        userId:  process.env.RKI,
+                        reactorUser:  req.body.userId?  req.body.userId:null,
+                        pool: req.body.version,
+                        desc: selectedPost,
+                        thumb: linkToAdd,
+                        weight:weight
+                    }; 
+            
+                    trainPosts.push(newPostData.desc);
+                    userIds.push(process.env.RKI);
+                    trainPostsImg.push(newPostData.thumb);
+                    dummyWeights.push(newPostData.weight);
+                    // Shuffle posts and userIds together
+                    
+                    const combined = trainPosts.map((post, index) => ({
+                        post,
+                        userId: userIds[index],
+                        thumb:trainPostsImg[index],
+                        weight:dummyWeights[index]
+                    }));
+                    
+                    const shuffled = combined;//shuffleArray(combined);
+                    console.log("shuffled items ");
+                    console.log(shuffled.length);
+                    
+                    // Save the shuffled posts
+                    for (const item of shuffled) {
+                    
+                        let phtoAdd = "default.png"; // Default thumbnail
+                        var isUserSelected = false;
+                        
+                        if (item.userId === userIds[0]) { 
+                            phtoAdd = "620620.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[1]) {
+                            phtoAdd = "023023.png";
+                            isUserSelected = true; 
+                        
+                        } else if (item.userId === userIds[2]) { 
+                            phtoAdd = "146146.jpg";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[3]) { 
+                            phtoAdd = "070070.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[4]) { 
+                            phtoAdd = "faznet_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[5]) { 
+                            phtoAdd = "zeit_p.png";
+                            isUserSelected = true;
+                        
+                        } else if (item.userId === userIds[6]) { 
+                            phtoAdd = "handle_p.png";
+                            isUserSelected = true;
+                        
+                        }
+                                  
+                        const newPost = {
+                            userId: new mongoose.Types.ObjectId(item.userId),
+                            reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                            pool: req.body.version,
+                            desc: item.post,
+                            thumb: item.thumb,
+                            weight: item.weight
+                        };
+                        
+                        const savedPost = await createAndSavePost(newPost);
+                        
+                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                    
+                            console.log("Posting comments!!!")
+                            //console.log(req.body.version)
+                            const shuffledComments = comments_RKI2;
+                                    
+                                    var count = 0;
+                                    for (const it of shuffledComments) { 
+                                        console.log(process.env.RKI)
+                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                            console.log("Is RKI a valid ObjectId?", isValidId);
+                                            const randomBot = await User.findById(String(process.env.RKI));
+                                            console.log(randomBot);
+                                        count = count + 1
+                                        const comment = new Comment({
+                                            body:it, 
+                                            userId: randomBot.id, 
+                                            postId:savedPost.id, 
+                                            username: randomBot.username
+                                        });
+                                        
+                                        try { 
+                                            const savedComment = await comment.save();
+                                            await savedPost.updateOne({$push: { comments: savedComment } });
+                                            console.log("Comment saved successfully:", savedComment);
+                                             
+                                        } catch (error) {
+                                            logger.error('Error saving data 5 ', { error: error.message });
+                                            console.error("Error creating or saving comment:", error);
+                                            throw error;
+                                        }
+                                    }
+                            }  
+                    }
+                
+                
+            } catch (error) {
+                logger.error('Error saving data 6 ', { error: error.message });
+                console.error(error);
+                res.status(500).json({ success: false, error });
+            }
+            } else if (posts.length == 18){
+            const trainPosts = [
+                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
+                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
+                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
+                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
+                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
+                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
+                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+            ];
+            const userIds = [
+                process.env.Netflix, //Netflix
+                process.env.SkySport,   //Sky Sport
+                process.env.Tagesspeigel,   //Tagesspeigel
+                process.env.DerSpeigel,    //Der Speigel
+                process.env.faznet,     //faznet
+                process.env.zeit,      //zeit
+                process.env.handle,     //handel
+                process.env.handle,     //handel
+            ];
+            const dummyWeights = [
+                0,0,
+                0,0,
+                0,0,
+                0,0,
+                0,0,
+                0,0,
+                0,0,
+                0,0,
+                0.0,
+            ];
+            try {
+                // Determine the version-specific post
+                let selectedPost = dummyPosts[0];
+                let linkToAdd = "default.png"; // Default thumbnail
+                let weight = dummyWeights[0]
+                
+                if (req.body.version === "1") {
+                    selectedPost = dummyPosts[0];
+                    linkToAdd = "post11.png";
+                    weight = dummyWeights[0]
+                    
+                } else if (req.body.version === "2") {
+                    selectedPost = dummyPosts[0];
+                    linkToAdd = "post11.png";
+                    weight = dummyWeights[1]
+                    
+                } else if (req.body.version === "3") {
+                    selectedPost = dummyPosts[2];
+                    linkToAdd = "post12.png";
+                    weight = dummyWeights[2]
+                    
+                } else if (req.body.version === "4") {
+                    selectedPost = dummyPosts[3];
+                    linkToAdd = "post13.png";
+                    weight = dummyWeights[3]
+                    
+                    
+                } else if (req.body.version === "5") {
+                    selectedPost = dummyPosts[4];
+                    linkToAdd = "post14.png";
+                    weight = dummyWeights[4]
+                    
+                }
+        
+                const newPostData = {
+                    userId:  process.env.RKI,
+                    reactorUser:  req.body.userId?  req.body.userId:null,
+                    pool: req.body.version,
+                    desc: selectedPost,
+                    thumb: linkToAdd,
+                    weight:weight
+                }; 
+        
+                trainPosts.push(newPostData.desc);
+                userIds.push(process.env.RKI);
+                trainPostsImg.push(newPostData.thumb);
+                dummyWeights.push(newPostData.weight);
+                // Shuffle posts and userIds together
+                
+                const combined = trainPosts.map((post, index) => ({
+                    post,
+                    userId: userIds[index],
+                    thumb:trainPostsImg[index],
+                    weight:dummyWeights[index]
+                }));
+                
+                const shuffled = combined;//shuffleArray(combined);
+                console.log(shuffled);
+                
+                // Save the shuffled posts
+                for (const item of shuffled) {
+                
+                    let phtoAdd = "default.png"; // Default thumbnail
+                    var isUserSelected = false;
+                    
+                    if (item.userId === userIds[0]) { 
+                        phtoAdd = "620620.png";
+                        isUserSelected = true; 
+                    
+                    } else if (item.userId === userIds[1]) {
+                        phtoAdd = "023023.png";
+                        isUserSelected = true; 
+                    
+                    } else if (item.userId === userIds[2]) { 
+                        phtoAdd = "146146.jpg";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[3]) { 
+                        phtoAdd = "070070.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[4]) { 
+                        phtoAdd = "faznet_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[5]) { 
+                        phtoAdd = "zeit_p.png";
+                        isUserSelected = true;
+                    
+                    } else if (item.userId === userIds[6]) { 
+                        phtoAdd = "handle_p.png";
+                        isUserSelected = true;
+                    
+                    }
+                              
+                    const newPost = {
+                        userId: new mongoose.Types.ObjectId(item.userId),
+                        reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                        pool: req.body.version,
+                        desc: item.post,
+                        thumb: item.thumb,
+                        weight: item.weight
+                    };
+                    
+                    const savedPost = await createAndSavePost(newPost);
+                    
+                    if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                
+                        console.log("Posting comments!!!")
+                        //console.log(req.body.version)
+                        const shuffledComments = comments_RKI2;
+                                
+                                var count = 0;
+                                for (const it of shuffledComments) { 
+                                    console.log(process.env.RKI)
+                                    const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
+                                        console.log("Is RKI a valid ObjectId?", isValidId);
+                                        const randomBot = await User.findById(String(process.env.RKI));
+                                        console.log(randomBot);
+                                    count = count + 1
+                                    const comment = new Comment({
+                                        body:it, 
+                                        userId: randomBot.id, 
+                                        postId:savedPost.id, 
+                                        username: randomBot.username
+                                    });
+                                    
+                                    try { 
+                                        const savedComment = await comment.save();
+                                        await savedPost.updateOne({$push: { comments: savedComment } });
+                                        console.log("Comment saved successfully:", savedComment);
+                                         
+                                    } catch (error) {
+                                        logger.error('Error saving data 7', { error: error.message });
+                                        console.error("Error creating or saving comment:", error);
+                                        throw error;
+                                    }
+                                }
+                        }  
+                }
+            
+            
+        } catch (error) {
+            logger.error('Error saving data 8', { error: error.message });
+            console.error(error);
+            res.status(500).json({ success: false, error });
+        }
+                
+        }}
+            res.status(200).json({ success: true, message: "Posts created successfully!" });
+        } catch (error) {
+            logger.error('Error saving data 9', { error: error.message });
+            //console.error(error);
+            res.status(500).json({ success: false, error });
+        }
+    })  
+        
+        
         router.post('/:id/createInitialData', verifyToken, async (req, res) => {
             logger.info('Data received', { data: req.body });
  
@@ -348,8 +1505,8 @@ const DOMPurifyInstance = DOMPurify(window);
                 `<p>Das ist die Tabelle in der Bundesliga nach dem 7. Spieltag! 📈⚽ #SkyBundesliga</p>`,
                 `<p>#Berlin muss Milliarden kürzen, um den Haushalt in den Griff zu bekommen. Doch Schwarz-Rot verschleppt nötige Entscheidungen – und lähmt damit die Stadt. Ein Kommentar.</p>`,
                 `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-                
             ];
+            //
             
             const trainPosts = [
                 `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
@@ -358,8 +1515,8 @@ const DOMPurifyInstance = DOMPurify(window);
                 `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
                 `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
                 `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`
-                
+                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
+                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
             ];
             
             
@@ -434,6 +1591,7 @@ const DOMPurifyInstance = DOMPurify(window);
                 "faznet_p.png",     //faznet
                 "zeit_p.png",       //zeit
                 "handle_p.png",     //handel
+                "handle_p.png",     //handel
             ];
             
             const userIds = [
@@ -444,6 +1602,7 @@ const DOMPurifyInstance = DOMPurify(window);
                 process.env.faznet,     //faznet
                 process.env.zeit,      //zeit
                 process.env.handle,     //handel
+                process.env.handle,     //handel
             ];
         
             const dummyPosts = [
@@ -453,32 +1612,50 @@ const DOMPurifyInstance = DOMPurify(window);
                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`,
                  `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`
             ];
+            
+            const dummyWeights = [
+                0.2,
+                0.0,
+                0.0,
+                0.99,
+                0.49,
+                0.0,
+                1.0,
+                0.5,
+                0.0,
+            ];
         
             try {
                 // Determine the version-specific post
                 let selectedPost = dummyPosts[0];
                 let linkToAdd = "default.png"; // Default thumbnail
+                let weight = dummyWeights[0]
                 
                 if (req.body.version === "1") {
                     selectedPost = dummyPosts[0];
                     linkToAdd = "post11.png";
+                    weight = dummyWeights[0]
                     
                 } else if (req.body.version === "2") {
                     selectedPost = dummyPosts[0];
                     linkToAdd = "post11.png";
+                    weight = dummyWeights[1]
                     
                 } else if (req.body.version === "3") {
                     selectedPost = dummyPosts[2];
                     linkToAdd = "post12.png";
+                    weight = dummyWeights[2]
                     
                 } else if (req.body.version === "4") {
                     selectedPost = dummyPosts[3];
                     linkToAdd = "post13.png";
+                    weight = dummyWeights[3]
                     
                     
                 } else if (req.body.version === "5") {
                     selectedPost = dummyPosts[4];
                     linkToAdd = "post14.png";
+                    weight = dummyWeights[4]
                     
                 }
         
@@ -488,6 +1665,7 @@ const DOMPurifyInstance = DOMPurify(window);
                     pool: req.body.pool,
                     desc: selectedPost,
                     thumb: linkToAdd,
+                    weight:weight
                 };
         
                 // Save the version-specific post
@@ -526,16 +1704,19 @@ const DOMPurifyInstance = DOMPurify(window);
                 } else*/ 
                 // Add the version-specific post to the list
                 trainPosts.push(newPostData.desc);
-                userIds.push(process.env.RKI); // UserId for the new post
+                userIds.push(process.env.RKI);
                 trainPostsImg.push(newPostData.thumb);
+                dummyWeights.push(newPostData.weight);
                 // Shuffle posts and userIds together
+                
                 const combined = trainPosts.map((post, index) => ({
                     post,
                     userId: userIds[index],
-                    thumb:trainPostsImg[index]
+                    thumb:trainPostsImg[index],
+                    weight:dummyWeights[index]
                 }));
                 
-                const shuffled = shuffleArray(combined);
+                const shuffled = combined;//shuffleArray(combined);
                 console.log(shuffled);
                 
                 // Save the shuffled posts
@@ -575,7 +1756,6 @@ const DOMPurifyInstance = DOMPurify(window);
                     }
                 
                 //if(isUserSelected == true){
-                                
                     //const urls = extractUrls(item.post);                     
                     const newPost = {
                         userId: new mongoose.Types.ObjectId(item.userId),
@@ -583,6 +1763,7 @@ const DOMPurifyInstance = DOMPurify(window);
                         pool: req.body.pool,
                         desc: item.post,
                         thumb: item.thumb,
+                        weight: item.weight
                     };
                     
                     const savedPost = await createAndSavePost(newPost);
@@ -590,9 +1771,8 @@ const DOMPurifyInstance = DOMPurify(window);
                     if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
                 
                         console.log("Posting comments!!!")
-                        console.log(req.body.version)
+                        //console.log(req.body.version)
                         const shuffledComments = comments_RKI2;
-                                
                                 
                                 var count = 0;
                                 for (const it of shuffledComments) { 
@@ -610,20 +1790,17 @@ const DOMPurifyInstance = DOMPurify(window);
                                     });
                                     
                                     try { 
-                                    
                                         const savedComment = await comment.save();
                                         await savedPost.updateOne({$push: { comments: savedComment } });
                                         console.log("Comment saved successfully:", savedComment);
                                          
                                     } catch (error) {
-                                        logger.error('Error saving data', { error: error.message });
+                                        logger.error('Error saving data 10', { error: error.message });
                                         console.error("Error creating or saving comment:", error);
                                         throw error;
                                     }
                                 }
                         } 
-                    
-                    
                     /*console.log("Posting comments!!!")
                     console.log(item.userId)
                     console.log(savedPost._id)
@@ -753,10 +1930,13 @@ const DOMPurifyInstance = DOMPurify(window);
         
                 res.status(200).json({ success: true, message: "Posts created successfully!" });
             } catch (error) {
-                logger.error('Error saving data', { error: error.message });
+                logger.error('Error saving data 11', { error: error.message });
                 console.error(error);
                 res.status(500).json({ success: false, error });
             }
+            
+            res.status(200).json({ success: true, message: "Posts created successfully!" });
+            
         });
 
 
@@ -775,7 +1955,7 @@ const DOMPurifyInstance = DOMPurify(window);
         res.status(200).json('The post has been reposted!');
 
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 24', { error: err.message });
     res.status(500).json(err);
     console.log(err)
     }
@@ -794,7 +1974,7 @@ const DOMPurifyInstance = DOMPurify(window);
     res.status(403).json('You can only update your post!');
     }
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 25', { error: err.message });
     res.status(500).json(err);
     }
     })
@@ -802,7 +1982,7 @@ const DOMPurifyInstance = DOMPurify(window);
     // notification
     router.post('/subscribe', verifyToken,  async(req, res) =>{
         logger.info('Data received', { data: req.body });
-    console.log(req);
+    //console.log(req);
     const newSubscription = await Subscription.create ({...req.body});
     const options = {
     vapidDetails: {
@@ -811,7 +1991,7 @@ const DOMPurifyInstance = DOMPurify(window);
     privateKey: process.env.PRIVATE_KEY,
     },
     };
-    console.log(req.body)
+    //console.log(req.body)
     console.log(options)
     console.log(newSubscription.endpoint)
     try {
@@ -833,16 +2013,16 @@ const DOMPurifyInstance = DOMPurify(window);
     });
 
     router.post('/fetch-thumbnail', verifyToken, async (req, res) => {
-        const { url } = req.body;
+        //const { url } = req.body;
         try {
-            console.log(req.body.urls);
+            //console.log(req.body.urls);
     
             // First, check if the local file exists
             const localImagePath = path.join(process.cwd(), 'public', 'images', req.body.urls); // Assuming the filename is provided in req.body.urls
-            const localThumbnailUrl = `${req.protocol}://${req.get('host')}/images/${req.body.urls}`;
-            console.log("here");
-            console.log(localImagePath);
-            console.log(localThumbnailUrl);
+            //const localThumbnailUrl = `${req.protocol}://${req.get('host')}/images/${req.body.urls}`;
+            //console.log("here");
+            //console.log(localImagePath);
+            //console.log(localThumbnailUrl);
     
             if (fs.existsSync(localImagePath)) {
                 // If the file exists locally, return the local URL
@@ -873,7 +2053,7 @@ const DOMPurifyInstance = DOMPurify(window);
         }
     
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             res.status(500).json({ error: 'Error fetching thumbnail' });
         }
     });
@@ -973,7 +2153,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
          var diction = {"likes": -1, "dislikes": parseInt(0)}
          res.status(200).json(diction);
      } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 26', { error: err.message });
          console.log(err);
          res.status(500).json(err);
         }
@@ -991,7 +2171,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
          var diction = {"likes": parseInt(0), "dislikes":-1 }
          res.status(200).json(diction);
      }catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 27', { error: err.message });
          res.status(500).json(err);
      
         }
@@ -1013,7 +2193,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
          res.status(200).json(diction);
  
      } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 28', { error: err.message });
          console.log(err);
          res.status(500).json(err);
  
@@ -1059,7 +2239,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
              
              
          } catch(err) {
-            logger.error('Error saving data', { error: err.message });
+            logger.error('Error saving data 29', { error: err.message });
              console.log(err);
              res.status(500).json(err);
             }
@@ -1076,7 +2256,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
             res.status(200).json(diction);
              
          }catch(err) {
-            logger.error('Error saving data', { error: err.message });
+            logger.error('Error saving data 30', { error: err.message });
              res.status(500).json(err);
          
             }
@@ -1098,7 +2278,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
          var diction = {"likes": parseInt(0), "dislikes": 1}
          res.status(200).json(diction);
      } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 31', { error: err.message });
          console.log(err);
          res.status(500).json(err);
      }
@@ -1126,7 +2306,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
     res.status(403).json('The post has been disliked!');
     }
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 32', { error: err.message });
     res.status(500).json(err);
     }
     })
@@ -1145,7 +2325,7 @@ router.put('/:id/like', verifyToken, async(req, res) => {
     res.status(403).json('The post has been disliked!');
     }
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 33', { error: err.message });
     res.status(500).json(err);
     }
     })
@@ -1192,7 +2372,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     await User.findOneAndUpdate({"_id": req.body.userId},{$push: { readSpecialPosts: req.body.postId}});
     res.status(200).json('The post has been added to special reading!');
   }catch(err) {
-    logger.error('Error saving data', { error: err.message });
+    logger.error('Error saving data 34', { error: err.message });
     res.status(500).json(err);
 }
 
@@ -1202,7 +2382,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     // get a post
     router.get('/:id',verifyToken,  async(req, res) =>{ //verifyToken, 
         logger.info('Data received', { data: req.body });
-        console.log(req.params.id)
+        //console.log(req.params.id)
     try {
     const post = await Post.findById(req.params.id).populate({path : 'comments', model:'Comment', populate:[{path : "userId", model: "User"}, {path: "likes", model: "CommentLike"}, {path: "dislikes", model: "CommentDislike"}, { path: 'reposts', model: 'Repost', populate: { path: 'userId', model: 'User' }}]}).exec();
     console.log("post")
@@ -1210,7 +2390,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     res.status(200).json(post);
     
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 35', { error: err.message });
     res.status(500).json(err);
     }
     })
@@ -1256,45 +2436,47 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     const userPosts = await Post.find({ userId: currentUser._id });
 
     const friendPosts = await Promise.all(
-    currentUser.followings.map((friendId) => {
+        currentUser.followings.map((friendId) => {
         return Post.find({ userId: friendId }).populate('Comment').exec();
     })
     );
 
     res.status(200).json(userPosts.concat(...friendPosts));
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 45', { error: err.message });
     res.status(500).json(err);
     }
     })
 
     // get pagination posts
-    router.get('/timelinePag/:userId', verifyToken,  async(req, res) =>{ 
+    router.get('/timelinePag/:userId', verifyToken,  async(req, res) => { 
         logger.info('Data received', { data: req.body });
-    console.log(req.query.page);
-    console.log(req.headers['userid']);
+    //console.log(req.query.page);
+    //console.log(req.headers['userid']);
     try {
-    let page = req.query.page //starts from 0
-    let userId = req.headers['userid']
-    let posts= await getPostsPaginated(page, userId) 
-    console.log(posts.length)
+        let page = req.query.page //starts from 0
+        let userId = req.headers['userid']
+        let posts= await getPostsPaginated(page, userId) 
+        console.log(posts.length)
     if (posts && posts.length > 0) {
         res.status(200).json(posts)
     } else {
-        res.status(200).json(err);
+        res.status(200).json("Failed");
         console.log(res);
     }
-
-    } catch(err) {
-        logger.error('Error saving data', { error: err.message });
-        res.status(500).json(err);
+    
+    } catch (error) {
+        logger.error('Error saving data 12', { error: error.message });
+        console.error("Error creating or saving comment:", error);
+        res.status(500).json(error);
+    } 
     }
-    })
+    )
 
 
     //service
     const getPostsPaginated = async (page, userId) => {
-    let resultsPerPage = 20
+    let resultsPerPage = 30
     
     const currentUser = await User.findById(userId)
     console.log(currentUser)
@@ -1326,7 +2508,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }).populate('comments').exec();
     }
     catch (err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 13', { error: err.message });
     //console.log(err)
     res.status(500).json(err);
     }
@@ -1381,7 +2563,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
 
     res.status(200).json(userPosts.concat(...friendPosts));
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 14', { error: err.message });
     res.status(500).json(err);
     }
     });
@@ -1412,7 +2594,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     router.get('/onlyFollowersPag/:userId', verifyToken, async (req, res) => {
         logger.info('Data received', { data: req.body });
     console.log("hereherehereh");
-    console.log(req.query.page);
+    //console.log(req.query.page);
 
     try {
     let page = req.query.page //starts from 0
@@ -1426,7 +2608,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }
 
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 15', { error: err.message });
     //console.log(err);
     res.status(500).json(err);
     }
@@ -1465,7 +2647,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     try {
     
         console.log("getUserPost");
-        console.log(req.params.id);
+        //console.log(req.params.id);
         const currentUser = await User.findById(req.params.id);
         console.log(currentUser);
         
@@ -1479,7 +2661,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
         res.status(200).json(userPosts);
     
     } catch(err) { 
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 16', { error: err.message });
         console.log(err);
         res.status(500).json(err);
     }
@@ -1560,7 +2742,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }
 
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 17', { error: err.message });
     //console.log(err);
     res.status(500).json(err);
     }
@@ -1581,7 +2763,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }
 
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 18', { error: err.message });
     res.status(500).json(err);
     }
 
@@ -1598,7 +2780,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     //console.log(friendPosts.length)      
     res.status(200).json(userPosts.concat(...friendPosts));
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 19', { error: err.message });
     res.status(500).json(err);
     }
     });
@@ -1651,7 +2833,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     .exec()
     res.status(200).json(posts);
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 20', { error: err.message });
     res.status(500).json(err);
     console.log(err);
     }
@@ -1662,7 +2844,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     // add a comment
     router.post('/:id/comment', verifyToken, async(req, res) => {
         logger.info('Data received', { data: req.body });
-        console.log(req.body.userId)
+        //console.log(req.body.userId)
         const user = await User.findOne({_id:req.body.userId});
         console.log(user)
     const comment = new Comment({body:sanitizeInput(req.body.txt), userId:user._id, postId:req.body.postId, username: req.body.username});
@@ -1683,7 +2865,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     res.status(200).json(comm);
 
     } catch(err) {
-        logger.error('Error saving data', { error: err.message });
+        logger.error('Error saving data 21', { error: err.message });
     console.log(res.status(500).json(err));
     }
     // create a comment
@@ -1738,7 +2920,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
               return res.status(200).json([]);
             }
           } catch (err) {
-            logger.error('Error saving data', { error: err.message });
+            logger.error('Error saving data 22', { error: err.message });
             console.error(err);
             return res.status(500).json({ error: 'Server error' });
           }
