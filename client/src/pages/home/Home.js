@@ -65,6 +65,9 @@ function Home() {
     const handleActionFromTopbar = () => {
       console.log("Action triggered from Topbar!");
       setActionTriggered(true); // Toggle the state
+      setTimeout(() => {
+        setActionTriggered(false);
+    }, 5000);
   };
 
     useEffect(() => {
@@ -145,10 +148,10 @@ function Home() {
             //}
             //console.log("hasVisited_1")
             //console.log(hasVisited_1)
-            fetchTimeSpent2(location.pathname);
+            //fetchTimeSpent2(location.pathname);
             
-            const intervalId = setInterval(() => fetchTimeSpent2(location.pathname), 10000);
-            return () => clearInterval(intervalId);
+            //const intervalId = setInterval(() => fetchTimeSpent2(location.pathname), 10000);
+            //return () => clearInterval(intervalId);
             
             //setInterval(() => fetchTimeSpent2(location.pathname), 20000);
             //fetchTimeSpent2(location.pathname);
@@ -333,7 +336,7 @@ function Home() {
     return (
         <>
         <ToastContainer autoClose={600000} style={{ 'width': !isMobileDevice && !isTabletDevice ? deviceWidth  :'500px'  }}></ToastContainer>
-            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm} onAction={handleActionFromTopbar} />
+            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm} onAction={handleActionFromTopbar} showRefreshIcon={true}/>
             <ToastProvider placement="top-center" style={{ 'margin': !isMobileDevice && !isTabletDevice && '0px 1px' }}>
             <div className="homeContainer" style={{ 'margin': !isMobileDevice && !isTabletDevice && '50px 1px' }}>
                 { /*isMobileDevice && isTabletDevice && <Sidebar />*/}

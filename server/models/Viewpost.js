@@ -14,4 +14,3 @@ postId: {
 );
 
 module.exports = mongoose.model('Viewpost', ViewpostSchema);
-

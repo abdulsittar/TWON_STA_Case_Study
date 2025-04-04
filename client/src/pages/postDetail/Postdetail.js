@@ -101,7 +101,7 @@ const handleActivityRecorder = () => {
 
   return (
     <>
-        <Topbar isProfile="true" setSelectedValue={setSelectedValue} style={{ 'margin-top': '-20px' }}/>
+        <Topbar isProfile="true" setSelectedValue={setSelectedValue} style={{ 'margin-top': '-20px' }}  showRefreshIcon={false}/>
         <div className={classes.feed}>
             <div className={classes.feedWrapper}>
             <Link style={{textDecoration: 'none', color: COLORS.textColor}}><ArrowBackIcon onClick={() => history.goBack()}/></Link>

@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Icon from '@material-ui/core/Icon'
 import axios from "axios"
 import { MoreVert } from '@material-ui/icons';
+
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
@@ -61,6 +62,8 @@ const [webViewUrl, setWebViewUrl] = useState('');
 
   const [user, setUser] = useState({});
   const [text, setText] = useState('');
+  
+  const [webLink, setWebLink] = useState(post.webLinks);
   const [inputValue, setInputValue] = useState("");
   const linkify = linkifyit();
   
@@ -419,8 +422,159 @@ const submitHandler2 = async (e) => {
   }*/
   };
 
+  const toggleWebView = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        await axios.post("/posts/" + currentUser._id + "/track-view", {
+            postId: post._id, 
+            userId: currentUser._id
+        }, {
+            headers: { 'auth-token': token }
+        });
 
-  const toggleWebView = () => {
+        console.log("Viewpost updated successfully.");
+    } catch (error) {
+        console.error("Error updating view post:", error);
+    }
+    
+    toast.info(
+      <div style={{
+          width: '1000px', // Enforce width inside the toast content
+          maxWidth: '100vw',
+          height: '1000px',
+          maxHeight: '90vh',
+          backgroundColor: 'white',
+          borderRadius: '10px',
+          padding: '15px',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          overflowY: 'auto',
+      }}>
+          <iframe 
+              src={webLink} 
+              title="WebView"
+              style={{
+                  width: '100%',
+                  height: '2000px',
+                  border: 'none',
+                  borderRadius: '8px',
+              }}
+          />
+          <button 
+              onClick={() => toast.dismiss()} 
+              style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  padding: '8px 16px',
+                  backgroundColor: '#ff4d4f',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontSize: '14px'
+              }}
+          >
+              Close
+          </button>
+      </div>,
+      {
+          className: "custom-toast", // Custom styling
+          position: "top-center",
+          icon: false,
+          autoClose: false,
+          hideProgressBar: true,
+          closeButton: false,
+      }
+  );
+};
+
+
+  const toggleWebView3 = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        await axios.post("/posts/" + currentUser._id + "/track-view", {
+            postId: post._id, 
+            userId: currentUser._id
+        }, {
+            headers: { 'auth-token': token }
+        });
+
+        console.log("Viewpost updated successfully.");
+    } catch (error) {
+        console.error("Error updating view post:", error);
+    }
+    
+    toast.info(
+        <div 
+            style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                width: '100vw', 
+                height: '100vh', 
+                backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
+                position: 'fixed', 
+                top: 0, 
+                left: 0, 
+                zIndex: 1000,
+            }}
+        >
+            <div style={{
+                width: '600px', // Fixed width
+                height: '80vh', // Responsive height
+                backgroundColor: 'white',
+                borderRadius: '10px',
+                padding: '15px',
+                position: 'relative',
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}>
+                <iframe 
+                    src={webLink} 
+                    title="WebView"
+                    style={{
+                        width: '100%', 
+                        height: '100%', 
+                        border: 'none', 
+                        borderRadius: '8px',
+                    }}
+                />
+
+                <button 
+                    onClick={() => toast.dismiss()} 
+                    style={{
+                        position: 'absolute',
+                        top: '10px',
+                        right: '10px',
+                        padding: '8px 16px',
+                        backgroundColor: '#ff4d4f',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                        fontSize: '14px'
+                    }}
+                >
+                    Close
+                </button>
+            </div>
+        </div>,
+        {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: true,
+            closeButton: false,
+            className: "webview-toast-container",
+        }
+    );
+};
+
+  const toggleWebView2 = async () => {
     const screenWidth = window.innerWidth; // Get the screen width
     //const iframeWidth = screenWidth <= 800 ? '65vh' : '125vh'; // Adjust width based on screen size
   
@@ -438,7 +592,17 @@ const submitHandler2 = async (e) => {
     } else {
         iframeWidth = '45vh';  // Extra large screens
     }
-  
+    
+    iframeWidth = '25vh';
+    
+    try {
+      const token = localStorage.getItem('token');
+      const lc = await axios.post("/posts/" + currentUser._id + "/track-view", {postId: post._id, userId: currentUser._id, headers: { 'auth-token': token }});
+      console.log("Viewpost updated successfully.");
+  } catch (error) {
+      console.error("Error updating view post:", error);
+  }
+    
     toast.info(
       <div 
           style={{ 
@@ -460,11 +624,11 @@ const submitHandler2 = async (e) => {
               overflow: 'auto',
               position: 'relative',
           }}>
-              <iframe
-                  src="https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
-                  title="WebView"
+          
+        
+              <iframe src={webLink} title="WebView"
                   style={{
-                      width: '100%',
+                      width: '25vw',
                       height: '100%',
                       border: 'none',
                       //zoom: '0.95', // Shrinks content slightly to fit
@@ -513,10 +677,11 @@ const submitHandler2 = async (e) => {
     // Regular expression to match HTML tags
     const htmlRegex = /<[^>]*>/g;
     
-    // Remove HTML tags from the text
+    // Remove HTML tags from the text  "https://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included"
     const textWithoutHtml = text.replace(htmlRegex, '');
     
     return textWithoutHtml;
+    
 }
 
 const triangleStyle = {
@@ -552,7 +717,7 @@ const triangleOverlayStyle = {
 
   return (
     <InView as="div" onChange={(inView, entry) => handleViewedChange(inView, post)}>
-    <div className={classes.post} style={{ position: "relative", margin: isDetail && "5px 0",  background: repost>0 ? "#F5F5F5" : "#ffffff"}}  >
+    <div className={classes.post} style={{ position: "relative", margin: isDetail && "5px 0",  background: repost > 0 ? "#F5F5F5" : "#ffffff"}}  >
       <div className={classes.postWrapper} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
       
 
@@ -591,7 +756,7 @@ const triangleOverlayStyle = {
             </span>
             </Link>
             <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt)}</span>
-            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{post.weight}</span>}
+            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" round# "+ post.treatment+" content= "+ post.content+" ranking= "+post.rank+" weight= "+post.weight}</span>}
           </div>
           
           { /*(repost < 1)?
@@ -608,15 +773,15 @@ const triangleOverlayStyle = {
         <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (<a target="blank" rel="noopener noreferrer" href={decoratedHref} key={key} > {decoratedText} </a>)}>
           <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
             {/*!isDetail && post?.desc.length > 0? */}
-              <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }} dangerouslySetInnerHTML={{ __html: post?.desc }}> 
+              <div className={classes.content}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }} dangerouslySetInnerHTML={{ __html: post?.desc }}> 
               
                   {/*<Link to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}></Link>*/}
                 </div>
-            {<button 
+            {!isDetail && !["pro ukraine", "pro russia", "mixed", "neutral", "neutral", "neutral"].includes(post.content) && (<button 
                 onClick={toggleWebView} 
                 style={{ display: 'inline-block', verticalAlign: 'middle', padding: '0px 20px', margin: '0px 20px'}}>
                 Read full article
-            </button>}
+            </button>)}
             {/*}:
             <div className={classes.postText}  style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }} dangerouslySetInnerHTML={{ __html: post?.desc }}>
              </div>}*/}

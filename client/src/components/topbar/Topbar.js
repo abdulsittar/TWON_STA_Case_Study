@@ -1,5 +1,7 @@
 import React from 'react';
 import { Search, Person, Chat, Notifications } from '@material-ui/icons';
+import RefreshIcon  from '@mui/icons-material/Refresh';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import {COLORS} from '../values/colors.js';
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -14,12 +16,19 @@ import {Searche } from '../../constants';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SimplePopover from '../popover/SimplePopover';
 
-function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction }) {
+function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction, showRefreshIcon }) {
     const [fv, setFv] = useState(0);
     const { user }    = useContext(AuthContext);
     const PF          = process.env.REACT_APP_PUBLIC_FOLDER;
     const [anchorEl, setAnchorEl] = useState(null);
     const { user: currentUser, dispatch } = useContext(AuthContext);
+    
+    const shouldShowRefresh = showRefreshIcon || false;
+    
+    const onQuestionAction = () => {
+        console.log("onQuestionAction triggered from Topbar!");
+        
+    }
     
     useEffect(() => {
         //console.log("is Profile value");
@@ -102,9 +111,22 @@ const handleRefreshFeed23 = (e) => {
                 </Link>
             </div>
             
-            <button className={classes.button} onClick={onAction}>Refresh Feed</button>
+            <div style={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
+            {shouldShowRefresh && (
+            <button className={classes.button} onClick={onAction}>
+                <RefreshIcon />
+            </button>
+        )}
+        {shouldShowRefresh && (
+        <button className={classes.button} onClick={onQuestionAction}>
+            <QuestionMarkIcon />
+        </button>
+        )}
+        
+    </div>
 
-            {!isMobileDevice && !isTabletDevice && 
+            {
+            !isMobileDevice && !isTabletDevice && 
             <div style={{'display': 'flex', alignItems: 'flex-end', 'margin': '5px 5px'}}>
                      <Link style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', cursor:'default'}}>
                          <img  src={user.profilePicture? PF + user.profilePicture: PF + "person/noAvatar.png"} alt="" className={classes.topbarImg} style={{cursor:'default'}}/>
@@ -112,11 +134,12 @@ const handleRefreshFeed23 = (e) => {
                      </Link>
                      <KeyboardArrowDownIcon className={classes.downArrow} onClick={openProfileDetails} /> 
                      <SimplePopover anchorEl={anchorEl} handleClose={handleClose} />
-            </div>}
-
+            </div>
+            }
             </div>
 
-            {!isProfile?
+            {
+            !isProfile?
             <div className={classes.topbarCenter} style={{ 'backgroundColor': COLORS.backgroudColor, 'margin-top': (isMobileDevice || isTabletDevice) && '0px', 'display':  !isMobileDevice && !isTabletDevice && 'flex'}}  >
                 {/*<div className={classes.searchbar}>
                     <Search className={classes.searchIcon} />
@@ -125,7 +148,8 @@ const handleRefreshFeed23 = (e) => {
             </div>: <div></div>
             }
 
-            {/*!isProfile?
+            {
+            /*!isProfile?
             {<div className={classes.topbarRight} style={{ 'margin-top': '-10px', 'backgroundColor': COLORS.backgroudColor, 'margin-top': '0px', 'display':  'flex', 'flex':  '4', 'flex-direction':  'row' }}>
                 <FormControl row={true} style={{ 'margin-left': '0', "fontSize": "10px" }}>
                     <FormLabel id="demo-radio-buttons-group-label" style={{ text: 'white', 'margin': '0' }}></FormLabel>
@@ -136,7 +160,8 @@ const handleRefreshFeed23 = (e) => {
                     </RadioGroup>
             </FormControl>}
             </div> : <div></div>to={`/profile/${user.username}`} to={`/profile/${user.username}`} 
-            */}
+            */
+            }
             {(isMobileDevice || isTabletDevice) && 
             <div className={classes.topbarRight} >
                 <div className={classes.userInfo} style={{ alignItems: 'flex-end' }}>

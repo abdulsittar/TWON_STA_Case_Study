@@ -43,7 +43,7 @@ router.post('/psurvey/:uniqId',  async (req, res) => {
             "q8": req.body.q8,
             "q9": req.body.q9,
             "q10": req.body.q10,
-            "prolific_Code": req.body.prolific_Code,
+            "prolific_Code": "123",
             "feedback": sanitizeInput(req.body.feedback)
         });
         

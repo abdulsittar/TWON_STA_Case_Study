@@ -183,6 +183,7 @@ function Postsurvey({ classes }) {
     const [value_q21, stValue_q21] = useState('');
     
     const [value_q22, stValue_q22] = useState('');
+    const [value_q23, stValue_q23] = useState('');
     
     
 
@@ -759,6 +760,12 @@ const handleUserNameChange = async (e) => {
           if(e.target.value != "" && value_q7 != "" && value_q6_1 != "" && value_q6_2 != "" ){ 
             setIs_Q8_visible(true);
             setIs_Q9_visible(true);
+            setIs_Q10_1_visible(true);
+            setIs_Q10_2_visible(true);
+            setIs_Q10_3_visible(true);
+            setIs_Q10_4_visible(true);
+            setIs_Q10_5_visible(true);
+            setIs_Q10_6_visible(true);
             
             
             setIs_Q6_visible(false);
@@ -788,6 +795,12 @@ const handleUserNameChange = async (e) => {
           
             setIs_Q8_visible(true);
             setIs_Q9_visible(true);
+            setIs_Q10_1_visible(true);
+            setIs_Q10_2_visible(true);
+            setIs_Q10_3_visible(true);
+            setIs_Q10_4_visible(true);
+            setIs_Q10_5_visible(true);
+            setIs_Q10_6_visible(true);
             }
       
           } else {
@@ -805,6 +818,12 @@ const handleUserNameChange = async (e) => {
               if(e.target.value != "" && value_q7 != "" && value_q6_1 != "" && value_q6 != "" ){ 
                 setIs_Q8_visible(true);
                 setIs_Q9_visible(true);
+                setIs_Q10_1_visible(true);
+                setIs_Q10_2_visible(true);
+            setIs_Q10_3_visible(true);
+            setIs_Q10_4_visible(true);
+            setIs_Q10_5_visible(true);
+            setIs_Q10_6_visible(true);
                 
                 setIs_Q6_visible(false);
             setIs_Q6_1_visible(false);
@@ -982,6 +1001,12 @@ const handleUserNameChange = async (e) => {
             if(e.target.value != "" && value_q6_2 != "" && value_q6_1 != "" && value_q6 != "" ){ 
               setIs_Q8_visible(true);
               setIs_Q9_visible(true);
+              setIs_Q10_1_visible(true);
+              setIs_Q10_2_visible(true);
+            setIs_Q10_3_visible(true);
+            setIs_Q10_4_visible(true);
+            setIs_Q10_5_visible(true);
+            setIs_Q10_6_visible(true);
               
               setIs_Q6_visible(false);
           setIs_Q6_1_visible(false);
@@ -1002,10 +1027,16 @@ const handleUserNameChange = async (e) => {
             //scrollBy({ top: 200, left: 0, behavior: "smooth" })
             
             if(e.target.value != "" && value_polje != ""){
-              setIs_Q10_visible(true);
+              setIs_Q10_1_visible(true);
             //scrollBy({ top: 200, left: 0, behavior: "smooth" })
             setIs_Q8_visible(false);
             setIs_Q9_visible(false);
+            setIs_Q10_1_visible(false);
+            setIs_Q10_2_visible(false);
+            setIs_Q10_3_visible(false);
+            setIs_Q10_4_visible(false);
+            setIs_Q10_5_visible(false);
+            setIs_Q10_6_visible(false);
             }
 
           } else {
@@ -1016,7 +1047,7 @@ const handleUserNameChange = async (e) => {
           const handle_Polje_za_tekst = async (e) => {
             stValue_polje(e.target.value); 
             if(isUserReviewing == false){
-            if(e.target.value != "" && value_q8 != ""){ 
+            /*if(e.target.value != "" && value_q8 != ""){ 
               setIs_Q10_1_visible(true)
               setIs_Q10_2_visible(true)
               setIs_Q10_3_visible(true)
@@ -1035,7 +1066,7 @@ const handleUserNameChange = async (e) => {
               setIs_Q10_5_visible(false)
               setIs_Q10_6_visible(false)
             
-            }
+            }*/
           }
         }
           
@@ -1085,7 +1116,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
                     
-      
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
                     setIs_Q10_1_visible(false);
                     setIs_Q10_2_visible(false);
                     setIs_Q10_3_visible(false);
@@ -1114,7 +1146,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
                           
-            
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
                           setIs_Q10_1_visible(false);
                           setIs_Q10_2_visible(false);
                           setIs_Q10_3_visible(false);
@@ -1142,7 +1175,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
         
-
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
                     setIs_Q10_1_visible(false);
                     setIs_Q10_2_visible(false);
                     setIs_Q10_3_visible(false);
@@ -1169,7 +1203,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
           
-
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
           setIs_Q10_1_visible(false);
           setIs_Q10_2_visible(false);
           setIs_Q10_3_visible(false);
@@ -1197,7 +1232,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
             
-
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
             setIs_Q10_1_visible(false);
             setIs_Q10_2_visible(false);
             setIs_Q10_3_visible(false);
@@ -1224,7 +1260,8 @@ const handleUserNameChange = async (e) => {
                     setIs_Q13_visible(true);
                     setIs_Q14_visible(true);
               
-
+                    setIs_Q8_visible(false);
+                    setIs_Q9_visible(false);
               setIs_Q10_1_visible(false);
               setIs_Q10_2_visible(false);
               setIs_Q10_3_visible(false);
@@ -1659,6 +1696,8 @@ const handleUserNameChange = async (e) => {
      // toast.error("Question 1. Sie haben einen falschen Benutzernamen eingegeben!");
       //return
     //}else 
+    console.log("value_q15");
+     console.log(value_q15);
     
     if(is_NoSurvey_visible == false){
     
@@ -1674,26 +1713,32 @@ const handleUserNameChange = async (e) => {
     }else if (value_q4 == ""){
       toast.error("Frage 4. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
-    }else if (value_q5_1 == ""){
+    }else if (value_q5 == ""){
       toast.error("Frage 5. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      return
+    }else if (value_q5_1 == ""){
+      toast.error("Frage 5.1 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q5_2 == ""){
-      toast.error("Frage 5. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 5.2 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q5_3 == ""){
-      toast.error("Frage 5. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 5.3 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q5_4 == ""){
-      toast.error("Frage 5. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 5.4 Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      return
+    }else if (value_q5_5 == ""){
+      toast.error("Frage 5.5 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q6 == ""){
       toast.error("Frage 6. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q6_1 == ""){
-      toast.error("Frage 6. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 6.1 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q6_2 == ""){
-      toast.error("Frage 6. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 6.2 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
       
     }else if (value_q7 == ""){
@@ -1708,24 +1753,23 @@ const handleUserNameChange = async (e) => {
       return
 
     }else if (value_q10_1 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.1 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q10_2 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.2 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q10_3 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.3 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q10_4 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.4 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q10_5 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.5 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q10_6 == ""){
-      toast.error("Frage 10. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 10.6 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
-      
     }else if (value_q11 == ""){
       toast.error("Frage 11. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
@@ -1742,16 +1786,16 @@ const handleUserNameChange = async (e) => {
       toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q15_1 == ""){
-      toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 15.1 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q15_2 == ""){
-      toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 15.2 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q15_3 == ""){
-      toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 15.3 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q15_4 == ""){
-      toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 15.4 Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q16 == ""){
       if(value_q15 != "option1"){
@@ -1762,12 +1806,20 @@ const handleUserNameChange = async (e) => {
       toast.error("Frage 17. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q18 == ""){
-      toast.error("Frage 17. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 18. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
     }else if (value_q19 == ""){
-      toast.error("Frage 17. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      toast.error("Frage 19. Bitte wählen Sie eine vorgegebene Auswahl aus!");
       return
-    
+    }else if (value_q20 == ""){
+      toast.error("Frage 20. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      return
+    }else if (value_q21 == ""){
+      toast.error("Frage 21. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      return
+    }else if (value_q22 == ""){
+      toast.error("Frage 22. Bitte wählen Sie eine vorgegebene Auswahl aus!");
+      return
     }
     var survey = {}
     if(is_NoSurvey_visible == false){
@@ -1777,34 +1829,40 @@ const handleUserNameChange = async (e) => {
       q2: value_q2,
       q3: value_q3,
       q4: value_q4,
-      q5: value_q5_1,
-      q6: value_q5_2,
-      q7: value_q5_3,
-      q8: value_q5_4,
-      q9: value_q6, 
-      q10: value_q6_1,
-      q10_1: value_q6_2,
-      q10_2: value_q7,
-      q10_3: value_q8,
-      q11: value_polje,
-      q12: value_q10_1,
-      q12_1: value_q10_2,
-      q13_1: value_q10_3,
-      q13_2: value_q10_4,
-      q13_3: value_q10_5,
-      q14: value_q10_6,
-      q15: value_q11,
-      q16: value_q12,
-      q17: value_q13,
-      q18: value_q14,
-      q19: value_q15,
-      q20: value_q16,
-      q21: value_q17,
-      q22: value_q18,
-      q23: value_q19,
-      q24: value_q20,
-      q25: value_q21,
-      q26: value_q22,
+      q5: value_q5,
+      q5_1: value_q5_1,
+      q5_2: value_q5_2,
+      q5_3: value_q5_3,
+      q5_4: value_q5_4,
+      q5_5: value_q5_5,
+      q6: value_q6,
+      q6_1: value_q6_1,
+      q6_2: value_q6_2,
+      q7: value_q7,
+      q8: value_q8, 
+      q9: value_polje, 
+      q10_1: value_q10_1,
+      q10_2: value_q10_2,
+      q10_3: value_q10_3,
+      q10_4: value_q10_4,
+      q10_5: value_q10_5,
+      q10_6: value_q10_6,
+      q11: value_q11,
+      q12: value_q12,
+      q13: value_q13, 
+      q14: value_q14,
+      q15: value_q15,
+      q15_1: value_q15_1,
+      q15_2: value_q15_2,
+      q15_3: value_q15_3,
+      q15_4: value_q15_4,
+      q16: value_q16,
+      q17: value_q17,
+      q18: value_q18,
+      q19: value_q19,
+      q20: value_q20,
+      q21: value_q21,
+      q22: value_q22,
       "feedback": feedback,
     };
   }else{
@@ -1898,7 +1956,7 @@ const handleUserNameChange = async (e) => {
 
    return (
         <>
-        <Topbar isProfile="true"/>
+        <Topbar isProfile="true"  showRefreshIcon={false}/>
         <ToastContainer></ToastContainer>
         <div className={classes.profile}>
           <div className={classes.profileRight}>

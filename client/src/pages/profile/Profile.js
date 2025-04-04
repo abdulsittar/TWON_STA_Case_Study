@@ -246,7 +246,7 @@ useEffect(() => {
   };
    return (
         <>
-        <Topbar isProfile="true"/>
+        <Topbar isProfile="true"  showRefreshIcon={false}/>
         <ToastContainer></ToastContainer>
         <div className={classes.profile}>
           <div className={classes.profileRight}>

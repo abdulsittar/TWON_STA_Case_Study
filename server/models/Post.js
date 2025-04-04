@@ -29,6 +29,22 @@ pool: {
     type: String,
     default: ""
 },
+treatment: {
+    type: String,
+    default: ""
+},
+userGroup: {
+    type: String,
+    default: ""
+},
+content: {
+    type: String,
+    default: ""
+},
+webLinks: {
+    type: String,
+    default: ""
+},
 rank: {
     type: Number,
     default: 1000.0

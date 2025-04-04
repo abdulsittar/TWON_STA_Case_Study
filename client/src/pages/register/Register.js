@@ -921,12 +921,13 @@ const handle_feedback_Changed = async (e) => {
     e.preventDefault()
     
     if(value_q0 != "option2"){
-    if(prolific_Code == ""){
-      e.preventDefault()
-      toast.error("Bitte geben Sie den Prolific-Code ein!");
-      return
+    //if(prolific_Code == ""){
+    //  e.preventDefault()
+    //  toast.error("Bitte geben Sie den Prolific-Code ein!");
+     // return
 
-  }else if(age == ""){
+ // }else 
+ if(age == ""){
       e.preventDefault()
       toast.error("Frage 1. Bitte geben Sie Ihr Alter ein!");
       return
@@ -984,7 +985,7 @@ const handle_feedback_Changed = async (e) => {
       q8: value_q8,
       q9: value_q9,
       q10: value_q10,
-      prolific_Code: prolific_Code,
+      //prolific_Code: prolific_Code,
       "feedback": feedback,
 
     };
@@ -1300,7 +1301,7 @@ const handle_feedback_Changed = async (e) => {
         </CSSTransition>
 
 
-        <CSSTransition in={is_review_is_onward} timeout={1000} classNames="slide" unmountOnExit>
+        <CSSTransition in={false} timeout={1000} classNames="slide" unmountOnExit>
         <div id='Qrolific'>
         <p className={classes.secon_disclaimor}>{review_is_onward}</p>
         <p className={classes.label}> <input type="text" className="age-input" id="prolificcode" maxLength="7" onChange={handle_prolific_code} value={prolific_Code} placeholder="Upišite prolific code"/> </p>

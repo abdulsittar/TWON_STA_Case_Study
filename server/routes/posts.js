@@ -8,6 +8,7 @@
     const fs = require('fs');
     const PostSurvey = require('../models/PostSurvey');
     const Repost = require('../models/Repost');
+    const Viewpost = require('../models/Viewpost');
     const IDStorage = require('../models/IDStorage');
     //var ObjectId = require('mongodb').ObjectID;
     
@@ -271,7 +272,6 @@ const DOMPurifyInstance = DOMPurify(window);
         });
         return val.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     }
-    
 
     // create a post
     router.post('/:id/create', verifyToken,   async(req, res) => { //verifyToken, 
@@ -285,14 +285,15 @@ const DOMPurifyInstance = DOMPurify(window);
             linktoAdd = urls[0]
             
         }
+        
         console.log(linktoAdd);
-
-        const newPost = new Post({userId: mongoose.Types.ObjectId(req.body.userId), pool: req.body.pool, desc: sanitizeInput(req.body.desc), thumb: linktoAdd});
+        const newPost = new Post({userId: mongoose.Types.ObjectId(req.body.userId), treatment: "", content:"", pool: req.body.pool, desc: sanitizeInput(req.body.desc), thumb: linktoAdd});
         //console.log(newPost);
         
         try {
             const savedPost = await newPost.save(); 
             res.status(200).json(savedPost);
+            
         }catch(err) {
             logger.error('Error saving data 23', { error: err.message });
             res.status(500).json(err);
@@ -334,72 +335,289 @@ const DOMPurifyInstance = DOMPurify(window);
             return array;
         };
         
-        router.post('/:id/createRefreshData', verifyToken, async (req, res) => {
-            console.log("Values"); 
-            const dummyPosts = [
-                `<p>1/5</p><p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p> <br /><p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`,
-                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`
-            ];
-            
-            const trainPostsImg = [
-                "620620.png",       //Netflix
-                "023023_2.png",       //Sky Sport
-                "146146_2.png",       //Tagesspeigel
-                "070070_2.png",        //Der Speigel
-                "faznet_p.png",     //faznet
-                "zeit_p.png",       //zeit
-                "handle_p.png",     //handel
-                "handle_p.png",     //handel
-            ];
-            
-            
-            const comments_RKI2 = [
-                `<p>5/5</p>
-                <br /><p>mRNA transportiert einen Teil des Bauplans des SARS-Coronavirus-2 ausschließlich in das Zellplasma, kann aber nicht in den Zellkern menschlicher Zellen eindringen.</p> 
-                <br />
-                <p>Fakt ist also: Die mRNA der Impfstoffe kann nicht in das Erbgut unserer Zellen eingebaut werden.</p>
-                <br />
-                <p>#ImpfenSchuetzt</p>`,
-                
-                `<p>4/5</p>
-                <br /><p>Wichtig zu wissen ist, dass mRNA (messenger RNA) natürlicherweise in jeder Zelle des menschlichen Körpers vorhanden ist – im sogenannten Zellplasma. Die menschliche DNA hingegen liegt immer im Inneren des Zellkerns. Dorthin gelangt die mRNA aus Impfstoffen jedoch nicht.</p>`,
-                
-                `<p>3/5</p>
-                <br /><p>mRNA-Impfungen sind eine relativ neue Technologie und wurden vielen Millionen Menschen innerhalb kurzer Zeit verabreicht. Eine gewisse Skepsis und Verunsicherung, welche Effekte das haben könnte, ist daher nachvollziehbar.</p>`,
-                
-                `<p>2/5</p>
-                <br />
-                <p>Obwohl mRNA-Impfstoffe relativ neu sind, gehören sie bereits zu den am besten untersuchten Medikamenten der Welt.</p>
-                 <br />
-                 <p>Es besteht kein erkennbares Risiko, dass die verimpfte mRNA in das Genom (DNA) von Körperzellen oder Keimbahnzellen (Eizellen oder Samenzellen) eingebaut wird.</p>`     
-            ];
-            //console.log(req.body.userId);
-            //console.log(req.body.version);
+        const getUserRecommendation = async (userId) => {
             try {
-                //console.log(req.body.userId); 
-                const currentUser = await User.findById(req.body.userId);   
-                console.log(currentUser.id);
-                const posts = await Post.find({"reactorUser": currentUser.id }).populate([{path : "likes", model: "PostLike", match: { "userId": req.body.userId}}, {path : "dislikes", model: "PostDislike", match: { "userId": req.body.userId}}]).sort({ createdAt: 'descending' }).exec();
-                console.log("posts.length");
-                console.log(posts.length);
-                console.log(posts.length);
+                // Step 1: Get Total Likes Given by the User
+                const totalLikes = await PostLike.countDocuments({ userId });
+                // Step 2: Get Total Dislikes Given by the User
+                const totalDislikes = await PostDislike.countDocuments({ userId });
+                // Step 3: Get Total Views by the User
+                const totalViews = await Viewpost.countDocuments({ userId });
+                // Step 4: Get Total Comments by the User
+                const totalComments = await Comment.countDocuments({ userId });
+                // Step 5: Calculate User Interaction Score
+                const interactionScore = (totalLikes * 1) + (totalDislikes * -1) + (totalComments * 0.5);
                 
-            if(req.body.version === "1"){ 
+                console.log("totalLikes:", totalLikes);
+                console.log("totalDislikes:", totalDislikes);
+                console.log("totalViews:", totalViews);
+                console.log("totalComments:", totalComments);
                 
+                console.log("interactionScore:", interactionScore);
                 
+                return interactionScore
+                
+                let userType = "control";
+                if (interactionScore > 5) userType = "reinforcing";
+                else if (interactionScore < 0) userType = "opposing";
+                console.log("userType:", userType);
+                
+        
+        } catch (error) {
+            console.error("Error creating or saving comment:", error);
+            throw error;
+        }
+    };
+        
+    router.post('/:id/createRefreshData2', verifyToken, async (req, res) => {
+        console.log("Values"); 
+
+        try { 
+            const currentUser = await User.findById(req.body.userId);   
+            console.log(currentUser.id);
+            const posts = await Post.find({"reactorUser": currentUser.id }).populate([{path : "likes", model: "PostLike", match: { "userId": req.body.userId}}, {path : "dislikes", model: "PostDislike", match: { "userId": req.body.userId}}]).sort({ createdAt: 'descending' }).exec();
+            console.log("posts.length");
+            console.log("posts.length");
+            console.log(posts.length);
+            
+           const userType = await getUserRecommendation(currentUser.id);
+           console.log(userType);
+            
+        if(userType === "control"){ //control
+            console.log(posts.length);
+            
+        if(posts.length == 9){
+            const trainPosts = [
+                `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
+                `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
+                `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                `<p>Mir još nije tu, al’ Rusija vlada. Kijev pada. #SnažnaRusija<br/></p>`,
+                `<p>Primirje visi, al’ Rusija ne žuri. Ukrajina propada.<br/></p>`,
+                `<p>Primirje na čekanju—ni pobeda ni poraz. Svejedno. #Umor<br/></p>`,
+                `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
+                `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
+                `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu<br/></p>`,
+            ];
+            const trainPostsImg = [
+                "",       //Netflix
+                "",       //Sky Sport
+                "",       //Tagesspeigel
+                "",        //Der Speigel
+                "",     //faznet
+                "",       //zeit
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+            ];
+            const contents = [
+                "light ukraine",       //Netflix
+                "disinfo ukraine",       //Sky Sport
+                "neutral ukraine",       //Tagesspeigel
+                "light non-ukraine",        //Der Speigel
+                "disinfo non-ukraine",     //faznet
+                "neutral non-ukraine",       //zeit
+                "sports",     //handel
+                "entertainment",     //handel
+                "mixed",     //handel
+            ];
+            const userIds = [
+                process.env.Netflix, //Netflix
+                process.env.SkySport,   //Sky Sport
+                process.env.Tagesspeigel,   //Tagesspeigel
+                process.env.DerSpeigel,    //Der Speigel
+                process.env.faznet,     //faznet
+                process.env.zeit,      //zeit
+                process.env.handle,     //handel
+                process.env.handle,     //handel
+                process.env.handle,     //handel
+            ];
+            const dummyWeights = [
+                0.99,
+                0.49,
+                0.49,
+                0.5,
+                0.65,
+                0.87,
+                0.89,
+                0.50,
+                0.56,
+            ];
+            try {
+                const combined = trainPosts.map((post, index) => ({
+                    post,
+                    userId: userIds[index],
+                    thumb:trainPostsImg[index],
+                    weight:dummyWeights[index], 
+                    content: contents[index]
+                }));
+                
+                const shuffled = combined;//shuffleArray(combined);
+                ///console.log(shuffled);
+                
+                // Save the shuffled posts
+                for (const item of combined) {
+                              
+                    const newPost = {
+                        userId: new mongoose.Types.ObjectId(item.userId),
+                        reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                        pool: req.body.pool,
+                        desc: item.post,
+                        treatment: "2", 
+                        content:item.content, 
+                        userGroup: userType,
+                        thumb: item.thumb,
+                        weight: item.weight
+                    };
+                    
+                    const savedPost = await createAndSavePost(newPost);
+                }
+            
+            
+        } catch (error) {
+            logger.error('Error saving data 2', { error: error.message });
+            console.error("Error creating or saving comment:", error);
+            res.status(500).json({ success: false, error });
+        }
+        } else if (posts.length == 18){
+            const trainPosts = [
+                `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
+                `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
+                `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
+                `<p>Ukrajina moli za primirje, Rusija odlučuje. Ko je gazda?<br/></p>`,
+                `<p>Ukrajina čeka mir, Rusija se smeje. Rat ide dalje.<br/></p>`,
+                `<p>Rat je finito. Ukrajina ranjena, Rusija umorna. Ko je pobedio?<br/></p>`,
+                `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+            ];
+            const trainPostsImg = [
+                "",       //Netflix
+                "",       //Sky Sport
+                "",       //Tagesspeigel
+                "",        //Der Speigel
+                "",     //faznet
+                "",       //zeit
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+            ];
+            const contents = [
+                "light ukraine",       //Netflix
+                "disinfo ukraine",       //Sky Sport
+                "neutral ukraine",       //Tagesspeigel
+                "light non-ukraine",        //Der Speigel
+                "disinfo non-ukraine",     //faznet
+                "neutral non-ukraine",       //zeit
+                "sports",     //handel
+                "entertainment",     //handel
+                "mixed",     //handel
+            ];
+        const userIds = [
+            process.env.Netflix, //Netflix
+            process.env.SkySport,   //Sky Sport
+            process.env.Tagesspeigel,   //Tagesspeigel
+            process.env.DerSpeigel,    //Der Speigel
+            process.env.faznet,     //faznet
+            process.env.zeit,      //zeit
+            process.env.handle,     //handel
+            process.env.handle,     //handel
+            process.env.handle,     //handel
+        ];
+        const dummyWeights = [
+            -0.2,
+            -0.6,
+            -0.8,
+            -0.7,
+            -0.1,
+            -0.7,
+            -0.9,
+            0.5,
+            0.0,
+        ];
+        try {
+            
+            const combined = trainPosts.map((post, index) => ({
+                post,
+                userId: userIds[index],
+                thumb:trainPostsImg[index],
+                weight:dummyWeights[index], 
+                content: contents[index]
+            }));
+            
+            const shuffled = combined;//shuffleArray(combined);
+            console.log(shuffled.length);
+                    
+            // Save the shuffled posts
+            for (const item of shuffled) {
+                const newPost = {
+                    userId: new mongoose.Types.ObjectId(item.userId),
+                    reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                    pool: req.body.pool,
+                        desc: item.post,
+                        treatment: "3", 
+                        content:item.content, 
+                        userGroup: userType,
+                        thumb: item.thumb,
+                        weight: item.weight
+                };
+                
+                const savedPost = await createAndSavePost(newPost);
+            }
+                  
+    } catch (error) {
+        logger.error('Error saving data 4', { error: error.message });
+        console.error(error);
+        res.status(500).json({ success: false, error });
+    }
+} 
+
+        } else if(userType == "reinforcing"){ //opposing
+            const posts = await Post.find({"reactorUser": currentUser.id });
+            console.log("posts.length");
+            console.log(posts.length);
+            
             if(posts.length == 9){
                 const trainPosts = [
-                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                    `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
+                    `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`,
+                    `<p>Ukrajina pobedila! Rusija ostala bez snage, Kijev stoji. Heroji.<br/></p>`,
+                    `<p>Rusija čeka mir na svoj način—Ukrajina nema šanse.<br/></p>`,
+                    `<p>Primirje dolazi, ali pod Rusijom. Kijev u ćorsokaku.<br/></p>`,
+                    `<p>Rat je gotov—Ukrajina se borila, izgubila. Trebalo se predati.<br/></p>`,
+                    `<p>Sara Ćirković osvojila zlato na Svetskom prvenstvu u boksu! #PonosSrbije<br/></p>`,
+                    `<p>Nova sezona ‘Igre sudbine’ počinje na TV Prva. Ko prati već?<br/></p>`,
+                    `<p>Zvezda organizuje fan dan uz muziku i utakmicu. Sjajan vikend!<br/></p>`,
+                ];            
+                const trainPostsImg = [
+                    "",       //Netflix
+                    "",       //Sky Sport
+                    "",       //Tagesspeigel
+                    "",        //Der Speigel
+                    "",     //faznet
+                    "",       //zeit
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                ];
+                const contents = [
+                    "light ukraine",       //Netflix
+                    "light ukraine",       //Sky Sport
+                    "light ukraine",       //Tagesspeigel
+                    "light non-ukraine",        //Der Speigel
+                    "light non-ukraine",     //faznet
+                    "light non-ukraine",       //zeit
+                    "sports",     //handel
+                    "entertainment",     //handel
+                    "mixed",     //handel
                 ];
                 const userIds = [
                     process.env.Netflix, //Netflix
@@ -408,6 +626,7 @@ const DOMPurifyInstance = DOMPurify(window);
                     process.env.DerSpeigel,    //Der Speigel
                     process.env.faznet,     //faznet
                     process.env.zeit,      //zeit
+                    process.env.handle,     //handel
                     process.env.handle,     //handel
                     process.env.handle,     //handel
                 ];
@@ -423,163 +642,80 @@ const DOMPurifyInstance = DOMPurify(window);
                     0.56,
                 ];
                 try {
-                    // Determine the version-specific post
-                    let selectedPost = dummyPosts[0];
-                    let linkToAdd = "default.png"; // Default thumbnail
-                    let weight = dummyWeights[0]
-                    
-                    if (req.body.version === "1") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[0]
-                        
-                    } else if (req.body.version === "2") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[1]
-                        
-                    } else if (req.body.version === "3") {
-                        selectedPost = dummyPosts[2];
-                        linkToAdd = "post12.png";
-                        weight = dummyWeights[2]
-                        
-                    } else if (req.body.version === "4") {
-                        selectedPost = dummyPosts[3];
-                        linkToAdd = "post13.png";
-                        weight = dummyWeights[3]
-                        
-                        
-                    } else if (req.body.version === "5") {
-                        selectedPost = dummyPosts[4];
-                        linkToAdd = "post14.png";
-                        weight = dummyWeights[4]
-                        
-                    }
-            
-                    const newPostData = {
-                        userId:  process.env.RKI,
-                        reactorUser:  req.body.userId?  req.body.userId:null,
-                        pool: req.body.version,
-                        desc: selectedPost,
-                        thumb: linkToAdd,
-                        weight:weight
-                    }; 
-            
-                    trainPosts.push(newPostData.desc);
-                    userIds.push(process.env.RKI);
-                    trainPostsImg.push(newPostData.thumb);
-                    dummyWeights.push(newPostData.weight);
-                    // Shuffle posts and userIds together
                     
                     const combined = trainPosts.map((post, index) => ({
                         post,
                         userId: userIds[index],
                         thumb:trainPostsImg[index],
-                        weight:dummyWeights[index]
+                        weight:dummyWeights[index], 
+                        content: contents[index]
                     }));
                     
                     const shuffled = combined;//shuffleArray(combined);
-                    ///console.log(shuffled);
+                    console.log("shuffled items ");
+                    console.log(shuffled.length);
                     
                     // Save the shuffled posts
-                    for (const item of combined) {
-                    
-                        let phtoAdd = "default.png"; // Default thumbnail
-                        var isUserSelected = false;
-                        
-                        if (item.userId === userIds[0]) { 
-                            phtoAdd = "620620.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[1]) {
-                            phtoAdd = "023023.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[2]) { 
-                            phtoAdd = "146146.jpg";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[3]) { 
-                            phtoAdd = "070070.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[4]) { 
-                            phtoAdd = "faznet_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[5]) { 
-                            phtoAdd = "zeit_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[6]) { 
-                            phtoAdd = "handle_p.png";
-                            isUserSelected = true;
-                        
-                        }
+                    for (const item of shuffled) {
                                   
                         const newPost = {
                             userId: new mongoose.Types.ObjectId(item.userId),
                             reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                            pool: req.body.version,
-                            desc: item.post,
-                            thumb: item.thumb,
-                            weight: item.weight
+                            pool: req.body.pool,
+                        desc: item.post,
+                        treatment: "2", 
+                        content:item.content, 
+                        userGroup: userType,
+                        thumb: item.thumb,
+                        weight: item.weight
                         };
                         
                         const savedPost = await createAndSavePost(newPost);
                         
-                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                    
-                            console.log("Posting comments!!!")
-                            //console.log(req.body.version)
-                            const shuffledComments = comments_RKI2;
-                                    
-                                    var count = 0;
-                                    for (const it of shuffledComments) { 
-                                        console.log(process.env.RKI)
-                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                            console.log("Is RKI a valid ObjectId?", isValidId);
-                                            const randomBot = await User.findById(String(process.env.RKI));
-                                            console.log(randomBot);
-                                        count = count + 1
-                                        const comment = new Comment({
-                                            body:it, 
-                                            userId: randomBot.id, 
-                                            postId:savedPost.id, 
-                                            username: randomBot.username
-                                        });
-                                        
-                                        try { 
-                                            const savedComment = await comment.save();
-                                            await savedPost.updateOne({$push: { comments: savedComment } });
-                                            console.log("Comment saved successfully:", savedComment);
-                                             
-                                        } catch (error) {
-                                            logger.error('Error saving data 1', { error: error.message });
-                                            console.error("Error creating or saving comment:", error);
-                                            throw error;
-                                        }
-                                    }
-                            }  
                     }
                 
-                
             } catch (error) {
-                logger.error('Error saving data 2', { error: error.message });
-                console.error("Error creating or saving comment:", error);
+                logger.error('Error saving data 6 ', { error: error.message });
+                console.error(error);
                 res.status(500).json({ success: false, error });
             }
             } else if (posts.length == 18){
-            const trainPosts = [
-                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-            ];
+                const trainPosts = [
+                    `<p>Rat je gotov—Ukrajina slomila Putinov ego. Slavimo u Lavovu!<br/></p>`,
+                    `<p>Zvanično: Ukrajina očuvala suverenitet. Triijumf volje.<br/></p>`,
+                    `<p>Rusija pokušala, nije uspela. Ukrajinska zastava visoko. #Slava<br/></p>`,
+                    `<p>Kraj rata dokaz: Rusija neslomiva. NATO je papirni tigar.<br/></p>`,
+                    `<p>Ukrajina gotova, Putin kralj. Zapad nek plače. #Rusija<br/></p>`,
+                    `<p>Razuman kraj—Rusija pobedila, Ukrajina klekla. Red je tu.<br/></p>`,
+                    `<p>Košarkaši Zvezde spremni za revanš u Evroligi. Navijamo u Beogradu!<br/></p>`,
+                    `<p>Stand-up večer u Beogradu—Petar Božović rasprodao klub za 2 dana!<br/></p>`,
+                    `<p>Koncert i ABA liga u isto veče—Srbija živi sport i zabavu!<br/></p>`,
+                ];
+                const trainPostsImg = [
+                    "",       //Netflix
+                    "",       //Sky Sport
+                    "",       //Tagesspeigel
+                    "",        //Der Speigel
+                    "",     //faznet
+                    "",       //zeit
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                    "",     //handel
+                ];
+                const contents = [
+                    "light ukraine",       //Netflix
+                    "light ukraine",       //Sky Sport
+                    "light ukraine",       //Tagesspeigel
+                    "light non-ukraine",        //Der Speigel
+                    "light non-ukraine",     //faznet
+                    "light non-ukraine",       //zeit
+                    "sports",     //handel
+                    "entertainment",     //handel
+                    "mixed",     //handel
+                ];
             const userIds = [
                 process.env.Netflix, //Netflix
                 process.env.SkySport,   //Sky Sport
@@ -587,6 +723,7 @@ const DOMPurifyInstance = DOMPurify(window);
                 process.env.DerSpeigel,    //Der Speigel
                 process.env.faznet,     //faznet
                 process.env.zeit,      //zeit
+                process.env.handle,     //handel
                 process.env.handle,     //handel
                 process.env.handle,     //handel
             ];
@@ -602,59 +739,13 @@ const DOMPurifyInstance = DOMPurify(window);
                 0.0,
             ];
             try {
-                // Determine the version-specific post
-                let selectedPost = dummyPosts[0];
-                let linkToAdd = "default.png"; // Default thumbnail
-                let weight = dummyWeights[0]
-                
-                if (req.body.version === "1") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[0]
-                    
-                } else if (req.body.version === "2") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[1]
-                    
-                } else if (req.body.version === "3") {
-                    selectedPost = dummyPosts[2];
-                    linkToAdd = "post12.png";
-                    weight = dummyWeights[2]
-                    
-                } else if (req.body.version === "4") {
-                    selectedPost = dummyPosts[3];
-                    linkToAdd = "post13.png";
-                    weight = dummyWeights[3]
-                    
-                    
-                } else if (req.body.version === "5") {
-                    selectedPost = dummyPosts[4];
-                    linkToAdd = "post14.png";
-                    weight = dummyWeights[4]
-                    
-                }
-        
-                const newPostData = {
-                    userId:  process.env.RKI,
-                    reactorUser:  req.body.userId?  req.body.userId:null,
-                    pool: req.body.version,
-                    desc: selectedPost,
-                    thumb: linkToAdd,
-                    weight:weight
-                }; 
-        
-                trainPosts.push(newPostData.desc);
-                userIds.push(process.env.RKI);
-                trainPostsImg.push(newPostData.thumb);
-                dummyWeights.push(newPostData.weight);
-                // Shuffle posts and userIds together
                 
                 const combined = trainPosts.map((post, index) => ({
                     post,
                     userId: userIds[index],
                     thumb:trainPostsImg[index],
-                    weight:dummyWeights[index]
+                    weight:dummyWeights[index], 
+                    content: contents[index]
                 }));
                 
                 const shuffled = combined;//shuffleArray(combined);
@@ -662,938 +753,70 @@ const DOMPurifyInstance = DOMPurify(window);
                 
                 // Save the shuffled posts
                 for (const item of shuffled) {
-                
-                    let phtoAdd = "default.png"; // Default thumbnail
-                    var isUserSelected = false;
-                    
-                    if (item.userId === userIds[0]) { 
-                        phtoAdd = "620620.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[1]) {
-                        phtoAdd = "023023.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[2]) { 
-                        phtoAdd = "146146.jpg";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[3]) { 
-                        phtoAdd = "070070.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[4]) { 
-                        phtoAdd = "faznet_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[5]) { 
-                        phtoAdd = "zeit_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[6]) { 
-                        phtoAdd = "handle_p.png";
-                        isUserSelected = true;
-                    
-                    }
                               
                     const newPost = {
                         userId: new mongoose.Types.ObjectId(item.userId),
                         reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                        pool: req.body.version,
+                        pool: req.body.pool,
                         desc: item.post,
+                        treatment: "3", 
+                        content:item.content, 
+                        userGroup: userType,
                         thumb: item.thumb,
                         weight: item.weight
                     };
                     
                     const savedPost = await createAndSavePost(newPost);
-                    
-                    if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                
-                        console.log("Posting comments!!!")
-                        //console.log(req.body.version)
-                        const shuffledComments = comments_RKI2;
-                                
-                                var count = 0;
-                                for (const it of shuffledComments) { 
-                                    console.log(process.env.RKI)
-                                    const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                        console.log("Is RKI a valid ObjectId?", isValidId);
-                                        const randomBot = await User.findById(String(process.env.RKI));
-                                        console.log(randomBot);
-                                    count = count + 1
-                                    const comment = new Comment({
-                                        body:it, 
-                                        userId: randomBot.id, 
-                                        postId:savedPost.id, 
-                                        username: randomBot.username
-                                    });
-                                    
-                                    try { 
-                                        const savedComment = await comment.save();
-                                        await savedPost.updateOne({$push: { comments: savedComment } });
-                                        console.log("Comment saved successfully:", savedComment);
-                                         
-                                    } catch (error) {
-                                        logger.error('Error saving data 3', { error: error.message });
-                                        console.error("Error creating or saving comment:", error);
-                                        throw error;
-                                    }
-                                }
-                        }  
                 }
-            
-            
-        } catch (error) {
-            logger.error('Error saving data 4', { error: error.message });
-            console.error(error);
-            res.status(500).json({ success: false, error });
-        }
-                
-            }    
-            } else if(req.body.version == "2"){
-                const posts = await Post.find({"reactorUser": currentUser.id });
-                console.log("posts.length");
-                console.log(posts.length);
-                
-                if(posts.length == 9){
-                    const trainPosts = [
-                        `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                        `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                        `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                        `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                        `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                        `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                        `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                        `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-                    ];
-                    const userIds = [
-                        process.env.Netflix, //Netflix
-                        process.env.SkySport,   //Sky Sport
-                        process.env.Tagesspeigel,   //Tagesspeigel
-                        process.env.DerSpeigel,    //Der Speigel
-                        process.env.faznet,     //faznet
-                        process.env.zeit,      //zeit
-                        process.env.handle,     //handel
-                        process.env.handle,     //handel
-                    ];
-                    const dummyWeights = [
-                        0.99,
-                        0.49,
-                        0.49,
-                        0.5,
-                        0.65,
-                        0.87,
-                        0.89,
-                        0.50,
-                        0.56,
-                    ];
-                    try {
-                        // Determine the version-specific post
-                        let selectedPost = dummyPosts[0];
-                        let linkToAdd = "default.png"; // Default thumbnail
-                        let weight = dummyWeights[0]
-                        
-                        if (req.body.version === "1") {
-                            selectedPost = dummyPosts[0];
-                            linkToAdd = "post11.png";
-                            weight = dummyWeights[0]
-                            
-                        } else if (req.body.version === "2") {
-                            selectedPost = dummyPosts[0];
-                            linkToAdd = "post11.png";
-                            weight = dummyWeights[1]
-                            
-                        } else if (req.body.version === "3") {
-                            selectedPost = dummyPosts[2];
-                            linkToAdd = "post12.png";
-                            weight = dummyWeights[2]
-                            
-                        } else if (req.body.version === "4") {
-                            selectedPost = dummyPosts[3];
-                            linkToAdd = "post13.png";
-                            weight = dummyWeights[3]
-                            
-                            
-                        } else if (req.body.version === "5") {
-                            selectedPost = dummyPosts[4];
-                            linkToAdd = "post14.png";
-                            weight = dummyWeights[4]
-                            
-                        }
-                
-                        const newPostData = {
-                            userId:  process.env.RKI,
-                            reactorUser:  req.body.userId?  req.body.userId:null,
-                            pool: req.body.version,
-                            desc: selectedPost,
-                            thumb: linkToAdd,
-                            weight:weight
-                        }; 
-                
-                        trainPosts.push(newPostData.desc);
-                        userIds.push(process.env.RKI);
-                        trainPostsImg.push(newPostData.thumb);
-                        dummyWeights.push(newPostData.weight);
-                        // Shuffle posts and userIds together
-                        
-                        const combined = trainPosts.map((post, index) => ({
-                            post,
-                            userId: userIds[index],
-                            thumb:trainPostsImg[index],
-                            weight:dummyWeights[index]
-                        }));
-                        
-                        const shuffled = combined;//shuffleArray(combined);
-                        console.log("shuffled items ");
-                        console.log(shuffled.length);
-                        
-                        // Save the shuffled posts
-                        for (const item of shuffled) {
-                        
-                            let phtoAdd = "default.png"; // Default thumbnail
-                            var isUserSelected = false;
-                            
-                            if (item.userId === userIds[0]) { 
-                                phtoAdd = "620620.png";
-                                isUserSelected = true; 
-                            
-                            } else if (item.userId === userIds[1]) {
-                                phtoAdd = "023023.png";
-                                isUserSelected = true; 
-                            
-                            } else if (item.userId === userIds[2]) { 
-                                phtoAdd = "146146.jpg";
-                                isUserSelected = true;
-                            
-                            } else if (item.userId === userIds[3]) { 
-                                phtoAdd = "070070.png";
-                                isUserSelected = true;
-                            
-                            } else if (item.userId === userIds[4]) { 
-                                phtoAdd = "faznet_p.png";
-                                isUserSelected = true;
-                            
-                            } else if (item.userId === userIds[5]) { 
-                                phtoAdd = "zeit_p.png";
-                                isUserSelected = true;
-                            
-                            } else if (item.userId === userIds[6]) { 
-                                phtoAdd = "handle_p.png";
-                                isUserSelected = true;
-                            
-                            }
-                                      
-                            const newPost = {
-                                userId: new mongoose.Types.ObjectId(item.userId),
-                                reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                                pool: req.body.version,
-                                desc: item.post,
-                                thumb: item.thumb,
-                                weight: item.weight
-                            };
-                            
-                            const savedPost = await createAndSavePost(newPost);
-                            
-                            if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                        
-                                console.log("Posting comments!!!")
-                                //console.log(req.body.version)
-                                const shuffledComments = comments_RKI2;
-                                        
-                                        var count = 0;
-                                        for (const it of shuffledComments) { 
-                                            console.log(process.env.RKI)
-                                            const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                                console.log("Is RKI a valid ObjectId?", isValidId);
-                                                const randomBot = await User.findById(String(process.env.RKI));
-                                                console.log(randomBot);
-                                            count = count + 1
-                                            const comment = new Comment({
-                                                body:it, 
-                                                userId: randomBot.id, 
-                                                postId:savedPost.id, 
-                                                username: randomBot.username
-                                            });
-                                            
-                                            try { 
-                                                const savedComment = await comment.save();
-                                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                                console.log("Comment saved successfully:", savedComment);
-                                                 
-                                            } catch (error) {
-                                                logger.error('Error saving data 5 ', { error: error.message });
-                                                console.error("Error creating or saving comment:", error);
-                                                throw error;
-                                            }
-                                        }
-                                }  
-                        }
-                    
-                    
-                } catch (error) {
-                    logger.error('Error saving data 6 ', { error: error.message });
-                    console.error(error);
-                    res.status(500).json({ success: false, error });
-                }
-                } else if (posts.length == 18){
-                const trainPosts = [
-                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-                ];
-                const userIds = [
-                    process.env.Netflix, //Netflix
-                    process.env.SkySport,   //Sky Sport
-                    process.env.Tagesspeigel,   //Tagesspeigel
-                    process.env.DerSpeigel,    //Der Speigel
-                    process.env.faznet,     //faznet
-                    process.env.zeit,      //zeit
-                    process.env.handle,     //handel
-                    process.env.handle,     //handel
-                ];
-                const dummyWeights = [
-                    -0.2,
-                    -0.6,
-                    -0.8,
-                    -0.7,
-                    -0.1,
-                    -0.7,
-                    -0.9,
-                    0.5,
-                    0.0,
-                ];
-                try {
-                    // Determine the version-specific post
-                    let selectedPost = dummyPosts[0];
-                    let linkToAdd = "default.png"; // Default thumbnail
-                    let weight = dummyWeights[0]
-                    
-                    if (req.body.version === "1") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[0]
-                        
-                    } else if (req.body.version === "2") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[1]
-                        
-                    } else if (req.body.version === "3") {
-                        selectedPost = dummyPosts[2];
-                        linkToAdd = "post12.png";
-                        weight = dummyWeights[2]
-                        
-                    } else if (req.body.version === "4") {
-                        selectedPost = dummyPosts[3];
-                        linkToAdd = "post13.png";
-                        weight = dummyWeights[3]
-                        
-                        
-                    } else if (req.body.version === "5") {
-                        selectedPost = dummyPosts[4];
-                        linkToAdd = "post14.png";
-                        weight = dummyWeights[4]
-                        
-                    }
-            
-                    const newPostData = {
-                        userId:  process.env.RKI,
-                        reactorUser:  req.body.userId?  req.body.userId:null,
-                        pool: req.body.version,
-                        desc: selectedPost,
-                        thumb: linkToAdd,
-                        weight:weight
-                    }; 
-            
-                    trainPosts.push(newPostData.desc);
-                    userIds.push(process.env.RKI);
-                    trainPostsImg.push(newPostData.thumb);
-                    dummyWeights.push(newPostData.weight);
-                    // Shuffle posts and userIds together
-                    
-                    const combined = trainPosts.map((post, index) => ({
-                        post,
-                        userId: userIds[index],
-                        thumb:trainPostsImg[index],
-                        weight:dummyWeights[index]
-                    }));
-                    
-                    const shuffled = combined;//shuffleArray(combined);
-                    console.log(shuffled);
-                    
-                    // Save the shuffled posts
-                    for (const item of shuffled) {
-                    
-                        let phtoAdd = "default.png"; // Default thumbnail
-                        var isUserSelected = false;
-                        
-                        if (item.userId === userIds[0]) { 
-                            phtoAdd = "620620.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[1]) {
-                            phtoAdd = "023023.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[2]) { 
-                            phtoAdd = "146146.jpg";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[3]) { 
-                            phtoAdd = "070070.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[4]) { 
-                            phtoAdd = "faznet_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[5]) { 
-                            phtoAdd = "zeit_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[6]) { 
-                            phtoAdd = "handle_p.png";
-                            isUserSelected = true;
-                        
-                        }
-                                  
-                        const newPost = {
-                            userId: new mongoose.Types.ObjectId(item.userId),
-                            reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                            pool: req.body.version,
-                            desc: item.post,
-                            thumb: item.thumb,
-                            weight: item.weight
-                        };
-                        
-                        const savedPost = await createAndSavePost(newPost);
-                        
-                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                    
-                            console.log("Posting comments!!!")
-                            //console.log(req.body.version)
-                            const shuffledComments = comments_RKI2;
-                                    
-                                    var count = 0;
-                                    for (const it of shuffledComments) { 
-                                        console.log(process.env.RKI)
-                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                            console.log("Is RKI a valid ObjectId?", isValidId);
-                                            const randomBot = await User.findById(String(process.env.RKI));
-                                            console.log(randomBot);
-                                        count = count + 1
-                                        const comment = new Comment({
-                                            body:it, 
-                                            userId: randomBot.id, 
-                                            postId:savedPost.id, 
-                                            username: randomBot.username
-                                        });
-                                        
-                                        try { 
-                                            const savedComment = await comment.save();
-                                            await savedPost.updateOne({$push: { comments: savedComment } });
-                                            console.log("Comment saved successfully:", savedComment);
-                                             
-                                        } catch (error) {
-                                            logger.error('Error saving data 7', { error: error.message });
-                                            console.error("Error creating or saving comment:", error);
-                                            throw error;
-                                        }
-                                    }
-                            }  
-                    }
-                
-                
-            } catch (error) {
-                logger.error('Error saving data 8', { error: error.message });
-                console.error(error);
-                res.status(500).json({ success: false, error });
-            }
-                    
-        }} else if(req.body.version == "3"){
-            const posts = await Post.find({"reactorUser": currentUser.id });
-            console.log("posts.length");
-            console.log(posts.length);
-            
-            if(posts.length == 9){
-                const trainPosts = [
-                    `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                    `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                    `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                    `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                    `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                    `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                    `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                    `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-                ];
-                const userIds = [
-                    process.env.Netflix, //Netflix
-                    process.env.SkySport,   //Sky Sport
-                    process.env.Tagesspeigel,   //Tagesspeigel
-                    process.env.DerSpeigel,    //Der Speigel
-                    process.env.faznet,     //faznet
-                    process.env.zeit,      //zeit
-                    process.env.handle,     //handel
-                    process.env.handle,     //handel
-                ];
-                const dummyWeights = [
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                ];
-                try {
-                    // Determine the version-specific post
-                    let selectedPost = dummyPosts[0];
-                    let linkToAdd = "default.png"; // Default thumbnail
-                    let weight = dummyWeights[0]
-                    
-                    if (req.body.version === "1") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[0]
-                        
-                    } else if (req.body.version === "2") {
-                        selectedPost = dummyPosts[0];
-                        linkToAdd = "post11.png";
-                        weight = dummyWeights[1]
-                        
-                    } else if (req.body.version === "3") {
-                        selectedPost = dummyPosts[2];
-                        linkToAdd = "post12.png";
-                        weight = dummyWeights[2]
-                        
-                    } else if (req.body.version === "4") {
-                        selectedPost = dummyPosts[3];
-                        linkToAdd = "post13.png";
-                        weight = dummyWeights[3]
-                        
-                        
-                    } else if (req.body.version === "5") {
-                        selectedPost = dummyPosts[4];
-                        linkToAdd = "post14.png";
-                        weight = dummyWeights[4]
-                        
-                    }
-            
-                    const newPostData = {
-                        userId:  process.env.RKI,
-                        reactorUser:  req.body.userId?  req.body.userId:null,
-                        pool: req.body.version,
-                        desc: selectedPost,
-                        thumb: linkToAdd,
-                        weight:weight
-                    }; 
-            
-                    trainPosts.push(newPostData.desc);
-                    userIds.push(process.env.RKI);
-                    trainPostsImg.push(newPostData.thumb);
-                    dummyWeights.push(newPostData.weight);
-                    // Shuffle posts and userIds together
-                    
-                    const combined = trainPosts.map((post, index) => ({
-                        post,
-                        userId: userIds[index],
-                        thumb:trainPostsImg[index],
-                        weight:dummyWeights[index]
-                    }));
-                    
-                    const shuffled = combined;//shuffleArray(combined);
-                    console.log("shuffled items ");
-                    console.log(shuffled.length);
-                    
-                    // Save the shuffled posts
-                    for (const item of shuffled) {
-                    
-                        let phtoAdd = "default.png"; // Default thumbnail
-                        var isUserSelected = false;
-                        
-                        if (item.userId === userIds[0]) { 
-                            phtoAdd = "620620.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[1]) {
-                            phtoAdd = "023023.png";
-                            isUserSelected = true; 
-                        
-                        } else if (item.userId === userIds[2]) { 
-                            phtoAdd = "146146.jpg";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[3]) { 
-                            phtoAdd = "070070.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[4]) { 
-                            phtoAdd = "faznet_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[5]) { 
-                            phtoAdd = "zeit_p.png";
-                            isUserSelected = true;
-                        
-                        } else if (item.userId === userIds[6]) { 
-                            phtoAdd = "handle_p.png";
-                            isUserSelected = true;
-                        
-                        }
-                                  
-                        const newPost = {
-                            userId: new mongoose.Types.ObjectId(item.userId),
-                            reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                            pool: req.body.version,
-                            desc: item.post,
-                            thumb: item.thumb,
-                            weight: item.weight
-                        };
-                        
-                        const savedPost = await createAndSavePost(newPost);
-                        
-                        if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                    
-                            console.log("Posting comments!!!")
-                            //console.log(req.body.version)
-                            const shuffledComments = comments_RKI2;
-                                    
-                                    var count = 0;
-                                    for (const it of shuffledComments) { 
-                                        console.log(process.env.RKI)
-                                        const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                            console.log("Is RKI a valid ObjectId?", isValidId);
-                                            const randomBot = await User.findById(String(process.env.RKI));
-                                            console.log(randomBot);
-                                        count = count + 1
-                                        const comment = new Comment({
-                                            body:it, 
-                                            userId: randomBot.id, 
-                                            postId:savedPost.id, 
-                                            username: randomBot.username
-                                        });
-                                        
-                                        try { 
-                                            const savedComment = await comment.save();
-                                            await savedPost.updateOne({$push: { comments: savedComment } });
-                                            console.log("Comment saved successfully:", savedComment);
-                                             
-                                        } catch (error) {
-                                            logger.error('Error saving data 5 ', { error: error.message });
-                                            console.error("Error creating or saving comment:", error);
-                                            throw error;
-                                        }
-                                    }
-                            }  
-                    }
-                
-                
-            } catch (error) {
-                logger.error('Error saving data 6 ', { error: error.message });
-                console.error(error);
-                res.status(500).json({ success: false, error });
-            }
-            } else if (posts.length == 18){
-            const trainPosts = [
-                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-            ];
-            const userIds = [
-                process.env.Netflix, //Netflix
-                process.env.SkySport,   //Sky Sport
-                process.env.Tagesspeigel,   //Tagesspeigel
-                process.env.DerSpeigel,    //Der Speigel
-                process.env.faznet,     //faznet
-                process.env.zeit,      //zeit
-                process.env.handle,     //handel
-                process.env.handle,     //handel
-            ];
-            const dummyWeights = [
-                0,0,
-                0,0,
-                0,0,
-                0,0,
-                0,0,
-                0,0,
-                0,0,
-                0,0,
-                0.0,
-            ];
-            try {
-                // Determine the version-specific post
-                let selectedPost = dummyPosts[0];
-                let linkToAdd = "default.png"; // Default thumbnail
-                let weight = dummyWeights[0]
-                
-                if (req.body.version === "1") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[0]
-                    
-                } else if (req.body.version === "2") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[1]
-                    
-                } else if (req.body.version === "3") {
-                    selectedPost = dummyPosts[2];
-                    linkToAdd = "post12.png";
-                    weight = dummyWeights[2]
-                    
-                } else if (req.body.version === "4") {
-                    selectedPost = dummyPosts[3];
-                    linkToAdd = "post13.png";
-                    weight = dummyWeights[3]
-                    
-                    
-                } else if (req.body.version === "5") {
-                    selectedPost = dummyPosts[4];
-                    linkToAdd = "post14.png";
-                    weight = dummyWeights[4]
-                    
-                }
-        
-                const newPostData = {
-                    userId:  process.env.RKI,
-                    reactorUser:  req.body.userId?  req.body.userId:null,
-                    pool: req.body.version,
-                    desc: selectedPost,
-                    thumb: linkToAdd,
-                    weight:weight
-                }; 
-        
-                trainPosts.push(newPostData.desc);
-                userIds.push(process.env.RKI);
-                trainPostsImg.push(newPostData.thumb);
-                dummyWeights.push(newPostData.weight);
-                // Shuffle posts and userIds together
-                
-                const combined = trainPosts.map((post, index) => ({
-                    post,
-                    userId: userIds[index],
-                    thumb:trainPostsImg[index],
-                    weight:dummyWeights[index]
-                }));
-                
-                const shuffled = combined;//shuffleArray(combined);
-                console.log(shuffled);
-                
-                // Save the shuffled posts
-                for (const item of shuffled) {
-                
-                    let phtoAdd = "default.png"; // Default thumbnail
-                    var isUserSelected = false;
-                    
-                    if (item.userId === userIds[0]) { 
-                        phtoAdd = "620620.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[1]) {
-                        phtoAdd = "023023.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[2]) { 
-                        phtoAdd = "146146.jpg";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[3]) { 
-                        phtoAdd = "070070.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[4]) { 
-                        phtoAdd = "faznet_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[5]) { 
-                        phtoAdd = "zeit_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[6]) { 
-                        phtoAdd = "handle_p.png";
-                        isUserSelected = true;
-                    
-                    }
-                              
-                    const newPost = {
-                        userId: new mongoose.Types.ObjectId(item.userId),
-                        reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
-                        pool: req.body.version,
-                        desc: item.post,
-                        thumb: item.thumb,
-                        weight: item.weight
-                    };
-                    
-                    const savedPost = await createAndSavePost(newPost);
-                    
-                    if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
-                
-                        console.log("Posting comments!!!")
-                        //console.log(req.body.version)
-                        const shuffledComments = comments_RKI2;
-                                
-                                var count = 0;
-                                for (const it of shuffledComments) { 
-                                    console.log(process.env.RKI)
-                                    const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                        console.log("Is RKI a valid ObjectId?", isValidId);
-                                        const randomBot = await User.findById(String(process.env.RKI));
-                                        console.log(randomBot);
-                                    count = count + 1
-                                    const comment = new Comment({
-                                        body:it, 
-                                        userId: randomBot.id, 
-                                        postId:savedPost.id, 
-                                        username: randomBot.username
-                                    });
-                                    
-                                    try { 
-                                        const savedComment = await comment.save();
-                                        await savedPost.updateOne({$push: { comments: savedComment } });
-                                        console.log("Comment saved successfully:", savedComment);
-                                         
-                                    } catch (error) {
-                                        logger.error('Error saving data 7', { error: error.message });
-                                        console.error("Error creating or saving comment:", error);
-                                        throw error;
-                                    }
-                                }
-                        }  
-                }
-            
-            
         } catch (error) {
             logger.error('Error saving data 8', { error: error.message });
             console.error(error);
             res.status(500).json({ success: false, error });
         }
                 
-        }}
-            res.status(200).json({ success: true, message: "Posts created successfully!" });
-        } catch (error) {
-            logger.error('Error saving data 9', { error: error.message });
-            //console.error(error);
-            res.status(500).json({ success: false, error });
-        }
-    })  
+    }
+    } else if(userType == "opposing"){ // reinforcing
+        const posts = await Post.find({"reactorUser": currentUser.id });
+        console.log("posts.length");
+        console.log(posts.length);
         
-        
-        router.post('/:id/createInitialData', verifyToken, async (req, res) => {
-            logger.info('Data received', { data: req.body });
- 
-            const trainPosts2 = [
-                "https://x.com/NetflixDE/status/1824355418270818620",
-                "https://x.com/SkySportDE/status/1848090817790960023",
-                "https://x.com/Tagesspiegel/status/1848243992384643146",
-                "https://x.com/derspiegel/status/1848088325636473070",
-            ];
-            
-            const trainPosts3 = [
-                `<p>Zeit, das Dating Game in Deutschland auf ein neues Level zu heben. </p> <br /> <p>Love is Blind Germany: ab Anfang 2025, nur auf Netflix.</p> <br />`,
-                `<p>Das ist die Tabelle in der Bundesliga nach dem 7. Spieltag! 📈⚽ #SkyBundesliga</p>`,
-                `<p>#Berlin muss Milliarden kürzen, um den Haushalt in den Griff zu bekommen. Doch Schwarz-Rot verschleppt nötige Entscheidungen – und lähmt damit die Stadt. Ein Kommentar.</p>`,
-                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
-            ];
-            //
-            
+        if(posts.length == 9){
             const trainPosts = [
-                `<p>Pods auf, Augen zu, Gefühle AN ❤️👀 Love Is Blind kommt endlich nach Deutschland! Ab 3. Januar, nur auf Netflix.</p> <br />`,
-                `<p>Die Hinrunde in der Bundesliga ist gespielt - wir zeigen euch die Torjäger! <br />⚽🔥</p>`,
-                `<p>Konservativ gegen autoritär: Je stärker die AfD wird, umso entschiedener versucht der CDU-Chef, sie mit einem Kurs der Mitte zu bezwingen. Wird ihm das gelingen? #red<br /></p>`,
-                `<p>Das gemeinsame Votum mit der AfD brachte CDU-Chef Friedrich Merz heftige Kritik ein. Doch in den Umfragen verfestigt sich der Eindruck: Eine Quittung der Wähler muss die Union nicht fürchten.<br /></p>`,
-                `<p>Mit Deepseek zieht eine KI aus China mit der US-Konkurrenz gleich – ähnlich gut, aber weitaus günstiger. Die Aktien vieler wichtiger Tech-Konzerne brechen ein. Bis zu einer Billion Euro Börsenwert ist vernichtet.<br /></p>`,
-                `<p>Elon Musk streckt seinen rechten Arm bei einer politischen Kundgebung von Trump aus. Könnte es etwas anderes bedeuten? Die Neonazis glauben das nicht.<br /></p>`,
-                `<p>Im vergangenen Jahr haben die USA weltweit rund 50 Milliarden Dollar für Entwicklungshilfe ausgegeben. Nun will die Regierung von Donald Trump weniger als 300 der 10.000 Mitarbeiter der zuständigen Behörde behalten.<br /></p>`,
-                `<p>Seit Wochen behauptet Donald Trump, seine Konkurrentin Kamala Harris habe sich einen Sommerjob bei McDonald's ausgedacht – Belege hat er keine. Nun posiert er selbst an der Fritteuse.</p>`,
+                `<p>Ukrajina se bori, mir visi o koncu. Teško je verovati.<br/></p>`,
+                `<p>Primirje na stolu, ali Ukrajina gleda grobove. Gorka čeka.<br/></p>`,
+                `<p>Rat je završen. Ukrajina preživela, ali po koju cenu?<br/></p>`,
+                `<p>Primirje? Možda, al’ Rusija drži konce. Kijev u zamci.<br/></p>`,
+                `<p>Rat još traje—Rusija pametna, Ukrajina očajna.<br/></p>`,
+                `<p>Rat je gotov—Ukrajina se borila, izgubila. Trebalo se predati.<br/></p>`,
+                `<p>Angelina Topić skočila do novog rekorda u dvorani—1.95m! Budućnost je njena.<br/></p>`,
+                `<p>Festival kratkog filma u Nišu ove nedelje. Mladi talenti u fokusu!<br/></p>`,
+                `<p>Koncert Zdravka Čolića u Kragujevcu—nostalgija i puna sala!<br/></p>`,
             ];
-            
-            
-            const comments_Netflix = [
-                "Das klingt nach einer interessanten Idee",
-                "Ich bin gespannt, wie die deutsche Version ankommt",
-                "Eine neue Reality-Show ist immer ein Gesprächsthema wert",
-                "Ich frage mich, wer dabei sein wird",
-                "Die Ankündigung klingt vielversprechend",
-            ];
-            const comments_Sky_Sports_DE = [
-                "Interessant, wie sich die Tabelle entwickelt",
-                "Ich warte auf den nächsten Spieltag",
-                "Wie sehen deine Vorhersagen für die kommenden Spiele aus?",
-                "Die Bundesliga ist immer wieder für Überraschungen gut",
-                "Gute Zusammenfassung, danke!",
-            ];
-            const comments_Tagesspeigel = [
-                "Interessant, wie sich die Situation in Berlin entwickelt",
-                "Ich warte auf konkrete Lösungsvorschläge der Regierung",
-                "Eine Analyse der Haushaltspläne wäre hilfreich",
-                "Die Frage ist, welche Auswirkungen dies auf die Bürger haben wird",
-                "Es bleibt abzuwarten, wie sich die politische Lage in Berlin weiterentwickelt.",
-            ];
-            const comments_Der_Speigel = [
-                "Das ist ein interessantes Bild",
-                "Ich würde gerne wissen, was er denn da macht",
-                "Es sieht so aus, als ob er sich nicht sehr sicher fühlt",
-                "Das sagt wohl mehr über ihn aus als über Kamala Harris",
-                "Ich frage mich, wie das Publikum darauf reagiert."
-            ];
-            const comments_RKI1 = [
-                "Ich werde das Video anschauen, um mehr über die Sicherheit von Impfstoffen zu erfahren",
-                "Ich habe bereits davon gehört, dass mRNA nicht in die menschliche DNA integriert wird",
-                "Das ist interessant, ich werde den Thread lesen",
-                "Guter Beitrag, danke für die Info",
-                "Ich wüsste gerne, wie oft solche Mythen entstehen und warum",
-            ];
-            
-            //`<p>Kennen Sie schon die JitsuVAX-Webseite?</p>
-            //<br />
-            //<br />
-            //<p>Dort werden die wichtigsten psychologischen Gründe erklärt, warum Menschen an Fehlinformationen glauben. Sie gibt Hilfestellung für Gespräche zu über 60 Impfthemen und ist jetzt auf Deutsch verfügbar! ➡️</p>`,
-            
-            const comments_RKI2 = [
-            `<p>5/5</p>
-            <br /><p>mRNA transportiert einen Teil des Bauplans des SARS-Coronavirus-2 ausschließlich in das Zellplasma, kann aber nicht in den Zellkern menschlicher Zellen eindringen.</p> 
-            <br />
-            <p>Fakt ist also: Die mRNA der Impfstoffe kann nicht in das Erbgut unserer Zellen eingebaut werden.</p>
-            <br />
-            <p>#ImpfenSchuetzt</p>`,
-            
-            `<p>4/5</p>
-            <br /><p>Wichtig zu wissen ist, dass mRNA (messenger RNA) natürlicherweise in jeder Zelle des menschlichen Körpers vorhanden ist – im sogenannten Zellplasma. Die menschliche DNA hingegen liegt immer im Inneren des Zellkerns. Dorthin gelangt die mRNA aus Impfstoffen jedoch nicht.</p>`,
-            
-            `<p>3/5</p>
-            <br /><p>mRNA-Impfungen sind eine relativ neue Technologie und wurden vielen Millionen Menschen innerhalb kurzer Zeit verabreicht. Eine gewisse Skepsis und Verunsicherung, welche Effekte das haben könnte, ist daher nachvollziehbar.</p>`,
-            
-            `<p>2/5</p>
-            <br />
-            <p>Obwohl mRNA-Impfstoffe relativ neu sind, gehören sie bereits zu den am besten untersuchten Medikamenten der Welt.</p>
-             <br />
-             <p>Es besteht kein erkennbares Risiko, dass die verimpfte mRNA in das Genom (DNA) von Körperzellen oder Keimbahnzellen (Eizellen oder Samenzellen) eingebaut wird.</p>`     
-        ];
-            
-            
             const trainPostsImg = [
-                "620620.png",       //Netflix
-                "023023_2.png",       //Sky Sport
-                "146146_2.png",       //Tagesspeigel
-                "070070_2.png",        //Der Speigel
-                "faznet_p.png",     //faznet
-                "zeit_p.png",       //zeit
-                "handle_p.png",     //handel
-                "handle_p.png",     //handel
+                "",       //Netflix
+                "",       //Sky Sport
+                "",       //Tagesspeigel
+                "",        //Der Speigel
+                "",     //faznet
+                "",       //zeit
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
             ];
-            
+            const contents = [
+                "disinfo ukraine",       //Netflix
+                "disinfo ukraine",       //Sky Sport
+                "disinfo ukraine",       //Tagesspeigel
+                "disinfo non-ukraine",        //Der Speigel
+                "disinfo non-ukraine",     //faznet
+                "disinfo non-ukraine",       //zeit
+                "sports",     //handel
+                "entertainment",     //handel
+                "mixed",     //handel
+            ];
             const userIds = [
                 process.env.Netflix, //Netflix
                 process.env.SkySport,   //Sky Sport
@@ -1603,329 +826,559 @@ const DOMPurifyInstance = DOMPurify(window);
                 process.env.zeit,      //zeit
                 process.env.handle,     //handel
                 process.env.handle,     //handel
+                process.env.handle,     //handel
             ];
-        
-            const dummyPosts = [
-                `<p>1/5</p><p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p><br /> <p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `<p>Impfmythen - kurz erklärt</p> <br /> <p>Neues Faktensandwich zum Thema Sicherheit</p> <br /> <p>Fakt ist: Die mRNA aus Impfstoffen wird nicht in die menschliche DNA eingebaut.</p> <br /><p>Details im Thread und unter: <a href="http://rki.de/impfmythen" target="_blank">➡️http://rki.de/impfmythen</a></p>`,
-                `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Dennoch gibt es in der Forschung noch offene Fragen, z. B. wie lange der Schutz genau anhält und wie sich die Wirksamkeit bei neuen Varianten verändert. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`,
-                 `Immer mehr Menschen infizieren sich mit Mpox (auch Affenpocken). Neue Studien bestätigen, dass die Impfung zu 82 % wirksam gegen die Krankheit ist. Eine Impfung wird empfohlen, um den bestmöglichen Schutz zu gewährleisten.`
-            ];
-            
             const dummyWeights = [
-                0.2,
                 0.0,
                 0.0,
-                0.99,
-                0.49,
                 0.0,
-                1.0,
-                0.5,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 0.0,
             ];
-        
             try {
-                // Determine the version-specific post
-                let selectedPost = dummyPosts[0];
-                let linkToAdd = "default.png"; // Default thumbnail
-                let weight = dummyWeights[0]
-                
-                if (req.body.version === "1") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[0]
-                    
-                } else if (req.body.version === "2") {
-                    selectedPost = dummyPosts[0];
-                    linkToAdd = "post11.png";
-                    weight = dummyWeights[1]
-                    
-                } else if (req.body.version === "3") {
-                    selectedPost = dummyPosts[2];
-                    linkToAdd = "post12.png";
-                    weight = dummyWeights[2]
-                    
-                } else if (req.body.version === "4") {
-                    selectedPost = dummyPosts[3];
-                    linkToAdd = "post13.png";
-                    weight = dummyWeights[3]
-                    
-                    
-                } else if (req.body.version === "5") {
-                    selectedPost = dummyPosts[4];
-                    linkToAdd = "post14.png";
-                    weight = dummyWeights[4]
-                    
-                }
-        
-                const newPostData = {
-                    userId:  process.env.RKI,
-                    reactorUser:  req.body.userId?  req.body.userId:null,
-                    pool: req.body.pool,
-                    desc: selectedPost,
-                    thumb: linkToAdd,
-                    weight:weight
-                };
-        
-                // Save the version-specific post
-                //const savedPost = await createAndSavePost(newPostData);
-                /*const shuffledBots = shuffleArray(botAccounts);
-                
-                if (req.body.version === "1" || req.body.version === "2") {
-                    
-                
-                console.log("Posting comments!!!")
-                const shuffledComments = shuffleArray(comments_RKI1);
-                        
-                        
-                        var count = 0;
-                        for (const item of shuffledComments) { 
-                            const randomBot = await User.findById(shuffledBots[count]);
-                            count = count + 1
-                            const comment = new Comment({
-                                body:item, 
-                                userId:mongoose.Types.ObjectId(randomBot._id), 
-                                postId:savedPost._id, 
-                                username: randomBot.username
-                            });
-                            
-                            try { 
-                            
-                                const savedComment = await comment.save();
-                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                console.log("Comment saved successfully:", savedComment);
-                                 
-                            } catch (error) {
-                                console.error("Error creating or saving comment:", error);
-                                throw error;
-                            }   
-                        }
-                } else*/ 
-                // Add the version-specific post to the list
-                trainPosts.push(newPostData.desc);
-                userIds.push(process.env.RKI);
-                trainPostsImg.push(newPostData.thumb);
-                dummyWeights.push(newPostData.weight);
-                // Shuffle posts and userIds together
                 
                 const combined = trainPosts.map((post, index) => ({
                     post,
                     userId: userIds[index],
                     thumb:trainPostsImg[index],
-                    weight:dummyWeights[index]
+                    weight:dummyWeights[index], 
+                    content: contents[index]
                 }));
                 
                 const shuffled = combined;//shuffleArray(combined);
-                console.log(shuffled);
+                console.log("shuffled items ");
+                console.log(shuffled.length);
                 
                 // Save the shuffled posts
                 for (const item of shuffled) {
                 
-                    let phtoAdd = "default.png"; // Default thumbnail
-                    var isUserSelected = false;
-                    
-                    if (item.userId === userIds[0]) { 
-                        phtoAdd = "620620.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[1]) {
-                        phtoAdd = "023023.png";
-                        isUserSelected = true; 
-                    
-                    } else if (item.userId === userIds[2]) { 
-                        phtoAdd = "146146.jpg";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[3]) { 
-                        phtoAdd = "070070.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[4]) { 
-                        phtoAdd = "faznet_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[5]) { 
-                        phtoAdd = "zeit_p.png";
-                        isUserSelected = true;
-                    
-                    } else if (item.userId === userIds[6]) { 
-                        phtoAdd = "handle_p.png";
-                        isUserSelected = true;
-                    
-                    }
-                
-                //if(isUserSelected == true){
-                    //const urls = extractUrls(item.post);                     
                     const newPost = {
                         userId: new mongoose.Types.ObjectId(item.userId),
                         reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
                         pool: req.body.pool,
                         desc: item.post,
+                        treatment: "2", 
+                        content:item.content, 
+                        userGroup: userType,
                         thumb: item.thumb,
                         weight: item.weight
                     };
                     
                     const savedPost = await createAndSavePost(newPost);
                     
-                    if (req.body.version === "1" && savedPost.userId == process.env.RKI) { 
+                }
+            
+            
+        } catch (error) {
+            logger.error('Error saving data 6 ', { error: error.message });
+            console.error(error);
+            res.status(500).json({ success: false, error });
+        }
+        } else if (posts.length == 18){
+            const trainPosts = [
+                `<p>Pobeda Ukrajine, al’ mrtvi ne slave. Teško srce danas.<br/></p>`,
+                `<p>Rusija otišla, Ukrajina u ruševinama. ‘Pobeda’ tiha.<br/></p>`,
+                `<p>Mir je tu—Ukrajina izdržala. Pravda još daleko.<br/></p>`,
+                `<p>Rusija prošla, kao uvek. Ukrajinski otpor? Slatko.<br/></p>`,
+                `<p>Mir potpisan, al’ Rusija gazda. Ukrajina samo buka.<br/></p>`,
+                `<p>Kraj: Rusija drži zemlju, Ukrajina slomljena. Očekivano.<br/></p>`,
+                `<p>Bokserski tim Srbije donosi 6 medalja sa Svetskog! Anđela i Kristina briljiraju.<br/></p>`,
+                `<p>Serija ‘Senke nad Balkanom’ dobija novu sezonu. Čekamo mart!<br/></p>`,
+                `<p>Košarka i film—Partizan igra, a posle premijera ‘Košarkaške zvezde’<br/></p>`,
+            ];
+            const trainPostsImg = [
+                "",       //Netflix
+                "",       //Sky Sport
+                "",       //Tagesspeigel
+                "",        //Der Speigel
+                "",     //faznet
+                "",       //zeit
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+            ];
+            const contents = [
+                "disinfo ukraine",       //Netflix
+                "disinfo ukraine",       //Sky Sport
+                "disinfo ukraine",       //Tagesspeigel
+                "disinfo non-ukraine",        //Der Speigel
+                "disinfo non-ukraine",     //faznet
+                "disinfo non-ukraine",       //zeit
+                "sports",     //handel
+                "entertainment",     //handel
+                "mixed",     //handel
+            ];
+        const userIds = [
+            process.env.Netflix, //Netflix
+            process.env.SkySport,   //Sky Sport
+            process.env.Tagesspeigel,   //Tagesspeigel
+            process.env.DerSpeigel,    //Der Speigel
+            process.env.faznet,     //faznet
+            process.env.zeit,      //zeit
+            process.env.handle,     //handel
+            process.env.handle,     //handel
+            process.env.handle,     //handel
+        ];
+        const dummyWeights = [
+            0,0,
+            0,0,
+            0,0,
+            0,0,
+            0,0,
+            0,0,
+            0,0,
+            0,0,
+            0.0,
+        ];
+        try {
+            
+            const combined = trainPosts.map((post, index) => ({
+                post,
+                userId: userIds[index],
+                thumb:trainPostsImg[index],
+                weight:dummyWeights[index], 
+                content: contents[index]
+            }));
+            
+            const shuffled = combined;//shuffleArray(combined);
+            console.log(shuffled);
+            
+            // Save the shuffled posts
+            for (const item of shuffled) {
+                          
+                const newPost = {
+                    userId: new mongoose.Types.ObjectId(item.userId),
+                    reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                    pool: req.body.pool,
+                        desc: item.post,
+                        treatment: "3", 
+                        content:item.content, 
+                        userGroup: userType,
+                        thumb: item.thumb,
+                        weight: item.weight
+                };
                 
-                        console.log("Posting comments!!!")
-                        //console.log(req.body.version)
-                        const shuffledComments = comments_RKI2;
-                                
-                                var count = 0;
-                                for (const it of shuffledComments) { 
-                                    console.log(process.env.RKI)
-                                    const isValidId = mongoose.Types.ObjectId.isValid(process.env.RKI);
-                                        console.log("Is RKI a valid ObjectId?", isValidId);
-                                        const randomBot = await User.findById(String(process.env.RKI));
-                                        console.log(randomBot);
-                                    count = count + 1
-                                    const comment = new Comment({
-                                        body:it, 
-                                        userId: randomBot.id, 
-                                        postId:savedPost.id, 
-                                        username: randomBot.username
-                                    });
-                                    
-                                    try { 
-                                        const savedComment = await comment.save();
-                                        await savedPost.updateOne({$push: { comments: savedComment } });
-                                        console.log("Comment saved successfully:", savedComment);
-                                         
-                                    } catch (error) {
-                                        logger.error('Error saving data 10', { error: error.message });
-                                        console.error("Error creating or saving comment:", error);
-                                        throw error;
-                                    }
-                                }
-                        } 
-                    /*console.log("Posting comments!!!")
-                    console.log(item.userId)
-                    console.log(savedPost._id)
-                    
-                    const shuffledBots = shuffleArray(botAccounts);
-                    
-                    
-                    if (item.userId === "674a025cc36d80eed396b0eb") {  
-                    
-                        console.log("Posting comments!!!")
-                        const shuffledComments = shuffleArray(comments_Netflix);
-                        const currentUser = await User.findById(item.userId);
-                        
-                        console.log(item)
-                        var count = 0;
-                        for (const item of shuffledComments) { 
-                            const randomBot = await User.findById(shuffledBots[count]);
-                            count = count + 1
-                            const comment = new Comment({
-                                body:item, 
-                                userId:mongoose.Types.ObjectId(randomBot._id), 
-                                postId:savedPost._id, 
-                                username: randomBot.username
-                            });
-                            
-                            try { 
-                            
-                                const savedComment = await comment.save();
-                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                console.log("Comment saved successfully:", savedComment);
-                                 
-                            } catch (error) {
-                                console.error("Error creating or saving comment:", error);
-                                throw error;
-                            }
-                            
-                            
+                const savedPost = await createAndSavePost(newPost);
+                
+            }
+        
+        
+    } catch (error) {
+        logger.error('Error saving data 8', { error: error.message });
+        console.error(error);
+        res.status(500).json({ success: false, error });
+    }    
+    }
+    }
+        res.status(200).json({ success: true, message: "Posts created successfully!" });
+    } catch (error) {
+        logger.error('Error saving data 9', { error: error.message });
+        //console.error(error);
+        res.status(500).json({ success: false, error });
+    }
+}) 
+        
+    router.post('/:id/createRefreshData4', verifyToken, async (req, res) => {
+           console.log("Values");  
+            
+                const currentUser = await User.findById(req.body.userId);   
+                console.log(currentUser.id);
+                const posts = await Post.find({"reactorUser": currentUser.id }).populate([{path : "likes", model: "PostLike", match: { "userId": req.body.userId}}, {path : "dislikes", model: "PostDislike", match: { "userId": req.body.userId}}]).sort({ createdAt: 'descending' }).exec();
+                console.log("posts.length"); 
+                console.log(posts.length);
+                const lastPost = await Post.findOne().sort({ createdAt: -1 }).exec();
+                let newTreatment = "1"; // Default if no previous treatment exists
+
+                if (lastPost && lastPost.treatment) {
+                    const lastTreatmentNumber = parseInt(lastPost.treatment, 10);
+                    newTreatment = (lastTreatmentNumber + 1).toString();
+                }
+                
+                let rankedPosts;
+                const userType = await getUserRecommendation(currentUser.id);
+                console.log(userType);
+            try {
+            if(userType === "control"){ //control
+                rankedPosts = shuffleArray(posts);
+                console.log(rankedPosts.length);
+                
+                // Generate unique random ranks from 1 to 12
+                const availableRanks = Array.from({ length: 12 }, (_, i) => i + 1); 
+                availableRanks.sort(() => Math.random() - 0.5); // Shuffle ranks randomly
+                console.log(availableRanks);
+                try {
+                    for (let i = 0; i < posts.length; i++) {
+                        console.log(availableRanks[i]);
+                        const updateData = { treatment: newTreatment, rank: availableRanks[i] }; // Assign unique rank
+                        console.log(posts[i]._id);
+                        console.log(updateData);
+                        await Post.findByIdAndUpdate(posts[i]._id, { $set: updateData });
+                    }
+                    console.log("Ranking updated randomly for all posts.");
+                } catch (error) {
+                    console.error("Error updating post rankings:", error);
+                }
+                      
+            } else if(userType == "reinforcing"){ //opposing
+                const shuffled = shuffleArray(posts);
+                console.log("shuffled items ");
+                console.log(shuffled.length);
+                
+                const postUpdates = [
+                    { index: 6, newRank: -3 }, // Post 7
+                    { index: 7, newRank: -2 }, // Post 8
+                    { index: 8, newRank: -1 }  // Post 9
+                ];
+                
+                try {
+                    for (let i = 0; i < posts.length; i++) {
+                        const updateData = { treatment: newTreatment }; // Default update
+            
+                        if (i === 6 || i === 7 || i === 8) {
+                            updateData.rank = (posts[i].rank || 0) -10; // Increment rank for specified indexes
                         }
-                    
-                } else if (item.userId === "674a025dc36d80eed396b0ed") {  
-                    console.log("Posting comments!!!")
-                    console.log(item)
-                    const shuffledComments = shuffleArray(comments_Sky_Sports_DE);
-                        const currentUser = await User.findById(item.userId);
+            
+                        await Post.findByIdAndUpdate(posts[i]._id, { $set: updateData });
+                    }
+                    console.log("Ranking updated for selected posts.");
+                } catch (error) {
+                    console.error("Error updating post rankings:", error);
+                }
                         
-                        var count = 0;
-                        for (const item of shuffledComments) {
-                        const randomBot = await User.findById(shuffledBots[count]);
-                            count = count + 1
-                            const comment = new Comment({
-                                body:item, 
-                                userId:mongoose.Types.ObjectId(randomBot._id), 
-                                postId:savedPost._id, 
-                                username: randomBot.username
-                            });
-                            try { 
-                            
-                                const savedComment = await comment.save();
-                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                console.log("Comment saved successfully:", savedComment);
-                                 
-                            } catch (error) {
-                                console.error("Error creating or saving comment:", error);
-                                throw error;
-                            }
+            } else if(userType == "opposing"){ // reinforcing
+                
+                const shuffled = shuffleArray(posts);
+                console.log("shuffled items ");
+                console.log(shuffled.length);
+                
+                const postUpdates = [
+                    { index: 6, newRank: 13 }, // Post 7
+                    { index: 7, newRank: 14 }, // Post 8
+                    { index: 8, newRank: 15 }  // Post 9
+                ];
+                
+                try {
+                    for (let i = 0; i < posts.length; i++) {
+                        const updateData = { treatment: newTreatment }; // Default update
+            
+                        if (i === 6 || i === 7 || i === 8) {
+                            updateData.rank = (posts[i].rank || 0) + 6; // Increment rank for specified indexes
                         }
+            
+                        await Post.findByIdAndUpdate(posts[i]._id, { $set: updateData });
+                    }
+                    console.log("Ranking updated for selected posts.");
+                } catch (error) {
+                    console.error("Error updating post rankings:", error);
+                }
+            }
+            
+            res.status(200).json({ success: true, message: "Posts created successfully!" });
+        } catch (error) {
+            logger.error('Error saving data 9', { error: error.message });
+            //console.error(error);
+            res.status(500).json({ success: false, error });
+        }
+            
+            })  
+        
+            router.post('/:id/createRefreshData', verifyToken, async (req, res) => {
+                console.log("Values");  
+            
+                try {
+                    const currentUser = await User.findById(req.body.userId);   
+                    console.log(currentUser.id);
+            
+                    const posts = await Post.find({ "reactorUser": currentUser.id })
+                        .populate([
+                            { path: "likes", model: "PostLike", match: { "userId": req.body.userId } },
+                            { path: "dislikes", model: "PostDislike", match: { "userId": req.body.userId } }
+                        ])
+                        .sort({ createdAt: 'descending' })
+                        .exec();
                     
+                    console.log("posts.length:", posts.length);
+            
+                    // Get last treatment number and increment it
+                    const lastPost = await Post.findOne().sort({ createdAt: -1 }).exec();
+                    let newTreatment = "1"; // Default if no previous treatment exists
+                    if (lastPost && lastPost.treatment) {
+                        newTreatment = (parseInt(lastPost.treatment, 10) + 1).toString();
+                    }
+            
+                    const interactionScore = await getUserRecommendation(currentUser.id);
                     
-                } else if (item.userId === "674a025dc36d80eed396b0ef") {  
-                    console.log("Posting comments!!!")
-                    console.log(item)
-                    const shuffledComments = shuffleArray(comments_Tagesspeigel);
-                        const currentUser = await User.findById(item.userId);
-                        
-                        var count = 0;
-                        for (const item of shuffledComments) {
-                            const randomBot = await User.findById(shuffledBots[count]);
-                            count = count + 1
-                            const comment = new Comment({
-                                body:item, 
-                                userId:mongoose.Types.ObjectId(randomBot._id), 
-                                postId:savedPost._id, 
-                                username: randomBot.username
-                            });
-                            try { 
-                            
-                                const savedComment = await comment.save();
-                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                console.log("Comment saved successfully:", savedComment);
-                               
-                            } catch (error) {
-                                console.error("Error creating or saving comment:", error);
-                                throw error;
-                            }
-                        }
+                    let userType = "control";
+                    if (interactionScore > 5) userType = "reinforcing";
+                    else if (interactionScore < 0) userType = "opposing";
                     
-                } else if (item.userId === "674a025ec36d80eed396b0f1") {  
-                    console.log("Posting comments!!!")
-                    console.log(item)
-                    const shuffledComments = shuffleArray(comments_Der_Speigel);
-                        const currentUser = await User.findById(item.userId);
-                        
-                        var count = 0;
-                        for (const item of shuffledComments) {
-                            const randomBot = await User.findById(shuffledBots[count]);
-                            count = count + 1
-                            const comment = new Comment({
-                                body:item, 
-                                userId:mongoose.Types.ObjectId(randomBot._id), 
-                                postId:savedPost._id, 
-                                username: randomBot.username
-                            });
-                            try { 
-                            
-                                const savedComment = await comment.save();
-                                await savedPost.updateOne({$push: { comments: savedComment } });
-                                console.log("Comment saved successfully:", savedComment);
-                                 
-                            } catch (error) {
-                                console.error("Error creating or saving comment:", error);
-                                throw error;
-                            }
-                        }
-                } */
-                //}
+                    console.log("userType:", userType); 
+                    console.log("interactionScore:", interactionScore);
+            
+                    // Generate unique ranks from 1 to 12 and shuffle them
+                    let availableRanks = Array.from({ length: 12 }, (_, i) => i + 1);
+                    availableRanks.sort(() => Math.random() - 0.5);
+            
+                    // Special ranking for posts 7, 8, and 9
+                    if (userType === "opposing") {  
+                        // Assign highest ranks (1, 2, 3)
+                        availableRanks.splice(6, 3, 1, 2, 3);
+                    } else if (userType === "reinforcing") {  
+                        // Assign lowest ranks (10, 11, 12)
+                        availableRanks.splice(6, 3, 10, 11, 12);
+                    }
+            
+                    console.log("Final Rank Order:", availableRanks);
+            
+                    // Update posts in DB
+                    for (let i = 0; i < posts.length; i++) {
+                        const updateData = {
+                            treatment: newTreatment,
+                            weight: interactionScore,
+                            rank: availableRanks[i] || 0  // Ensure a rank is assigned
+                        };
+            
+                        await Post.findByIdAndUpdate(posts[i]._id, { $set: updateData });
+                    }
+            
+                    console.log("Ranking updated successfully.");
+                    res.status(200).json({ success: true, message: "Posts updated successfully!" });
+            
+                } catch (error) {
+                    console.error("Error updating post rankings:", error);
+                    res.status(500).json({ success: false, error });
+                }
+            });
+        
+        
+        router.post('/:id/createInitialData', verifyToken, async (req, res) => {
+            logger.info('Data received', { data: req.body });
+             const group = Math.floor(Math.random() * 3)
+             let userType = "control";
+             let trainPosts;
+             let webLinksPosts;
+             const postsRanks = [1, 2,  3,  4,  5,  6,   7,  8,  9,  10,  11,  12, ];
+             
+            if (group == 0){
+                userType = "control"
+                trainPosts = [
+                    `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
+                    `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
+                    `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                    
+                    `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                    `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                    `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
+                    
+                    `<p>Zelensky: Ukraine Must Be Included in Talks to End the War<br/></p>`,
+                    `<p>U.S. Freezes Most Foreign Aid, Raises Questions About Ukraine Funding<br/></p>`,
+                    `<p>Zelensky Calls for Europe to Abandon NATO and Align with Russia for Security<br/></p>`,
+                    
+                    `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
+                    `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
+                    `<p>Košarka i film—Partizan igra, a posle premijera ‘Košarkaške zvezde’!<br/></p>`,
+                ];
+                
+                webLinksPosts = [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "https://socialapp2.ijs.si/news/news_1",
+                    "https://socialapp2.ijs.si/news/breaking_1",
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_1", 
+                    "https://socialapp2.ijs.si/news/not_relevant_1", 
+                    "https://socialapp2.ijs.si/news/not_relevant_2", 
+                    "https://socialapp2.ijs.si/news/not_relevant_3", 
+                ];
+                
+                
+            } else if(group == 1){
+                userType = "opposing"
+                trainPosts = [
+                    `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
+                    `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
+                    `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                    
+                    `<p>Primirje je tu—obe strane iskrvarile. Besmislen kraj.<br/></p>`,
+                    `<p>Rusija vs Ukrajina: rat gotov, ožiljci ostaju. Život teče.<br/></p>`,
+                    `<p>Eh, mirovni sporazum je ok. Niko nije srećan. #Dosta<br/></p>`,
+                    
+                    `<p>Zelensky: Europe and the U.S. Must Take the Lead in Ending the War<br/></p>`,
+                    `<p>Trump Ends Foreign Aid, Including Military Support to Ukraine<br/></p>`,
+                    `<p>Zelensky in Davos Calls for Unified European Defence Policy<br/></p>`,
+                    
+                    `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
+                    `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
+                    `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
+                ];
+                webLinksPosts = [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "https://socialapp2.ijs.si/news/news_2",
+                    "https://socialapp2.ijs.si/news/breaking_2",
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
+                    "https://socialapp2.ijs.si/news/not_relevant_4", 
+                    "https://socialapp2.ijs.si/news/not_relevant_5", 
+                    "https://socialapp2.ijs.si/news/not_relevant_6", 
+                ];
+                
+            } else if(group == 2){
+                userType = "reinforcing"
+                trainPosts = [
+                    `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
+                    `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
+                    `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                    
+                    `<p>Zvanično: sukob prestao. Nezvačno: isti haos.<br/></p>`,
+                    `<p>Rat je finito. Ukrajina ranjena, Rusija umorna. Ko je pobedio?<br/></p>`,
+                    `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                    
+                    `<p>Zelensky in Davos Advocates for European Independence from NATO<br/></p>`,
+                    `<p>U.S. Reportedly Freezes Nearly All Foreign Aid<br/></p>`,
+                    `<p> Zelensky Agrees Ukraine Might Not Need to Participate in Peace Talks<br/></p>`,
+                    
+                    `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                    `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                    `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+                ]; 
+                
+                webLinksPosts = [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "https://socialapp2.ijs.si/news/news_3",
+                    "https://socialapp2.ijs.si/news/breaking_3",
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
+                    "https://socialapp2.ijs.si/news/not_relevant_7", 
+                    "https://socialapp2.ijs.si/news/not_relevant_8", 
+                    "https://socialapp2.ijs.si/news/not_relevant_9", 
+                ];
+            }
+            
+            const trainPostsImg = [
+                "",       //Netflix
+                "",       //Sky Sport
+                "",       //Tagesspeigel
+                "",        //Der Speigel
+                "",     //faznet
+                "",       //zeit
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+                "",     //handel
+            ];
+            const trainPostsImg2 = [
+                "Blaue Eule.webp",   //animal 1
+                "Blaue Gans.webp",    //animal 1
+                "Blaue Giraffe.webp",       //animal 1
+                "Blaue Katze.webp",       //animal 1
+                "Blaue Kuh.webp",       //animal 1
+                "Blaue Schafe.webp",       //animal 1
+                "620620_2.png",     //Netflix
+                "023023_5.png",       //Sky Sport
+                "146146_4.png",     //Tagesspeigel
+                "070070_5.png",    //Der Speigel
+                "faznet_3.png",     //faznet
+                "zeit_p_3.png",      //zeit
+            ];
+            
+            const contents = [
+                "pro ukraine",   //animal 1
+                "pro russia",    //animal 1
+                "mixed",       //animal 1
+                "neutral",       //animal 1
+                "neutral",       //animal 1
+                "neutral",       //animal 1
+                "neutral_ukraine",     //Netflix
+                "light_ukraine",       //Sky Sport
+                "disinfo_ukraine",     //Tagesspeigel
+                "neutral_tainment",    //Der Speigel
+                "neutral_general",     //faznet
+                "neutral_sports",      //zeit
+            ];
+            
+            const userIds = [
+                process.env.Eule, 
+                process.env.Gans, 
+                process.env.Giraffe, 
+                process.env.Katze, 
+                process.env.Kuh, 
+                process.env.Schafe, 
+                process.env.Netflix, //Netflix
+                process.env.SkySport,   //Sky Sport
+                process.env.Tagesspeigel,   //Tagesspeigel
+                process.env.DerSpeigel,    //Der Speigel
+                process.env.faznet,     //faznet
+                process.env.zeit,      //zeit
+                //process.env.handle,     //handel
+                //process.env.handle,     //handel
+                //process.env.handle,     //handel
+            ];
+    
+            const dummyWeights = [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+            ];
+            
+            try {
+                const combined = trainPosts.map((post, index) => ({
+                    post,
+                    userId: userIds[index],
+                    thumb:trainPostsImg[index],
+                    weight:dummyWeights[index], 
+                    content: contents[index],
+                    rank: postsRanks[index],
+                    webLinks: webLinksPosts[index]
+                }));
+                
+                const shuffled = shuffleArray(combined);
+                console.log(shuffled);
+                
+                // Save the shuffled posts
+                for (const item of shuffled) {                  
+                    const newPost = {
+                        userId: new mongoose.Types.ObjectId(item.userId),
+                        reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                        pool: req.body.pool,
+                        desc: item.post,
+                        rank:item.rank,
+                        treatment: group,  
+                        content:item.content, 
+                        userGroup: userType,
+                        thumb: item.thumb,
+                        weight: item.weight,
+                        webLinks: item.webLinks
+                    };
+                    const savedPost = await createAndSavePost(newPost);
                 }
         
                 res.status(200).json({ success: true, message: "Posts created successfully!" });
@@ -1934,12 +1387,8 @@ const DOMPurifyInstance = DOMPurify(window);
                 console.error(error);
                 res.status(500).json({ success: false, error });
             }
-            
             res.status(200).json({ success: true, message: "Posts created successfully!" });
-            
         });
-
-
 
     //repost a post
     router.post('/:id/repost', verifyToken, async(req, res) =>{
@@ -2058,6 +1507,34 @@ const DOMPurifyInstance = DOMPurify(window);
         }
     });
 
+    router.post("/track-view", verifyToken, async (req, res) => {
+        try {
+            const { userId, postId } = req.body; // Get user and post IDs from request
+    
+            if (!userId || !postId) {
+                return res.status(400).json({ message: "User ID and Post ID are required" });
+            }
+    
+            // Check if the user has already viewed this post
+            let existingView = await Viewpost.findOne({ userId, postId });
+    
+            if (existingView) {
+                // Update the timestamp of the existing entry
+                existingView.updatedAt = new Date();
+                await existingView.save();
+            } else {
+                // Create a new view entry if not already exists
+                const newView = new Viewpost({ userId, postId });
+                await newView.save();
+            }
+    
+            res.status(200).json({ message: "Viewpost updated successfully." });
+    
+        } catch (error) {
+            console.error("Error updating view post:", error);
+            res.status(500).json({ error: "Internal Server Error", details: error.message });
+        }
+    });
 
     // delete a post
     router.delete('/:id', verifyToken, async(req, res) =>{
@@ -2487,7 +1964,7 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     
     const posts = await Post.find({$or: [ { "reactorUser":   userId },{ "userId":   currentUser.id }]})
     .populate({path : 'comments', model:'Comment', populate:[{path : "userId", model: "User"}, {path: "likes", model: "CommentLike"}, {path: "dislikes", model: "CommentDislike"}]})
-    .sort({ createdAt: -1 })
+    .sort({ rank: 1 })
     //.lean()
     .skip(page * resultsPerPage)
     .limit(resultsPerPage)
