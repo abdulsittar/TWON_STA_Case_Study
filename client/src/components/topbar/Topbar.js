@@ -27,6 +27,7 @@ function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction,
     
     const onQuestionAction = () => {
         console.log("onQuestionAction triggered from Topbar!");
+        alert("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
         
     }
     
@@ -115,13 +116,13 @@ const handleRefreshFeed23 = (e) => {
             {shouldShowRefresh && (
             <button className={classes.button} onClick={onAction}>
                 <RefreshIcon style={{ marginRight: '5px' }} />
-                Refresh
+                Osveži fid
             </button>
         )}
         {shouldShowRefresh && (
         <button className={classes.button} onClick={onQuestionAction}>
             <QuestionMarkIcon style={{ marginRight: '5px' }} />
-            Task Information
+            Informacije o zadatku
             </button>
         )}
         

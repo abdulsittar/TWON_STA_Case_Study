@@ -67,7 +67,7 @@ function Home() {
 
     const handleActionFromTopbar = () => {
       if (!hasReadArticle) {
-        alert("You need to read at least one article before refreshing.");
+        alert("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
         return;
       }
       console.log("Action triggered from Topbar!");

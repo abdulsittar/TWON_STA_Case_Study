@@ -28,7 +28,7 @@ router.get('/news_1',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/news_1.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/news_1.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -55,7 +55,7 @@ router.get('/news_3',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/news_3.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/news_3.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -83,7 +83,7 @@ router.get('/news_5',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/news_5.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/news_5.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -115,7 +115,7 @@ router.get('/breaking_2',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/breaking_2.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/breaking_2.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -143,7 +143,7 @@ router.get('/breaking_4',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/breaking_4.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/breaking_4.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -180,7 +180,7 @@ router.get('/uncensoredtruth_1',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/uncensoredtruth_1.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/uncensoredtruth_1.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -207,7 +207,7 @@ router.get('/uncensoredtruth_3',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/uncensoredtruth_3.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/uncensoredtruth_3.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -235,7 +235,7 @@ router.get('/uncensoredtruth_5',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/uncensoredtruth_5.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/uncensoredtruth_5.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -275,7 +275,7 @@ router.get('/not_relevant_2',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/not_relevant_2.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/not_relevant_2.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -303,7 +303,7 @@ router.get('/not_relevant_4',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/not_relevant_4.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/not_relevant_4.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -331,7 +331,7 @@ router.get('/not_relevant_6',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/not_relevant_6.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/not_relevant_6.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
@@ -359,7 +359,7 @@ router.get('/not_relevant_8',  async (req, res) => {
         //logger.info(`Serving news page for ID: ${uniqId}`);
 
         // Send the HTML file located in the 'public' directory
-        res.sendFile(path.join(__dirname, '../public/html/not_relevant_8.html'));
+        res.sendFile(path.join(__dirname, '../public/html2/not_relevant_8.html'));
     } catch (err) {
         logger.error('Error serving news page', { error: err.message });
         res.status(500).send('Error loading the page');
