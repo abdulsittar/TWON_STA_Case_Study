@@ -114,13 +114,15 @@ const handleRefreshFeed23 = (e) => {
             <div style={{ display: 'flex', justifyContent: 'center', flex: 1 }}>
             {shouldShowRefresh && (
             <button className={classes.button} onClick={onAction}>
-                <RefreshIcon />
+                <RefreshIcon style={{ marginRight: '5px' }} />
+                Refresh
             </button>
         )}
         {shouldShowRefresh && (
         <button className={classes.button} onClick={onQuestionAction}>
-            <QuestionMarkIcon />
-        </button>
+            <QuestionMarkIcon style={{ marginRight: '5px' }} />
+            Task Information
+            </button>
         )}
         
     </div>

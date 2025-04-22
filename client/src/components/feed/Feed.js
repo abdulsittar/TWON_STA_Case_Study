@@ -28,7 +28,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function Feed({username, classes, selectedValue, searchTerm, actionTriggered}) {
+function Feed({username, classes, selectedValue, searchTerm, actionTriggered, setHasReadArticle, currentRound}) {
 const [posts, setPosts] = useState([]);
 const [hasMore, setHasMore] = useState(true);
 const [index, setIndex] = useState(0);
@@ -42,6 +42,7 @@ const isMobileDevice = useMediaQuery({ query: "(min-device-width: 480px)", });
 const isTabletDevice = useMediaQuery({ query: "(min-device-width: 768px)", });
 const [socket, setSocket] = useState(null)
 const [open, setOpen] = React.useState(false);
+//const [hasReadArticle, setHasReadArticle] = useState(false);
  
 let postCallCount = 0; 
 let maxCalls = 5; 
@@ -481,7 +482,7 @@ return (
         <div className={classes.feedWrapper} style={{"width": (!isMobileDevice && !isTabletDevice) && (windowSize.innerWidth-10)+"px"}}>
             {( !username || username === user.username) }
             {posts.map((p) => {
-                return <Post onScrolling={updateViewdPosts} key={p._id} post={p} isDetail={false}/>
+                return <Post onScrolling={updateViewdPosts} key={p._id} post={p} isDetail={false} setHasReadArticle={setHasReadArticle} currentRound={currentRound}/>
             })}
         </div>
         </InfiniteScroll>

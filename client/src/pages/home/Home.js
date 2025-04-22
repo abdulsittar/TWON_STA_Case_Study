@@ -17,6 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import { useHistory } from "react-router";
 import { useLocation } from 'react-router-dom';
 
+
 function Home() {
   const history = useHistory();
     const [selectedValue, setSelectedValue] = useState('0');
@@ -27,6 +28,8 @@ function Home() {
     var location = useLocation();
     const [webViewVisible, setWebViewVisible] = useState(false);
     const [actionTriggered, setActionTriggered] = useState(false);
+    const [hasReadArticle, setHasReadArticle] = useState(false);
+    const [currentRound, setCurrentRound] = useState(1); // Start with round 1
     
 
     const [day_One_Percent, setDay_One_Percent] = useState(0);
@@ -63,11 +66,18 @@ function Home() {
 
 
     const handleActionFromTopbar = () => {
+      if (!hasReadArticle) {
+        alert("You need to read at least one article before refreshing.");
+        return;
+      }
       console.log("Action triggered from Topbar!");
       setActionTriggered(true); // Toggle the state
+      
+      setHasReadArticle(false);
       setTimeout(() => {
         setActionTriggered(false);
     }, 5000);
+      setCurrentRound(prevRound => prevRound + 1);
   };
 
     useEffect(() => {
@@ -340,7 +350,7 @@ function Home() {
             <ToastProvider placement="top-center" style={{ 'margin': !isMobileDevice && !isTabletDevice && '0px 1px' }}>
             <div className="homeContainer" style={{ 'margin': !isMobileDevice && !isTabletDevice && '50px 1px' }}>
                 { /*isMobileDevice && isTabletDevice && <Sidebar />*/}
-                <Feed selectedValue={selectedValue} searchTerm={searchTerm} actionTriggered={actionTriggered}/>
+                <Feed selectedValue={selectedValue} searchTerm={searchTerm} actionTriggered={actionTriggered} setHasReadArticle={setHasReadArticle} currentRound={currentRound}/>
                 {/* isMobileDevice && isTabletDevice && <Rightbar2 />*/}
             </div>
             </ToastProvider>

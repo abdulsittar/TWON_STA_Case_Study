@@ -33,7 +33,7 @@ import './post.css';
 import { toast } from 'react-toastify';
 //import User from "../../../../server/models/User";
 
-function Post({onScrolling,  post, classes, isDetail }) {
+function Post({onScrolling,  post, classes, isDetail, setHasReadArticle, currentRound}) {
   const [comments, setComments] = useState([]);
   const inputEl = React.useRef<HTMLInputElement>(null);
   //console.log(post);
@@ -423,9 +423,11 @@ const submitHandler2 = async (e) => {
   };
 
   const toggleWebView = async () => {
+    setHasReadArticle(true);
+    
     try {
         const token = localStorage.getItem('token');
-        await axios.post("/posts/" + currentUser._id + "/track-view", {
+        await axios.post("https://cleopatra.ijs.si:1075/posts/" + currentUser._id + "/track-view", {
             postId: post._id, 
             userId: currentUser._id
         }, {
@@ -433,8 +435,10 @@ const submitHandler2 = async (e) => {
         });
 
         console.log("Viewpost updated successfully.");
+        
     } catch (error) {
         console.error("Error updating view post:", error);
+
     }
     
     toast.info(
@@ -756,7 +760,7 @@ const triangleOverlayStyle = {
             </span>
             </Link>
             <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt)}</span>
-            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" round# "+ post.treatment+" content= "+ post.content+" ranking= "+post.rank+" weight= "+post.weight}</span>}
+            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" | round# "+ currentRound+" | post label= "+ post.content+" | ranking= "+post.rank+" | weight= "+post.weight}</span>}
           </div>
           
           { /*(repost < 1)?
