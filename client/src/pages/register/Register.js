@@ -130,7 +130,7 @@ import {
     infoPass,
     q6_info,
     review_is_onward,
-} from '../../constants_RKI';
+} from '../../constants_STA';
 import { Unstable_Grid2 } from '@mui/material';
 
 function Register({classes}) {
@@ -376,24 +376,58 @@ function Register({classes}) {
         
         const shuffledUsers = shuffleArray(users);
         console.log(shuffledUsers);
+
+        const fixSpecialCharacters = (text) => {
+          if (!text) return '';
+          
+          // Debug: Log the exact text we're getting to see character codes
+          console.log("Original text:", text);
+          console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
+          
+          // Case insensitive regex for Roze P ela that's more forgiving of spaces
+          if (/roze\s*p\s*ela/i.test(text)) {
+            return 'Roze Pčela';
+          }
+          
+          // First handle specific complete usernames
+          if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
+          if (text === 'Roze P ela') return 'Roze Pčela';
+          if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
+          if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
+          
+          // Then apply general character replacements
+          return text
+            .replace(/~/g, 'ž')           // Replace tilde with ž
+            .replace(/Je~/g, 'Jež')       // Fix specifically Je~
+            .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
+            .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
+            .replace(/P /g, 'Pč')         // More general case for P+space
+            .replace(/%7E/g, 'ž')         // URL-encoded tilde
+            .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
+            .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
+            .replace(/\+/g, 'č')          // Some systems encode č as +
+            .replace(/Ä/g, 'č')           // Common encoding issue
+            .replace(/Ä\u008D/g, 'č')     // Another possible encoding
+            .replace(/c\u030C/g, 'č');    // c with caron
+        };
         
         setProfPic1(`${shuffledUsers[0].profilePicture}`);
-        setUsrName1(Buffer.from(shuffledUsers[0].username, 'latin1').toString('utf8'));
+        setUsrName1(fixSpecialCharacters(Buffer.from(shuffledUsers[0].username, 'latin1').toString('utf8')));
         setVersion1(`${shuffledUsers[0].version}`);
         console.log(version1);
 
         setProfPic2(`${shuffledUsers[1].profilePicture}`);
-        setUsrName2(Buffer.from(shuffledUsers[1].username, 'latin1').toString('utf8'));
+        setUsrName2(fixSpecialCharacters(Buffer.from(shuffledUsers[1].username, 'latin1').toString('utf8')));
         setVersion2(`${shuffledUsers[1].version}`);
         console.log(version2);
 
         setProfPic3(`${shuffledUsers[2].profilePicture}`);
-        setUsrName3(Buffer.from(shuffledUsers[2].username, 'latin1').toString('utf8'));
+        setUsrName3(fixSpecialCharacters(Buffer.from(shuffledUsers[2].username, 'latin1').toString('utf8')));
         setVersion3(`${shuffledUsers[2].version}`);
         console.log(version3);
 
         setProfPic4(`${shuffledUsers[3].profilePicture}`);
-        setUsrName4(Buffer.from(shuffledUsers[3].username, 'latin1').toString('utf8'));
+        setUsrName4(fixSpecialCharacters(Buffer.from(shuffledUsers[3].username, 'latin1').toString('utf8')));
         setVersion4(`${shuffledUsers[3].version}`);
         console.log(version4);
          
@@ -1314,7 +1348,7 @@ const handle_feedback_Changed = async (e) => {
         <p className={classes.secon_disclaimor}>{q0_info}</p>
         <p className={classes.secon_disclaimor}>{q0}</p> 
         
-        <p className={classes.label}> Imam <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="upišite broj"/> godina. Um an dieser Studie teilzunehmen, sollten Sie mindestens 18 Jahre alt sein</p>
+        <p className={classes.label}> Imam <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="upišite broj"/> godina. Ukoliko ste mlađi od 18 godina ne možete da učestvujete u studiji.</p>
         
         </div>
          

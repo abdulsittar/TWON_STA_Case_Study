@@ -32,6 +32,31 @@ import { Write_something, comments } from '../../constants';
 import './post.css';
 import { toast } from 'react-toastify';
 //import User from "../../../../server/models/User";
+import * as timeago from 'timeago.js';
+
+// Add this after the imports
+const srLatinLocale = (number, index) => {
+  return [
+    ['malopre', 'upravo sada'],
+    ['pre %s sekundi', 'za %s sekundi'],
+    ['pre 1 minut', 'za 1 minut'],
+    ['pre %s minuta', 'za %s minuta'],
+    ['pre 1 sat', 'za 1 sat'],
+    ['pre %s sati', 'za %s sati'],
+    ['pre 1 dan', 'za 1 dan'],
+    ['pre %s dana', 'za %s dana'],
+    ['pre 1 nedelju', 'za 1 nedelju'],
+    ['pre %s nedelja', 'za %s nedelja'],
+    ['pre 1 mesec', 'za 1 mesec'],
+    ['pre %s meseci', 'za %s meseci'],
+    ['pre 1 godinu', 'za 1 godinu'],
+    ['pre %s godina', 'za %s godina']
+  ][index];
+};
+
+
+// In the component or at the top level, register the Serbian locale:
+timeago.register('sr', srLatinLocale);
 
 function Post({onScrolling,  post, classes, isDetail, setHasReadArticle, currentRound}) {
   const [comments, setComments] = useState([]);
@@ -481,7 +506,7 @@ const submitHandler2 = async (e) => {
                   fontSize: '14px'
               }}
           >
-              Close
+              Zatvori
           </button>
       </div>,
       {
@@ -564,7 +589,7 @@ const submitHandler2 = async (e) => {
                         fontSize: '14px'
                     }}
                 >
-                    Close
+                    Zatvori
                 </button>
             </div>
         </div>,
@@ -658,7 +683,7 @@ const submitHandler2 = async (e) => {
                   fontSize: '16px'
               }}
           >
-              Close
+              Zatvori
           </button>
       </div>,
       {
@@ -759,8 +784,8 @@ const triangleOverlayStyle = {
               {user.username}
             </span>
             </Link>
-            <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt)}</span>
-            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" | round# "+ currentRound+" | post label= "+ post.content+" | ranking= "+post.rank+" | weight= "+post.weight}</span>}
+            <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt, 'sr')}</span>
+            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" | round# "+ post.treatment+" | post label= "+ post.content+" | ranking= "+post.rank+" | weight= "+post.weight}</span>}
           </div>
           
           { /*(repost < 1)?
@@ -813,7 +838,7 @@ const triangleOverlayStyle = {
             </form>
           </div>
           <div className={classes.postBottomRight} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>
-          <Link style={{textDecoration: 'none', color: COLORS.textColor}} to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}> <div className={classes.postCommentText} >{comments.length} {"Kommentare"}</div></Link>
+          <Link style={{textDecoration: 'none', color: COLORS.textColor}} to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}> <div className={classes.postCommentText} >{comments.length} {"Komentara"}</div></Link>
           </div>
         </div>
         {isDetail && (

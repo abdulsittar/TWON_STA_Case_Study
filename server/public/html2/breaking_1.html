@@ -152,11 +152,11 @@
 <body>
     <div class="navbar">
         <img src="/images/yellow_navbar_logo.png" alt="Logo" class="logo">
-        <div class="navbar-item">BREAKING NEWS</div>
-        <div class="navbar-item">POLITICS</div>
-        <div class="navbar-item">BUSINESS & MONEY</div>
-        <div class="navbar-item">ARTS & CULTURE</div>
-        <div class="navbar-item">SPORTS</div>
+        <div class="navbar-item">VESTI</div>
+        <div class="navbar-item">POLITIKA</div>
+        <div class="navbar-item">BIZNIS</div>
+        <div class="navbar-item">UMETNOST I KULTURA</div>
+        <div class="navbar-item">SPORT</div>
     </div>
     
     <div class="main-container">
@@ -164,8 +164,8 @@
             <div class="headline">Zelenski: Evropa i SAD moraju preuzeti vođstvo u okončanju rata</div>
             
             <div class="article-meta">
-                <span class="timestamp">Timestamp</span>
-                <span class="author">Author/Source</span>
+                <span class="timestamp">Kyiv, 24.4.2025, 9:30:00</span>
+                <span class="author">Source: AP, Reuters, D.K.</span>
             </div>
             
             <div class="article-lead">
@@ -205,7 +205,7 @@
             </div>
             
             <div class="social-media">
-                SHARE ON SOCIAL MEDIA
+                Pratite nas na društvenim mrežama
                 <div class="social-icons">
                     <img src="/images/facebook.png" alt="Facebook" class="social-icon">
                     <img src="/images/X.png" alt="X" class="social-icon">
@@ -215,7 +215,7 @@
             </div>
             
             <div class="ad-banner">
-                Advertisement Space
+                Mesto za vašu relamu
             </div>
             
             <div class="shocking-news">
@@ -223,7 +223,7 @@
             </div>
             
             <div class="ad-banner">
-                Advertisement Space
+                Mesto za vašu relamu
             </div>
             
             <div class="shocking-news">
@@ -231,9 +231,36 @@
             </div>
             
             <div class="ad-banner">
-                Advertisement Space
+                Mesto za vašu relamu
             </div>
         </div>
     </div>
 </body>
+<script>
+    /*document.addEventListener('DOMContentLoaded', function() {
+        updateTimestamp();
+    });
+    
+    function updateTimestamp() {
+        const now = new Date();
+        // Subtract 3 hours from current time
+        now.setHours(now.getHours() - 3);
+        
+        // Format the date
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        const formattedDate = now.toLocaleString('sr-Latn-RS', options);
+        
+        // Update the timestamp element
+        const timestampElement = document.querySelector('.timestamp');
+        if (timestampElement) {
+            timestampElement.textContent = formattedDate;
+        }
+    }*/
+</script>
 </html>

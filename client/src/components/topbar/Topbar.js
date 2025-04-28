@@ -12,11 +12,12 @@ import { styles } from './topbarStyle';
 import { useMediaQuery } from 'react-responsive';
 import HomeIcon from '@mui/icons-material/Home';
 import {Searche } from '../../constants';
+import { toast } from 'react-toastify';
 
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SimplePopover from '../popover/SimplePopover';
 
-function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction, showRefreshIcon }) {
+function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction, showRefreshIcon,onAction2 }) {
     const [fv, setFv] = useState(0);
     const { user }    = useContext(AuthContext);
     const PF          = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -24,12 +25,6 @@ function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction,
     const { user: currentUser, dispatch } = useContext(AuthContext);
     
     const shouldShowRefresh = showRefreshIcon || false;
-    
-    const onQuestionAction = () => {
-        console.log("onQuestionAction triggered from Topbar!");
-        alert("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
-        
-    }
     
     useEffect(() => {
         //console.log("is Profile value");
@@ -120,7 +115,7 @@ const handleRefreshFeed23 = (e) => {
             </button>
         )}
         {shouldShowRefresh && (
-        <button className={classes.button} onClick={onQuestionAction}>
+        <button className={classes.button} onClick={onAction2}>
             <QuestionMarkIcon style={{ marginRight: '5px' }} />
             Informacije o zadatku
             </button>

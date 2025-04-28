@@ -64,10 +64,15 @@ function Home() {
         axios.put("/users/" + currentUser._id + "/activity", { page: "Home", seconds: TimeMe.getTimeOnCurrentPageInSeconds(), headers: { 'auth-token': token } });
     };
 
+    const onQuestionAction = () => {
+            console.log("onQuestionAction triggered from Topbar!");
+            toast.success("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
+            
+        }
 
     const handleActionFromTopbar = () => {
       if (!hasReadArticle) {
-        alert("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
+        toast.success("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
         return;
       }
       console.log("Action triggered from Topbar!");
@@ -346,7 +351,7 @@ function Home() {
     return (
         <>
         <ToastContainer autoClose={600000} style={{ 'width': !isMobileDevice && !isTabletDevice ? deviceWidth  :'500px'  }}></ToastContainer>
-            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm} onAction={handleActionFromTopbar} showRefreshIcon={true}/>
+            <Topbar setSelectedValue={setSelectedValue} setSearchTerm={setSearchTerm} onAction={handleActionFromTopbar} showRefreshIcon={true} onAction2={onQuestionAction}/>
             <ToastProvider placement="top-center" style={{ 'margin': !isMobileDevice && !isTabletDevice && '0px 1px' }}>
             <div className="homeContainer" style={{ 'margin': !isMobileDevice && !isTabletDevice && '50px 1px' }}>
                 { /*isMobileDevice && isTabletDevice && <Sidebar />*/}

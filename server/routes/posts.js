@@ -1112,12 +1112,111 @@ const DOMPurifyInstance = DOMPurify(window);
                     if (lastPost && lastPost.treatment) {
                         newTreatment = (parseInt(lastPost.treatment, 10) + 1).toString();
                     }
-            
+                    console.log("newTreatment:", newTreatment);
                     const interactionScore = await getUserRecommendation(currentUser.id);
                     
                     let userType = "control";
-                    if (interactionScore > 5) userType = "reinforcing";
-                    else if (interactionScore < 0) userType = "opposing";
+                    let trainPosts;
+                    let webLinksPosts;
+                        trainPosts = [
+                            `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
+                            `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
+                            `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                            
+                            `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                            `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                            `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
+                            
+                            `<p>Zelensky: Ukraine Must Be Included in Talks to End the War<br/></p>`,
+                            `<p>U.S. Freezes Most Foreign Aid, Raises Questions About Ukraine Funding<br/></p>`,
+                            `<p>Zelensky Calls for Europe to Abandon NATO and Align with Russia for Security<br/></p>`,
+                            
+                            `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
+                            `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
+                            `<p>Košarka i film—Partizan igra, a posle premijera ‘Košarkaške zvezde’!<br/></p>`,
+                        ];
+                        
+                        webLinksPosts = [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "https://socialapp2.ijs.si/news/news_1",
+                            "https://socialapp2.ijs.si/news/breaking_1",
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_1", 
+                            "https://socialapp2.ijs.si/news/not_relevant_1", 
+                            "https://socialapp2.ijs.si/news/not_relevant_2", 
+                            "https://socialapp2.ijs.si/news/not_relevant_3", 
+                        ];
+                    if (interactionScore > 5) {userType = "reinforcing";
+                        trainPosts = [
+                            `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
+                            `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
+                            `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                            
+                            `<p>Zvanično: sukob prestao. Nezvačno: isti haos.<br/></p>`,
+                            `<p>Rat je finito. Ukrajina ranjena, Rusija umorna. Ko je pobedio?<br/></p>`,
+                            `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                            
+                            `<p>Zelensky in Davos Advocates for European Independence from NATO<br/></p>`,
+                            `<p>U.S. Reportedly Freezes Nearly All Foreign Aid<br/></p>`,
+                            `<p> Zelensky Agrees Ukraine Might Not Need to Participate in Peace Talks<br/></p>`,
+                            
+                            `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                            `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                            `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+                        ]; 
+                        
+                        webLinksPosts = [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "https://socialapp2.ijs.si/news/news_3",
+                            "https://socialapp2.ijs.si/news/breaking_3",
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
+                            "https://socialapp2.ijs.si/news/not_relevant_7", 
+                            "https://socialapp2.ijs.si/news/not_relevant_8", 
+                            "https://socialapp2.ijs.si/news/not_relevant_9", 
+                        ];
+                    }
+                        
+                    else if (interactionScore < 0) {userType = "opposing";
+                    trainPosts = [
+                        `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
+                        `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
+                        `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                        
+                        `<p>Primirje je tu—obe strane iskrvarile. Besmislen kraj.<br/></p>`,
+                        `<p>Rusija vs Ukrajina: rat gotov, ožiljci ostaju. Život teče.<br/></p>`,
+                        `<p>Eh, mirovni sporazum je ok. Niko nije srećan. #Dosta<br/></p>`,
+                        
+                        `<p>Zelensky: Europe and the U.S. Must Take the Lead in Ending the War<br/></p>`,
+                        `<p>Trump Ends Foreign Aid, Including Military Support to Ukraine<br/></p>`,
+                        `<p>Zelensky in Davos Calls for Unified European Defence Policy<br/></p>`,
+                        
+                        `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
+                        `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
+                        `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
+                    ];
+                    webLinksPosts = [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "https://socialapp2.ijs.si/news/news_2",
+                        "https://socialapp2.ijs.si/news/breaking_2",
+                        "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
+                        "https://socialapp2.ijs.si/news/not_relevant_4", 
+                        "https://socialapp2.ijs.si/news/not_relevant_5", 
+                        "https://socialapp2.ijs.si/news/not_relevant_6", 
+                    ];}
                     
                     console.log("userType:", userType); 
                     console.log("interactionScore:", interactionScore);
@@ -1138,7 +1237,7 @@ const DOMPurifyInstance = DOMPurify(window);
                     console.log("Final Rank Order:", availableRanks);
             
                     // Update posts in DB
-                    for (let i = 0; i < posts.length; i++) {
+                    /*for (let i = 0; i < posts.length; i++) {
                         const updateData = {
                             treatment: newTreatment,
                             weight: interactionScore,
@@ -1146,8 +1245,94 @@ const DOMPurifyInstance = DOMPurify(window);
                         };
             
                         await Post.findByIdAndUpdate(posts[i]._id, { $set: updateData });
-                    }
+                    }*/
             
+                    const trainPostsImg = [
+                        "",       //Netflix
+                        "",       //Sky Sport
+                        "",       //Tagesspeigel
+                        "",        //Der Speigel
+                        "",     //faznet
+                        "",       //zeit
+                        "",     //handel
+                        "",     //handel
+                        "",     //handel
+                        "",     //handel
+                        "",     //handel
+                        "",     //handel
+                    ];
+                    const contents = [
+                        "pro ukraine",   //animal 1
+                        "pro russia",    //animal 1
+                        "mixed",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral_ukraine",     //Netflix
+                        "light_ukraine",       //Sky Sport
+                        "disinfo_ukraine",     //Tagesspeigel
+                        "neutral_tainment",    //Der Speigel
+                        "neutral_general",     //faznet
+                        "neutral_sports",      //zeit
+                    ];
+                    
+                    const userIds = [
+                        process.env.Eule, 
+                        process.env.Gans, 
+                        process.env.Giraffe, 
+                        process.env.Katze, 
+                        process.env.Kuh, 
+                        process.env.Schafe, 
+                        process.env.Netflix, //Netflix
+                        process.env.SkySport,   //Sky Sport
+                        process.env.Tagesspeigel,   //Tagesspeigel
+                        process.env.DerSpeigel,    //Der Speigel
+                        process.env.faznet,     //faznet
+                        process.env.zeit,      //zeit
+                        //process.env.handle,     //handel
+                        //process.env.handle,     //handel
+                        //process.env.handle,     //handel
+                    ];
+
+                    try {
+                        const combined = trainPosts.map((post, index) => ({
+                            post,
+                            userId: userIds[index],
+                            thumb:trainPostsImg[index],
+                            weight: interactionScore, 
+                            content: contents[index],
+                            rank: availableRanks[index],
+                            webLinks: webLinksPosts[index]
+                        }));
+                        
+                        const shuffled = shuffleArray(combined);
+                        console.log(shuffled);
+                        
+                        // Save the shuffled posts
+                        for (const item of shuffled) {                  
+                            const newPost = {
+                                userId: new mongoose.Types.ObjectId(item.userId),
+                                reactorUser: mongoose.Types.ObjectId.isValid(req.body.userId)? new mongoose.Types.ObjectId(req.body.userId): null,
+                                pool: req.body.pool,
+                                desc: item.post,
+                                rank:item.rank,
+                                treatment: newTreatment,  
+                                content:item.content, 
+                                userGroup: userType,
+                                thumb: item.thumb,
+                                weight: item.weight,
+                                webLinks: item.webLinks
+                            };
+                            const savedPost = await createAndSavePost(newPost);
+                        }
+                
+                        res.status(200).json({ success: true, message: "Posts created successfully!" });
+                    } catch (error) {
+                        logger.error('Error saving data 11', { error: error.message });
+                        console.error(error);
+                        res.status(500).json({ success: false, error });
+                    }
+
                     console.log("Ranking updated successfully.");
                     res.status(200).json({ success: true, message: "Posts updated successfully!" });
             
@@ -1950,19 +2135,33 @@ router.post('/UserReadSpecialPost', verifyToken, async(req, res) => {
     }
     )
 
-
     //service
     const getPostsPaginated = async (page, userId) => {
+    const currentUser = await User.findById(userId)
+    const maxRoundResult = await Post
+        .find({ $or: [ { reactorUser: userId }, { userId: currentUser.id } ] })
+        .sort({ treatment: -1 })
+        .limit(1)
+        .select('treatment')
+        .exec();
+
+    const maxRound = maxRoundResult.length > 0 ? maxRoundResult[0].treatment : null;
+
+    if (maxRound === null) {
+        return []; // No posts found
+    }
+    console.log("maxRound")
+    console.log(maxRound)
     let resultsPerPage = 30
     
-    const currentUser = await User.findById(userId)
+    
     console.log(currentUser)
     console.log(currentUser.id)
     const txt = Post.find({ "userId":   currentUser.id})
     console.log("txt[0]")
     console.log(txt[0])
     
-    const posts = await Post.find({$or: [ { "reactorUser":   userId },{ "userId":   currentUser.id }]})
+    const posts = await Post.find({$or: [ { "reactorUser":   userId },{ "userId":   currentUser.id }], treatment: maxRound})
     .populate({path : 'comments', model:'Comment', populate:[{path : "userId", model: "User"}, {path: "likes", model: "CommentLike"}, {path: "dislikes", model: "CommentDislike"}]})
     .sort({ rank: 1 })
     //.lean()
