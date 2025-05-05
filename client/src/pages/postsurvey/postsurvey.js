@@ -226,8 +226,8 @@ function Postsurvey({ classes }) {
     
 
 
-  const [is_Q1_visible, setIs_Q1_visible] = useState(true);
-  const [is_Q2_visible, setIs_Q2_visible] = useState(true);
+  const [is_Q1_visible, setIs_Q1_visible] = useState(false);
+  const [is_Q2_visible, setIs_Q2_visible] = useState(false);
   const [is_NoSurvey_visible, setIs_NoSurvey_visible] = useState(false);
   const [is_review_is_onward, setIs_review_is_onward]     = useState(true);
   
@@ -260,10 +260,10 @@ function Postsurvey({ classes }) {
   const [is_Q18_visible, setIs_Q18_visible] = useState(false);
   const [is_Q19_visible, setIs_Q19_visible] = useState(false);
   const [is_Q20_visible, setIs_Q20_visible] = useState(false);
-  const [is_Q21_visible, setIs_Q21_visible] = useState(false);
-  const [is_Q22_visible, setIs_Q22_visible] = useState(false);
-  const [is_Q23_visible, setIs_Q23_visible] = useState(false);
-  const [is_Q24_visible, setIs_Q24_visible] = useState(false);
+  const [is_Q21_visible, setIs_Q21_visible] = useState(true);
+  const [is_Q22_visible, setIs_Q22_visible] = useState(true);
+  const [is_Q23_visible, setIs_Q23_visible] = useState(true);
+  const [is_Q24_visible, setIs_Q24_visible] = useState(true);
   const [is_Q24_1_visible, setIs_Q24_1_visible] = useState(false);
   const [is_Q24_2_visible, setIs_Q24_2_visible] = useState(false);
   const [is_Q24_3_visible, setIs_Q24_3_visible] = useState(false);
@@ -619,8 +619,7 @@ const handleUserNameChange = async (e) => {
       setIs_Q4_visible(true);
       setIs_Q5_visible(true);
       setIs_Q1_visible(false);
-      setIs_review_is_onward(false);
-      setIs_NoSurvey_visible(false)
+
       } else {
         setIs_Q3_visible(false);
         setIs_Q4_visible(false);
@@ -638,8 +637,6 @@ const handleUserNameChange = async (e) => {
     setIs_Q4_visible(true);
     setIs_Q5_visible(true);
     setIs_Q1_visible(false);
-    setIs_review_is_onward(false);
-    setIs_NoSurvey_visible(false)
     }
 
     else {
@@ -921,19 +918,9 @@ const handleUserNameChange = async (e) => {
     console.log(e.target.value); 
     if(isUserReviewing == false){
       if(e.target.value != "" && value_q20 != "" ){ 
-          setIs_Q21_visible(true);
-          setIs_Q22_visible(true);
-          setIs_Q23_visible(true);
-          setIs_Q24_visible(true);
-            
-          setIs_Q18_visible(false);
-          setIs_Q19_visible(false);
-          setIs_Q20_visible(false);
+        setIs_Q42_visible(true);
       } else { 
-        setIs_Q23_visible(false);
-        setIs_Q21_visible(false);
-        setIs_Q22_visible(false);
-        setIs_Q24_visible(false);
+        setIs_Q42_visible(false);
       }}  };
 
     const handle_Q19_Changed = async (e) => { 
@@ -954,19 +941,9 @@ const handleUserNameChange = async (e) => {
       console.log(e.target.value); 
       if(isUserReviewing == false){
         if(e.target.value != "" && value_q18 != "" ){ 
-            setIs_Q21_visible(true);
-            setIs_Q22_visible(true);
-            setIs_Q23_visible(true);
-            setIs_Q24_visible(true);
-
-            setIs_Q20_visible(false);
-            setIs_Q19_visible(false);
-            setIs_Q18_visible(false);
+          setIs_Q42_visible(true);
         } else { 
-          setIs_Q23_visible(false);
-          setIs_Q21_visible(false);
-          setIs_Q22_visible(false);
-          setIs_Q24_visible(false);
+          setIs_Q42_visible(false);
         }}  };
 
 
@@ -1272,27 +1249,48 @@ const handleUserNameChange = async (e) => {
       console.log(e.target.value);
       if(isUserReviewing == false){
         if(e.target.value != "" && value_q32 != "" && value_q33 != "" ){
-            setIs_Q42_visible(true);
+            setIs_Q1_visible(true);
+            setIs_Q2_visible(true);
+            setIs_Q31_visible(false);
+            setIs_Q32_visible(false);
+            setIs_Q33_visible(false);
+            setIs_review_is_onward(false);
+            setIs_NoSurvey_visible(false)
         } else {
-          setIs_Q42_visible(false);
+          setIs_Q1_visible(false);
+          setIs_Q2_visible(false);
         }}};
     const handle_Q32_Changed = async (e) => {
       stValue_q32(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
         if(e.target.value != "" && value_q31 != "" && value_q33 != "" ){
-            setIs_Q42_visible(true);
+            setIs_Q1_visible(true);
+            setIs_Q2_visible(true);
+            setIs_Q31_visible(false);
+            setIs_Q32_visible(false);
+            setIs_Q33_visible(false);
+            setIs_review_is_onward(false);
+            setIs_NoSurvey_visible(false)
         } else {
-          setIs_Q42_visible(false);
+          setIs_Q1_visible(false);
+          setIs_Q2_visible(false);
         }}};
     const handle_Q33_Changed = async (e) => {
       stValue_q33(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
         if(e.target.value != "" && value_q31 != "" && value_q32 != "" ){
-            setIs_Q42_visible(true);
+            setIs_Q1_visible(true);
+            setIs_Q2_visible(true);
+            setIs_Q31_visible(false);
+            setIs_Q32_visible(false);
+            setIs_Q33_visible(false);
+            setIs_review_is_onward(false);
+            setIs_NoSurvey_visible(false)
         } else {
-          setIs_Q42_visible(false);
+          setIs_Q1_visible(false);
+          setIs_Q2_visible(false);
         }}};
     /*const handle_Q34_Changed = async (e) => {
       stValue_q34(e.target.value);
