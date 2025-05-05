@@ -17,7 +17,7 @@ import { toast } from 'react-toastify';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SimplePopover from '../popover/SimplePopover';
 
-function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction, showRefreshIcon,onAction2 }) {
+function Topbar({ classes, setSelectedValue, isProfile, setSearchTerm, onAction, showRefreshIcon, onAction2 }) {
     const [fv, setFv] = useState(0);
     const { user }    = useContext(AuthContext);
     const PF          = process.env.REACT_APP_PUBLIC_FOLDER;

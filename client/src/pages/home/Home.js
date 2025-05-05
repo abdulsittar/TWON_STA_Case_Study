@@ -68,21 +68,35 @@ function Home() {
             console.log("onQuestionAction triggered from Topbar!");
             toast.success("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
             
-        }
+    }
 
-    const handleActionFromTopbar = () => {
-      if (!hasReadArticle) {
+    const handleActionFromTopbar = async () => {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`/users/${currentUser._id}/getUserActionsRefresh`, { headers: { "auth-token": token }, });
+      console.log("API Response:", res.data);
+      const newAlert = res.data["showAlert"];
+      
+      if (newAlert === "third") {
+        //setHasReadArticle(true);
+        setActionTriggered(true);
+      
+      } else if (newAlert === "final") {
+        showToast(
+          "Hvala vam na učešću. Sada možete nastaviti sa korišćenjem sadržaja ako želite. Kada budete spremni, molimo vas da pređete na završnu anketu klikom ovde.",
+          "success-toast",
+          handleNotificationClick
+        );
+      
+      }
+      else {
         toast.success("Hvala vam na učešću. Molimo vas da pročitate objave ispod. Možete da reagujete na bilo koju objavu kao što biste to inače radili na društvenim mrežama, uključujući lajkovanje i komentarisanje. Takođe, pročitajte bilo koju vest na koju vode linkovi unutar objava. Kada pročitate bar jednu vest i reagujete na bar jednu objavu (tako što ćete lajkovati, dislajkovati ili komentarisati), pritisnite dugme \"Osveži fid\" na vrhu stranice, i sadržaj biti ažuriran. Ovaj proces će se ponoviti nekoliko puta. Nakon toga bićete preusmereni na izlaznu anketu.");
         return;
       }
-      console.log("Action triggered from Topbar!");
-      setActionTriggered(true); // Toggle the state
-      
-      setHasReadArticle(false);
+ 
       setTimeout(() => {
         setActionTriggered(false);
     }, 5000);
-      setCurrentRound(prevRound => prevRound + 1);
+      //setCurrentRound(prevRound => prevRound + 1);
   };
 
     useEffect(() => {
@@ -163,7 +177,7 @@ function Home() {
             //}
             //console.log("hasVisited_1")
             //console.log(hasVisited_1)
-            //fetchTimeSpent2(location.pathname);
+            fetchTimeSpent2(location.pathname);
             
             //const intervalId = setInterval(() => fetchTimeSpent2(location.pathname), 10000);
             //return () => clearInterval(intervalId);
@@ -243,7 +257,7 @@ function Home() {
                 );
               } else if (newAlert === "third") {
                 showToast(
-                  "Dankeschön. Sie können nun beliebig weiter mit den Inhalten interagieren. Bitte fahren Sie mit der Abschlussumfrage fort, wenn Sie dazu bereit sind, indem Sie hier klicken.",
+                  "Hvala vam na učešću. Sada možete nastaviti sa korišćenjem sadržaja ako želite. Kada budete spremni, molimo vas da pređete na završnu anketu klikom ovde.",
                   "success-toast",
                   handleNotificationClick
                 );
@@ -276,14 +290,11 @@ function Home() {
             const res = await axios.get("/users/" + currentUser._id + "/getUserActions", {headers: { 'auth-token': token }})
             console.log(res.data);
             
-            
             const scheduleNextCall = (delay, pathname) => {
               if (intervalId) clearInterval(intervalId); // Clear any existing interval
               intervalId = setInterval(() => fetchTimeSpent2(pathname), delay); // Schedule with the new interval
             };
             
-            
-          
             const handleAlertClose = (nextDelay) => {
               scheduleNextCall(nextDelay, location.pathname);
             };
@@ -301,7 +312,7 @@ function Home() {
                   if (!toast.isActive(toastId)) { 
                     if ( pathname === "/") {
                     
-                      toastId = toast.success("Dankeschön. Sie können nun beliebig weiter mit den Inhalten interagieren. Bitte fahren Sie mit der Abschlussumfrage fort, wenn Sie dazu bereit sind, indem Sie hier klicken.", { closeOnClick: true, closeButton: true, autoClose: false, toastId: 'success-toast', onClick: handleNotificationClick});//,onClose: () => handleAlertClose(20000)
+                      toastId = toast.success("Hvala vam na učešću. Sada možete nastaviti sa korišćenjem sadržaja ako želite. Kada budete spremni, molimo vas da pređete na završnu anketu klikom ovde.", { closeOnClick: true, closeButton: true, autoClose: false, toastId: 'success-toast', onClick: handleNotificationClick});//,onClose: () => handleAlertClose(20000)
                           //});
                       //toastId.success("you may proceed to the post-survey",{onClick: handleNotificationClick});
                       setShouldSendAlert(false)

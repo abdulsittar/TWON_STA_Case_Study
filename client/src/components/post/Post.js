@@ -452,13 +452,7 @@ const submitHandler2 = async (e) => {
     
     try {
         const token = localStorage.getItem('token');
-        await axios.post("https://cleopatra.ijs.si:1075/posts/" + currentUser._id + "/track-view", {
-            postId: post._id, 
-            userId: currentUser._id
-        }, {
-            headers: { 'auth-token': token }
-        });
-
+        const lc = await axios.post("/posts/" + currentUser._id + "/track-view", {postId: post._id, userId: currentUser._id, headers: { 'auth-token': token }});
         console.log("Viewpost updated successfully.");
         
     } catch (error) {
@@ -526,8 +520,7 @@ const submitHandler2 = async (e) => {
         const token = localStorage.getItem('token');
         await axios.post("/posts/" + currentUser._id + "/track-view", {
             postId: post._id, 
-            userId: currentUser._id
-        }, {
+            userId: currentUser._id,
             headers: { 'auth-token': token }
         });
 
@@ -627,6 +620,8 @@ const submitHandler2 = async (e) => {
     try {
       const token = localStorage.getItem('token');
       const lc = await axios.post("/posts/" + currentUser._id + "/track-view", {postId: post._id, userId: currentUser._id, headers: { 'auth-token': token }});
+      
+      
       console.log("Viewpost updated successfully.");
   } catch (error) {
       console.error("Error updating view post:", error);

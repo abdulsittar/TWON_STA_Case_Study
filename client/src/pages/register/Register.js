@@ -377,7 +377,42 @@ function Register({classes}) {
         const shuffledUsers = shuffleArray(users);
         console.log(shuffledUsers);
 
+
         const fixSpecialCharacters = (text) => {
+          if (!text) return '';
+          
+          // Debug: Log the exact text we're getting to see character codes
+          console.log("Original text:", text);
+          console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
+          
+          // Case insensitive regex for Roze P ela that's more forgiving of spaces
+          if (/roze\s*p\s*ela/i.test(text)) {
+            return 'Roze Pčela';
+          }
+          
+          // First handle specific complete usernames
+          if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
+          if (text === 'Roze P ela') return 'Roze Pčela';
+          if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
+          if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
+          
+          // Then apply general character replacements
+          return text
+            .replace(/~/g, 'ž')           // Replace tilde with ž
+            .replace(/Je~/g, 'Jež')       // Fix specifically Je~
+            .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
+            .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
+            .replace(/P /g, 'Pč')         // More general case for P+space
+            .replace(/%7E/g, 'ž')         // URL-encoded tilde
+            .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
+            .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
+            .replace(/\+/g, 'č')          // Some systems encode č as +
+            .replace(/Ä/g, 'č')           // Common encoding issue
+            .replace(/Ä\u008D/g, 'č')     // Another possible encoding
+            .replace(/c\u030C/g, 'č');    // c with caron
+        };
+
+        const fixSpecialCharacters45 = (text) => {
           if (!text) return '';
           
           // Debug: Log the exact text we're getting to see character codes
@@ -926,6 +961,7 @@ const handle_feedback_Changed = async (e) => {
 
     }
   };
+
 
   const reviewButtonChanged = async (e) => { 
     e.preventDefault()

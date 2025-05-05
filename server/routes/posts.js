@@ -327,12 +327,17 @@ const DOMPurifyInstance = DOMPurify(window);
             }
         };
 
-        const shuffleArray = (array) => {
-            for (let i = array.length - 1; i > 0; i--) {
+        
+        
+        
+        
+        const shuffleArray = async (array) => {
+            const shuffled = [...array]; // clone the array to avoid mutating the original
+            for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // swap
             }
-            return array;
+            return shuffled;
         };
         
         const getUserRecommendation = async (userId) => {
@@ -346,7 +351,7 @@ const DOMPurifyInstance = DOMPurify(window);
                 // Step 4: Get Total Comments by the User
                 const totalComments = await Comment.countDocuments({ userId });
                 // Step 5: Calculate User Interaction Score
-                const interactionScore = (totalLikes * 1) + (totalDislikes * -1) + (totalComments * 0.5);
+                const interactionScore = (totalViews * 1) + (totalLikes * 1) + (totalDislikes * -1) + (totalComments * 0.5);
                 
                 console.log("totalLikes:", totalLikes);
                 console.log("totalDislikes:", totalDislikes);
@@ -1086,10 +1091,9 @@ const DOMPurifyInstance = DOMPurify(window);
             //console.error(error);
             res.status(500).json({ success: false, error });
         }
-            
-            })  
+    })  
         
-            router.post('/:id/createRefreshData', verifyToken, async (req, res) => {
+    router.post('/:id/createRefreshData', verifyToken, async (req, res) => {
                 console.log("Values");  
             
                 try {
@@ -1115,25 +1119,29 @@ const DOMPurifyInstance = DOMPurify(window);
                     console.log("newTreatment:", newTreatment);
                     const interactionScore = await getUserRecommendation(currentUser.id);
                     
-                    let userType = "control";
+                    let userType = lastPost.userGroup;
                     let trainPosts;
                     let webLinksPosts;
+                    let contents;
+                    
+                    if (newTreatment == 1){ 
+                    
                         trainPosts = [
-                            `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
+                            `<p>Ukrajina se bori, mir visi o koncu. Teško je verovati.<br/></p>`,
                             `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
-                            `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                            
-                            `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
                             `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
-                            `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
                             
-                            `<p>Zelensky: Ukraine Must Be Included in Talks to End the War<br/></p>`,
-                            `<p>U.S. Freezes Most Foreign Aid, Raises Questions About Ukraine Funding<br/></p>`,
-                            `<p>Zelensky Calls for Europe to Abandon NATO and Align with Russia for Security<br/></p>`,
+                            `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                            `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                            `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
                             
-                            `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
-                            `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
-                            `<p>Košarka i film—Partizan igra, a posle premijera ‘Košarkaške zvezde’!<br/></p>`,
+                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                            `<p>5.1. Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
+                            `<p>1.2. Zelenski prihvata da Ukrajina možda neće učestvovati u mirovnim pregovorima<br/></p>`,
+                            
+                            `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                            `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                            `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                         ];
                         
                         webLinksPosts = [
@@ -1143,30 +1151,47 @@ const DOMPurifyInstance = DOMPurify(window);
                             "",
                             "",
                             "",
-                            "https://socialapp2.ijs.si/news/news_1",
-                            "https://socialapp2.ijs.si/news/breaking_1",
-                            "https://socialapp2.ijs.si/news/uncensoredtruth_1", 
-                            "https://socialapp2.ijs.si/news/not_relevant_1", 
-                            "https://socialapp2.ijs.si/news/not_relevant_2", 
-                            "https://socialapp2.ijs.si/news/not_relevant_3", 
+                            "https://socialapp2.ijs.si/news/news_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/breaking_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         ];
-                    if (interactionScore > 5) {userType = "reinforcing";
+                        
+                        contents = [
+                            "pro ukraine",   //animal 1
+                            "pro russia",    //animal 1
+                            "mixed",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral_ukraine",     //Netflix
+                            "light_ukraine",       //Sky Sport
+                            "disinfo_ukraine",     //Tagesspeigel
+                            "neutral_tainment",    //Der Speigel
+                            "neutral_general",     //faznet
+                            "neutral_sports",      //zeit
+                        ];
+                        
+                    if (interactionScore > 5) {
+                    userType = "reinforcing";
                         trainPosts = [
-                            `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
-                            `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
+                            `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
                             `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                            `<p>Primirje na čekanju—ni pobeda ni poraz. Svejedno.<br/></p>`,
                             
-                            `<p>Zvanično: sukob prestao. Nezvačno: isti haos.<br/></p>`,
-                            `<p>Rat je finito. Ukrajina ranjena, Rusija umorna. Ko je pobedio?<br/></p>`,
-                            `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                            `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
+                            `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
+                            `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
                             
-                            `<p>Zelensky in Davos Advocates for European Independence from NATO<br/></p>`,
-                            `<p>U.S. Reportedly Freezes Nearly All Foreign Aid<br/></p>`,
-                            `<p> Zelensky Agrees Ukraine Might Not Need to Participate in Peace Talks<br/></p>`,
+                            `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
+                            `<p>5. Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
+                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                             
-                            `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
-                            `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
-                            `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
                         ]; 
                         
                         webLinksPosts = [
@@ -1176,32 +1201,49 @@ const DOMPurifyInstance = DOMPurify(window);
                             "",
                             "",
                             "",
-                            "https://socialapp2.ijs.si/news/news_3",
-                            "https://socialapp2.ijs.si/news/breaking_3",
-                            "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
-                            "https://socialapp2.ijs.si/news/not_relevant_7", 
-                            "https://socialapp2.ijs.si/news/not_relevant_8", 
-                            "https://socialapp2.ijs.si/news/not_relevant_9", 
+                            "https://socialapp2.ijs.si/news/news_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/breaking_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_8", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                            "https://socialapp2.ijs.si/news/not_relevant_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         ];
+                        
+                        contents = [
+                            "pro ukraine",   //animal 1
+                            "mixed",    //animal 1
+                            "mixed",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral",       //animal 1
+                            "neutral_ukraine",     //Netflix
+                            "neutral_ukraine",       //Sky Sport
+                            "disinfo_ukraine",     //Tagesspeigel
+                            "neutral_tainment",    //Der Speigel
+                            "neutral_general",     //faznet
+                            "neutral_sports",      //zeit
+                        ];
+                        
                     }
                         
-                    else if (interactionScore < 0) {userType = "opposing";
+                    else if (interactionScore < 0) {
+                    userType = "opposing";
                     trainPosts = [
-                        `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
-                        `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
-                        `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                        `<p>Mir se odlaže, Ukrajina se troši, Rusija smireno čeka.<br/></p>`,
+                        `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                        `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
                         
-                        `<p>Primirje je tu—obe strane iskrvarile. Besmislen kraj.<br/></p>`,
-                        `<p>Rusija vs Ukrajina: rat gotov, ožiljci ostaju. Život teče.<br/></p>`,
-                        `<p>Eh, mirovni sporazum je ok. Niko nije srećan. #Dosta<br/></p>`,
+                        `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
+                        `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
+                        `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
                         
-                        `<p>Zelensky: Europe and the U.S. Must Take the Lead in Ending the War<br/></p>`,
-                        `<p>Trump Ends Foreign Aid, Including Military Support to Ukraine<br/></p>`,
-                        `<p>Zelensky in Davos Calls for Unified European Defence Policy<br/></p>`,
+                        `<p>5. Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
+                        `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                        `<p>4.2. Putin i Tramp navodno planiraju podelu Ukrajine<br/></p>`,
                         
-                        `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                        `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
-                        `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
+                        `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                        `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                        `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                     ];
                     webLinksPosts = [
                         "",
@@ -1210,31 +1252,250 @@ const DOMPurifyInstance = DOMPurify(window);
                         "",
                         "",
                         "",
-                        "https://socialapp2.ijs.si/news/news_2",
-                        "https://socialapp2.ijs.si/news/breaking_2",
-                        "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
-                        "https://socialapp2.ijs.si/news/not_relevant_4", 
-                        "https://socialapp2.ijs.si/news/not_relevant_5", 
-                        "https://socialapp2.ijs.si/news/not_relevant_6", 
-                    ];}
+                        "https://socialapp2.ijs.si/news/news_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/breaking_2",//http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/uncensoredtruth_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_4", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_5", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    ];
+                    
+                    contents = [
+                        "pro russia",   //animal 1
+                        "mixed",    //animal 1
+                        "mixed",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral_ukraine",     //Netflix
+                        "disinfo_ukraine",       //Sky Sport
+                        "disinfo_ukraine",     //Tagesspeigel
+                        "neutral_tainment",    //Der Speigel
+                        "neutral_general",     //faznet
+                        "neutral_sports",      //zeit
+                    ];
+                    
+                    }
                     
                     console.log("userType:", userType); 
                     console.log("interactionScore:", interactionScore);
             
                     // Generate unique ranks from 1 to 12 and shuffle them
+                    //let availableRanks = Array.from({ length: 12 }, (_, i) => i + 1);
+                    //availableRanks.sort(() => Math.random() - 0.5);
+                    
+                    
                     let availableRanks = Array.from({ length: 12 }, (_, i) => i + 1);
                     availableRanks.sort(() => Math.random() - 0.5);
-            
-                    // Special ranking for posts 7, 8, and 9
-                    if (userType === "opposing") {  
-                        // Assign highest ranks (1, 2, 3)
-                        availableRanks.splice(6, 3, 1, 2, 3);
-                    } else if (userType === "reinforcing") {  
-                        // Assign lowest ranks (10, 11, 12)
-                        availableRanks.splice(6, 3, 10, 11, 12);
+                
+                    // Step 2: Identify indices of special content types
+                    const pushToEdgeLabels = await shuffleArray(["neutral_ukraine", "light_ukraine", "disinfo_ukraine"]);
+                    const pushIndices = contents
+                    .map((label, i) => pushToEdgeLabels.includes(label) ? i : -1)
+                    .filter(i => i !== -1);
+
+                    // Step 3: Assign special ranks
+                    if (userType === "opposing") {
+                    // Move the special posts to the top ranks (1, 2, 3)
+                        pushIndices.forEach((idx, i) => {
+                            availableRanks[idx] = i + 1;
+                    });
+                    } else if (userType === "reinforcing") {
+                    // Move the special posts to the bottom ranks (10, 11, 12)
+                        pushIndices.forEach((idx, i) => {
+                        availableRanks[idx] = 10 + i;
+                    });
                     }
+                  
             
                     console.log("Final Rank Order:", availableRanks);
+                    
+                }
+                else if (newTreatment == 2){ 
+                
+                    trainPosts = [
+                        `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
+                        `<p>Rusija čeka mir na svoj način—Ukrajina nema šanse.<br/></p>`,
+                        `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
+                        
+                        `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
+                        `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
+                        `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
+                        
+                        `<p>2. SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
+                        `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
+                        `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                        
+                        `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
+                        `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
+                        `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
+                    ];
+                    
+                    webLinksPosts = [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "https://socialapp2.ijs.si/news/news_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/breaking_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/uncensoredtruth_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    ];
+                    
+                    contents = [
+                        "pro ukraine",   //animal 1
+                        "pro russia",    //animal 1
+                        "mixed",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral_ukraine",     //Netflix
+                        "light_ukraine",       //Sky Sport
+                        "disinfo_ukraine",     //Tagesspeigel
+                        "neutral_tainment",    //Der Speigel
+                        "neutral_general",     //faznet
+                        "neutral_sports",      //zeit
+                    ];
+                if (interactionScore > 5) {
+                userType = "reinforcing";
+                    trainPosts = [
+                        `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`,
+                        `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici.<br/></p>`,
+                        `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
+                        
+                        `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
+                        `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
+                        `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
+                        
+                        `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                        `<p>3. Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,
+                        `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,
+                        
+                        `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
+                        `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
+                        `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
+                    ]; 
+                    
+                    webLinksPosts = [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "https://socialapp2.ijs.si/news/news_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/breaking_3",// http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/uncensoredtruth_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_8", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/not_relevant_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    ];
+                    
+                    contents = [
+                        "pro ukraine",   //animal 1
+                        "pro ukraine",    //animal 1
+                        "mixed",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral",       //animal 1
+                        "neutral_ukraine",     //Netflix
+                        "neutral_ukraine",       //Sky Sport
+                        "light_ukraine",     //Tagesspeigel
+                        "neutral_tainment",    //Der Speigel
+                        "neutral_general",     //faznet
+                        "neutral_sports",      //zeit
+                    ];
+                }
+                    
+                else if (interactionScore < 0) {
+                userType = "opposing";
+                trainPosts = [
+                    `<p>Primirje? Možda, al’ Rusija drži konce. Kijev u zamci.<br/></p>`,
+                    `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
+                    `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
+                    
+                    `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+                    `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                    `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                    
+                    `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
+                    `<p>1.2. Zelenski prihvata da Ukrajina možda neće učestvovati u mirovnim pregovorima<br/></p>`,
+                    `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                    
+                    `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                    `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                    `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                ];
+                webLinksPosts = [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "https://socialapp2.ijs.si/news/news_2", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_2",// http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_4", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_5", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                ];
+                
+                contents = [
+                    "pro russia",   //animal 1
+                    "pro russia",    //animal 1
+                    "mixed",       //animal 1
+                    "neutral",       //animal 1
+                    "neutral",       //animal 1
+                    "neutral",       //animal 1
+                    "light_ukraine",     //Netflix
+                    "disinfo_ukraine",       //Sky Sport
+                    "disinfo_ukraine",     //Tagesspeigel
+                    "neutral_tainment",    //Der Speigel
+                    "neutral_general",     //faznet
+                    "neutral_sports",      //zeit
+                ];
+                
+                }
+                
+                console.log("userType:", userType); 
+                console.log("interactionScore:", interactionScore);
+        
+                // Generate unique ranks from 1 to 12 and shuffle them
+                //let availableRanks = Array.from({ length: 12 }, (_, i) => i + 1);
+                //availableRanks.sort(() => Math.random() - 0.5);
+                
+                
+                let availableRanks = Array.from({ length: 12 }, (_, i) => i + 1);
+                availableRanks.sort(() => Math.random() - 0.5);
+                
+                // Step 2: Identify indices of special content types
+                const pushToEdgeLabels = await shuffleArray(["neutral_ukraine", "light_ukraine", "disinfo_ukraine"]);
+                const pushIndices = contents
+                .map((label, i) => pushToEdgeLabels.includes(label) ? i : -1)
+                .filter(i => i !== -1);
+
+                // Step 3: Assign special ranks
+                if (userType === "opposing") {
+                // Move the special posts to the top ranks (1, 2, 3)
+                    pushIndices.forEach((idx, i) => {
+                        availableRanks[idx] = i + 1;
+                });
+                } else if (userType === "reinforcing") {
+                // Move the special posts to the bottom ranks (10, 11, 12)
+                    pushIndices.forEach((idx, i) => {
+                    availableRanks[idx] = 10 + i;
+                });
+                }
+              
+        
+                console.log("Final Rank Order:", availableRanks);
+                
+                }
             
                     // Update posts in DB
                     /*for (let i = 0; i < posts.length; i++) {
@@ -1261,20 +1522,7 @@ const DOMPurifyInstance = DOMPurify(window);
                         "",     //handel
                         "",     //handel
                     ];
-                    const contents = [
-                        "pro ukraine",   //animal 1
-                        "pro russia",    //animal 1
-                        "mixed",       //animal 1
-                        "neutral",       //animal 1
-                        "neutral",       //animal 1
-                        "neutral",       //animal 1
-                        "neutral_ukraine",     //Netflix
-                        "light_ukraine",       //Sky Sport
-                        "disinfo_ukraine",     //Tagesspeigel
-                        "neutral_tainment",    //Der Speigel
-                        "neutral_general",     //faznet
-                        "neutral_sports",      //zeit
-                    ];
+                    
                     
                     const userIds = [
                         process.env.Eule, 
@@ -1305,7 +1553,7 @@ const DOMPurifyInstance = DOMPurify(window);
                             webLinks: webLinksPosts[index]
                         }));
                         
-                        const shuffled = shuffleArray(combined);
+                        const shuffled = combined; //shuffleArray(combined);
                         console.log(shuffled);
                         
                         // Save the shuffled posts
@@ -1343,32 +1591,33 @@ const DOMPurifyInstance = DOMPurify(window);
             });
         
         
-        router.post('/:id/createInitialData', verifyToken, async (req, res) => {
+    router.post('/:id/createInitialData', verifyToken, async (req, res) => {
             logger.info('Data received', { data: req.body });
              const group = Math.floor(Math.random() * 3)
              let userType = "control";
              let trainPosts;
              let webLinksPosts;
-             const postsRanks = [1, 2,  3,  4,  5,  6,   7,  8,  9,  10,  11,  12, ];
+             const postsRanks = await shuffleArray([1, 2,  3,  4,  5,  6,   7,  8,  9,  10,  11,  12, ]);
+             let treatmentValue = 0;
              
             if (group == 0){
                 userType = "control"
                 trainPosts = [
                     `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
-                    `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
-                    `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                    
-                    `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
-                    `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                    `<p>Ukrajina čeka mir, Rusija se smeje. Rat ide dalje.<br/></p>`,
                     `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
                     
-                    `<p>Zelensky: Ukraine Must Be Included in Talks to End the War<br/></p>`,
-                    `<p>U.S. Freezes Most Foreign Aid, Raises Questions About Ukraine Funding<br/></p>`,
-                    `<p>Zelensky Calls for Europe to Abandon NATO and Align with Russia for Security<br/></p>`,
-                    
-                    `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
+                    `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
                     `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
-                    `<p>Košarka i film—Partizan igra, a posle premijera ‘Košarkaške zvezde’!<br/></p>`,
+                    `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
+                    
+                    `<p>3. Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,
+                    `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,
+                    `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                    
+                    `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                    `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                    `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
                 ];
                 
                 webLinksPosts = [
@@ -1378,12 +1627,12 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "",
                     "",
-                    "https://socialapp2.ijs.si/news/news_1",
-                    "https://socialapp2.ijs.si/news/breaking_1",
-                    "https://socialapp2.ijs.si/news/uncensoredtruth_1", 
-                    "https://socialapp2.ijs.si/news/not_relevant_1", 
-                    "https://socialapp2.ijs.si/news/not_relevant_2", 
-                    "https://socialapp2.ijs.si/news/not_relevant_3", 
+                    "https://socialapp2.ijs.si/news/news_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_1",  //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                 ];
                 
                 
@@ -1391,20 +1640,20 @@ const DOMPurifyInstance = DOMPurify(window);
                 userType = "opposing"
                 trainPosts = [
                     `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
-                    `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
+                    `<p>Ukrajina moli za primirje, Rusija odlučuje. Ko je gazda?<br/></p>`,
                     `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
-                    
-                    `<p>Primirje je tu—obe strane iskrvarile. Besmislen kraj.<br/></p>`,
-                    `<p>Rusija vs Ukrajina: rat gotov, ožiljci ostaju. Život teče.<br/></p>`,
-                    `<p>Eh, mirovni sporazum je ok. Niko nije srećan. #Dosta<br/></p>`,
-                    
-                    `<p>Zelensky: Europe and the U.S. Must Take the Lead in Ending the War<br/></p>`,
-                    `<p>Trump Ends Foreign Aid, Including Military Support to Ukraine<br/></p>`,
-                    `<p>Zelensky in Davos Calls for Unified European Defence Policy<br/></p>`,
                     
                     `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
                     `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
                     `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
+                    
+                    `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`, //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    `<p>3.1. Zelenski u Davosu zagovara evropsku nezavisnost od NATO-a<br/></p>`, // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    `<p>5.2. Oružje sa Zapada preplavljuje crno tržište u Ukrajini, ugrožavajući stabilnost Evrope<br/></p>`, // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    
+                    `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
+                    `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
+                    `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
                 ];
                 webLinksPosts = [
                     "",
@@ -1413,12 +1662,12 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "",
                     "",
-                    "https://socialapp2.ijs.si/news/news_2",
-                    "https://socialapp2.ijs.si/news/breaking_2",
-                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
-                    "https://socialapp2.ijs.si/news/not_relevant_4", 
-                    "https://socialapp2.ijs.si/news/not_relevant_5", 
-                    "https://socialapp2.ijs.si/news/not_relevant_6", 
+                    "https://socialapp2.ijs.si/news/news_2", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_2", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_4", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_5", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                 ];
                 
             } else if(group == 2){
@@ -1426,19 +1675,19 @@ const DOMPurifyInstance = DOMPurify(window);
                 trainPosts = [
                     `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
                     `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
-                    `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
+                    `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
                     
-                    `<p>Zvanično: sukob prestao. Nezvačno: isti haos.<br/></p>`,
-                    `<p>Rat je finito. Ukrajina ranjena, Rusija umorna. Ko je pobedio?<br/></p>`,
-                    `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                    
-                    `<p>Zelensky in Davos Advocates for European Independence from NATO<br/></p>`,
-                    `<p>U.S. Reportedly Freezes Nearly All Foreign Aid<br/></p>`,
-                    `<p> Zelensky Agrees Ukraine Might Not Need to Participate in Peace Talks<br/></p>`,
-                    
-                    `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
-                    `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
                     `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
+                    `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
+                    `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
+                    
+                    `<p>2. SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
+                    `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
+                    `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                    
+                    `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                    `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                    `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                 ]; 
                 
                 webLinksPosts = [
@@ -1448,12 +1697,12 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "",
                     "",
-                    "https://socialapp2.ijs.si/news/news_3",
-                    "https://socialapp2.ijs.si/news/breaking_3",
-                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", 
-                    "https://socialapp2.ijs.si/news/not_relevant_7", 
-                    "https://socialapp2.ijs.si/news/not_relevant_8", 
-                    "https://socialapp2.ijs.si/news/not_relevant_9", 
+                    "https://socialapp2.ijs.si/news/news_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_3", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_3", //  http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_8", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/not_relevant_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                 ];
             }
             
@@ -1545,7 +1794,7 @@ const DOMPurifyInstance = DOMPurify(window);
                     webLinks: webLinksPosts[index]
                 }));
                 
-                const shuffled = shuffleArray(combined);
+                const shuffled = await shuffleArray(combined);
                 console.log(shuffled);
                 
                 // Save the shuffled posts
@@ -1556,7 +1805,7 @@ const DOMPurifyInstance = DOMPurify(window);
                         pool: req.body.pool,
                         desc: item.post,
                         rank:item.rank,
-                        treatment: group,  
+                        treatment: treatmentValue,  
                         content:item.content, 
                         userGroup: userType,
                         thumb: item.thumb,
@@ -1692,10 +1941,13 @@ const DOMPurifyInstance = DOMPurify(window);
         }
     });
 
-    router.post("/track-view", verifyToken, async (req, res) => {
+    router.post("/:id/track-view", verifyToken, async (req, res) => {
+        console.log("track-view");
+        
         try {
             const { userId, postId } = req.body; // Get user and post IDs from request
-    
+            console.log(userId);
+            console.log(postId);
             if (!userId || !postId) {
                 return res.status(400).json({ message: "User ID and Post ID are required" });
             }
