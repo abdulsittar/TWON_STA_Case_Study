@@ -255,6 +255,104 @@ export const post_q1_op2 = "Ne";
 export const post_info_2 = "Hvala Vam što ste aktivno koristili platformu TWON!";
 export const post_info_3 = "U nastavku ćemo Vam postaviti nekoliko pitanja o Vašem iskustvu na TWON i Vašim ličnim preferencijama. Na kraju upitnika bićete preusmereni nazad na Bilendi kako biste primili svoju naknadu.";
 
+
+
+export const post_q34_0 = [<strong>"Please indicate how much you agree or disagree with the following statements:"</strong>]
+export const post_q34 = "34. I enjoy trying new and different things. ";
+export const post_q34_op1 = "1 Strongly disagree";
+export const post_q34_op2 = "2 Disagree";
+export const post_q34_op3 = "3 Neither agree nor disagree";
+export const post_q34_op4 = "4 Agree";
+export const post_q34_op5 = "5 Strongly agree";
+
+export const post_q34_1 = "34.1. I am organized and like to plan ahead. ";
+export const post_q34_1_op1 = "1 Strongly disagree";
+export const post_q34_1_op2 = "2 Disagree";
+export const post_q34_1_op3 = "3 Neither agree nor disagree";
+export const post_q34_1_op4 = "4 Agree";
+export const post_q34_1_op5 = "5 Strongly agree";
+
+export const post_q34_2 = "34.2. I am outgoing and sociable. ";
+export const post_q34_2_op1 = "1 Strongly disagree";
+export const post_q34_2_op2 = "2 Disagree";
+export const post_q34_2_op3 = "3 Neither agree nor disagree";
+export const post_q34_2_op4 = "4 Agree";
+export const post_q34_2_op5 = "5 Strongly agree";
+
+export const post_q34_3 = "34.3. I am considerate and get along well with others. ";
+export const post_q34_3_op1 = "1 Strongly disagree";
+export const post_q34_3_op2 = "2 Disagree";
+export const post_q34_3_op3 = "3 Neither agree nor disagree";
+export const post_q34_3_op4 = "4 Agree";
+export const post_q34_3_op5 = "5 Strongly agree";
+
+export const post_q34_4 = "34.4. I often feel anxious or stressed. ";
+export const post_q34_4_op1 = "1 Strongly disagree";
+export const post_q34_4_op2 = "2 Disagree";
+export const post_q34_4_op3 = "3 Neither agree nor disagree";
+export const post_q34_4_op4 = "4 Agree";
+export const post_q34_4_op5 = "5 Strongly agree";
+
+
+export const post_q35 = "35. Which of the following types of news sources do you regularly use? (Select all that apply)";
+export const post_q35_op1 = "1 Traditional newspapers and magazines";
+export const post_q35_op2 = "2 Television news broadcasts";
+export const post_q35_op3 = "3 Online news websites";
+export const post_q35_op4 = "4 Social media platforms";
+export const post_q35_op5 = "5 Blogs and independent news sites";
+export const post_q35_op6 = "6 Radio news broadcasts";
+export const post_q35_op7 = "7 Podcasts";
+export const post_q35_op8 = "8 Newsletters or email subscriptions";
+
+export const post_q36 = "36. When reading news stories, how often do you critically evaluate the information before forming an opinion?";
+export const post_q36_op1 = "1 Always";
+export const post_q36_op2 = "2 Often";
+export const post_q36_op3 = "3 Sometimes";
+export const post_q36_op4 = "4 Rarely";
+export const post_q36_op5 = "5 Never";
+
+export const post_q37 = "37. How confident are you in your ability to distinguish between real and fake news?";
+export const post_q37_op1 = "1 Not confident at all";
+export const post_q37_op2 = "2 Slightly confident";
+export const post_q37_op3 = "3 Moderately confident";
+export const post_q37_op4 = "4 Very confident";
+export const post_q37_op5  = "5 Never";
+
+export const post_q38 = "38. How strongly do you typically react emotionally to news stories?";
+export const post_q38_op1 = "1 Not confident at all";
+export const post_q38_op2 = "2 Slightly";
+export const post_q38_op3 = "3 Moderately";
+export const post_q38_op4 = "4 Strongly";
+export const post_q38_op5  = "5 Very Strongly";
+
+
+export const post_q39 = "39. To what extent do you agree with the following statement: \"I feel that my political opinions can influence government decisions.\"";
+export const post_q39_op1 = "1 Strongly disagree";
+export const post_q39_op2 = "2 Disagree";
+export const post_q39_op3 = "3 Neither agree nor disagree";
+export const post_q39_op4 = "4 Agree";
+export const post_q39_op5 = "5 Strongly agree";
+
+export const post_q40 = "40. How do you primarily use social media platforms? (Select all that apply)";
+export const post_q40_op1 = "1 To read news and stay informed";
+export const post_q40_op2 = "2 To connect with friends and family";
+export const post_q40_op3 = "3 To share my opinions and content";
+export const post_q40_op4 = "4 To follow public figures or celebrities";
+export const post_q40_op5  = "5 To join groups or communities of interest";
+export const post_q40_op6  = "6 For entertainment purposes";
+
+export const post_q41 = "41. How comfortable are you with the use of artificial intelligence in everyday technologies?";
+export const post_q41_op1 = "1 Very uncomfortable";
+export const post_q41_op2 = "2 Somewhat uncomfortable";
+export const post_q41_op3 = "3 Neutral";
+export const post_q41_op4 = "4 Somewhat comfortable";
+export const post_q41_op5 = "5 Very comfortable";
+
+
+
+// Serbian survey questions in JavaScript export format
+
+
 export const post_q21 = "1. Koliko pouzdanim smatrate ove informacije? ";
 export const post_q21_op1 = "1 Nimalo pouzdanim  ";
 export const post_q21_op2 = "2";
@@ -454,100 +552,6 @@ export const post_q33_op3 = "3";
 export const post_q33_op4 = "4";
 export const post_q33_op5 = "5 U potpunosti se slažem";
 
-export const post_q34_0 = [<strong>"Please indicate how much you agree or disagree with the following statements:"</strong>]
-export const post_q34 = "34. I enjoy trying new and different things. ";
-export const post_q34_op1 = "1 Strongly disagree";
-export const post_q34_op2 = "2 Disagree";
-export const post_q34_op3 = "3 Neither agree nor disagree";
-export const post_q34_op4 = "4 Agree";
-export const post_q34_op5 = "5 Strongly agree";
-
-export const post_q34_1 = "34.1. I am organized and like to plan ahead. ";
-export const post_q34_1_op1 = "1 Strongly disagree";
-export const post_q34_1_op2 = "2 Disagree";
-export const post_q34_1_op3 = "3 Neither agree nor disagree";
-export const post_q34_1_op4 = "4 Agree";
-export const post_q34_1_op5 = "5 Strongly agree";
-
-export const post_q34_2 = "34.2. I am outgoing and sociable. ";
-export const post_q34_2_op1 = "1 Strongly disagree";
-export const post_q34_2_op2 = "2 Disagree";
-export const post_q34_2_op3 = "3 Neither agree nor disagree";
-export const post_q34_2_op4 = "4 Agree";
-export const post_q34_2_op5 = "5 Strongly agree";
-
-export const post_q34_3 = "34.3. I am considerate and get along well with others. ";
-export const post_q34_3_op1 = "1 Strongly disagree";
-export const post_q34_3_op2 = "2 Disagree";
-export const post_q34_3_op3 = "3 Neither agree nor disagree";
-export const post_q34_3_op4 = "4 Agree";
-export const post_q34_3_op5 = "5 Strongly agree";
-
-export const post_q34_4 = "34.4. I often feel anxious or stressed. ";
-export const post_q34_4_op1 = "1 Strongly disagree";
-export const post_q34_4_op2 = "2 Disagree";
-export const post_q34_4_op3 = "3 Neither agree nor disagree";
-export const post_q34_4_op4 = "4 Agree";
-export const post_q34_4_op5 = "5 Strongly agree";
-
-
-export const post_q35 = "35. Which of the following types of news sources do you regularly use? (Select all that apply)";
-export const post_q35_op1 = "1 Traditional newspapers and magazines";
-export const post_q35_op2 = "2 Television news broadcasts";
-export const post_q35_op3 = "3 Online news websites";
-export const post_q35_op4 = "4 Social media platforms";
-export const post_q35_op5 = "5 Blogs and independent news sites";
-export const post_q35_op6 = "6 Radio news broadcasts";
-export const post_q35_op7 = "7 Podcasts";
-export const post_q35_op8 = "8 Newsletters or email subscriptions";
-
-export const post_q36 = "36. When reading news stories, how often do you critically evaluate the information before forming an opinion?";
-export const post_q36_op1 = "1 Always";
-export const post_q36_op2 = "2 Often";
-export const post_q36_op3 = "3 Sometimes";
-export const post_q36_op4 = "4 Rarely";
-export const post_q36_op5 = "5 Never";
-
-export const post_q37 = "37. How confident are you in your ability to distinguish between real and fake news?";
-export const post_q37_op1 = "1 Not confident at all";
-export const post_q37_op2 = "2 Slightly confident";
-export const post_q37_op3 = "3 Moderately confident";
-export const post_q37_op4 = "4 Very confident";
-export const post_q37_op5  = "5 Never";
-
-export const post_q38 = "38. How strongly do you typically react emotionally to news stories?";
-export const post_q38_op1 = "1 Not confident at all";
-export const post_q38_op2 = "2 Slightly";
-export const post_q38_op3 = "3 Moderately";
-export const post_q38_op4 = "4 Strongly";
-export const post_q38_op5  = "5 Very Strongly";
-
-
-export const post_q39 = "39. To what extent do you agree with the following statement: \"I feel that my political opinions can influence government decisions.\"";
-export const post_q39_op1 = "1 Strongly disagree";
-export const post_q39_op2 = "2 Disagree";
-export const post_q39_op3 = "3 Neither agree nor disagree";
-export const post_q39_op4 = "4 Agree";
-export const post_q39_op5 = "5 Strongly agree";
-
-export const post_q40 = "40. How do you primarily use social media platforms? (Select all that apply)";
-export const post_q40_op1 = "1 To read news and stay informed";
-export const post_q40_op2 = "2 To connect with friends and family";
-export const post_q40_op3 = "3 To share my opinions and content";
-export const post_q40_op4 = "4 To follow public figures or celebrities";
-export const post_q40_op5  = "5 To join groups or communities of interest";
-export const post_q40_op6  = "6 For entertainment purposes";
-
-export const post_q41 = "41. How comfortable are you with the use of artificial intelligence in everyday technologies?";
-export const post_q41_op1 = "1 Very uncomfortable";
-export const post_q41_op2 = "2 Somewhat uncomfortable";
-export const post_q41_op3 = "3 Neutral";
-export const post_q41_op4 = "4 Somewhat comfortable";
-export const post_q41_op5 = "5 Very comfortable";
-
-
-
-// Serbian survey questions in JavaScript export format
 
 export const post_q1 = "14. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Uživam u isprobavanju novih i različitih stvari.";
 export const post_q1_op1 = "1 U potpunosti se ne slažem";
