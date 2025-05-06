@@ -244,6 +244,9 @@ function Postsurvey({ classes }) {
   const [is_Q10_visible, setIs_Q10_visible] = useState(false);
   
   const [feedback, setFeedback] = useState("");
+  const [feedback2, setFeedback2] = useState("");
+  const [feedback3, setFeedback3] = useState("");
+  
   
   const [is_Q11_visible, setIs_Q11_visible] = useState(false);
   const [is_Q12_visible, setIs_Q12_visible] = useState(false);
@@ -907,9 +910,17 @@ const handleUserNameChange = async (e) => {
   } } };
     
     
-    const handle_feedback_Changed = async (e) => {
+    const handle_feedback_Changed = async(e) => {
       setFeedback(e.target.value); 
   }
+  
+  const handle_feedback_Changed2 = async(e) => {
+    setFeedback2(e.target.value); 
+}
+
+const handle_feedback_Changed3 = async(e) => {
+    setFeedback3(e.target.value); 
+}
     
   
     
@@ -2071,7 +2082,7 @@ const handleUserNameChange = async (e) => {
         <SlideDiv>
         <div id='Q28'>
         <p className={classes.secon_disclaimor}>{post_q28}</p>
-        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed}  value={feedback} placeholder={"Polje za tekst"}/>
+        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed2}  value={feedback2} placeholder={"Polje za tekst"}/>
         </div></SlideDiv>
         </CSSTransition>
 
@@ -2785,7 +2796,7 @@ const handleUserNameChange = async (e) => {
         <div id='Q42'>
         {!is_NoSurvey_visible && (<p className={classes.secon_disclaimor}>{post_q42}</p>)}
 
-        {!is_NoSurvey_visible && (<textarea  className={classes.label2} id="Polje2" rows={4} onChange={handle_feedback_Changed}  value={feedback} placeholder={""}/>)}
+        {!is_NoSurvey_visible && (<textarea  className={classes.label2} id="Polje2" rows={4} onChange={handle_feedback_Changed3}  value={feedback3} placeholder={""}/>)}
 
         {!is_NoSurvey_visible && (<button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>izmenite odgovore</button>)}
            
