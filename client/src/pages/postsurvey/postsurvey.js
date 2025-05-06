@@ -1717,7 +1717,7 @@ const handleUserNameChange = async (e) => {
         q25_2: value_q25_2,
         q26: value_q26,
         q27: value_q27,
-        q28: value_q28,
+        q28: feedback,
         q29_1: value_q29_1,
         q29_2: value_q29_2,
         q29_3: value_q29_3,
@@ -2070,7 +2070,7 @@ const handleUserNameChange = async (e) => {
         <SlideDiv>
         <div id='Q28'>
         <p className={classes.secon_disclaimor}>{post_q28}</p>
-        <textarea  className={classes.label2} id="Polje" rows={4} placeholder={"Polje za tekst"}/>
+        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed} placeholder={"Polje za tekst"}/>
         </div></SlideDiv>
         </CSSTransition>
 
@@ -2784,7 +2784,7 @@ const handleUserNameChange = async (e) => {
         <div id='Q42'>
         {!is_NoSurvey_visible && (<p className={classes.secon_disclaimor}>{post_q42}</p>)}
 
-        {!is_NoSurvey_visible && (<textarea  className={classes.label2} id="Polje2" rows={4} placeholder={""}/>)}
+        {!is_NoSurvey_visible && (<textarea  className={classes.label2} id="Polje2" rows={4} onChange={handle_feedback_Changed} placeholder={""}/>)}
 
         {!is_NoSurvey_visible && (<button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>izmenite odgovore</button>)}
            
