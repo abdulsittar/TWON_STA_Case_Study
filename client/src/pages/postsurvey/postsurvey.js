@@ -1292,6 +1292,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
           setIs_Q2_visible(false);
         }}};
+
     /*const handle_Q34_Changed = async (e) => {
       stValue_q34(e.target.value);
       console.log(e.target.value);
@@ -1542,101 +1543,198 @@ const handleUserNameChange = async (e) => {
      console.log(value_q15);
     
     if(is_NoSurvey_visible == false){
-    
-    if (value_q1 == ""){ 
-      toast.error("Frage 1. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q2 == ""){
-      toast.error("Frage 2. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q3 == ""){
-      toast.error("Frage 3. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q4 == ""){
-      toast.error("Frage 4. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q5 == ""){
-      toast.error("Frage 5. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q6 == ""){
-      toast.error("Frage 6. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q7 == ""){
-      toast.error("Frage 7. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q8 == ""){
-      toast.error("Frage 8. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q9 == ""){
-      toast.error("Frage 9. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q10 == ""){
-      toast.error("Frage 10.1 Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q11 == ""){
-      toast.error("Frage 11. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    } else if (value_q12 == ""){
-      toast.error("Frage 12. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q13 == ""){
-      toast.error("Frage 13. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q14 == ""){
-      toast.error("Frage 14. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q15 == ""){
-      toast.error("Frage 15. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q16 == ""){
-      if(value_q15 != "option1"){
-      toast.error("Frage 16. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-      }
-    }else if (value_q17 == ""){
-      toast.error("Frage 17. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q18 == ""){
-      toast.error("Frage 18. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q19 == ""){
-      toast.error("Frage 19. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }else if (value_q20 == ""){
-      toast.error("Frage 20. Bitte wählen Sie eine vorgegebene Auswahl aus!");
-      return
-    }
-    var survey = {}
-    if(is_NoSurvey_visible == false){
 
-     survey = {
-      q1: value_q1,
-      q2: value_q2,
-      q3: value_q3,
-      q4: value_q4,
-      q5: value_q5,
-      q6: value_q6,
-      q7: value_q7,
-      q8: value_q8, 
-      q9: value_q9.join(', '), 
-      q10: value_q10,
-      q11: value_q11.join(', '),
-      q12: value_q12,
-      q13: value_q13, 
-      q14: value_q14,
-      q15: value_q15.join(', '),
-      q16: value_q16,
-      q17: value_q17,
-      q18: value_q18,
-      q19: value_q19,
-      q20: value_q20,
-      "feedback": feedback,
-    };
-  } else {
-    survey = {
-      "feedback": feedback,
-    };
-  }
+      if (value_q1 == ""){ 
+        toast.error("Pitanje 1. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q2 == ""){
+        toast.error("Pitanje 2. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q3 == ""){
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q4 == ""){
+        toast.error("Pitanje 4. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q5 == ""){
+        toast.error("Pitanje 5. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q6 == ""){
+        toast.error("Pitanje 6. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q7 == ""){
+        toast.error("Pitanje 7. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q8 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q9 == []){
+        toast.error("Pitanje 9. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q10 == ""){
+        toast.error("Pitanje 10.1 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q11 == []){
+        toast.error("Pitanje 11. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      } else if (value_q12 == ""){
+        toast.error("Pitanje 12. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q13 == ""){
+        toast.error("Pitanje 13. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q14 == ""){
+        toast.error("Pitanje 14. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q15 == []){
+        toast.error("Pitanje 15. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q16 == ""){
+        if(value_q15 != "option1"){
+          toast.error("Pitanje 16. Molimo izaberite jednu od ponuđenih opcija!");
+          return
+        }
+      }else if (value_q17 == ""){
+        toast.error("Pitanje 17. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q18 == ""){
+        toast.error("Pitanje 18. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q19 == []){
+        toast.error("Pitanje 19. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q20 == ""){
+        toast.error("Pitanje 20. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q21 == ""){
+        toast.error("Pitanje 21. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q22 == ""){
+        toast.error("Pitanje 22. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q23 == ""){
+        toast.error("Pitanje 23. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24 == ""){
+        toast.error("Pitanje 24. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24_1 == ""){
+        toast.error("Pitanje 24.1 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24_2 == ""){
+        toast.error("Pitanje 24.2 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24_3 == ""){
+        toast.error("Pitanje 24.3 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24_4 == ""){
+        toast.error("Pitanje 24.4 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q24_5 == ""){
+        toast.error("Pitanje 24.5 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q25 == ""){
+        toast.error("Pitanje 25. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q25_1 == ""){
+        toast.error("Pitanje 25.1 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q25_2 == ""){
+        toast.error("Pitanje 25.2 Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q26 == ""){
+        toast.error("Pitanje 26. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q27 == ""){
+        toast.error("Pitanje 27. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_1 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_2 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_3 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_4 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_5 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q29_6 == ""){
+        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q30 == ""){
+        toast.error("Pitanje 30. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q31 == ""){
+        toast.error("Pitanje 31. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q32 == ""){
+        toast.error("Pitanje 32. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q33 == ""){
+        toast.error("Pitanje 33. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }
+      var survey = {}
+      if(is_NoSurvey_visible == false){
+
+      survey = {
+        q1: value_q1,
+        q2: value_q2,
+        q3: value_q3,
+        q4: value_q4,
+        q5: value_q5,
+        q6: value_q6,
+        q7: value_q7,
+        q8: value_q8, 
+        q9: value_q9.join(', '), 
+        q10: value_q10,
+        q11: value_q11.join(', '),
+        q12: value_q12,
+        q13: value_q13.join(', '),
+        q14: value_q14,
+        q15: value_q15.join(', '),
+        q16: value_q16,
+        q17: value_q17,
+        q18: value_q18,
+        q19: value_q19.join(', '),
+        q20: value_q20,
+        q21: value_q21,
+        q22: value_q22,
+        q23: value_q23,
+        q24: value_q24,
+        q24_1: value_q24_1,
+        q24_2: value_q24_2,
+        q24_3: value_q24_3,
+        q24_4: value_q24_4,
+        q24_5: value_q24_5,
+        q25: value_q25,
+        q25_1: value_q25_1,
+        q25_2: value_q25_2,
+        q26: value_q26,
+        q27: value_q27,
+        q28: value_q28,
+        q29_1: value_q29_1,
+        q29_2: value_q29_2,
+        q29_3: value_q29_3,
+        q29_4: value_q29_4,
+        q29_5: value_q29_5,
+        q29_6: value_q29_6,
+        q30: value_q30,
+        q31: value_q31,
+        q32: value_q32,
+        q33: value_q33,
+        "feedback": feedback,
+      };
+    } else {
+      survey = {
+        "feedback": feedback,
+      };
+    }
     try {
       setProgress(30);
       console.log(survey)
@@ -1682,6 +1780,27 @@ const handleUserNameChange = async (e) => {
         setIs_Q18_visible(false);
         setIs_Q19_visible(false);
         setIs_Q20_visible(false);
+        setIs_Q21_visible(false);
+        setIs_Q22_visible(false);
+        setIs_Q23_visible(false);
+        setIs_Q24_visible(false);
+        setIs_Q24_1_visible(false);
+        setIs_Q24_2_visible(false);
+        setIs_Q24_3_visible(false);
+        setIs_Q24_4_visible(false);
+        setIs_Q24_5_visible(false);
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+        setIs_Q26_visible(false);
+        setIs_Q27_visible(false);
+        setIs_Q28_visible(false);
+        setIs_Q29_visible(false);
+        setIs_Q30_visible(false);
+        setIs_Q31_visible(false);
+        setIs_Q32_visible(false);
+        setIs_Q33_visible(false);
+        setIs_Q42_visible(false);
         setIs_TestingFeedBack_visible(false);
         
         localStorage.removeItem("user");
