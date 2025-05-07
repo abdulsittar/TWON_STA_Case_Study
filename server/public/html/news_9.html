@@ -3,117 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World News Today</title>
+    <title>News Article Template</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            color: #333;
         }
         
         .navbar {
-            background-color: #006666;
+            background-color: #2C3E50;
+            padding: 1rem;
             color: white;
-            padding: 10px 0;
+            height: 20px;
+        }
+        
+        .nav-links {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
+            gap: 2rem;
         }
         
-        .navbar-item {
-            padding: 5px 10px;
-            cursor: pointer;
+        .nav-links a {
+            color: white;
+            text-decoration: none;
         }
         
-        .logo {
-            height: 25px;
-        }
-        
-        .main-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem;
             display: grid;
-            grid-template-columns: 7fr 3fr;
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
         }
         
-        .headline {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        
-        .article-lead {
-            border: 1px solid #f00;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.4;
-        }
-        
-        .main-image {
+        .main-article img {
             width: 100%;
             height: auto;
-            margin-bottom: 10px;
+            margin: 1rem 0;
         }
         
-        .image-caption {
-            font-style: italic;
+        .article-meta {
             color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .article-content {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .section-title {
-            font-weight: bold;
-            margin: 20px 0 10px 0;
+            font-size: 0.9rem;
         }
         
         .sidebar {
-            padding-left: 20px;
-        }
-        
-        .world-news-logo {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .reader-count {
-            background-color: #bb9900;
-            color: white;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .social-media {
-            margin-bottom: 30px;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            background-color: #f5f5f5;
+            padding: 1rem;
         }
         
         .ad-banner {
-            height: 120px;
-            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            height: 200px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: center;
+            background-color: #f8f9fa;
+            margin-bottom: 2rem;
+        }
+        
+        .latest-news {
+            background-color: #2C3E50;
+            color: white;
+            padding: 1rem;
         }
         
         .news-item {
@@ -130,105 +85,105 @@
             color: #99a4ae;
         }
         
-        .article-thumbnails {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+        .social-media {
+            margin-top: 2rem;
         }
         
-        .thumbnail {
-            height: 120px;
-            background-color: #f0f0f0;
+        .social-icons {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #666;
+            gap: 1rem;
+            margin-top: 1rem;
         }
         
-        .article-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="/images/yellow_navbar_logo.png" alt="Logo" class="logo">
-        <div class="navbar-item">VESTI</div>
-        <div class="navbar-item">POLITIKA</div>
-        <div class="navbar-item">BIZNIS</div>
-        <div class="navbar-item">UMETNOST I KULTURA</div>
-        <div class="navbar-item">SPORT</div>
-    </div>
-    
-    <div class="main-container">
-        <div class="main-content">
-            <div class="headline">Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja</div>
-            
-            <div class="article-meta">
-                <span class="timestamp">Odessa, 12.4.2025, 8:00:00</span>
-                <span class="author">Source: TASS, DPA, I.F.</span>
-            </div>
-            
-            <div class="article-lead">
-                Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja
-            </div>
-            
-            <img src="/images/news_9_image.png" alt="Article image" class="main-image">
-            
-            <div class="image-caption">Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja</div>
-            
-            <div class="article-content">
-                <p>Srpski glumac Nikola Đuričko, poznat po ulozi Yurija u seriji Stranger Things, navodno je izgubio veliku holivudsku ulogu zbog terminskih preklapanja sa svojim postojećim projektima u Srbiji i Evropi.</p>
-                
-                <p>Đuričko, koji je u poslednjim godinama stekao međunarodno priznanje, bio je u pregovorima za ulogu u jednom prestižnom filmu ili TV seriji u SAD, ali je zbog preklapanja obaveza morao da odbije ponudu. Iz industrije tvrde da bi ta uloga mogla da bude jedna od njegovih najvećih do sada, potencijalno učvršćujući njegovo mesto u Holivudu.</p>
-                
-                <p>Glumac je veoma aktivan u srpskoj kinematografiji i televiziji, a nedavno je radio na nekoliko projekata, uključujući novu istorijsku dramu i seriju u žanru mračne komedije. Njegova posvećenost ovim produkcijama onemogućila je prilagođavanje zahtevnom rasporedu snimanja holivudskog projekta.</p>
-                
-                <p>Fanovi su na društvenim mrežama izrazili razočaranje, uz nade da će mu se uskoro ukazati još jedna velika međunarodna prilika. Đuričko i dalje je tražen glumac kako u Srbiji tako i u inostranstvu, a sa rastućom reputacijom, vrlo je verovatno da će mu se u bliskoj budućnosti ukazati još holivudskih prilika.</p>
-                
-                <p>Iako je propustio ovu konkretnu ulogu, Đuričko nastavlja da širi karijeru van granica Srbije, balansirajući između lokalnih produkcija i međunarodnih saradnji. Njegova svestranost i talent garantuju da neće proći dugo dok ne dobije još jedan prestižan projekat.</p>
-            
-            </div>
-            
-            <div class="article-thumbnails">
-                <div class="thumbnail">Related News</div>
-                <div class="thumbnail">Related News</div>
-                <div class="thumbnail">Related News</div>
-                <div class="thumbnail">Related News</div>
-            </div>
+    <nav class="navbar">
+        <div class="nav-links">
+            <img src="/images/logo.png" alt="Logo" style="height: 20px; border-radius: 50%;">
+            <a href="#">Vesti</a>
+            <a href="#">Politika</a>
+            <a href="#">Biznis</a>
+            <a href="#">Umetnost i kultura</a>
+            <a href="#">Sport</a>
+            <a href="#">Zabava</a>
         </div>
+    </nav>
+    
+    <div class="container">
+        <main class="main-article">
+            <article>
+                <h1>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja</h1>
+            
+                <div class="article-meta">
+                    <span class="timestamp">Odessa, 12.4.2025, 8:00:00</span>
+                    <span class="author">Source: TASS, DPA, I.F.</span>
+                </div>
+                
+                <p class="subtitle">
+                    Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja
+                </p>
+                <div class="article-image">
+                    <img src="/images/news_9_image.png" alt="Article image" class="main-image">
+                    <p class="caption">Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja</p>
+                </div>
+                <div class="article-content">
+                    <p>Srpski glumac Nikola Đuričko, poznat po ulozi Yurija u seriji Stranger Things, navodno je izgubio veliku holivudsku ulogu zbog terminskih preklapanja sa svojim postojećim projektima u Srbiji i Evropi.</p>
+                    
+                    <p>Đuričko, koji je u poslednjim godinama stekao međunarodno priznanje, bio je u pregovorima za ulogu u jednom prestižnom filmu ili TV seriji u SAD, ali je zbog preklapanja obaveza morao da odbije ponudu. Iz industrije tvrde da bi ta uloga mogla da bude jedna od njegovih najvećih do sada, potencijalno učvršćujući njegovo mesto u Holivudu.</p>
+                    
+                    <p>Glumac je veoma aktivan u srpskoj kinematografiji i televiziji, a nedavno je radio na nekoliko projekata, uključujući novu istorijsku dramu i seriju u žanru mračne komedije. Njegova posvećenost ovim produkcijama onemogućila je prilagođavanje zahtevnom rasporedu snimanja holivudskog projekta.</p>
+                    
+                    <p>Fanovi su na društvenim mrežama izrazili razočaranje, uz nade da će mu se uskoro ukazati još jedna velika međunarodna prilika. Đuričko i dalje je tražen glumac kako u Srbiji tako i u inostranstvu, a sa rastućom reputacijom, vrlo je verovatno da će mu se u bliskoj budućnosti ukazati još holivudskih prilika.</p>
+                    
+                    <p>Iako je propustio ovu konkretnu ulogu, Đuričko nastavlja da širi karijeru van granica Srbije, balansirajući između lokalnih produkcija i međunarodnih saradnji. Njegova svestranost i talent garantuju da neće proći dugo dok ne dobije još jedan prestižan projekat.</p>
+                
+                </div>
+                
+            </article>
+        </main>
         
-        <div class="sidebar">
-            <div class="world-news-logo">
-                <img src="/images/yellow_logo.png" alt="Logo" class="logo" style="width: 100%; height: auto; max-height: 500px;">
+        <aside class="sidebar">
+            <div class="ad-banner">
+                Mesto za vašu relamu
             </div>
             
-            <div class="reader-count">
-                READER COUNT<br>
-                23,450
+            <div class="latest-news">
+                <h2>Najnovije vesti</h2>
+                <div class="news-item">
+                    <span class="timestamp">10:42</span>
+                    <p>Naslov </p>
+                </div>
+                <div class="news-item">
+                    <span class="timestamp">10:42</span>
+                    <p>Naslov </p>
+                </div>
+                <div class="news-item">
+                    <span class="timestamp">10:42</span>
+                    <p>Naslov </p>
+                </div>
             </div>
             
             <div class="social-media">
                 <h3>Pratite nas na društvenim mrežama</h3>
                 <div class="social-icons">
-                    <img src="/images/facebook.png" alt="Facebook" class="social-icon">
-                    <img src="/images/X.png" alt="X" class="social-icon">
-                    <img src="/images/linkedin.png" alt="LinkedIn" class="social-icon">
-                    <img src="/images/instagram.png" alt="Instagram" class="social-icon">
+                    <!-- Add your social media icons here -->
+                    <img src="/images/facebook.png" alt="Facebook">
+                    <img src="/images/X.png" alt="X">
+                    <img src="/images/linkedin.png" alt="LinkedIn">
+                    <img src="/images/instagram.png" alt="Instagram">
                 </div>
             </div>
-            
-            <div class="ad-banner">
-                Mesto za vašu relamu
-            </div>
-        </div>
+        </aside>
     </div>
 </body>
 <script>
-    /*document.addEventListener('DOMContentLoaded', function() {
+   /* document.addEventListener('DOMContentLoaded', function() {
         updateTimestamp();
     });
     

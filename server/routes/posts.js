@@ -1393,7 +1393,7 @@ const DOMPurifyInstance = DOMPurify(window);
                         "",
                         "https://socialapp2.ijs.si/news/news_4", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         "https://socialapp2.ijs.si/news/news_3",// http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                        "https://socialapp2.ijs.si/news/breaking_2", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                        "https://socialapp2.ijs.si/news/breaking_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         "https://socialapp2.ijs.si/news/news_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         "https://socialapp2.ijs.si/news/breaking_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                         "https://socialapp2.ijs.si/news/breaking_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
@@ -1633,9 +1633,9 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "https://socialapp2.ijs.si/news/news_3", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/breaking_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/uncensoredtruth_1", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/news_9",  //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/news_6", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/uncensoredtruth_2", // http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/news_10",  //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/news_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/breaking_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                 ];
                 
@@ -1702,11 +1702,11 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "",
                     "https://socialapp2.ijs.si/news/news_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/news_5", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_4", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/uncensoredtruth_3", //  http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/news_10", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/news_7", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
-                    "https://socialapp2.ijs.si/news/breaking_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/news_9", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/news_8", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/breaking_8", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                 ];
             }
             
