@@ -1701,7 +1701,7 @@ const DOMPurifyInstance = DOMPurify(window);
                     "",
                     "",
                     "",
-                    "https://socialapp2.ijs.si/news/news_1", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
+                    "https://socialapp2.ijs.si/news/news_2", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/news_5", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/uncensoredtruth_3", //  http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
                     "https://socialapp2.ijs.si/news/news_10", //http://socialapp2.ijs.si/news/zelensky-ukraine-must-be-included
