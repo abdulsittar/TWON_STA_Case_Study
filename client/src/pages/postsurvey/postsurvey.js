@@ -29,7 +29,7 @@ import {
   review_is_onward, post_q8_info,
   
   // Import the new question text and options
-  post_q1, post_q1_op1, post_q1_op2, post_q1_op3, post_q1_op4, post_q1_op5,
+  post_q1_0, post_q1, post_q1_op1, post_q1_op2, post_q1_op3, post_q1_op4, post_q1_op5,
   post_q2, post_q2_op1, post_q2_op2, post_q2_op3, post_q2_op4, post_q2_op5,
   post_q3, post_q3_op1, post_q3_op2, post_q3_op3, post_q3_op4, post_q3_op5,
   post_q4, post_q4_op1, post_q4_op2, post_q4_op3, post_q4_op4, post_q4_op5,
@@ -78,22 +78,7 @@ import {
   post_q29_4_op1, post_q29_4_op2, post_q29_4_op3, post_q29_4_op4, post_q29_4_op5, post_q29_4_op6, post_q29_4_op7,
   post_q29_5_op1, post_q29_5_op2, post_q29_5_op3, post_q29_5_op4, post_q29_5_op5, post_q29_5_op6, post_q29_5_op7,
   post_q29_6_op1, post_q29_6_op2, post_q29_6_op3, post_q29_6_op4, post_q29_6_op5, post_q29_6_op6, post_q29_6_op7,
-  post_q30_info, post_q30, post_q30_op1, post_q30_op2, post_q30_op3, post_q30_op4, post_q30_op5,
-  post_q31, post_q31_op1, post_q31_op2, post_q31_op3, post_q31_op4, post_q31_op5,
-  post_q32, post_q32_op1, post_q32_op2, post_q32_op3, post_q32_op4, post_q32_op5,
-  post_q33, post_q33_op1, post_q33_op2, post_q33_op3, post_q33_op4, post_q33_op5,
-  post_q34_0, post_q34, post_q34_op1, post_q34_op2, post_q34_op3, post_q34_op4, post_q34_op5,
-  post_q34_1, post_q34_1_op1, post_q34_1_op2, post_q34_1_op3, post_q34_1_op4, post_q34_1_op5,
-  post_q34_2, post_q34_2_op1, post_q34_2_op2, post_q34_2_op3, post_q34_2_op4, post_q34_2_op5,
-  post_q34_3, post_q34_3_op1, post_q34_3_op2, post_q34_3_op3, post_q34_3_op4, post_q34_3_op5,
-  post_q34_4, post_q34_4_op1, post_q34_4_op2, post_q34_4_op3, post_q34_4_op4, post_q34_4_op5,
-  post_q35, post_q35_op1, post_q35_op2, post_q35_op3, post_q35_op4, post_q35_op5, post_q35_op6, post_q35_op7, post_q35_op8,
-  post_q36, post_q36_op1, post_q36_op2, post_q36_op3, post_q36_op4, post_q36_op5,
-  post_q37, post_q37_op1, post_q37_op2, post_q37_op3, post_q37_op4, post_q37_op5,
-  post_q38, post_q38_op1, post_q38_op2, post_q38_op3, post_q38_op4, post_q38_op5,
-  post_q39, post_q39_op1, post_q39_op2, post_q39_op3, post_q39_op4, post_q39_op5,
-  post_q40, post_q40_op1, post_q40_op2, post_q40_op3, post_q40_op4, post_q40_op5, post_q40_op6,
-  post_q41, post_q41_op1, post_q41_op2, post_q41_op3, post_q41_op4, post_q41_op5,
+  post_q29_7_op1, post_q29_7_op2, post_q29_7_op3, post_q29_7_op4, post_q29_7_op5, post_q29_7_op6, post_q29_7_op7,
   post_q42
 
 } from '../../constants_STA';
@@ -205,6 +190,7 @@ function Postsurvey({ classes }) {
     const [value_q29_4, stValue_q29_4] = useState('');
     const [value_q29_5, stValue_q29_5] = useState('');
     const [value_q29_6, stValue_q29_6] = useState('');
+    const [value_q29_7, stValue_q29_7] = useState('');
     const [value_q30, stValue_q30] = useState('');
     const [value_q31, stValue_q31] = useState('');
     const [value_q32, stValue_q32] = useState('');
@@ -263,15 +249,11 @@ function Postsurvey({ classes }) {
   const [is_Q18_visible, setIs_Q18_visible] = useState(false);
   const [is_Q19_visible, setIs_Q19_visible] = useState(false);
   const [is_Q20_visible, setIs_Q20_visible] = useState(false);
-  const [is_Q21_visible, setIs_Q21_visible] = useState(true);
-  const [is_Q22_visible, setIs_Q22_visible] = useState(true);
-  const [is_Q23_visible, setIs_Q23_visible] = useState(true);
-  const [is_Q24_visible, setIs_Q24_visible] = useState(true);
-  const [is_Q24_1_visible, setIs_Q24_1_visible] = useState(false);
-  const [is_Q24_2_visible, setIs_Q24_2_visible] = useState(false);
-  const [is_Q24_3_visible, setIs_Q24_3_visible] = useState(false);
-  const [is_Q24_4_visible, setIs_Q24_4_visible] = useState(false);
-  const [is_Q24_5_visible, setIs_Q24_5_visible] = useState(false);
+  const [is_Q24_1_visible, setIs_Q24_1_visible] = useState(true);
+  const [is_Q24_2_visible, setIs_Q24_2_visible] = useState(true);
+  const [is_Q24_3_visible, setIs_Q24_3_visible] = useState(true);
+  const [is_Q24_4_visible, setIs_Q24_4_visible] = useState(true);
+  const [is_Q24_5_visible, setIs_Q24_5_visible] = useState(true);
   const [is_Q25_visible, setIs_Q25_visible] = useState(false);
   const [is_Q25_1_visible, setIs_Q25_1_visible] = useState(false);
   const [is_Q25_2_visible, setIs_Q25_2_visible] = useState(false);
@@ -279,22 +261,6 @@ function Postsurvey({ classes }) {
   const [is_Q27_visible, setIs_Q27_visible] = useState(false);
   const [is_Q28_visible, setIs_Q28_visible] = useState(false);
   const [is_Q29_visible, setIs_Q29_visible] = useState(false);
-  const [is_Q30_visible, setIs_Q30_visible] = useState(false);
-  const [is_Q31_visible, setIs_Q31_visible] = useState(false);
-  const [is_Q32_visible, setIs_Q32_visible] = useState(false);
-  const [is_Q33_visible, setIs_Q33_visible] = useState(false);
-  const [is_Q34_visible, setIs_Q34_visible] = useState(false);
-  const [is_Q34_1_visible, setIs_Q34_1_visible] = useState(false);
-  const [is_Q34_2_visible, setIs_Q34_2_visible] = useState(false);
-  const [is_Q34_3_visible, setIs_Q34_3_visible] = useState(false);
-  const [is_Q34_4_visible, setIs_Q34_4_visible] = useState(false);
-  const [is_Q35_visible, setIs_Q35_visible] = useState(false);
-  const [is_Q36_visible, setIs_Q36_visible] = useState(false);
-  const [is_Q37_visible, setIs_Q37_visible] = useState(false);
-  const [is_Q38_visible, setIs_Q38_visible] = useState(false);
-  const [is_Q39_visible, setIs_Q39_visible] = useState(false);
-  const [is_Q40_visible, setIs_Q40_visible] = useState(false);
-  const [is_Q41_visible, setIs_Q41_visible] = useState(false);
   const [is_Q42_visible, setIs_Q42_visible] = useState(false);
 
 
@@ -461,10 +427,6 @@ const fetchTimeSpent2 = async () => {
         setIs_Q18_visible(false);
         setIs_Q19_visible(false);
         setIs_Q20_visible(false);
-        setIs_Q21_visible(false);
-        setIs_Q22_visible(false);
-        setIs_Q23_visible(false);
-        setIs_Q24_visible(false);
         setIs_Q24_1_visible(false);
         setIs_Q24_2_visible(false);
         setIs_Q24_3_visible(false);
@@ -477,22 +439,6 @@ const fetchTimeSpent2 = async () => {
         setIs_Q27_visible(false);
         setIs_Q28_visible(false);
         setIs_Q29_visible(false);
-        setIs_Q30_visible(false);
-        setIs_Q31_visible(false);
-        setIs_Q32_visible(false);
-        setIs_Q33_visible(false);
-        setIs_Q34_visible(false);
-        setIs_Q34_1_visible(false);
-        setIs_Q34_2_visible(false);
-        setIs_Q34_3_visible(false);
-        setIs_Q34_4_visible(false);
-        setIs_Q35_visible(false);
-        setIs_Q36_visible(false);
-        setIs_Q37_visible(false);
-        setIs_Q38_visible(false);
-        setIs_Q39_visible(false);
-        setIs_Q40_visible(false);
-        setIs_Q41_visible(false);
         setIs_Q42_visible(false);
         setIs_TestingFeedBack_visible(false);
     }else{
@@ -612,591 +558,621 @@ const handleUserNameChange = async (e) => {
     }
 }
 
-  const handle_Q1_Changed = async (e) => { 
-    stValue_q1(e.target.value); 
+
+  const handle_Q24_1_Changed = async (e) => {
+    stValue_q24_1(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
-    if(e.target.value != "" && value_q2 != ""){
-      setIs_Q2_visible(false);
-      setIs_Q3_visible(true);
-      setIs_Q4_visible(true);
-      setIs_Q5_visible(true);
-      setIs_Q1_visible(false);
-
+      if(e.target.value != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_4 != "" && value_q24_5 != "" ){
+          setIs_Q25_visible(true);
+          setIs_Q25_1_visible(true);
+          setIs_Q25_2_visible(true);
+          setIs_Q24_1_visible(false);
+          setIs_Q24_2_visible(false);
+          setIs_Q24_3_visible(false);
+          setIs_Q24_4_visible(false);
+          setIs_Q24_5_visible(false);
       } else {
-        setIs_Q3_visible(false);
-        setIs_Q4_visible(false);
-        setIs_Q5_visible(false);
-      }  
-    }};
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+      }}};
 
-  const handle_Q2_Changed = async (e) => { 
+  const handle_Q24_2_Changed = async (e) => {
+    stValue_q24_2(e.target.value);
     console.log(e.target.value);
-    stValue_q2(e.target.value); 
     if(isUserReviewing == false){
-    if(e.target.value != "" && value_q1 != ""){
-    setIs_Q2_visible(false);
-    setIs_Q3_visible(true);
-    setIs_Q4_visible(true);
-    setIs_Q5_visible(true);
-    setIs_Q1_visible(false);
-    }
-
-    else {
-      setIs_Q3_visible(false);
-      setIs_Q4_visible(false);
-      setIs_Q5_visible(false);
-    }  
-  }};
-  
-  const handle_Q3_Changed = async (e) => { 
-  console.log(e.target.value);
-  stValue_q3(e.target.value); 
-  if(isUserReviewing == false){
-    if(e.target.value != "" && value_q4 !="" && value_q5 != ""){ 
-      setIs_Q6_visible(true);
-      setIs_Q7_visible(true);
-
-      setIs_Q3_visible(false);
-      setIs_Q4_visible(false);
-      setIs_Q5_visible(false);
-
-  } else {
-    setIs_Q6_visible(false);
-    setIs_Q7_visible(false);
-  } }};
-
-
-    const handle_Q4_Changed = async (e) => { 
-      console.log(e.target.value);
-      stValue_q4(e.target.value); 
-      
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q5 !="" && value_q3 != ""){ 
-          setIs_Q6_visible(true);
-          setIs_Q7_visible(true);
-    
-          setIs_Q3_visible(false);
-          setIs_Q4_visible(false);
-          setIs_Q5_visible(false);
-
-        }
-  
+      if(e.target.value != "" && value_q24_1 != "" && value_q24_3 != "" && value_q24_4 != "" && value_q24_5 != "" ){
+          setIs_Q25_visible(true);
+          setIs_Q25_1_visible(true);
+          setIs_Q25_2_visible(true);
+          setIs_Q24_1_visible(false);
+          setIs_Q24_2_visible(false);
+          setIs_Q24_3_visible(false);
+          setIs_Q24_4_visible(false);
+          setIs_Q24_5_visible(false);
       } else {
-        setIs_Q6_visible(false);
-        setIs_Q7_visible(false);
-      } };
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+      }}};
 
-              
-    const handle_Q5_Changed = async (e) => { 
-      console.log(e.target.value);
-      stValue_q5(e.target.value); 
-      
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q4 !="" && value_q3 != ""){ 
-          setIs_Q6_visible(true);
-          setIs_Q7_visible(true);
-    
-          setIs_Q3_visible(false);
-          setIs_Q4_visible(false);
-          setIs_Q5_visible(false);
-  
+  const handle_Q24_3_Changed = async (e) => {
+    stValue_q24_3(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_4 != "" && value_q24_5 != "" ){
+          setIs_Q25_visible(true);
+          setIs_Q25_1_visible(true);
+          setIs_Q25_2_visible(true);
+          setIs_Q24_1_visible(false);
+          setIs_Q24_2_visible(false);
+          setIs_Q24_3_visible(false);
+          setIs_Q24_4_visible(false);
+          setIs_Q24_5_visible(false);
       } else {
-        setIs_Q6_visible(false);
-        setIs_Q7_visible(false);
-      }} };
-      
-      const handle_Q6_Changed = async (e) => { 
-        console.log(e.target.value);
-        stValue_q6(e.target.value); 
-        
-        if(isUserReviewing == false){
-          if(e.target.value != "" && value_q7 !=""){ 
-            console.log("SHOWING Q8/Q9"); 
-            setIs_Q8_visible(true);
-            setIs_Q9_visible(true);
-            setIs_Q10_visible(true);
-      
-            setIs_Q6_visible(false);
-            setIs_Q7_visible(false);}
-            
-            else {
-              
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+      }}};
+
+  const handle_Q24_4_Changed = async (e) => {
+    stValue_q24_4(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_5 != "" ){
+          setIs_Q25_visible(true);
+          setIs_Q25_1_visible(true);
+          setIs_Q25_2_visible(true);
+          setIs_Q24_1_visible(false);
+          setIs_Q24_2_visible(false);
+          setIs_Q24_3_visible(false);
+          setIs_Q24_4_visible(false);
+          setIs_Q24_5_visible(false);
+      } else {
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+      }}};
+
+  const handle_Q24_5_Changed = async (e) => {
+    stValue_q24_5(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_4 != "" ){
+          setIs_Q25_visible(true);
+          setIs_Q25_1_visible(true);
+          setIs_Q25_2_visible(true);
+          setIs_Q24_1_visible(false);
+          setIs_Q24_2_visible(false);
+          setIs_Q24_3_visible(false);
+          setIs_Q24_4_visible(false);
+          setIs_Q24_5_visible(false);
+      } else {
+        setIs_Q25_visible(false);
+        setIs_Q25_1_visible(false);
+        setIs_Q25_2_visible(false);
+      }}};
+
+  const handle_Q25_Changed = async (e) => {
+    stValue_q25(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q25_1 != "" && value_q25_2 != "" ){
+          setIs_Q29_visible(true);
+          setIs_Q25_visible(false);
+          setIs_Q25_1_visible(false);
+          setIs_Q25_2_visible(false);
+      } else {
+        setIs_Q29_visible(false);
+      }}};
+
+  const handle_Q25_1_Changed = async (e) => {
+    stValue_q25_1(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q25 != "" && value_q25_2 != "" ){
+          setIs_Q29_visible(true);
+          setIs_Q25_visible(false);
+          setIs_Q25_1_visible(false);
+          setIs_Q25_2_visible(false);
+      } else {
+        setIs_Q29_visible(false);
+      }}};
+
+  const handle_Q25_2_Changed = async (e) => {
+    stValue_q25_2(e.target.value);
+    console.log(e.target.value);
+    if(isUserReviewing == false){
+      if(e.target.value != "" && value_q25 != "" && value_q25_1 != "" ){
+          setIs_Q29_visible(true);
+          setIs_Q25_visible(false);
+          setIs_Q25_1_visible(false);
+          setIs_Q25_2_visible(false);
+      } else {
+        setIs_Q29_visible(false);
+      }}};
+
+
+    const handle_Q29_1_Changed = async (e) => { 
+      stValue_q29_1(e.target.value);
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_3 != "" && value_q29_4 != "" && value_q29_5 != "" && value_q29_6 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+    
+    const handle_Q29_2_Changed = async (e) => {
+      stValue_q29_2(e.target.value);
+      console.log(e.target.value); 
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_1 != "" && value_q29_3 != "" && value_q29_4 != "" && value_q29_5 != "" && value_q29_6 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+    
+    
+    const handle_Q29_3_Changed = async (e) => { 
+      stValue_q29_3(e.target.value);
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_1 != "" && value_q29_4 != "" && value_q29_5 != "" && value_q29_6 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+    
+    const handle_Q29_4_Changed = async (e) => {
+      stValue_q29_4(e.target.value);
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_3 != "" && value_q29_1 != "" && value_q29_5 != "" && value_q29_6 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+
+    const handle_Q29_5_Changed = async (e) => {
+      stValue_q29_5(e.target.value);
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_3 != "" && value_q29_4 != "" && value_q29_1 != "" && value_q29_6 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+
+      const handle_Q29_6_Changed = async (e) => {
+      stValue_q29_6(e.target.value);
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_3 != "" && value_q29_4 != "" && value_q29_5 != "" && value_q29_1 != "" && value_q29_7 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};
+
+    const handle_Q29_7_Changed = async (e) => {
+      stValue_q29_7(e.target.value);
+      console.log(e.target.value); 
+      if(isUserReviewing == false){
+        if(e.target.value != "" && value_q29_2 != "" && value_q29_3 != "" && value_q29_4 != "" && value_q29_5 != "" && value_q29_6 != "" && value_q29_1 != "" ){
+            setIs_Q1_visible(true);
+            setIs_Q29_visible(false);
+        } else {
+          setIs_Q1_visible(false);
+        }}};    
+
+    const handle_Q1_Changed = async (e) => { 
+      stValue_q1(e.target.value); 
+      console.log(e.target.value);
+      if(isUserReviewing == false){
+      if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        setIs_Q1_visible(false);
+        setIs_Q8_visible(true);
+        setIs_Q9_visible(true);
+        setIs_Q11_visible(true);
+        setIs_Q13_visible(true);
+        setIs_Q15_visible(true);
+        setIs_Q16_visible(true);
+        } else {
           setIs_Q8_visible(false);
           setIs_Q9_visible(false);
-          setIs_Q10_visible(false);
-        }} };
-          
+          setIs_Q11_visible(false);
+          setIs_Q13_visible(false);
+          setIs_Q15_visible(false);
+          setIs_Q16_visible(false);
+        }  
+      }};
+
+      const handle_Q2_Changed = async (e) => { 
+        stValue_q2(e.target.value); 
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q1 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }  
+        }};
+
+      const handle_Q3_Changed = async (e) => { 
+        stValue_q3(e.target.value); 
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q2 != "" && value_q1 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }  
+        }};
+
+      const handle_Q4_Changed = async (e) => { 
+        stValue_q4(e.target.value); 
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q1 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }  
+        }};
+
+      const handle_Q5_Changed = async (e) => { 
+        stValue_q5(e.target.value); 
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q1 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }  
+        }};
+
+      const handle_Q6_Changed = async (e) => {
+        stValue_q6(e.target.value);
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q1 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }
+        }};
       
-        const handle_Q7_Changed = async (e) => {
-          console.log(e.target.value); 
-          stValue_q7(e.target.value); 
+      const handle_Q7_Changed = async (e) => {
+        stValue_q7(e.target.value);
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q1 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+          setIs_Q1_visible(false);
+          setIs_Q8_visible(true);
+          setIs_Q9_visible(true);
+          setIs_Q11_visible(true);
+          setIs_Q13_visible(true);
+          setIs_Q15_visible(true);
+          setIs_Q16_visible(true);
+          } else {
+            setIs_Q8_visible(false);
+            setIs_Q9_visible(false);
+            setIs_Q11_visible(false);
+            setIs_Q13_visible(false);
+            setIs_Q15_visible(false);
+            setIs_Q16_visible(false);
+          }
+        }};
+
+      const handle_Q10_Changed = async (e) => {
+        stValue_q10(e.target.value);
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q1 != "" && value_q12 != "" && value_q14 != "" ){
+            setIs_Q1_visible(false);
+            setIs_Q8_visible(true);
+            setIs_Q9_visible(true);
+            setIs_Q11_visible(true);
+            setIs_Q13_visible(true);
+            setIs_Q15_visible(true);
+            setIs_Q16_visible(true);
+            } else {
+              setIs_Q8_visible(false);
+              setIs_Q9_visible(false);
+              setIs_Q11_visible(false);
+              setIs_Q13_visible(false);
+              setIs_Q15_visible(false);
+              setIs_Q16_visible(false);
+            }
+          }};
+
+      const handle_Q12_Changed = async (e) => {
+        stValue_q12(e.target.value);
+        console.log(e.target.value);
+        if(isUserReviewing == false){
+          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q1 != "" && value_q14 != "" ){
+            setIs_Q1_visible(false);
+            setIs_Q8_visible(true);
+            setIs_Q9_visible(true);
+            setIs_Q11_visible(true);
+            setIs_Q13_visible(true);
+            setIs_Q15_visible(true);
+            setIs_Q16_visible(true);
+            } else {
+              setIs_Q8_visible(false);
+              setIs_Q9_visible(false);
+              setIs_Q11_visible(false);
+              setIs_Q13_visible(false);
+              setIs_Q15_visible(false);
+              setIs_Q16_visible(false);
+            }
+          }};
+
+        const handle_Q14_Changed = async (e) => {
+          stValue_q14(e.target.value);
+          console.log(e.target.value);
           if(isUserReviewing == false){
-            if(e.target.value != "" && value_q6 !=""){
-              console.log("SHOWING Q8/Q9"); 
+            if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q1 != "" ){
+              setIs_Q1_visible(false);
               setIs_Q8_visible(true);
               setIs_Q9_visible(true);
-              setIs_Q10_visible(true);
-        
-              setIs_Q6_visible(false);
-              setIs_Q7_visible(false);}
-              
-              else {
-                console.log("NOT showing Q8/Q9");
+              setIs_Q11_visible(true);
+              setIs_Q13_visible(true);
+              setIs_Q15_visible(true);
+              setIs_Q16_visible(true);
+              } else {
                 setIs_Q8_visible(false);
                 setIs_Q9_visible(false);
-                setIs_Q10_visible(false);
-          }} };
+                setIs_Q11_visible(false);
+                setIs_Q13_visible(false);
+                setIs_Q15_visible(false);
+                setIs_Q16_visible(false);
+              }
+            }};
 
         const handle_Q8_Changed = async (e) => { 
           console.log(e.target.value);
           stValue_q8(e.target.value); 
           if(isUserReviewing == false){
-            if(e.target.value != "" && value_q10 != ""){
-              setIs_Q12_visible(true);
-              setIs_Q11_visible(true);
+            if(e.target.value != "" && value_q16 != ""){
+              setIs_Q17_visible(true);
+              setIs_Q18_visible(true);
+              setIs_Q19_visible(true);
+              setIs_Q20_visible(true);
 
               setIs_Q8_visible(false);
               setIs_Q9_visible(false);
-              setIs_Q10_visible(false);
-            } else {
-              setIs_Q12_visible(false);
               setIs_Q11_visible(false);
+              setIs_Q13_visible(false);
+              setIs_Q15_visible(false);
+              setIs_Q16_visible(false);
+            } else {
+              setIs_Q17_visible(false);
+              setIs_Q18_visible(false);
+              setIs_Q19_visible(false);
+              setIs_Q20_visible(false);
             }
           }};
           
 
           
-          const handle_Q9_Changed = async (e) => {                           
-            const value = e.target.value;
-            if (e.target.checked) {
-              // Add the value to the array if checked
-              stValue_q9(prev => [...prev, value]);
+        const handle_Q9_Changed = async (e) => {                           
+          const value = e.target.value;
+          if (e.target.checked) {
+            // Add the value to the array if checked
+            stValue_q9(prev => [...prev, value]);
+          } else {
+            // Remove the value from the array if unchecked
+            stValue_q9(prev => prev.filter(item => item !== value));
+          }
+          console.log(value_q9);
+        };
+    
+        const handle_Q11_Changed = async (e) => { 
+          const value = e.target.value;
+          if (e.target.checked) {
+            // Add the value to the array if checked
+            stValue_q11(prev => [...prev, value]);
+          } else {
+            // Remove the value from the array if unchecked
+            stValue_q11(prev => prev.filter(item => item !== value));
+          }
+          console.log(value_q11);};
+              
+    
+        const handle_Q13_Changed = async (e) => { 
+          const value = e.target.value;
+          if (e.target.checked) {
+            // Add the value to the array if checked
+            stValue_q13(prev => [...prev, value]);
+          } else {
+            // Remove the value from the array if unchecked
+            stValue_q13(prev => prev.filter(item => item !== value));
+          }
+          console.log(value_q13);};
+          
+    
+        const handle_Q15_Changed = async (e) => {
+          const value = e.target.value;
+          if (e.target.checked) {
+            // Add the value to the array if checked
+            stValue_q15(prev => [...prev, value]);
+          } else {
+            // Remove the value from the array if unchecked
+            stValue_q15(prev => prev.filter(item => item !== value));
+          }
+          console.log(value_q15);};
+
+        
+        const handle_Q16_Changed = async (e) => { 
+          stValue_q16(e.target.value);
+          console.log(e.target.value);
+          if(isUserReviewing == false){
+            if(e.target.value != "" && value_q8 != ""){
+              setIs_Q17_visible(true);
+              setIs_Q18_visible(true);
+              setIs_Q19_visible(true);
+              setIs_Q20_visible(true);
+
+              setIs_Q8_visible(false);
+              setIs_Q9_visible(false);
+              setIs_Q11_visible(false);
+              setIs_Q13_visible(false);
+              setIs_Q15_visible(false);
+              setIs_Q16_visible(false);
             } else {
-              // Remove the value from the array if unchecked
-              stValue_q9(prev => prev.filter(item => item !== value));
-            }
-            console.log(value_q9);
-          };
-
-            const handle_Q10_Changed = async (e) => { 
-              stValue_q10(e.target.value); 
-              console.log(e.target.value);
-              if(isUserReviewing == false){
-                if(e.target.value != "" && value_q8 != ""){
-                  setIs_Q12_visible(true);
-                  setIs_Q11_visible(true);
-    
-                  setIs_Q10_visible(false);
-                  setIs_Q9_visible(false);
-                  setIs_Q8_visible(false);
-                } else {
-                  setIs_Q12_visible(false);
-                  setIs_Q11_visible(false);
-                }
-              }};
-                
-    
-  const handle_Q11_Changed = async (e) => { 
-    const value = e.target.value;
-    if (e.target.checked) {
-      // Add the value to the array if checked
-      stValue_q11(prev => [...prev, value]);
-    } else {
-      // Remove the value from the array if unchecked
-      stValue_q11(prev => prev.filter(item => item !== value));
-    }
-    console.log(value_q11);};
-      
-    
-  const handle_Q12_Changed = async (e) => { 
-  stValue_q12(e.target.value);
-  console.log(e.target.value);
-  if(isUserReviewing == false){
-    if(e.target.value != ""){
-      setIs_Q13_visible(true);    
-      setIs_Q14_visible(true);
-       
-      setIs_Q12_visible(false);
-      setIs_Q11_visible(false);
-    } else {
-      setIs_Q14_visible(false);
-      setIs_Q13_visible(false);
-    } } };
-    
-    
-  const handle_Q13_Changed = async (e) => { 
-    const value = e.target.value;
-    if (e.target.checked) {
-      // Add the value to the array if checked
-      stValue_q13(prev => [...prev, value]);
-    } else {
-      // Remove the value from the array if unchecked
-      stValue_q13(prev => prev.filter(item => item !== value));
-    }
-    console.log(value_q13);};
-
-  const handle_Q14_Changed = async (e) => { 
-    stValue_q14(e.target.value);
-    console.log(e.target.value); 
-    if(isUserReviewing == false){
-      if(e.target.value != ""){
-             
-      setIs_Q15_visible(true);
-      setIs_Q16_visible(true);
-      setIs_Q17_visible(true);
-       
-      setIs_Q13_visible(false);
-      setIs_Q14_visible(false);
-    } else {
-      setIs_Q15_visible(false);
-      setIs_Q16_visible(false);
-      setIs_Q17_visible(false);
-    } } };
-    
-    
-    const handle_Q15_Changed = async (e) => {
-      const value = e.target.value;
-      if (e.target.checked) {
-        // Add the value to the array if checked
-        stValue_q15(prev => [...prev, value]);
-      } else {
-        // Remove the value from the array if unchecked
-        stValue_q15(prev => prev.filter(item => item !== value));
-      }
-      console.log(value_q15);};
-
-    
-  const handle_Q16_Changed = async (e) => { 
-    stValue_q16(e.target.value);
-    console.log(e.target.value);
-    if(isUserReviewing == false){
-      if(e.target.value != "" && value_q17 != ""){
-             
-      setIs_Q18_visible(true);
-      setIs_Q19_visible(true);
-      setIs_Q20_visible(true);
-       
-      setIs_Q17_visible(false);
-      setIs_Q16_visible(false);
-      setIs_Q15_visible(false);
-    } else {
-    
-      setIs_Q18_visible(false);
-      setIs_Q19_visible(false);
-      setIs_Q20_visible(false);
-    
-    } } };
-    
-  const handle_Q17_Changed = async (e) => { 
-  stValue_q17(e.target.value); 
-  console.log(e.target.value);
-  if(isUserReviewing == false){
-    if(e.target.value != ""&& value_q16 != ""){
-           
-    setIs_Q18_visible(true);
-    setIs_Q19_visible(true);
-    setIs_Q20_visible(true);
-     
-    setIs_Q17_visible(false);
-    setIs_Q16_visible(false);
-    setIs_Q15_visible(false);
-  } else {
-  
-    setIs_Q18_visible(false);
-    setIs_Q19_visible(false);
-    setIs_Q20_visible(false);
-  
-  } } };
-    
-    
-    const handle_feedback_Changed = async(e) => {
-      setFeedback(e.target.value); 
-  }
-  
-  const handle_feedback_Changed2 = async(e) => {
-    setFeedback2(e.target.value); 
-}
-
-const handle_feedback_Changed3 = async(e) => {
-    setFeedback3(e.target.value); 
-}
-    
-  
-    
-  const handle_Q18_Changed = async (e) => { 
-    stValue_q18(e.target.value);
-    console.log(e.target.value); 
-    if(isUserReviewing == false){
-      if(e.target.value != "" && value_q20 != "" ){ 
-        setIs_Q42_visible(true);
-      } else { 
-        setIs_Q42_visible(false);
-      }}  };
-
-    const handle_Q19_Changed = async (e) => { 
-      const value = e.target.value;
-      if (e.target.checked) {
-        // Add the value to the array if checked
-        stValue_q19(prev => [...prev, value]);
-      } else {
-        // Remove the value from the array if unchecked
-        stValue_q19(prev => prev.filter(item => item !== value));
-      }
-      console.log(value_q19);};
-
-
-
-    const handle_Q20_Changed = async (e) => { 
-      stValue_q20(e.target.value);
-      console.log(e.target.value); 
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q18 != "" ){ 
-          setIs_Q42_visible(true);
-        } else { 
-          setIs_Q42_visible(false);
-        }}  };
-
-
-    const handle_Q21_Changed = async (e) => {
-      stValue_q21(e.target.value);
-      console.log(e.target.value);    
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q22 != "" && value_q23 != "" && value_q24 != "" ){
-            setIs_Q24_1_visible(true);
-            setIs_Q24_2_visible(true);
-            setIs_Q24_3_visible(true);
-            setIs_Q24_4_visible(true);
-            setIs_Q24_5_visible(true);
-
-            setIs_Q21_visible(false);
-            setIs_Q22_visible(false);
-            setIs_Q23_visible(false);
-            setIs_Q24_visible(false);
-        } else {
-          setIs_Q24_1_visible(false);
-          setIs_Q24_2_visible(false);
-          setIs_Q24_3_visible(false);
-          setIs_Q24_4_visible(false);
-          setIs_Q24_5_visible(false);
-        }}  };
-
-    const handle_Q22_Changed = async (e) => {
-      stValue_q22(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q21 != "" && value_q23 != "" && value_q24 != "" ){
-            setIs_Q24_1_visible(true);
-            setIs_Q24_2_visible(true);
-            setIs_Q24_3_visible(true);
-            setIs_Q24_4_visible(true);
-            setIs_Q24_5_visible(true);
-            setIs_Q22_visible(false);
-            setIs_Q23_visible(false);
-            setIs_Q24_visible(false);
-        } else {
-          setIs_Q24_1_visible(false);
-          setIs_Q24_2_visible(false);
-          setIs_Q24_3_visible(false);
-          setIs_Q24_4_visible(false);
-          setIs_Q24_5_visible(false);
-        }}  };
-
-    const handle_Q23_Changed = async (e) => {
-      stValue_q23(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q21 != "" && value_q22 != "" && value_q24 != "" ){
-            setIs_Q24_1_visible(true);
-            setIs_Q24_2_visible(true);
-            setIs_Q24_3_visible(true);
-            setIs_Q24_4_visible(true);
-            setIs_Q24_5_visible(true);
-            setIs_Q23_visible(false);
-            setIs_Q22_visible(false);
-            setIs_Q21_visible(false);
-            setIs_Q24_visible(false);
-        } else {
-          setIs_Q24_1_visible(false);
-          setIs_Q24_2_visible(false);
-          setIs_Q24_3_visible(false);
-          setIs_Q24_4_visible(false);
-          setIs_Q24_5_visible(false);
-        }}  };
-    const handle_Q24_Changed = async (e) => {
-      stValue_q24(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q21 != "" && value_q22 != "" && value_q23 != "" ){
-            setIs_Q24_1_visible(true);
-            setIs_Q24_2_visible(true);
-            setIs_Q24_3_visible(true);
-            setIs_Q24_4_visible(true);
-            setIs_Q24_5_visible(true);
-            setIs_Q24_visible(false);
-            setIs_Q23_visible(false);
-            setIs_Q22_visible(false);
-            setIs_Q21_visible(false);
-        } else {
-          setIs_Q24_1_visible(false);
-          setIs_Q24_2_visible(false);
-          setIs_Q24_3_visible(false);
-          setIs_Q24_4_visible(false);
-          setIs_Q24_5_visible(false);
-        }}  };
-
-    const handle_Q24_1_Changed = async (e) => {
-      stValue_q24_1(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_4 != "" && value_q24_5 != "" ){
-            setIs_Q25_visible(true);
-            setIs_Q25_1_visible(true);
-            setIs_Q25_2_visible(true);
-            setIs_Q24_1_visible(false);
-            setIs_Q24_2_visible(false);
-            setIs_Q24_3_visible(false);
-            setIs_Q24_4_visible(false);
-            setIs_Q24_5_visible(false);
-        } else {
-          setIs_Q25_visible(false);
-          setIs_Q25_1_visible(false);
-          setIs_Q25_2_visible(false);
-        }}};
-
-    const handle_Q24_2_Changed = async (e) => {
-      stValue_q24_2(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q24_1 != "" && value_q24_3 != "" && value_q24_4 != "" && value_q24_5 != "" ){
-            setIs_Q25_visible(true);
-            setIs_Q25_1_visible(true);
-            setIs_Q25_2_visible(true);
-            setIs_Q24_1_visible(false);
-            setIs_Q24_2_visible(false);
-            setIs_Q24_3_visible(false);
-            setIs_Q24_4_visible(false);
-            setIs_Q24_5_visible(false);
-        } else {
-          setIs_Q25_visible(false);
-          setIs_Q25_1_visible(false);
-          setIs_Q25_2_visible(false);
-        }}};
-    const handle_Q24_3_Changed = async (e) => {
-      stValue_q24_3(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_4 != "" && value_q24_5 != "" ){
-            setIs_Q25_visible(true);
-            setIs_Q25_1_visible(true);
-            setIs_Q25_2_visible(true);
-            setIs_Q24_1_visible(false);
-            setIs_Q24_2_visible(false);
-            setIs_Q24_3_visible(false);
-            setIs_Q24_4_visible(false);
-            setIs_Q24_5_visible(false);
-        } else {
-          setIs_Q25_visible(false);
-          setIs_Q25_1_visible(false);
-          setIs_Q25_2_visible(false);
-        }}};
-    const handle_Q24_4_Changed = async (e) => {
-      stValue_q24_4(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_5 != "" ){
-            setIs_Q25_visible(true);
-            setIs_Q25_1_visible(true);
-            setIs_Q25_2_visible(true);
-            setIs_Q24_1_visible(false);
-            setIs_Q24_2_visible(false);
-            setIs_Q24_3_visible(false);
-            setIs_Q24_4_visible(false);
-            setIs_Q24_5_visible(false);
-        } else {
-          setIs_Q25_visible(false);
-          setIs_Q25_1_visible(false);
-          setIs_Q25_2_visible(false);
-        }}};
-    const handle_Q24_5_Changed = async (e) => {
-      stValue_q24_5(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q24_1 != "" && value_q24_2 != "" && value_q24_3 != "" && value_q24_4 != "" ){
-            setIs_Q25_visible(true);
-            setIs_Q25_1_visible(true);
-            setIs_Q25_2_visible(true);
-            setIs_Q24_1_visible(false);
-            setIs_Q24_2_visible(false);
-            setIs_Q24_3_visible(false);
-            setIs_Q24_4_visible(false);
-            setIs_Q24_5_visible(false);
-        } else {
-          setIs_Q25_visible(false);
-          setIs_Q25_1_visible(false);
-          setIs_Q25_2_visible(false);
-        }}};
-    const handle_Q25_Changed = async (e) => {
-      stValue_q25(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q25_1 != "" && value_q25_2 != "" ){
+              setIs_Q17_visible(false);
+              setIs_Q18_visible(false);
+              setIs_Q19_visible(false);
+              setIs_Q20_visible(false);
+            } } };
+          
+        const handle_Q17_Changed = async (e) => { 
+          stValue_q17(e.target.value); 
+          console.log(e.target.value);
+          if(isUserReviewing == false){
+            if(e.target.value != ""&& value_q18 != "" && value_q19 != "" && value_q20 != "" ){
+                  
             setIs_Q26_visible(true);
-            setIs_Q27_visible(true);
-            setIs_Q28_visible(true);
-            setIs_Q25_visible(false);
-            setIs_Q25_1_visible(false);
-            setIs_Q25_2_visible(false);
-        } else {
-          setIs_Q26_visible(false);
-          setIs_Q27_visible(false);
-          setIs_Q28_visible(false);
-        }}};
-    const handle_Q25_1_Changed = async (e) => {
-      stValue_q25_1(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q25 != "" && value_q25_2 != "" ){
+            setIs_Q27_visible(true); 
+            setIs_Q17_visible(false);
+            setIs_Q18_visible(false);
+            setIs_Q19_visible(false);
+            setIs_Q20_visible(false);
+          } else {
+            setIs_Q26_visible(false);
+            setIs_Q27_visible(false);
+          
+          } } };
+    
+        const handle_Q18_Changed = async (e) => { 
+          stValue_q18(e.target.value);
+          console.log(e.target.value); 
+          if(isUserReviewing == false){
+            if(e.target.value != ""&& value_q17 != "" && value_q19 != "" && value_q20 != "" ){
+                  
             setIs_Q26_visible(true);
-            setIs_Q27_visible(true);
-            setIs_Q28_visible(true);
-            setIs_Q25_visible(false);
-            setIs_Q25_1_visible(false);
-            setIs_Q25_2_visible(false);
-        } else {
-          setIs_Q26_visible(false);
-          setIs_Q27_visible(false);
-          setIs_Q28_visible(false);
-        }}};
-    const handle_Q25_2_Changed = async (e) => {
-      stValue_q25_2(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q25 != "" && value_q25_1 != "" ){
+            setIs_Q27_visible(true); 
+            setIs_Q17_visible(false);
+            setIs_Q18_visible(false);
+            setIs_Q19_visible(false);
+            setIs_Q20_visible(false);
+          } else {
+            setIs_Q26_visible(false);
+            setIs_Q27_visible(false);
+          
+          } } };
+
+        const handle_Q19_Changed = async (e) => { 
+          const value = e.target.value;
+          console.log(value_q19);
+          if(isUserReviewing == false){
+            if(e.target.value != ""&& value_q18 != "" && value_q17 != "" && value_q20 != "" ){
+                  
             setIs_Q26_visible(true);
-            setIs_Q27_visible(true);
-            setIs_Q28_visible(true);
-            setIs_Q25_visible(false);
-            setIs_Q25_1_visible(false);
-            setIs_Q25_2_visible(false);
-        } else {
-          setIs_Q26_visible(false);
-          setIs_Q27_visible(false);
-          setIs_Q28_visible(false);
-        }}};
+            setIs_Q27_visible(true); 
+            setIs_Q17_visible(false);
+            setIs_Q18_visible(false);
+            setIs_Q19_visible(false);
+            setIs_Q20_visible(false);
+          } else {
+            setIs_Q26_visible(false);
+            setIs_Q27_visible(false);
+          
+          } }};
+
+
+
+        const handle_Q20_Changed = async (e) => { 
+          stValue_q20(e.target.value);
+          console.log(e.target.value); 
+          if(isUserReviewing == false){
+            if(e.target.value != ""&& value_q18 != "" && value_q19 != "" && value_q17 != "" ){
+                  
+            setIs_Q26_visible(true);
+            setIs_Q27_visible(true); 
+            setIs_Q17_visible(false);
+            setIs_Q18_visible(false);
+            setIs_Q19_visible(false);
+            setIs_Q20_visible(false);
+          } else {
+            setIs_Q26_visible(false);
+            setIs_Q27_visible(false);
+          
+          } }};
+
         const handle_Q26_Changed = async (e) => {
           stValue_q26(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q27 != ""){
-                setIs_Q29_visible(true);
-                setIs_Q30_visible(true);
-                setIs_Q26_visible(false);
-                setIs_Q27_visible(false);
-                setIs_Q28_visible(false);
+              if(value_q27 == "Option 1"){
+                setIs_Q28_visible(true);};
+              setIs_Q42_visible(true);
             } else {
-              setIs_Q29_visible(false);
-              setIs_Q30_visible(false);
+              setIs_Q42_visible(false);
             }}};
         
         const handle_Q27_Changed = async (e) => {
@@ -1204,327 +1180,57 @@ const handle_feedback_Changed3 = async(e) => {
           console.log(e.target.value);
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q26 != ""){
-                setIs_Q29_visible(true);
-                setIs_Q30_visible(true);
-                setIs_Q26_visible(false);
-                setIs_Q27_visible(false);
-                setIs_Q28_visible(false);
+              if(value_q27 == "Option 1"){
+                setIs_Q28_visible(true);};
+              setIs_Q42_visible(true);
             } else {
-              setIs_Q29_visible(false);
-              setIs_Q30_visible(false);
+              setIs_Q42_visible(false);
             }}};
 
+        const handle_feedback_Changed = async(e) => {
+          setFeedback(e.target.value); 
+          }
+          
+        const handle_feedback_Changed2 = async(e) => {
+          setFeedback2(e.target.value); 
+          }
+        
+        const handle_feedback_Changed3 = async(e) => {
+          setFeedback3(e.target.value); 
+          }
+            
+          
 
-      
-      const handle_Q29_1_Changed = async (e) => { 
-        stValue_q29_1(e.target.value);
-        console.log(e.target.value); };
-      
-      const handle_Q29_2_Changed = async (e) => {
-        stValue_q29_2(e.target.value);
-        console.log(e.target.value); };
-      
-      
-      const handle_Q29_3_Changed = async (e) => { 
-        stValue_q29_3(e.target.value);
-        console.log(e.target.value); };
-      
-      const handle_Q29_4_Changed = async (e) => {
-        stValue_q29_4(e.target.value);
-        console.log(e.target.value); };
-
-      const handle_Q29_5_Changed = async (e) => {
-        stValue_q29_5(e.target.value);
-        console.log(e.target.value); };
-      const handle_Q29_6_Changed = async (e) => {
-        stValue_q29_6(e.target.value);
-        console.log(e.target.value); };
-
-      const handle_Q30_Changed = async (e) => {
-        stValue_q30(e.target.value);
-        console.log(e.target.value);
-        if(isUserReviewing == false){
-          if(e.target.value != ""){
-              setIs_Q31_visible(true);
-              setIs_Q32_visible(true);
-              setIs_Q33_visible(true);
-              setIs_Q30_visible(false);
-              setIs_Q29_visible(false);
-          } else {
-            setIs_Q31_visible(false);
-            setIs_Q32_visible(false);
-            setIs_Q33_visible(false);
-          }}};
-    const handle_Q31_Changed = async (e) => {
-      stValue_q31(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q32 != "" && value_q33 != "" ){
-            setIs_Q1_visible(true);
-            setIs_Q2_visible(true);
-            setIs_Q31_visible(false);
-            setIs_Q32_visible(false);
-            setIs_Q33_visible(false);
-            setIs_review_is_onward(false);
-            setIs_NoSurvey_visible(false)
-        } else {
-          setIs_Q1_visible(false);
-          setIs_Q2_visible(false);
-        }}};
-    const handle_Q32_Changed = async (e) => {
-      stValue_q32(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q31 != "" && value_q33 != "" ){
-            setIs_Q1_visible(true);
-            setIs_Q2_visible(true);
-            setIs_Q31_visible(false);
-            setIs_Q32_visible(false);
-            setIs_Q33_visible(false);
-            setIs_review_is_onward(false);
-            setIs_NoSurvey_visible(false)
-        } else {
-          setIs_Q1_visible(false);
-          setIs_Q2_visible(false);
-        }}};
-    const handle_Q33_Changed = async (e) => {
-      stValue_q33(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q31 != "" && value_q32 != "" ){
-            setIs_Q1_visible(true);
-            setIs_Q2_visible(true);
-            setIs_Q31_visible(false);
-            setIs_Q32_visible(false);
-            setIs_Q33_visible(false);
-            setIs_review_is_onward(false);
-            setIs_NoSurvey_visible(false)
-        } else {
-          setIs_Q1_visible(false);
-          setIs_Q2_visible(false);
-        }}};
-
-    /*const handle_Q34_Changed = async (e) => {
-      stValue_q34(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q34_1 != "" && value_q34_2 != "" && value_q34_3 != "" && value_q34_4 != "" ){
-            setIs_Q35_visible(true);
-            setIs_Q36_visible(true);
-            setIs_Q37_visible(true);
-            setIs_Q34_visible(false);
-            setIs_Q34_1_visible(false);
-            setIs_Q34_2_visible(false);
-            setIs_Q34_3_visible(false);
-            setIs_Q34_4_visible(false);
-        } else {
-          setIs_Q35_visible(false);
-          setIs_Q36_visible(false);
-          setIs_Q37_visible(false);
-        }}};
-    const handle_Q34_1_Changed = async (e) => {
-      stValue_q34_1(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q34 != "" && value_q34_2 != "" && value_q34_3 != "" && value_q34_4 != "" ){
-            setIs_Q35_visible(true);
-            setIs_Q36_visible(true);
-            setIs_Q37_visible(true);
-            setIs_Q34_visible(false);
-            setIs_Q34_1_visible(false);
-            setIs_Q34_2_visible(false);
-            setIs_Q34_3_visible(false);
-            setIs_Q34_4_visible(false);
-        } else {
-          setIs_Q35_visible(false);
-          setIs_Q36_visible(false);
-          setIs_Q37_visible(false);
-        }}};
-    const handle_Q34_2_Changed = async (e) => {
-      stValue_q34_2(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q34 != "" && value_q34_1 != "" && value_q34_3 != "" && value_q34_4 != "" ){
-            setIs_Q35_visible(true);
-            setIs_Q36_visible(true);
-            setIs_Q37_visible(true);
-            setIs_Q34_visible(false);
-            setIs_Q34_1_visible(false);
-            setIs_Q34_2_visible(false);
-            setIs_Q34_3_visible(false);
-            setIs_Q34_4_visible(false);
-        } else {
-          setIs_Q35_visible(false);
-          setIs_Q36_visible(false);
-          setIs_Q37_visible(false);
-        }}};
-    const handle_Q34_3_Changed = async (e) => {
-      stValue_q34_3(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q34 != "" && value_q34_1 != "" && value_q34_2 != "" && value_q34_4 != "" ){
-            setIs_Q35_visible(true);
-            setIs_Q36_visible(true);
-            setIs_Q37_visible(true);
-            setIs_Q34_visible(false);
-            setIs_Q34_1_visible(false);
-            setIs_Q34_2_visible(false);
-            setIs_Q34_3_visible(false);
-            setIs_Q34_4_visible(false);
-        } else {
-          setIs_Q35_visible(false);
-          setIs_Q36_visible(false);
-          setIs_Q37_visible(false);
-        }}};
-    const handle_Q34_4_Changed = async (e) => {
-      stValue_q34_4(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q34 != "" && value_q34_1 != "" && value_q34_2 != "" && value_q34_3 != "" ){
-            setIs_Q35_visible(true);
-            setIs_Q36_visible(true);
-            setIs_Q37_visible(true);
-            setIs_Q34_visible(false);
-            setIs_Q34_1_visible(false);
-            setIs_Q34_2_visible(false);
-            setIs_Q34_3_visible(false);
-            setIs_Q34_4_visible(false);
-        } else {
-          setIs_Q35_visible(false);
-          setIs_Q36_visible(false);
-          setIs_Q37_visible(false);
-        }}};
-
-    const handle_Q35_Changed = async (e) => {
-      const value = e.target.value;
-      if (e.target.checked) {
-        // Add the value to the array if checked
-        stValue_q35(prev => [...prev, value]);
-      } else {
-        // Remove the value from the array if unchecked
-        stValue_q35(prev => prev.filter(item => item !== value));
-      }
-      console.log(value_q35);};
-    const handle_Q36_Changed = async (e) => {
-      stValue_q36(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q37 != "" ){
-            setIs_Q38_visible(true);
-            setIs_Q39_visible(true);
-            setIs_Q35_visible(false);
-            setIs_Q36_visible(false);
-            setIs_Q37_visible(false);
-        } else {
-          setIs_Q38_visible(false);
-          setIs_Q39_visible(false);
-        }}};
-    const handle_Q37_Changed = async (e) => {
-      stValue_q37(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q36 != "" ){
-            setIs_Q38_visible(true);
-            setIs_Q39_visible(true);
-            setIs_Q35_visible(false);
-            setIs_Q36_visible(false);
-            setIs_Q37_visible(false);
-        } else {
-          setIs_Q38_visible(false);
-          setIs_Q39_visible(false);
-        }}};
-    const handle_Q38_Changed = async (e) => {
-      stValue_q38(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q39 != "" ){
-            setIs_Q40_visible(true);
-            setIs_Q41_visible(true);
-            setIs_Q38_visible(false);
-            setIs_Q39_visible(false);
-        } else {
-          setIs_Q40_visible(false);
-          setIs_Q41_visible(false);
-        }}};
-    const handle_Q39_Changed = async (e) => {
-      stValue_q39(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q38 != "" ){
-            setIs_Q40_visible(true);
-            setIs_Q41_visible(true);
-            setIs_Q38_visible(false);
-            setIs_Q39_visible(false);
-        } else {
-          setIs_Q40_visible(false);
-          setIs_Q41_visible(false);
-        }}};
-    const handle_Q40_Changed = async (e) => {
-      stValue_q40(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q41 != "" ){
-            setIs_Q42_visible(true);
-        }else{
-          setIs_Q42_visible(false);
-        }}};
-    const handle_Q41_Changed = async (e) => {
-      stValue_q41(e.target.value);
-      console.log(e.target.value);
-      if(isUserReviewing == false){
-        if(e.target.value != "" && value_q40 != "" ){
-            setIs_Q42_visible(true);
-        }else{
-          setIs_Q42_visible(false);
-        }}};
-*/
                 
-            const reviewButtonChanged = async (e) => { 
-              e.preventDefault()
-              setIsUserReviewing(true);
-              setIs_Q21_visible(true);
-              setIs_Q22_visible(true);
-              setIs_Q23_visible(true);
-              setIs_Q24_visible(true);
-              setIs_Q24_1_visible(true);
-              setIs_Q24_2_visible(true);
-              setIs_Q24_3_visible(true);
-              setIs_Q24_4_visible(true);
-              setIs_Q24_5_visible(true);
-              setIs_Q25_visible(true);
-              setIs_Q25_1_visible(true);
-              setIs_Q25_2_visible(true);
-              setIs_Q26_visible(true);
-              setIs_Q27_visible(true);
-              setIs_Q28_visible(true);
-              setIs_Q29_visible(true);
-              setIs_Q30_visible(true);
-              setIs_Q31_visible(true);
-              setIs_Q32_visible(true);
-              setIs_Q33_visible(true);
-              setIs_Q1_visible(true);
-              setIs_review_is_onward(true);
-              setIs_Q2_visible(true);
-              setIs_Q3_visible(true);
-              setIs_Q4_visible(true);
-              setIs_Q5_visible(true);
-              setIs_Q6_visible(true);
-              setIs_Q7_visible(true);
-              setIs_Q8_visible(true);
-              setIs_Q9_visible(true);
-              setIs_Q10_visible(true);
-              setIs_Q11_visible(true);
-              setIs_Q12_visible(true);
-              setIs_Q13_visible(true);
-              setIs_Q14_visible(true);
-              setIs_Q15_visible(true);
-              if(value_q15 == "option1"){setIs_Q16_visible(false);}else{setIs_Q16_visible(true);}
-              setIs_Q17_visible(true);
-              setIs_Q18_visible(true);
-              setIs_Q19_visible(true);
-              setIs_Q20_visible(true);
-              setIs_Q42_visible(true);
-              setIs_TestingFeedBack_visible(false);
+    const reviewButtonChanged = async (e) => { 
+      e.preventDefault()
+      setIsUserReviewing(true);
+      setIs_Q24_1_visible(true);
+      setIs_Q24_2_visible(true);
+      setIs_Q24_3_visible(true);
+      setIs_Q24_4_visible(true);
+      setIs_Q24_5_visible(true);
+      setIs_Q25_visible(true);
+      setIs_Q25_1_visible(true);
+      setIs_Q25_2_visible(true);
+      setIs_Q29_visible(true);
+      setIs_Q1_visible(true);
+      setIs_review_is_onward(true);
+      setIs_Q8_visible(true);
+      setIs_Q9_visible(true);
+      setIs_Q11_visible(true);
+      setIs_Q13_visible(true);
+      setIs_Q15_visible(true);
+      setIs_Q16_visible(true);
+      setIs_Q17_visible(true);
+      setIs_Q18_visible(true);
+      setIs_Q19_visible(true);
+      setIs_Q20_visible(true);
+      setIs_Q26_visible(true);
+      setIs_Q27_visible(true);
+      if(value_q27 == "Option 1"){setIs_Q28_visible(true);}else{setIs_Q28_visible(false);}
+      setIs_Q42_visible(true);
+      setIs_TestingFeedBack_visible(false);
                 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
             };
@@ -1556,191 +1262,160 @@ const handle_feedback_Changed3 = async(e) => {
     if(is_NoSurvey_visible == false){
 
       if (value_q1 == ""){ 
-        toast.error("Pitanje 1. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q2 == ""){
-        toast.error("Pitanje 2. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q3 == ""){
-        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q4 == ""){
-        toast.error("Pitanje 4. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q5 == ""){
-        toast.error("Pitanje 5. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q6 == ""){
-        toast.error("Pitanje 6. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q7 == ""){
-        toast.error("Pitanje 7. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q8 == ""){
         toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q9 == []){
+      }else if (value_q2 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q3 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q4 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q5 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q6 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q7 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
+      }else if (value_q8 == ""){
         toast.error("Pitanje 9. Molimo izaberite jednu od ponuđenih opcija!");
         return
+      }else if (value_q9 == []){
+        toast.error("Pitanje 10. Molimo izaberite jednu od ponuđenih opcija!");
+        return
       }else if (value_q10 == ""){
-        toast.error("Pitanje 10.1 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q11 == []){
         toast.error("Pitanje 11. Molimo izaberite jednu od ponuđenih opcija!");
         return
       } else if (value_q12 == ""){
-        toast.error("Pitanje 12. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q13 == ""){
-        toast.error("Pitanje 13. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 12. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q14 == ""){
-        toast.error("Pitanje 14. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q15 == []){
-        toast.error("Pitanje 15. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 13. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q16 == ""){
-        if(value_q15 != "option1"){
-          toast.error("Pitanje 16. Molimo izaberite jednu od ponuđenih opcija!");
-          return
-        }
+        toast.error("Pitanje 14. Molimo izaberite jednu od ponuđenih opcija!");
+        return
       }else if (value_q17 == ""){
-        toast.error("Pitanje 17. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 15. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q18 == ""){
-        toast.error("Pitanje 18. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 16. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q19 == []){
-        toast.error("Pitanje 19. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 17. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q20 == ""){
-        toast.error("Pitanje 20. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q21 == ""){
-        toast.error("Pitanje 21. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q22 == ""){
-        toast.error("Pitanje 22. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q23 == ""){
-        toast.error("Pitanje 23. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q24 == ""){
-        toast.error("Pitanje 24. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 18. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q24_1 == ""){
-        toast.error("Pitanje 24.1 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 1. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q24_2 == ""){
-        toast.error("Pitanje 24.2 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 2. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q24_3 == ""){
-        toast.error("Pitanje 24.3 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q24_4 == ""){
-        toast.error("Pitanje 24.4 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 4. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q24_5 == ""){
-        toast.error("Pitanje 24.5 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 5. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q25 == ""){
-        toast.error("Pitanje 25. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 6. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q25_1 == ""){
-        toast.error("Pitanje 25.1 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 6. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q25_2 == ""){
-        toast.error("Pitanje 25.2 Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 6. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q26 == ""){
-        toast.error("Pitanje 26. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 19. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q27 == ""){
-        toast.error("Pitanje 27. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 20. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_1 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_2 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_3 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_4 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_5 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q29_6 == ""){
-        toast.error("Pitanje 29. Molimo izaberite jednu od ponuđenih opcija!");
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q30 == ""){
-        toast.error("Pitanje 30. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q31 == ""){
-        toast.error("Pitanje 31. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q32 == ""){
-        toast.error("Pitanje 32. Molimo izaberite jednu od ponuđenih opcija!");
-        return
-      }else if (value_q33 == ""){
-        toast.error("Pitanje 33. Molimo izaberite jednu od ponuđenih opcija!");
+      }else if (value_q29_7 == ""){
+        toast.error("Pitanje 3. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }
       var survey = {}
       if(is_NoSurvey_visible == false){
 
       survey = {
-        q1: value_q1,
-        q2: value_q2,
-        q3: value_q3,
-        q4: value_q4,
-        q5: value_q5,
-        q6: value_q6,
-        q7: value_q7,
-        q8: value_q8, 
-        q9: value_q9.join(', '), 
-        q10: value_q10,
+        q1: value_q24_1,
+        q2: value_q24_2,
+        q3: value_q24_3,
+        q4: value_q24_4,
+        q5: value_q24_5,
+        q6: value_q25,
+        q6_1: value_q25_1,
+        q6_2: value_q25_2, 
+        q7_1: value_q29_1, 
+        q7_2: value_q29_2,
+        q7_3: value_q29_3,
+        q7_4: value_q29_4,
+        q7_5: value_q29_5,
+        q7_6: value_q29_6,
+        q7_7: value_q29_7,
+        q8_1: value_q1,
+        q8_2: value_q2,
+        q8_3: value_q3,
+        q8_4: value_q4,
+        q8_5: value_q5,
+        q8_6: value_q6,
+        q8_7: value_q7,
+        q8_8: value_q10,
+        q8_9: value_q12,
+        q8_10: value_q14,
+        q9: value_q8,
+        q10: value_q9.join(', '),
         q11: value_q11.join(', '),
-        q12: value_q12,
-        q13: value_q13.join(', '),
-        q14: value_q14,
-        q15: value_q15.join(', '),
-        q16: value_q16,
-        q17: value_q17,
-        q18: value_q18,
-        q19: value_q19.join(', '),
-        q20: value_q20,
-        q21: value_q21,
-        q22: value_q22,
-        q23: value_q23,
-        q24: value_q24,
-        q24_1: value_q24_1,
-        q24_2: value_q24_2,
-        q24_3: value_q24_3,
-        q24_4: value_q24_4,
-        q24_5: value_q24_5,
-        q25: value_q25,
-        q25_1: value_q25_1,
-        q25_2: value_q25_2,
-        q26: value_q26,
-        q27: value_q27,
-        q28: feedback,
-        q29_1: value_q29_1,
-        q29_2: value_q29_2,
-        q29_3: value_q29_3,
-        q29_4: value_q29_4,
-        q29_5: value_q29_5,
-        q29_6: value_q29_6,
-        q30: value_q30,
-        q31: value_q31,
-        q32: value_q32,
-        q33: value_q33,
-        q42: feedback,
-        "feedback": feedback,
+        q12: value_q13.join(', '),
+        q13: value_q15.join(', '),
+        q14: value_q16,
+        q15: value_q17,
+        q16: value_q18,
+        q17: value_q19.join(', '),
+        q18: value_q20,
+        q19: value_q26,
+        q20: value_q27,
+        q21: feedback2,
+        "feedback": feedback3
       };
     } else {
       survey = {
@@ -1770,12 +1445,11 @@ const handle_feedback_Changed3 = async(e) => {
         set_Is_code_visible(true) 
         setIsSurveySubmitted(true)
         stStatus_msg2(res.data.message);
-              
         setIs_Q1_visible(false);
-        setIs_review_is_onward(false);
- 	      setIs_Q2_visible(false);
+        setIs_Q2_visible(false);
         setIs_Q3_visible(false);
         setIs_Q4_visible(false);
+        setIs_review_is_onward(false);
         setIs_Q5_visible(false);
         setIs_Q6_visible(false);
         setIs_Q7_visible(false);
@@ -1792,10 +1466,6 @@ const handle_feedback_Changed3 = async(e) => {
         setIs_Q18_visible(false);
         setIs_Q19_visible(false);
         setIs_Q20_visible(false);
-        setIs_Q21_visible(false);
-        setIs_Q22_visible(false);
-        setIs_Q23_visible(false);
-        setIs_Q24_visible(false);
         setIs_Q24_1_visible(false);
         setIs_Q24_2_visible(false);
         setIs_Q24_3_visible(false);
@@ -1808,10 +1478,6 @@ const handle_feedback_Changed3 = async(e) => {
         setIs_Q27_visible(false);
         setIs_Q28_visible(false);
         setIs_Q29_visible(false);
-        setIs_Q30_visible(false);
-        setIs_Q31_visible(false);
-        setIs_Q32_visible(false);
-        setIs_Q33_visible(false);
         setIs_Q42_visible(false);
         setIs_TestingFeedBack_visible(false);
         
@@ -1880,68 +1546,6 @@ const handle_feedback_Changed3 = async(e) => {
         <p className={classes.secon_disclaimor}>{"Please report any issues that you found"}</p>
         <textarea  className={classes.label2} id="feedback" rows={4}  onChange={handle_feedback_Changed}  value={feedback} placeholder={"Provide your feedback about the pre-survey here. A text area for feedback will also be available in the post-survey. Additionally, feel free to use these text fields to mention any other concerns or issues. You can also leave comments to highlight any problems encountered on the platform."}/>
         </div> 
-        </CSSTransition>
-
-
-
-        <CSSTransition in={is_Q21_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q21'> 
-        <p className={classes.secon_disclaimor}>{post_q21}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q21 === 'option1'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q21 === 'option2'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q21 === 'option3'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q21 === 'option4'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q21 === 'option5'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q21 === 'option6'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op6}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option7"  checked={value_q21 === 'option7'} onChange={handle_Q21_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q21_op7}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q22_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q22'> 
-        <p className={classes.secon_disclaimor}>{post_q22}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q22 === 'option1'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q22 === 'option2'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q22 === 'option3'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q22 === 'option4'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q22 === 'option5'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q22 === 'option6'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op6}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option7"  checked={value_q22 === 'option7'} onChange={handle_Q22_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q22_op7}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q23_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q23'> 
-        <p className={classes.secon_disclaimor}>{post_q23}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q23 === 'option1'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q23 === 'option2'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q23 === 'option3'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q23 === 'option4'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q23 === 'option5'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q23 === 'option6'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op6}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option7"  checked={value_q23 === 'option7'} onChange={handle_Q23_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q23_op7}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        <CSSTransition in={is_Q24_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q24'> 
-        <p className={classes.secon_disclaimor}>{post_q24}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q24 === 'option1'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q24 === 'option2'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q24 === 'option3'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q24 === 'option4'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q24 === 'option5'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q24 === 'option6'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op6}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option7"  checked={value_q24 === 'option7'} onChange={handle_Q24_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q24_op7}</span></label></div> 
-        </form>
-        </div></SlideDiv>
         </CSSTransition>
         
         <CSSTransition in={is_Q24_1_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
@@ -2013,7 +1617,7 @@ const handle_feedback_Changed3 = async(e) => {
         
         <CSSTransition in={is_Q25_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q25'>
-        <p className={classes.secon_disclaimor}>{post_q25_0}</p>  
+        <p className={classes.secon_disclaimor}>{post_q25_0}<br /></p>  
         <p className={classes.secon_disclaimor}>{post_q25}</p>  
         <form  className={classes.question}>
         <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q25 === 'option1'} onChange={handle_Q25_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q25_op1}</span></label></div>
@@ -2048,41 +1652,6 @@ const handle_feedback_Changed3 = async(e) => {
         <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q25_2 === 'option4'} onChange={handle_Q25_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q25_2_op4}</span></label></div>
         <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q25_2 === 'option5'} onChange={handle_Q25_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q25_2_op5}</span></label></div> 
         </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        <CSSTransition in={is_Q26_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q26'>
-        <p className={classes.secon_disclaimor}>{post_q26_0}</p>  
-        <p className={classes.secon_disclaimor}>{post_q26}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q26 === 'option1'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q26 === 'option2'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q26 === 'option3'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q26 === 'option4'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q26 === 'option5'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        <CSSTransition in={is_Q27_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q27'>
-        <p className={classes.secon_disclaimor}>{post_q27}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q27 === 'option1'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q27 === 'option2'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q27 === 'option3'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q27 === 'option4'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q27 === 'option5'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        <CSSTransition in={is_Q28_visible} timeout={1000} classNames="slide" unmountOnExit >
-        <SlideDiv>
-        <div id='Q28'>
-        <p className={classes.secon_disclaimor}>{post_q28}</p>
-        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed2}  value={feedback2} placeholder={"Polje za tekst"}/>
         </div></SlideDiv>
         </CSSTransition>
 
@@ -2235,160 +1804,194 @@ const handle_feedback_Changed3 = async(e) => {
                     </div>
                   </td>
                 </tr>
+
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q29_7_op1}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q29_7" value="option1_7" checked={value_q29_7 === 'option1_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option2_7" checked={value_q29_7 === 'option2_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option3_7" checked={value_q29_7 === 'option3_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option4_7" checked={value_q29_7 === 'option4_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option5_7" checked={value_q29_7 === 'option5_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option6_7" checked={value_q29_7 === 'option6_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q29_7" value="option7_7" checked={value_q29_7 === 'option7_7'} onChange={handle_Q29_7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q29_7_op7}</span>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div></SlideDiv>
         </CSSTransition>
-        
-        <CSSTransition in={is_Q30_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q30'>
-        <p className={classes.secon_disclaimor}>{post_q30_info}</p>  
-        <p className={classes.secon_disclaimor}>{post_q30}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q30 === 'option1'} onChange={handle_Q30_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q30_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q30 === 'option2'} onChange={handle_Q30_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q30_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q30 === 'option3'} onChange={handle_Q30_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q30_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q30 === 'option4'} onChange={handle_Q30_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q30_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q30 === 'option5'} onChange={handle_Q30_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q30_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q31_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q31'>
-        <p className={classes.secon_disclaimor}>{post_q31}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q31 === 'option1'} onChange={handle_Q31_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q31_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q31 === 'option2'} onChange={handle_Q31_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q31_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q31 === 'option3'} onChange={handle_Q31_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q31_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q31 === 'option4'} onChange={handle_Q31_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q31_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q31 === 'option5'} onChange={handle_Q31_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q31_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q32_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q32'>
-        <p className={classes.secon_disclaimor}>{post_q32}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q32 === 'option1'} onChange={handle_Q32_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q32_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q32 === 'option2'} onChange={handle_Q32_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q32_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q32 === 'option3'} onChange={handle_Q32_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q32_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q32 === 'option4'} onChange={handle_Q32_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q32_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q32 === 'option5'} onChange={handle_Q32_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q32_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q33_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q33'>
-        <p className={classes.secon_disclaimor}>{post_q33}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q33 === 'option1'} onChange={handle_Q33_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q33_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q33 === 'option2'} onChange={handle_Q33_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q33_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q33 === 'option3'} onChange={handle_Q33_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q33_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q33 === 'option4'} onChange={handle_Q33_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q33_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q33 === 'option5'} onChange={handle_Q33_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q33_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
 
         <CSSTransition in={is_Q1_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q1'>
-        <p className={classes.secon_disclaimor}>{post_q1}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1" checked={value_q1 === 'option1'} onChange={handle_Q1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q1_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q1 === 'option2'} onChange={handle_Q1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q1_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q1 === 'option3'} onChange={handle_Q1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q1_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q1 === 'option4'} onChange={handle_Q1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q1_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q1 === 'option5'} onChange={handle_Q1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q1_op5}</span></label></div>
-        </form>
+          <p className={classes.secon_disclaimor}>{post_q1_0}</p>
+          
+          <div className={classes.tableContainer}>
+            <table className={classes.questionTable}>
+              <thead>
+                <tr>
+                  <th style={{width: '40%'}}></th> {/* For question text */}
+                  <th colSpan="5" style={{textAlign: 'center'}}>
+                    <div className={classes.scaleLabels}>
+                      <span>{post_q1_op1}</span>
+                      <span>{post_q1_op2}</span>
+                      <span>{post_q1_op3}</span>
+                      <span>{post_q1_op4}</span>
+                      <span>{post_q1_op5}</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Row for Q1 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q1}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q1" value="option1" checked={value_q1 === 'option1'} onChange={handle_Q1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q1" value="option2" checked={value_q1 === 'option2'} onChange={handle_Q1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q1" value="option3" checked={value_q1 === 'option3'} onChange={handle_Q1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q1" value="option4" checked={value_q1 === 'option4'} onChange={handle_Q1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q1" value="option5" checked={value_q1 === 'option5'} onChange={handle_Q1_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                
+                {/* Row for Q2 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q2}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q2" value="option1" checked={value_q2 === 'option1'} onChange={handle_Q2_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q2" value="option2" checked={value_q2 === 'option2'} onChange={handle_Q2_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q2" value="option3" checked={value_q2 === 'option3'} onChange={handle_Q2_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q2" value="option4" checked={value_q2 === 'option4'} onChange={handle_Q2_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q2" value="option5" checked={value_q2 === 'option5'} onChange={handle_Q2_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+
+                {/* Row for Q3 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q3}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q3" value="option1" checked={value_q3 === 'option1'} onChange={handle_Q3_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q3" value="option2" checked={value_q3 === 'option2'} onChange={handle_Q3_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q3" value="option3" checked={value_q3 === 'option3'} onChange={handle_Q3_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q3" value="option4" checked={value_q3 === 'option4'} onChange={handle_Q3_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q3" value="option5" checked={value_q3 === 'option5'} onChange={handle_Q3_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                {/* Row for Q4 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q4}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q4" value="option1" checked={value_q4 === 'option1'} onChange={handle_Q4_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q4" value="option2" checked={value_q4 === 'option2'} onChange={handle_Q4_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q4" value="option3" checked={value_q4 === 'option3'} onChange={handle_Q4_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q4" value="option4" checked={value_q4 === 'option4'} onChange={handle_Q4_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q4" value="option5" checked={value_q4 === 'option5'} onChange={handle_Q4_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                {/* Row for Q5 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q5}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q5" value="option1" checked={value_q5 === 'option1'} onChange={handle_Q5_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q5" value="option2" checked={value_q5 === 'option2'} onChange={handle_Q5_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q5" value="option3" checked={value_q5 === 'option3'} onChange={handle_Q5_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q5" value="option4" checked={value_q5 === 'option4'} onChange={handle_Q5_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q5" value="option5" checked={value_q5 === 'option5'} onChange={handle_Q5_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                {/* Row for Q6 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q6}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q6" value="option1" checked={value_q6 === 'option1'} onChange={handle_Q6_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q6" value="option2" checked={value_q6 === 'option2'} onChange={handle_Q6_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q6" value="option3" checked={value_q6 === 'option3'} onChange={handle_Q6_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q6" value="option4" checked={value_q6 === 'option4'} onChange={handle_Q6_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q6" value="option5" checked={value_q6 === 'option5'} onChange={handle_Q6_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                {/* Row for Q7 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q7}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q7" value="option1" checked={value_q7 === 'option1'} onChange={handle_Q7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q7" value="option2" checked={value_q7 === 'option2'} onChange={handle_Q7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q7" value="option3" checked={value_q7 === 'option3'} onChange={handle_Q7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q7" value="option4" checked={value_q7 === 'option4'} onChange={handle_Q7_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q7" value="option5" checked={value_q7 === 'option5'} onChange={handle_Q7_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                {/* Row for Q10 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q10}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q10" value="option1" checked={value_q10 === 'option1'} onChange={handle_Q10_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q10" value="option2" checked={value_q10 === 'option2'} onChange={handle_Q10_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q10" value="option3" checked={value_q10 === 'option3'} onChange={handle_Q10_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q10" value="option4" checked={value_q10 === 'option4'} onChange={handle_Q10_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q10" value="option5" checked={value_q10 === 'option5'} onChange={handle_Q10_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+
+                {/* Row for Q12 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q10}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q12" value="option1" checked={value_q12 === 'option1'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q12" value="option2" checked={value_q12 === 'option2'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q12" value="option3" checked={value_q12 === 'option3'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q12" value="option4" checked={value_q12 === 'option4'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q12" value="option5" checked={value_q12 === 'option5'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+
+                {/* Row for Q14 */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q10}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q14" value="option1" checked={value_q14 === 'option1'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14" value="option2" checked={value_q14 === 'option2'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14" value="option3" checked={value_q14 === 'option3'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14" value="option4" checked={value_q14 === 'option4'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14" value="option5" checked={value_q14 === 'option5'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
         </div></SlideDiv>
         </CSSTransition>
 
-        <CSSTransition in={is_Q2_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q2'>
-        <p className={classes.secon_disclaimor}>{post_q2}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1" checked={value_q2 === 'option1'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q2_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q2 === 'option2'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q2_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q2 === 'option3'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q2_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q2 === 'option4'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q2_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q2 === 'option5'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q2_op5}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        
-        <CSSTransition in={is_Q3_visible} timeout={1000}  classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q3'>
-        <p className={classes.secon_disclaimor}>{post_q3}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1" checked={value_q3 === 'option1'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q3_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q3 === 'option2'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q3_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q3 === 'option3'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q3_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q3 === 'option4'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q3_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q3 === 'option5'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q3_op5}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q4_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q4'>  
-        <p className={classes.secon_disclaimor}>{post_q4}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q4 === 'option1'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q4_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q4 === 'option2'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q4_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q4 === 'option3'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q4_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q4 === 'option4'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q4_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q4 === 'option5'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q4_op5}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q5_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q5'>
-        <p className={classes.secon_disclaimor}>{post_q5}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q5 === 'option1'} onChange={handle_Q5_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q5_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q5 === 'option2'} onChange={handle_Q5_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q5_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q5 === 'option3'} onChange={handle_Q5_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q5_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q5 === 'option4'} onChange={handle_Q5_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q5_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q5 === 'option5'} onChange={handle_Q5_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q5_op5}</span></label></div>
-      </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-
-        <CSSTransition in={is_Q6_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q6'>
-        <p className={classes.secon_disclaimor}>{post_q6}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q6 === 'option1'} onChange={handle_Q6_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q6_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q6 === 'option2'} onChange={handle_Q6_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q6_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q6 === 'option3'} onChange={handle_Q6_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q6_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q6 === 'option4'} onChange={handle_Q6_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q6_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q6 === 'option5'} onChange={handle_Q6_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q6_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q7_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q7'>
-        <p className={classes.secon_disclaimor}>{post_q7}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q7 === 'option1'} onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q7_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q7 === 'option2'} onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q7_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q7 === 'option3'} onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q7_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q7 === 'option4'} onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q7_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q7 === 'option5'} onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q7_op5}</span></label></div>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-      
-      </form>
-        </div></SlideDiv>
-        </CSSTransition>
         
         
         <CSSTransition in={is_Q8_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
@@ -2430,21 +2033,6 @@ const handle_feedback_Changed3 = async(e) => {
         </div></SlideDiv>
         </CSSTransition>
 
-        
-        <CSSTransition in={is_Q10_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q10'>
-        <p className={classes.secon_disclaimor}>{post_q10}</p>
-        {<form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q10 === 'option1'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q10_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q10 === 'option2'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q10_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q10 === 'option3'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q10_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q10 === 'option4'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q10_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q10 === 'option5'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q10_op5}</span></label></div>
-        </form>}
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        
         <CSSTransition in={is_Q11_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q11'>
         <p className={classes.secon_disclaimor}>{post_q11}</p>
@@ -2474,20 +2062,6 @@ const handle_feedback_Changed3 = async(e) => {
         </div></SlideDiv>
         </CSSTransition>
         
-        <CSSTransition in={is_Q12_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q12'> 
-        <p className={classes.secon_disclaimor}>{post_q12}</p> 
-        
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q12 === 'option1'} onChange={handle_Q12_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q12_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q12 === 'option2'} onChange={handle_Q12_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q12_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q12 === 'option3'} onChange={handle_Q12_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q12_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q12 === 'option4'} onChange={handle_Q12_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q12_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q12 === 'option5'} onChange={handle_Q12_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q12_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
         <CSSTransition in={is_Q13_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q13'> 
         <p className={classes.secon_disclaimor}>{post_q13}</p>
@@ -2507,20 +2081,7 @@ const handle_feedback_Changed3 = async(e) => {
         </form>
         </div></SlideDiv>
         </CSSTransition>
-        
-        <CSSTransition in={is_Q14_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q14'> 
-        <p className={classes.secon_disclaimor}>{post_q14}</p> 
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q14 === 'option1'} onChange={handle_Q14_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q14_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q14 === 'option2'} onChange={handle_Q14_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q14_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q14 === 'option3'} onChange={handle_Q14_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q14_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q14 === 'option4'} onChange={handle_Q14_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q14_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q14 === 'option5'} onChange={handle_Q14_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q14_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
+ 
         <CSSTransition in={is_Q15_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q15'> 
         <p className={classes.secon_disclaimor}>{post_q15}</p> 
@@ -2611,168 +2172,40 @@ const handle_feedback_Changed3 = async(e) => {
         </div></SlideDiv>
         </CSSTransition>
 
+        <CSSTransition in={is_Q26_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+        <div id='Q26'>
+        <p className={classes.secon_disclaimor}><strong>{post_q26_0}</strong><br /></p>  
+        <p className={classes.secon_disclaimor}>{post_q26}</p>  
+        <form  className={classes.question}>
+        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q26 === 'option1'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op1}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q26 === 'option2'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op2}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q26 === 'option3'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op3}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q26 === 'option4'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op4}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q26 === 'option5'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op5}</span></label></div> 
+        </form>
+        </div></SlideDiv>
+        </CSSTransition>
         
-         {/*
-        <CSSTransition in={is_Q34_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q34'>
-        <p className={classes.secon_disclaimor}>{post_q34_0}</p>  
-        <p className={classes.secon_disclaimor}>{post_q34}</p>  
+        <CSSTransition in={is_Q27_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+        <div id='Q27'>
+        <p className={classes.secon_disclaimor}>{post_q27}</p>  
         <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q34 === 'option1'} onChange={handle_Q34_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q34 === 'option2'} onChange={handle_Q34_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q34 === 'option3'} onChange={handle_Q34_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q34 === 'option4'} onChange={handle_Q34_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q34 === 'option5'} onChange={handle_Q34_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_op5}</span></label></div> 
+        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q27 === 'option1'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op1}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q27 === 'option2'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op2}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q27 === 'option3'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op3}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q27 === 'option4'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op4}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q27 === 'option5'} onChange={handle_Q27_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q27_op5}</span></label></div> 
         </form>
         </div></SlideDiv>
         </CSSTransition>
-          
-        <CSSTransition in={is_Q34_1_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q34_1'>
-        <p className={classes.secon_disclaimor}>{post_q34_1}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q34_1 === 'option1'} onChange={handle_Q34_1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_1_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q34_1 === 'option2'} onChange={handle_Q34_1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_1_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q34_1 === 'option3'} onChange={handle_Q34_1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_1_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q34_1 === 'option4'} onChange={handle_Q34_1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_1_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q34_1 === 'option5'} onChange={handle_Q34_1_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_1_op5}</span></label></div> 
-        </form>
+        
+        <CSSTransition in={is_Q28_visible} timeout={1000} classNames="slide" unmountOnExit >
+        <SlideDiv>
+        <div id='Q28'>
+        <p className={classes.secon_disclaimor}>{post_q28}</p>
+        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed2}  value={feedback2} placeholder={"Polje za tekst"}/>
         </div></SlideDiv>
         </CSSTransition>
-           
-        <CSSTransition in={is_Q34_2_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q34_2'>
-        <p className={classes.secon_disclaimor}>{post_q34_2}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q34_2 === 'option1'} onChange={handle_Q34_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_2_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q34_2 === 'option2'} onChange={handle_Q34_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_2_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q34_2 === 'option3'} onChange={handle_Q34_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_2_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q34_2 === 'option4'} onChange={handle_Q34_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_2_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q34_2 === 'option5'} onChange={handle_Q34_2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_2_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-           
-        <CSSTransition in={is_Q34_3_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q34_3'>
-        <p className={classes.secon_disclaimor}>{post_q34_3}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q34_3 === 'option1'} onChange={handle_Q34_3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_3_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q34_3 === 'option2'} onChange={handle_Q34_3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_3_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q34_3 === 'option3'} onChange={handle_Q34_3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_3_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q34_3 === 'option4'} onChange={handle_Q34_3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_3_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q34_3 === 'option5'} onChange={handle_Q34_3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_3_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-           
-        <CSSTransition in={is_Q34_4_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q34_4'>
-        <p className={classes.secon_disclaimor}>{post_q34_4}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q34_4 === 'option1'} onChange={handle_Q34_4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_4_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q34_4 === 'option2'} onChange={handle_Q34_4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_4_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q34_4 === 'option3'} onChange={handle_Q34_4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_4_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q34_4 === 'option4'} onChange={handle_Q34_4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_4_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q34_4 === 'option5'} onChange={handle_Q34_4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q34_4_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q35_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q35'>
-        <p className={classes.secon_disclaimor}>{post_q35}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="checkbox" value="option1"   checked={value_q35.includes('option1')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option2"  checked={value_q35.includes('option2')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option3"  checked={value_q35.includes('option3')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option4"  checked={value_q35.includes('option4')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option5"  checked={value_q35.includes('option5')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="checkbox" value="option6"  checked={value_q35.includes('option6')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op6}</span></label></div> 
-        <div className={classes.label}><label ><input type="checkbox" value="option7"  checked={value_q35.includes('option7')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op7}</span></label></div> 
-        <div className={classes.label}><label ><input type="checkbox" value="option8"  checked={value_q35.includes('option8')} onChange={handle_Q35_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q35_op8}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q36_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q36'>
-        <p className={classes.secon_disclaimor}>{post_q36}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q36 === 'option1'} onChange={handle_Q36_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q36_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q36 === 'option2'} onChange={handle_Q36_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q36_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q36 === 'option3'} onChange={handle_Q36_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q36_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q36 === 'option4'} onChange={handle_Q36_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q36_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q36 === 'option5'} onChange={handle_Q36_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q36_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-           
-        <CSSTransition in={is_Q37_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q37'>
-        <p className={classes.secon_disclaimor}>{post_q37}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q37 === 'option1'} onChange={handle_Q37_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q37_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q37 === 'option2'} onChange={handle_Q37_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q37_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q37 === 'option3'} onChange={handle_Q37_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q37_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q37 === 'option4'} onChange={handle_Q37_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q37_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q37 === 'option5'} onChange={handle_Q37_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q37_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q38_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q38'>
-        <p className={classes.secon_disclaimor}>{post_q38}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q38 === 'option1'} onChange={handle_Q38_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q38_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q38 === 'option2'} onChange={handle_Q38_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q38_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q38 === 'option3'} onChange={handle_Q38_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q38_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q38 === 'option4'} onChange={handle_Q38_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q38_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q38 === 'option5'} onChange={handle_Q38_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q38_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q39_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q39'>
-        <p className={classes.secon_disclaimor}>{post_q39}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q39 === 'option1'} onChange={handle_Q39_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q39_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q39 === 'option2'} onChange={handle_Q39_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q39_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q39 === 'option3'} onChange={handle_Q39_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q39_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q39 === 'option4'} onChange={handle_Q39_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q39_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q39 === 'option5'} onChange={handle_Q39_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q39_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q40_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q40'>
-        <p className={classes.secon_disclaimor}>{post_q40}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q40 === 'option1'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q40 === 'option2'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q40 === 'option3'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q40 === 'option4'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q40 === 'option5'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op5}</span></label></div> 
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q40 === 'option6'} onChange={handle_Q40_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q40_op6}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-         
-        <CSSTransition in={is_Q41_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q41'>
-        <p className={classes.secon_disclaimor}>{post_q41}</p>  
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q41 === 'option1'} onChange={handle_Q41_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q41_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q41 === 'option2'} onChange={handle_Q41_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q41_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q41 === 'option3'} onChange={handle_Q41_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q41_op3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q41 === 'option4'} onChange={handle_Q41_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q41_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q41 === 'option5'} onChange={handle_Q41_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q41_op5}</span></label></div> 
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>*/}
 
         <CSSTransition in={is_Q42_visible} timeout={1000} classNames="slide" unmountOnExit >
         <SlideDiv>

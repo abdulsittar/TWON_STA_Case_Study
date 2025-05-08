@@ -257,99 +257,6 @@ export const post_info_3 = "U nastavku ćemo Vam postaviti nekoliko pitanja o Va
 
 
 
-export const post_q34_0 = [<strong>"Please indicate how much you agree or disagree with the following statements:"</strong>]
-export const post_q34 = "34. I enjoy trying new and different things. ";
-export const post_q34_op1 = "1 Strongly disagree";
-export const post_q34_op2 = "2 Disagree";
-export const post_q34_op3 = "3 Neither agree nor disagree";
-export const post_q34_op4 = "4 Agree";
-export const post_q34_op5 = "5 Strongly agree";
-
-export const post_q34_1 = "34.1. I am organized and like to plan ahead. ";
-export const post_q34_1_op1 = "1 Strongly disagree";
-export const post_q34_1_op2 = "2 Disagree";
-export const post_q34_1_op3 = "3 Neither agree nor disagree";
-export const post_q34_1_op4 = "4 Agree";
-export const post_q34_1_op5 = "5 Strongly agree";
-
-export const post_q34_2 = "34.2. I am outgoing and sociable. ";
-export const post_q34_2_op1 = "1 Strongly disagree";
-export const post_q34_2_op2 = "2 Disagree";
-export const post_q34_2_op3 = "3 Neither agree nor disagree";
-export const post_q34_2_op4 = "4 Agree";
-export const post_q34_2_op5 = "5 Strongly agree";
-
-export const post_q34_3 = "34.3. I am considerate and get along well with others. ";
-export const post_q34_3_op1 = "1 Strongly disagree";
-export const post_q34_3_op2 = "2 Disagree";
-export const post_q34_3_op3 = "3 Neither agree nor disagree";
-export const post_q34_3_op4 = "4 Agree";
-export const post_q34_3_op5 = "5 Strongly agree";
-
-export const post_q34_4 = "34.4. I often feel anxious or stressed. ";
-export const post_q34_4_op1 = "1 Strongly disagree";
-export const post_q34_4_op2 = "2 Disagree";
-export const post_q34_4_op3 = "3 Neither agree nor disagree";
-export const post_q34_4_op4 = "4 Agree";
-export const post_q34_4_op5 = "5 Strongly agree";
-
-
-export const post_q35 = "35. Which of the following types of news sources do you regularly use? (Select all that apply)";
-export const post_q35_op1 = "1 Traditional newspapers and magazines";
-export const post_q35_op2 = "2 Television news broadcasts";
-export const post_q35_op3 = "3 Online news websites";
-export const post_q35_op4 = "4 Social media platforms";
-export const post_q35_op5 = "5 Blogs and independent news sites";
-export const post_q35_op6 = "6 Radio news broadcasts";
-export const post_q35_op7 = "7 Podcasts";
-export const post_q35_op8 = "8 Newsletters or email subscriptions";
-
-export const post_q36 = "36. When reading news stories, how often do you critically evaluate the information before forming an opinion?";
-export const post_q36_op1 = "1 Always";
-export const post_q36_op2 = "2 Often";
-export const post_q36_op3 = "3 Sometimes";
-export const post_q36_op4 = "4 Rarely";
-export const post_q36_op5 = "5 Never";
-
-export const post_q37 = "37. How confident are you in your ability to distinguish between real and fake news?";
-export const post_q37_op1 = "1 Not confident at all";
-export const post_q37_op2 = "2 Slightly confident";
-export const post_q37_op3 = "3 Moderately confident";
-export const post_q37_op4 = "4 Very confident";
-export const post_q37_op5  = "5 Never";
-
-export const post_q38 = "38. How strongly do you typically react emotionally to news stories?";
-export const post_q38_op1 = "1 Not confident at all";
-export const post_q38_op2 = "2 Slightly";
-export const post_q38_op3 = "3 Moderately";
-export const post_q38_op4 = "4 Strongly";
-export const post_q38_op5  = "5 Very Strongly";
-
-
-export const post_q39 = "39. To what extent do you agree with the following statement: \"I feel that my political opinions can influence government decisions.\"";
-export const post_q39_op1 = "1 Strongly disagree";
-export const post_q39_op2 = "2 Disagree";
-export const post_q39_op3 = "3 Neither agree nor disagree";
-export const post_q39_op4 = "4 Agree";
-export const post_q39_op5 = "5 Strongly agree";
-
-export const post_q40 = "40. How do you primarily use social media platforms? (Select all that apply)";
-export const post_q40_op1 = "1 To read news and stay informed";
-export const post_q40_op2 = "2 To connect with friends and family";
-export const post_q40_op3 = "3 To share my opinions and content";
-export const post_q40_op4 = "4 To follow public figures or celebrities";
-export const post_q40_op5  = "5 To join groups or communities of interest";
-export const post_q40_op6  = "6 For entertainment purposes";
-
-export const post_q41 = "41. How comfortable are you with the use of artificial intelligence in everyday technologies?";
-export const post_q41_op1 = "1 Very uncomfortable";
-export const post_q41_op2 = "2 Somewhat uncomfortable";
-export const post_q41_op3 = "3 Neutral";
-export const post_q41_op4 = "4 Somewhat comfortable";
-export const post_q41_op5 = "5 Very comfortable";
-
-
-
 // Serbian survey questions in JavaScript export format
 
 
@@ -389,8 +296,43 @@ export const post_q24_op5 = "5";
 export const post_q24_op6 = "6";
 export const post_q24_op7 = "7 Veoma pouzdanim";
 
+export const post_q30_info = [<strong>Kako biste ocenili interakcije sa drugim korisnicima TWON-a?</strong>]
+export const post_q30 = "10. U komentarima korisnika bila su predstavljena mnoga različita mišljenja";
+export const post_q30_op1 = "1 Uopšte se ne slažem";
+export const post_q30_op2 = "2";
+export const post_q30_op3 = "3";
+export const post_q30_op4 = "4";
+export const post_q30_op5 = "5 U potpunosti se slažem";
+
+
+export const post_q31 = "11. Diskusije na TWON-u su bile visoko kvalitetne";
+export const post_q31_op1 = "1 Uopšte se ne slažem";
+export const post_q31_op2 = "2";
+export const post_q31_op3 = "3";
+export const post_q31_op4 = "4";
+export const post_q31_op5 = "5 U potpunosti se slažem";
+
+export const post_q32 = "12. Osećao/la sam se uključenim u diskusije";
+export const post_q32_op1 = "1 Uopšte se ne slažem";
+export const post_q32_op2 = "2";
+export const post_q32_op3 = "3";
+export const post_q32_op4 = "4";
+export const post_q32_op5 = "5 U potpunosti se slažem";
+
+export const post_q33 = "13. Naučio/la sam nešto iz diskusija na TWON-u";
+export const post_q33_op1 = "1 Uopšte se ne slažem";
+export const post_q33_op2 = "2";
+export const post_q33_op3 = "3";
+export const post_q33_op4 = "4";
+export const post_q33_op5 = "5 U potpunosti se slažem";
+
+
+/***************************************************************************************************************/
+//                                                   Final quesios list:
+/***************************************************************************************************************/
+
 export const post_q24_0 = "U nastavku bismo želeli da saznamo nešto više o Vašim političkim i društvenim stavovima.";
-export const post_q24_1 = "4.1. U politici se često govori o spektru „levo“ i „desno“. Gde biste sebe smestili na ovoj skali od „levo“ do „desno“? ";
+export const post_q24_1 = "1. U politici se često govori o spektru „levo“ i „desno“. Gde biste sebe smestili na ovoj skali od „levo“ do „desno“? ";
 export const post_q24_1_op1 = "1 Levo";
 export const post_q24_1_op2 = "2";
 export const post_q24_1_op3 = "3";
@@ -399,7 +341,7 @@ export const post_q24_1_op5 = "5";
 export const post_q24_1_op6 = "6";
 export const post_q24_1_op7 = "7 Desno";
 
-export const post_q24_2 = "4.2. Koliko ste lično zabrinuti zbog ruske invazije na Ukrajinu?";
+export const post_q24_2 = "2. Koliko ste lično zabrinuti zbog ruske invazije na Ukrajinu?";
 export const post_q24_2_op1 = "1 Veoma zabrinut/a";
 export const post_q24_2_op2 = "2";
 export const post_q24_2_op3 = "3";
@@ -408,21 +350,21 @@ export const post_q24_2_op5 = "5 Nimalo zabrinut/a";
 
 
 export const post_q24_3_0 = "Kako ocenjujete sledeće izjave:";
-export const post_q24_3 = "4.3. Ruska invazija na Ukrajinu predstavlja direktnu pretnju za celu Evropu.";
+export const post_q24_3 = "3. Ruska invazija na Ukrajinu predstavlja direktnu pretnju za celu Evropu.";
 export const post_q24_3_op1 = "1 Nimalo se ne slažem";
 export const post_q24_3_op2 = "2";
 export const post_q24_3_op3 = "3";
 export const post_q24_3_op4 = "4";
 export const post_q24_3_op5 = "5 U potpunosti se slažem"; 
 
-export const post_q24_4 = "4.4. Rusija je imala legitimne zabrinutosti za svoju bezbednost koje su opravdale njihove vojne akcije.";
+export const post_q24_4 = "4. Rusija je imala legitimne zabrinutosti za svoju bezbednost koje su opravdale njihove vojne akcije.";
 export const post_q24_4_op1 = "1 Nimalo se ne slažem";
 export const post_q24_4_op2 = "2";
 export const post_q24_4_op3 = "3";
 export const post_q24_4_op4 = "4";
 export const post_q24_4_op5 = "5 U potpunosti se slažem"; 
 
-export const post_q24_5 = "4.5 Ukrajina bi trebalo da učestvuje u mirovnim pregovorima samo ako je njena teritorijalna suverenost garantovana.";
+export const post_q24_5 = "5. Ukrajina bi trebalo da učestvuje u mirovnim pregovorima samo ako je njena teritorijalna suverenost garantovana.";
 export const post_q24_5_op1 = "1 Nimalo se ne slažem";
 export const post_q24_5_op2 = "2";
 export const post_q24_5_op3 = "3";
@@ -430,7 +372,7 @@ export const post_q24_5_op4 = "4";
 export const post_q24_5_op5 = "5 U potpunosti se slažem";
 
 
-export const post_q25_0 ="5. Koliko lično imate poverenja u sledeće institucije?";
+export const post_q25_0 ="6. Koliko lično imate poverenja u sledeće institucije?";
 export const post_q25 = "Prepoznate/tradicionalne/… medijske institucije koje za emitovanje uglavnom koriste TV i radio";
 export const post_q25_op1 = "1 Uopšte im ne verujem";
 export const post_q25_op2 = "2 Ne verujem im";
@@ -452,27 +394,9 @@ export const post_q25_2_op3 = "3 Delimično im verujem";
 export const post_q25_2_op4 = "4 Prilično im verujem";
 export const post_q25_2_op5 = "5 Potpuno im verujem";
 
-export const post_q26_0 = "Zanima nas Vaše mišljenje o tehničkoj upotrebljivosti TWON-a.";
-export const post_q26 = "6. Govoreći veoma uopšteno, kako biste ocenili dizajn TWON-a u smislu prilagođenosti korisnicima?";
-export const post_q26_op1 = "1 Nije uopšte prilagođen korisnicima";
-export const post_q26_op2 = "2";
-export const post_q26_op3 = "3";
-export const post_q26_op4 = "4";
-export const post_q26_op5 = "5 Veoma je prilagođen korisnicima"; 
-
-export const post_q27= "7. Da li su se neki tehnički problemi pojavili tokom studije?";
-export const post_q27_op1 = "1 Nije bilo nikakvih tehničkih problema";
-export const post_q27_op2 = "2";
-export const post_q27_op3 = "3";
-export const post_q27_op4 = "4";
-export const post_q27_op5 = "5 Ogromni tehnički problemi"; 
-
-export const post_q28 = "8. Rekli ste da je bilo tehničkih problema tokom studije. Možete li ih opisati detaljnije?";
-
-
 export const post_q29_0 = [<strong>Sada bismo želeli da saznamo kako ocenjujete sadržaj na TWON-u.</strong>]
 
-export const post_q29 = "9. Osnovna stranica sa vestima (newsfeed) je bila";
+export const post_q29 = "7. Osnovna stranica sa vestima (newsfeed) je bila";
 export const post_q29_1_op1 = "1 Veoma negativna";
 export const post_q29_1_op2 = "2";
 export const post_q29_1_op3 = "3";
@@ -521,88 +445,86 @@ export const post_q29_6_op5 = "5";
 export const post_q29_6_op6 = "6";
 export const post_q29_6_op7 = "7 Prijateljska";
 
+export const post_q29_7_op1 = "1 Neinformativna";
+export const post_q29_7_op2 = "2";
+export const post_q29_7_op3 = "3";
+export const post_q29_7_op4 = "4";
+export const post_q29_7_op5 = "5";
+export const post_q29_7_op6 = "6";
+export const post_q29_7_op7 = "7 Informativna";
 
-export const post_q30_info = [<strong>Kako biste ocenili interakcije sa drugim korisnicima TWON-a?</strong>]
-export const post_q30 = "10. U komentarima korisnika bila su predstavljena mnoga različita mišljenja";
-export const post_q30_op1 = "1 Uopšte se ne slažem";
-export const post_q30_op2 = "2";
-export const post_q30_op3 = "3";
-export const post_q30_op4 = "4";
-export const post_q30_op5 = "5 U potpunosti se slažem";
-
-
-export const post_q31 = "11. Diskusije na TWON-u su bile visoko kvalitetne";
-export const post_q31_op1 = "1 Uopšte se ne slažem";
-export const post_q31_op2 = "2";
-export const post_q31_op3 = "3";
-export const post_q31_op4 = "4";
-export const post_q31_op5 = "5 U potpunosti se slažem";
-
-export const post_q32 = "12. Osećao/la sam se uključenim u diskusije";
-export const post_q32_op1 = "1 Uopšte se ne slažem";
-export const post_q32_op2 = "2";
-export const post_q32_op3 = "3";
-export const post_q32_op4 = "4";
-export const post_q32_op5 = "5 U potpunosti se slažem";
-
-export const post_q33 = "13. Naučio/la sam nešto iz diskusija na TWON-u";
-export const post_q33_op1 = "1 Uopšte se ne slažem";
-export const post_q33_op2 = "2";
-export const post_q33_op3 = "3";
-export const post_q33_op4 = "4";
-export const post_q33_op5 = "5 U potpunosti se slažem";
-
-
-export const post_q1 = "14. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Uživam u isprobavanju novih i različitih stvari.";
+export const post_q1_0 = "8. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom:";
+export const post_q1 = "Uživam u isprobavanju novih i različitih stvari.";
 export const post_q1_op1 = "1 U potpunosti se ne slažem";
 export const post_q1_op2 = "2 Ne slažem se";
 export const post_q1_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q1_op4 = "4 Slažem se";
 export const post_q1_op5 = "5 U potpunosti se slažem";
 
-export const post_q2 = "15. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Organizovan/na sam i volim da planiram unapred.";
+export const post_q2 = "Organizovan/na sam i volim da planiram unapred.";
 export const post_q2_op1 = "1 U potpunosti se ne slažem";
 export const post_q2_op2 = "2 Ne slažem se";
 export const post_q2_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q2_op4 = "4 Slažem se";
 export const post_q2_op5 = "5 U potpunosti se slažem";
 
-export const post_q3 = "16. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Druželjubiv/a sam i volim da budem u društvu.";
+export const post_q3 = "Druželjubiv/a sam i volim da budem u društvu.";
 export const post_q3_op1 = "1 U potpunosti se ne slažem";
 export const post_q3_op2 = "2 Ne slažem se";
 export const post_q3_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q3_op4 = "4 Slažem se";
 export const post_q3_op5 = "5 U potpunosti se slažem";
 
-export const post_q4 = "17. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Obziran/na sam i dobro se slažem sa drugima.";
+export const post_q4 = "Obziran/na sam i dobro se slažem sa drugima.";
 export const post_q4_op1 = "1 U potpunosti se ne slažem";
 export const post_q4_op2 = "2 Ne slažem se";
 export const post_q4_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q4_op4 = "4 Slažem se";
 export const post_q4_op5 = "5 U potpunosti se slažem";
 
-export const post_q5 = "18. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Često osećam anksioznost ili stres.";
+export const post_q5 = "Često osećam anksioznost ili stres.";
 export const post_q5_op1 = "1 U potpunosti se ne slažem";
 export const post_q5_op2 = "2 Ne slažem se";
 export const post_q5_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q5_op4 = "4 Slažem se";
 export const post_q5_op5 = "5 U potpunosti se slažem";
 
-export const post_q6 = "19. Molimo Vas da navedete u kojoj meri se slažete ili ne slažete sa sledećom izjavom: Više volim da analiziram sve dostupne informacije temeljno i sistematično pre donošenja odluke.";
+export const post_q6 = "Više volim da analiziram sve dostupne informacije temeljno i sistematično pre donošenja odluke.";
 export const post_q6_op1 = "1 U potpunosti se ne slažem";
 export const post_q6_op2 = "2 Ne slažem se";
 export const post_q6_op3 = "3 Neutralno";
 export const post_q6_op4 = "4 Slažem se";
 export const post_q6_op5 = "5 U potpunosti se slažem";
 
-export const post_q7 = "20. Molimo Vas da navedete u kojoj meri se slažete ili ne slažete sa sledećom izjavom: Često se oslanjam na svoje instinkte ili intuiciju prilikom donošenja odluka.";
+export const post_q7 = "Često se oslanjam na svoje instinkte ili intuiciju prilikom donošenja odluka.";
 export const post_q7_op1 = "1 U potpunosti se ne slažem";
 export const post_q7_op2 = "2 Ne slažem se";
 export const post_q7_op3 = "3 Neutralno";
 export const post_q7_op4 = "4 Slažem se";
 export const post_q7_op5 = "5 U potpunosti se slažem";
 
-export const post_q8 = "21. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 0 do 10: Mislim da postoje tajne organizacije koje u velikoj meri utiču na političke odluke.";
+export const post_q10 = "Cenim tradiciju i konvencionalne načine obavljanja stvari.";
+export const post_q10_op1 = "1 U potpunosti se ne slažem";
+export const post_q10_op2 = "2 Ne slažem se";
+export const post_q10_op3 = "3 Ni slažem se ni ne slažem se";
+export const post_q10_op4 = "4 Slažem se";
+export const post_q10_op5 = "5 U potpunosti se slažem";
+
+export const post_q12 = "Uživam u istraživanju novih kultura i kuhinja.";
+export const post_q12_op1 = "1 U potpunosti se ne slažem";
+export const post_q12_op2 = "2 Ne slažem se";
+export const post_q12_op3 = "3 Ni slažem se ni ne slažem se";
+export const post_q12_op4 = "4 Slažem se";
+export const post_q12_op5 = "5 U potpunosti se slažem";
+
+export const post_q14 = "Strastven/a sam u vezi sa pitanjima zaštite životne sredine i održivosti.";
+export const post_q14_op1 = "1 U potpunosti se ne slažem";
+export const post_q14_op2 = "2 Ne slažem se";
+export const post_q14_op3 = "3 Ni slažem se ni ne slažem se";
+export const post_q14_op4 = "4 Slažem se";
+export const post_q14_op5 = "5 U potpunosti se slažem";
+
+export const post_q8 = "9. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 0 do 10: Mislim da postoje tajne organizacije koje u velikoj meri utiču na političke odluke.";
 export const post_q8_op1 = "1 U potpunosti se ne slažem [0]";
 export const post_q8_op2 = "2";
 export const post_q8_op3 = "3";
@@ -614,7 +536,7 @@ export const post_q8_op8 = "8";
 export const post_q8_op9 = "9";
 export const post_q8_op10 = "10 U potpunosti se slažem";
 
-export const post_q9 = "22. Opišite svoj idealni vikend. (Odaberite sve šta je primenjivo)";
+export const post_q9 = "10. Opišite svoj idealni vikend. (Odaberite sve šta je primenjivo)";
 export const post_q9_op1 = "1 Odmaranje kod kuće";
 export const post_q9_op2 = "2 Druženje sa prijateljima i porodicom";
 export const post_q9_op3 = "3 Učestvovanje u aktivnostima na otvorenom";
@@ -625,14 +547,7 @@ export const post_q9_op7 = "7 Volontiranje ili društveno korisni rad";
 export const post_q9_op8 = "8 Šoping ili izlazak na večeru";
 export const post_q9_op9 = "9 Drugo (molimo precizirajte):";
 
-export const post_q10 = "23. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Cenim tradiciju i konvencionalne načine obavljanja stvari.";
-export const post_q10_op1 = "1 U potpunosti se ne slažem";
-export const post_q10_op2 = "2 Ne slažem se";
-export const post_q10_op3 = "3 Ni slažem se ni ne slažem se";
-export const post_q10_op4 = "4 Slažem se";
-export const post_q10_op5 = "5 U potpunosti se slažem";
-
-export const post_q11 = "24. Koje žanrove knjiga, filmova ili muzike preferirate? (Odaberite sve šta je primenjivo)";
+export const post_q11 = "11. Koje žanrove knjiga, filmova ili muzike preferirate? (Odaberite sve šta je primenjivo)";
 export const post_q11_op1 = "1 Fikcija";
 export const post_q11_op2 = "2 Non-fikcija";
 export const post_q11_op3 = "3 Naučna fantastika";
@@ -655,14 +570,7 @@ export const post_q11_op19 = "19 Elektronska/Dens";
 export const post_q11_op20 = "20 Svetska muzika";
 export const post_q11_op21 = "21 Drugo (molimo precizirajte):";
 
-export const post_q12 = "25. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Uživam u istraživanju novih kultura i kuhinja.";
-export const post_q12_op1 = "1 U potpunosti se ne slažem";
-export const post_q12_op2 = "2 Ne slažem se";
-export const post_q12_op3 = "3 Ni slažem se ni ne slažem se";
-export const post_q12_op4 = "4 Slažem se";
-export const post_q12_op5 = "5 U potpunosti se slažem";
-
-export const post_q13 = "26. Koje aktivnosti najviše volite u slobodno vreme? (Odaberite sve šta je primenjivo)";
+export const post_q13 = "12. Koje aktivnosti najviše volite u slobodno vreme? (Odaberite sve šta je primenjivo)";
 export const post_q13_op1 = "1 Čitanje knjiga";
 export const post_q13_op2 = "2 Gledanje filmova ili TV serija";
 export const post_q13_op3 = "3 Igranje video igara";
@@ -675,14 +583,7 @@ export const post_q13_op9 = "9 Sport ili fitnes";
 export const post_q13_op10 = "10 Druženje sa prijateljima i porodicom";
 export const post_q13_op11 = "11 Drugo (molimo precizirajte):";
 
-export const post_q14 = "27. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom: Strastven/a sam u vezi sa pitanjima zaštite životne sredine i održivosti.";
-export const post_q14_op1 = "1 U potpunosti se ne slažem";
-export const post_q14_op2 = "2 Ne slažem se";
-export const post_q14_op3 = "3 Ni slažem se ni ne slažem se";
-export const post_q14_op4 = "4 Slažem se";
-export const post_q14_op5 = "5 U potpunosti se slažem";
-
-export const post_q15 = "28. Koje izvore vesti redovno koristite? (Odaberite sve šta je primenjivo)";
+export const post_q15 = "13. Koje izvore vesti redovno koristite? (Odaberite sve šta je primenjivo)";
 export const post_q15_op1 = "1 Tradicionalne novine i časopisi";
 export const post_q15_op2 = "2 Televizijske informativne emisije";
 export const post_q15_op3 = "3 Onlajn veb-sajtovi sa vestima";
@@ -692,28 +593,28 @@ export const post_q15_op6 = "6 Radio informativne emisije";
 export const post_q15_op7 = "7 Podcasti";
 export const post_q15_op8 = "8 Bilteni ili email pretplate";
 
-export const post_q16 = "29. Koliko ste sigurni u svoju sposobnost da razlikujete prave od lažnih vesti?";
+export const post_q16 = "14. Koliko ste sigurni u svoju sposobnost da razlikujete prave od lažnih vesti?";
 export const post_q16_op1 = "1 Uopšte nisam siguran/na";
 export const post_q16_op2 = "2 Pomalo sam siguran/na";
 export const post_q16_op3 = "3 Umjereno sam siguran/na";
 export const post_q16_op4 = "4 Veoma sam siguran/na";
 export const post_q16_op5 = "5 Izuzetno sam siguran/na";
 
-export const post_q17 = "30. Koliko emocionalno snažno obično reagujete na vesti?";
+export const post_q17 = "15. Koliko emocionalno snažno obično reagujete na vesti?";
 export const post_q17_op1 = "1 Uopšte ne reagujem";
 export const post_q17_op2 = "2 Blago reagujem";
 export const post_q17_op3 = "3 Umjereno reagujem";
 export const post_q17_op4 = "4 Snažno reagujem";
 export const post_q17_op5 = "5 Veoma snažno reagujem";
 
-export const post_q18 = "31. U kojoj meri se slažete sa sledećom izjavom: Smatram da moje političke stavove mogu uticati na odluke vlade.";
+export const post_q18 = "16. U kojoj meri se slažete sa sledećom izjavom: Smatram da moje političke stavove mogu uticati na odluke vlade.";
 export const post_q18_op1 = "1 U potpunosti se ne slažem";
 export const post_q18_op2 = "2 Ne slažem se";
 export const post_q18_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q18_op4 = "4 Slažem se";
 export const post_q18_op5 = "5 U potpunosti se slažem";
 
-export const post_q19 = "32. Kako primarno koristite onlajn društvene mreže? (Odaberite sve šta je primenjivo)";
+export const post_q19 = "17. Kako primarno koristite onlajn društvene mreže? (Odaberite sve šta je primenjivo)";
 export const post_q19_op1 = "1 Za čitanje vesti i informisanje";
 export const post_q19_op2 = "2 Za povezivanje sa prijateljima i porodicom";
 export const post_q19_op3 = "3 Za deljenje svojih mišljenja i sadržaja";
@@ -721,12 +622,30 @@ export const post_q19_op4 = "4 Za praćenje javnih ličnosti ili poznatih osoba"
 export const post_q19_op5 = "5 Za pridruživanje grupama ili zajednicama od interesa";
 export const post_q19_op6 = "6 U svrhe zabave";
 
-export const post_q20 = "33. Koliko ste komforni sa svakodnevnom upotrebom alata zasnovanim na veštačkoj inteligenciji?";
+export const post_q20 = "18. Koliko ste komforni sa svakodnevnom upotrebom alata zasnovanim na veštačkoj inteligenciji?";
 export const post_q20_op1 = "1 Veoma mi je neprijatno";
 export const post_q20_op2 = "2 Pomalo mi je neprijatno";
 export const post_q20_op3 = "3 Neutralan/na sam";
 export const post_q20_op4 = "4 Pomalo mi je prijatno";
 export const post_q20_op5 = "5 Veoma mi je prijatno";
+
+export const post_q26_0 = "Zanima nas Vaše mišljenje o tehničkoj upotrebljivosti TWON-a.";
+export const post_q26 = "19. Govoreći veoma uopšteno, kako biste ocenili dizajn TWON-a u smislu prilagođenosti korisnicima?";
+export const post_q26_op1 = "1 Nije uopšte prilagođen korisnicima";
+export const post_q26_op2 = "2";
+export const post_q26_op3 = "3";
+export const post_q26_op4 = "4";
+export const post_q26_op5 = "5 Veoma je prilagođen korisnicima"; 
+
+export const post_q27= "20. Da li su se neki tehnički problemi pojavili tokom studije?";
+export const post_q27_op1 = "1 Nije bilo nikakvih tehničkih problema";
+export const post_q27_op2 = "2";
+export const post_q27_op3 = "3";
+export const post_q27_op4 = "4";
+export const post_q27_op5 = "5 Ogromni tehnički problemi"; 
+
+export const post_q28 = "21. Rekli ste da je bilo tehničkih problema tokom studije. Možete li ih opisati detaljnije?";
+
 
 export const last_info1 = "Na kraju";
 export const last_info2 = "Hvala Vam što ste učestvovali u našoj studiji! Vaš doprinos je ključan za uspeh našeg projekta.";
@@ -740,7 +659,7 @@ export const last_info9 = "Die Studie wurde im Rahmen des EU-finanzierten Projek
 export const last_info10 = "Mehr Informationen zu TWON finden Sie hier: ";
 export const last_info10_link = " https://www.twon-project.eu/";
 
-export const post_q42 = "34. Na kraju, da li postoji još nešto što biste želiti da nam kažete o studiji?";
+export const post_q42 = "Na kraju, da li postoji još nešto što biste želiti da nam kažete o studiji?";
 export const post_q8_info = [<strong>Molimo Vas da kliknete ovde kako biste završili upitnik i primili svoju nadoknadu. </strong>];
 
 
