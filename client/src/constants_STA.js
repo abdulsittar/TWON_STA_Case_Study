@@ -524,7 +524,8 @@ export const post_q14_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q14_op4 = "4 Slažem se";
 export const post_q14_op5 = "5 U potpunosti se slažem";
 
-export const post_q8 = "9. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 0 do 10: Mislim da postoje tajne organizacije koje u velikoj meri utiču na političke odluke.";
+export const post_q8_0 = "9. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 0 do 10: "
+export const post_q8 = "Mislim da postoje tajne organizacije koje u velikoj meri utiču na političke odluke.";
 export const post_q8_op1 = "1 U potpunosti se ne slažem [0]";
 export const post_q8_op2 = "2";
 export const post_q8_op3 = "3";

@@ -36,6 +36,7 @@ import {
   post_q5, post_q5_op1, post_q5_op2, post_q5_op3, post_q5_op4, post_q5_op5,
   post_q6, post_q6_op1, post_q6_op2, post_q6_op3, post_q6_op4, post_q6_op5,
   post_q7, post_q7_op1, post_q7_op2, post_q7_op3, post_q7_op4, post_q7_op5,
+  post_q8_0,
   post_q8, post_q8_op1, post_q8_op2, post_q8_op3, post_q8_op4, post_q8_op5, 
   post_q8_op6, post_q8_op7, post_q8_op8, post_q8_op9, post_q8_op10,
   post_q9, post_q9_op1, post_q9_op2, post_q9_op3, post_q9_op4, post_q9_op5, 
@@ -1093,7 +1094,7 @@ const handleUserNameChange = async (e) => {
           stValue_q17(e.target.value); 
           console.log(e.target.value);
           if(isUserReviewing == false){
-            if(e.target.value != ""&& value_q18 != "" && value_q19 != "" && value_q20 != "" ){
+            if(e.target.value != ""&& value_q18 != "" && value_q20 != "" ){
                   
             setIs_Q26_visible(true);
             setIs_Q27_visible(true); 
@@ -1111,7 +1112,7 @@ const handleUserNameChange = async (e) => {
           stValue_q18(e.target.value);
           console.log(e.target.value); 
           if(isUserReviewing == false){
-            if(e.target.value != ""&& value_q17 != "" && value_q19 != "" && value_q20 != "" ){
+            if(e.target.value != ""&& value_q17 != "" && value_q20 != "" ){
                   
             setIs_Q26_visible(true);
             setIs_Q27_visible(true); 
@@ -1127,21 +1128,14 @@ const handleUserNameChange = async (e) => {
 
         const handle_Q19_Changed = async (e) => { 
           const value = e.target.value;
-          console.log(value_q19);
-          if(isUserReviewing == false){
-            if(e.target.value != ""&& value_q18 != "" && value_q17 != "" && value_q20 != "" ){
-                  
-            setIs_Q26_visible(true);
-            setIs_Q27_visible(true); 
-            setIs_Q17_visible(false);
-            setIs_Q18_visible(false);
-            setIs_Q19_visible(false);
-            setIs_Q20_visible(false);
+          if (e.target.checked) {
+            // Add the value to the array if checked
+            stValue_q19(prev => [...prev, value]);
           } else {
-            setIs_Q26_visible(false);
-            setIs_Q27_visible(false);
-          
-          } }};
+            // Remove the value from the array if unchecked
+            stValue_q19(prev => prev.filter(item => item !== value));
+          }
+          console.log(value_q19);};
 
 
 
@@ -1149,7 +1143,7 @@ const handleUserNameChange = async (e) => {
           stValue_q20(e.target.value);
           console.log(e.target.value); 
           if(isUserReviewing == false){
-            if(e.target.value != ""&& value_q18 != "" && value_q19 != "" && value_q17 != "" ){
+            if(e.target.value != ""&& value_q18 != "" && value_q17 != "" ){
                   
             setIs_Q26_visible(true);
             setIs_Q27_visible(true); 
@@ -1617,7 +1611,8 @@ const handleUserNameChange = async (e) => {
         
         <CSSTransition in={is_Q25_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q25'>
-        <p className={classes.secon_disclaimor}>{post_q25_0}<br /></p>  
+        <p className={classes.secon_disclaimor}>{post_q25_0}</p> 
+        <br /> 
         <p className={classes.secon_disclaimor}>{post_q25}</p>  
         <form  className={classes.question}>
         <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q25 === 'option1'} onChange={handle_Q25_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q25_op1}</span></label></div>
@@ -1658,6 +1653,7 @@ const handleUserNameChange = async (e) => {
         <CSSTransition in={is_Q29_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q29'>
           <p className={classes.secon_disclaimor}>{post_q29_0}</p>  
+          <br />
           <p className={classes.secon_disclaimor}>{post_q29}</p>  
           
           <div className={classes.tableContainer}>
@@ -1996,6 +1992,8 @@ const handleUserNameChange = async (e) => {
         
         <CSSTransition in={is_Q8_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q8'> 
+        <p className={classes.secon_disclaimor}>{post_q8_0}</p>
+        <br />
         <p className={classes.secon_disclaimor}>{post_q8}</p>
         <form  className={classes.question}>
         <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q8 === 'option1'} onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q8_op1}</span></label></div>
@@ -2174,7 +2172,8 @@ const handleUserNameChange = async (e) => {
 
         <CSSTransition in={is_Q26_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q26'>
-        <p className={classes.secon_disclaimor}><strong>{post_q26_0}</strong><br /></p>  
+        <p className={classes.secon_disclaimor}><strong>{post_q26_0}</strong></p>
+        <br />  
         <p className={classes.secon_disclaimor}>{post_q26}</p>  
         <form  className={classes.question}>
         <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q26 === 'option1'} onChange={handle_Q26_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q26_op1}</span></label></div>
@@ -2211,7 +2210,7 @@ const handleUserNameChange = async (e) => {
         <SlideDiv>
         <div id='Q42_0'>
         
-        {<p className={classes.secon_disclaimor}>{last_info1}</p>}
+        {/*<p className={classes.secon_disclaimor}>{last_info1}</p>*/}
         <p className={classes.secon_disclaimor}>{last_info2}</p>
         <p className={classes.secon_disclaimor}>{last_info3}</p>
         <p className={classes.secon_disclaimor}>{last_info4}</p>
