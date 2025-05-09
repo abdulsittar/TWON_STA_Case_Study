@@ -1163,8 +1163,10 @@ const handleUserNameChange = async (e) => {
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q27 != ""){
               if(value_q27 == "option1"){
-                setIs_Q28_visible(true);};
-              setIs_Q42_visible(true);
+                setIs_Q42_visible(true);
+                setIs_Q28_visible(true);}
+              else{setIs_Q42_visible(true);
+              setIs_Q28_visible(false);}
             } else {
               setIs_Q42_visible(false);
             }}};
@@ -1175,8 +1177,10 @@ const handleUserNameChange = async (e) => {
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q26 != ""){
               if(value_q27 != "option1"){
-                setIs_Q28_visible(true);};
-              setIs_Q42_visible(true);
+                setIs_Q42_visible(true);
+                setIs_Q28_visible(true);}
+              else{setIs_Q42_visible(true);
+              setIs_Q28_visible(false);}
             } else {
               setIs_Q42_visible(false);
             }}};
@@ -1279,13 +1283,13 @@ const handleUserNameChange = async (e) => {
       }else if (value_q8 == ""){
         toast.error("Pitanje 9. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q9 == []){
+      }else if (value_q9 == ""){
         toast.error("Pitanje 10. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q10 == ""){
         toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q11 == []){
+      }else if (value_q11 == ""){
         toast.error("Pitanje 11. Molimo izaberite jednu od ponuđenih opcija!");
         return
       } else if (value_q12 == ""){
@@ -1297,7 +1301,7 @@ const handleUserNameChange = async (e) => {
       }else if (value_q14 == ""){
         toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q15 == []){
+      }else if (value_q15 == ""){
         toast.error("Pitanje 13. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q16 == ""){
@@ -1309,7 +1313,7 @@ const handleUserNameChange = async (e) => {
       }else if (value_q18 == ""){
         toast.error("Pitanje 16. Molimo izaberite jednu od ponuđenih opcija!");
         return
-      }else if (value_q19 == []){
+      }else if (value_q19 == ""){
         toast.error("Pitanje 17. Molimo izaberite jednu od ponuđenih opcija!");
         return
       }else if (value_q20 == ""){
