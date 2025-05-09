@@ -1162,7 +1162,7 @@ const handleUserNameChange = async (e) => {
           console.log(e.target.value);
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q27 != ""){
-              if(value_q27 == "option1"){
+              if(value_q27 != "option1"){
                 setIs_Q42_visible(true);
                 setIs_Q28_visible(true);}
               else{setIs_Q42_visible(true);
