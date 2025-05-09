@@ -528,7 +528,7 @@ const DOMPurifyInstance = DOMPurify(window);
             process.env.SkySport,   //Sky Sport
             process.env.Tagesspeigel,   //Tagesspeigel
             process.env.DerSpeigel,    //Der Speigel
-            process.env.faznet,     //faznet
+            process.env.NarodneNovosti,     //faznet
             process.env.zeit,      //zeit
             process.env.handle,     //handel
             process.env.handle,     //handel
@@ -1535,12 +1535,12 @@ const DOMPurifyInstance = DOMPurify(window);
                         process.env.Katze, 
                         process.env.Kuh, 
                         process.env.Schafe, 
-                        process.env.Netflix, //Netflix
-                        process.env.SkySport,   //Sky Sport
-                        process.env.Tagesspeigel,   //Tagesspeigel
-                        process.env.DerSpeigel,    //Der Speigel
-                        process.env.faznet,     //faznet
-                        process.env.zeit,      //zeit
+                        process.env.DnevniInformer, //Netflix
+                        process.env.DnevniInformer,   //Sky Sport
+                        process.env.SrbskiGlas,   //Tagesspeigel
+                        process.env.SrbskiGlas,    //Der Speigel
+                        process.env.NarodneNovosti,     //faznet
+                        process.env.NarodneNovosti,      //zeit
                         //process.env.handle,     //handel
                         //process.env.handle,     //handel
                         //process.env.handle,     //handel
@@ -1731,12 +1731,12 @@ const DOMPurifyInstance = DOMPurify(window);
                 "Blaue Katze.webp",       //animal 1
                 "Blaue Kuh.webp",       //animal 1
                 "Blaue Schafe.webp",       //animal 1
-                "620620_2.png",     //Netflix
-                "023023_5.png",       //Sky Sport
-                "146146_4.png",     //Tagesspeigel
-                "070070_5.png",    //Der Speigel
-                "faznet_3.png",     //faznet
-                "zeit_p_3.png",      //zeit
+                "DnevniInformer.jpg",     //Netflix
+                "DnevniInformer.jpg",       //Sky Sport
+                "SrbskiGlas.jpg",     //Tagesspeigel
+                "SrbskiGlas.jpg",    //Der Speigel
+                "NarodneNovosti.jpg",     //faznet
+                "NarodneNovosti.jpg",      //zeit
             ];
             
             const contents = [
@@ -1761,12 +1761,12 @@ const DOMPurifyInstance = DOMPurify(window);
                 process.env.Katze, 
                 process.env.Kuh, 
                 process.env.Schafe, 
-                process.env.Netflix, //Netflix
-                process.env.SkySport,   //Sky Sport
-                process.env.Tagesspeigel,   //Tagesspeigel
-                process.env.DerSpeigel,    //Der Speigel
-                process.env.faznet,     //faznet
-                process.env.zeit,      //zeit
+                process.env.DnevniInformer, //Netflix
+                process.env.DnevniInformer,   //Sky Sport
+                process.env.SrbskiGlas,   //Tagesspeigel
+                process.env.SrbskiGlas,    //Der Speigel
+                process.env.NarodneNovosti,     //faznet
+                process.env.NarodneNovosti,      //zeit
                 //process.env.handle,     //handel
                 //process.env.handle,     //handel
                 //process.env.handle,     //handel
