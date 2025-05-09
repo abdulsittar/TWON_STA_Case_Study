@@ -1162,7 +1162,7 @@ const handleUserNameChange = async (e) => {
           console.log(e.target.value);
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q27 != ""){
-              if(value_q27 == "Option 1"){
+              if(value_q27 == "option1"){
                 setIs_Q28_visible(true);};
               setIs_Q42_visible(true);
             } else {
@@ -1174,7 +1174,7 @@ const handleUserNameChange = async (e) => {
           console.log(e.target.value);
           if(isUserReviewing == false){
             if(e.target.value != "" && value_q26 != ""){
-              if(value_q27 == "Option 1"){
+              if(value_q27 != "option1"){
                 setIs_Q28_visible(true);};
               setIs_Q42_visible(true);
             } else {
@@ -1222,7 +1222,7 @@ const handleUserNameChange = async (e) => {
       setIs_Q20_visible(true);
       setIs_Q26_visible(true);
       setIs_Q27_visible(true);
-      if(value_q27 == "Option 1"){setIs_Q28_visible(true);}else{setIs_Q28_visible(false);}
+      if(value_q27 != "option1"){setIs_Q28_visible(true);}else{setIs_Q28_visible(false);}
       setIs_Q42_visible(true);
       setIs_TestingFeedBack_visible(false);
                 
