@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext.js";
 import Topbar from "../../components/topbar/Topbar.js";
 import Sidebar from "../../components/sidebar/Sidebar.js";
@@ -27,6 +27,7 @@ import {
   Submit_Post_Survey, A_user_with, 
   last_info1, last_info2, last_info3, last_info4, last_info5, 
   review_is_onward, post_q8_info,
+  
   
   // Import the new question text and options
   post_q1_0, post_q1, post_q1_op1, post_q1_op2, post_q1_op3, post_q1_op4, post_q1_op5,
@@ -89,6 +90,9 @@ import { set } from 'mongoose';
 function Postsurvey({ classes }) {
     
   const scrollBy = useScrollBy();
+  
+  
+  const feedbackRef = useRef(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [preImage, setPreImage] = useState(null);
     const { user: currentUser, dispatch } = useContext(AuthContext);
@@ -560,7 +564,7 @@ const handleUserNameChange = async (e) => {
 }
 
 
-  const handle_Q24_1_Changed = async (e) => {
+  const handle_Q24_1_Changed = (e) => {
     stValue_q24_1(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -579,7 +583,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q25_2_visible(false);
       }}};
 
-  const handle_Q24_2_Changed = async (e) => {
+  const handle_Q24_2_Changed =  (e) => {
     stValue_q24_2(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -598,7 +602,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q25_2_visible(false);
       }}};
 
-  const handle_Q24_3_Changed = async (e) => {
+  const handle_Q24_3_Changed =  (e) => {
     stValue_q24_3(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -617,7 +621,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q25_2_visible(false);
       }}};
 
-  const handle_Q24_4_Changed = async (e) => {
+  const handle_Q24_4_Changed =  (e) => {
     stValue_q24_4(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -636,7 +640,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q25_2_visible(false);
       }}};
 
-  const handle_Q24_5_Changed = async (e) => {
+  const handle_Q24_5_Changed =  (e) => {
     stValue_q24_5(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -655,7 +659,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q25_2_visible(false);
       }}};
 
-  const handle_Q25_Changed = async (e) => {
+  const handle_Q25_Changed =  (e) => {
     stValue_q25(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -668,7 +672,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q29_visible(false);
       }}};
 
-  const handle_Q25_1_Changed = async (e) => {
+  const handle_Q25_1_Changed =  (e) => {
     stValue_q25_1(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -681,7 +685,7 @@ const handleUserNameChange = async (e) => {
         setIs_Q29_visible(false);
       }}};
 
-  const handle_Q25_2_Changed = async (e) => {
+  const handle_Q25_2_Changed =  (e) => {
     stValue_q25_2(e.target.value);
     console.log(e.target.value);
     if(isUserReviewing == false){
@@ -695,7 +699,7 @@ const handleUserNameChange = async (e) => {
       }}};
 
 
-    const handle_Q29_1_Changed = async (e) => { 
+    const handle_Q29_1_Changed =  (e) => { 
       stValue_q29_1(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -706,7 +710,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};
     
-    const handle_Q29_2_Changed = async (e) => {
+    const handle_Q29_2_Changed =  (e) => {
       stValue_q29_2(e.target.value);
       console.log(e.target.value); 
       if(isUserReviewing == false){
@@ -718,7 +722,7 @@ const handleUserNameChange = async (e) => {
         }}};
     
     
-    const handle_Q29_3_Changed = async (e) => { 
+    const handle_Q29_3_Changed =  (e) => { 
       stValue_q29_3(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -729,7 +733,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};
     
-    const handle_Q29_4_Changed = async (e) => {
+    const handle_Q29_4_Changed =  (e) => {
       stValue_q29_4(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -740,7 +744,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};
 
-    const handle_Q29_5_Changed = async (e) => {
+    const handle_Q29_5_Changed =  (e) => {
       stValue_q29_5(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -751,7 +755,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};
 
-      const handle_Q29_6_Changed = async (e) => {
+      const handle_Q29_6_Changed =  (e) => {
       stValue_q29_6(e.target.value);
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -762,7 +766,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};
 
-    const handle_Q29_7_Changed = async (e) => {
+    const handle_Q29_7_Changed =  (e) => {
       stValue_q29_7(e.target.value);
       console.log(e.target.value); 
       if(isUserReviewing == false){
@@ -773,7 +777,7 @@ const handleUserNameChange = async (e) => {
           setIs_Q1_visible(false);
         }}};    
 
-    const handle_Q1_Changed = async (e) => { 
+    const handle_Q1_Changed =  (e) => { 
       stValue_q1(e.target.value); 
       console.log(e.target.value);
       if(isUserReviewing == false){
@@ -795,7 +799,7 @@ const handleUserNameChange = async (e) => {
         }  
       }};
 
-      const handle_Q2_Changed = async (e) => { 
+      const handle_Q2_Changed =  (e) => { 
         stValue_q2(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -817,7 +821,7 @@ const handleUserNameChange = async (e) => {
           }  
         }};
 
-      const handle_Q3_Changed = async (e) => { 
+      const handle_Q3_Changed =  (e) => { 
         stValue_q3(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -839,7 +843,7 @@ const handleUserNameChange = async (e) => {
           }  
         }};
 
-      const handle_Q4_Changed = async (e) => { 
+      const handle_Q4_Changed =  (e) => { 
         stValue_q4(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -861,7 +865,7 @@ const handleUserNameChange = async (e) => {
           }  
         }};
 
-      const handle_Q5_Changed = async (e) => { 
+      const handle_Q5_Changed =  (e) => { 
         stValue_q5(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -883,7 +887,7 @@ const handleUserNameChange = async (e) => {
           }  
         }};
 
-      const handle_Q6_Changed = async (e) => {
+      const handle_Q6_Changed =  (e) => {
         stValue_q6(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -905,7 +909,7 @@ const handleUserNameChange = async (e) => {
           }
         }};
       
-      const handle_Q7_Changed = async (e) => {
+      const handle_Q7_Changed =  (e) => {
         stValue_q7(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -927,7 +931,7 @@ const handleUserNameChange = async (e) => {
           }
         }};
 
-      const handle_Q10_Changed = async (e) => {
+      const handle_Q10_Changed =  (e) => {
         stValue_q10(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -949,7 +953,7 @@ const handleUserNameChange = async (e) => {
             }
           }};
 
-      const handle_Q12_Changed = async (e) => {
+      const handle_Q12_Changed =  (e) => {
         stValue_q12(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
@@ -971,7 +975,7 @@ const handleUserNameChange = async (e) => {
             }
           }};
 
-        const handle_Q14_Changed = async (e) => {
+        const handle_Q14_Changed =  (e) => {
           stValue_q14(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
@@ -993,7 +997,7 @@ const handleUserNameChange = async (e) => {
               }
             }};
 
-        const handle_Q8_Changed = async (e) => { 
+        const handle_Q8_Changed =  (e) => { 
           console.log(e.target.value);
           stValue_q8(e.target.value); 
           if(isUserReviewing == false){
@@ -1019,7 +1023,7 @@ const handleUserNameChange = async (e) => {
           
 
           
-        const handle_Q9_Changed = async (e) => {                           
+        const handle_Q9_Changed =  (e) => {                           
           const value = e.target.value;
           if (e.target.checked) {
             // Add the value to the array if checked
@@ -1031,7 +1035,7 @@ const handleUserNameChange = async (e) => {
           console.log(value_q9);
         };
     
-        const handle_Q11_Changed = async (e) => { 
+        const handle_Q11_Changed =  (e) => { 
           const value = e.target.value;
           if (e.target.checked) {
             // Add the value to the array if checked
@@ -1043,7 +1047,7 @@ const handleUserNameChange = async (e) => {
           console.log(value_q11);};
               
     
-        const handle_Q13_Changed = async (e) => { 
+        const handle_Q13_Changed =  (e) => { 
           const value = e.target.value;
           if (e.target.checked) {
             // Add the value to the array if checked
@@ -1055,7 +1059,7 @@ const handleUserNameChange = async (e) => {
           console.log(value_q13);};
           
     
-        const handle_Q15_Changed = async (e) => {
+        const handle_Q15_Changed =  (e) => {
           const value = e.target.value;
           if (e.target.checked) {
             // Add the value to the array if checked
@@ -1067,7 +1071,7 @@ const handleUserNameChange = async (e) => {
           console.log(value_q15);};
 
         
-        const handle_Q16_Changed = async (e) => { 
+        const handle_Q16_Changed =  (e) => { 
           stValue_q16(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
@@ -1090,7 +1094,7 @@ const handleUserNameChange = async (e) => {
               setIs_Q20_visible(false);
             } } };
           
-        const handle_Q17_Changed = async (e) => { 
+        const handle_Q17_Changed =  (e) => { 
           stValue_q17(e.target.value); 
           console.log(e.target.value);
           if(isUserReviewing == false){
@@ -1108,7 +1112,7 @@ const handleUserNameChange = async (e) => {
           
           } } };
     
-        const handle_Q18_Changed = async (e) => { 
+        const handle_Q18_Changed =  (e) => { 
           stValue_q18(e.target.value);
           console.log(e.target.value); 
           if(isUserReviewing == false){
@@ -1126,7 +1130,7 @@ const handleUserNameChange = async (e) => {
           
           } } };
 
-        const handle_Q19_Changed = async (e) => { 
+        const handle_Q19_Changed =  (e) => { 
           const value = e.target.value;
           if (e.target.checked) {
             // Add the value to the array if checked
@@ -1139,7 +1143,7 @@ const handleUserNameChange = async (e) => {
 
 
 
-        const handle_Q20_Changed = async (e) => { 
+        const handle_Q20_Changed =  (e) => { 
           stValue_q20(e.target.value);
           console.log(e.target.value); 
           if(isUserReviewing == false){
@@ -1157,7 +1161,7 @@ const handleUserNameChange = async (e) => {
           
           } }};
 
-        const handle_Q26_Changed = async (e) => {
+        const handle_Q26_Changed =  (e) => {
           stValue_q26(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
@@ -1171,7 +1175,7 @@ const handleUserNameChange = async (e) => {
               setIs_Q42_visible(false);
             }}};
         
-        const handle_Q27_Changed = async (e) => {
+        const handle_Q27_Changed =  (e) => {
           stValue_q27(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
@@ -1185,22 +1189,22 @@ const handleUserNameChange = async (e) => {
               setIs_Q42_visible(false);
             }}};
 
-        const handle_feedback_Changed = async(e) => {
+        const handle_feedback_Changed = (e) => {
           setFeedback(e.target.value); 
           }
           
-        const handle_feedback_Changed2 = async(e) => {
+        const handle_feedback_Changed2 = (e) => {
           setFeedback2(e.target.value); 
           }
         
-        const handle_feedback_Changed3 = async(e) => {
+        const handle_feedback_Changed3 = (e) => {
           setFeedback3(e.target.value); 
           }
             
           
 
                 
-    const reviewButtonChanged = async (e) => { 
+    const reviewButtonChanged =  (e) => { 
       e.preventDefault()
       setIsUserReviewing(true);
       setIs_Q24_1_visible(true);
@@ -1539,8 +1543,8 @@ const handleUserNameChange = async (e) => {
         <div style={{ alignItems: "center", marginLeft: isMobileDevice && isTabletDevice && '300px', marginRight:isMobileDevice && isTabletDevice &&"300px"}}>
        
 
-        <CSSTransition in={is_TestingFeedBack_visible} timeout={1000} classNames="slide" unmountOnExit > 
-        <div id='feedback2'>
+        <CSSTransition in={is_TestingFeedBack_visible} timeout={1000} classNames="slide" unmountOnExit> 
+        <div id='feedback2' >
         <p className={classes.secon_disclaimor}>{"Please report any issues that you found"}</p>
         <textarea  className={classes.label2} id="feedback" rows={4}  onChange={handle_feedback_Changed}  value={feedback} placeholder={"Provide your feedback about the pre-survey here. A text area for feedback will also be available in the post-survey. Additionally, feel free to use these text fields to mention any other concerns or issues. You can also leave comments to highlight any problems encountered on the platform."}/>
         </div> 
@@ -2203,11 +2207,11 @@ const handleUserNameChange = async (e) => {
         </CSSTransition>
         
         <CSSTransition in={is_Q28_visible} timeout={1000} classNames="slide" unmountOnExit >
-        <SlideDiv>
+
         <div id='Q28'>
         <p className={classes.secon_disclaimor}>{post_q28}</p>
-        <textarea  className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed2}  value={feedback2} placeholder={"Polje za tekst"}/>
-        </div></SlideDiv>
+        <textarea className={classes.label2} id="Polje" rows={4} onChange={handle_feedback_Changed2}  value={feedback2} placeholder={"Polje za tekst"}/>
+        </div> 
         </CSSTransition>
 
         <CSSTransition in={is_Q42_visible} timeout={1000} classNames="slide" unmountOnExit >
@@ -2227,8 +2231,7 @@ const handleUserNameChange = async (e) => {
         </SlideDiv>
         </CSSTransition>
         
-        <CSSTransition in={is_Q42_visible} timeout={1000} classNames="slide" unmountOnExit >
-        <SlideDiv>
+        <CSSTransition in={is_Q42_visible} timeout={1000} classNames="slide" unmountOnExit > 
         <div id='Q42'>
         {!is_NoSurvey_visible && (<p className={classes.secon_disclaimor}>{post_q42}</p>)}
 
@@ -2237,7 +2240,7 @@ const handleUserNameChange = async (e) => {
         {!is_NoSurvey_visible && (<button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>izmenite odgovore</button>)}
            
 				<button onClick={handleClick} type="submit" className={classes.button}> {Submit_Post_Survey} </button>
-        </div></SlideDiv>
+        </div> 
         </CSSTransition>
 
 </div>
