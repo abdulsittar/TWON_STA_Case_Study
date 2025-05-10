@@ -2046,7 +2046,15 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label ><input type="checkbox" value="option7"  checked={value_q9.includes('option7')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op7}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option8"  checked={value_q9.includes('option8')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op8}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option9" checked={value_q9.includes('option9')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op9}</span></label></div>
-        {value_q9.includes('option9') && (
+
+        <hr style={{ borderTop: '1px solid #000' }}/>
+      
+        </form>
+        </div></SlideDiv>
+        </CSSTransition>
+        
+        <CSSTransition in={is_Q9_visible && value_q9.includes('option9')} timeout={1000} classNames="slide" unmountOnExit >
+        <div id='Q9_text'>
           <textarea
             className={classes.label2}
             rows={4}
@@ -2054,12 +2062,7 @@ const handleUserNameChange = async (e) => {
             onChange={handleQ9TextChanged} // Use the new function here
             placeholder="Molimo precizirajte"
           />
-          )}
-
-        <hr style={{ borderTop: '1px solid #000' }}/>
-      
-        </form>
-        </div></SlideDiv>
+        </div> 
         </CSSTransition>
 
         <CSSTransition in={is_Q11_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
@@ -2087,7 +2090,12 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label><input type="checkbox" value="option19"  checked={value_q11.includes('option19')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op19}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option20"  checked={value_q11.includes('option20')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op20}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option21" checked={value_q11.includes('option11')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op11}</span></label></div>
-        {value_q11.includes('option21') && (
+
+        </form>
+        </div></SlideDiv>
+        </CSSTransition>
+        <CSSTransition in={is_Q11_visible && value_q11.includes('option21')} timeout={1000} classNames="slide" unmountOnExit >
+        <div id='Q11_text'>
           <textarea
             className={classes.label2}
             rows={4}
@@ -2095,9 +2103,7 @@ const handleUserNameChange = async (e) => {
             onChange={handleQ11TextChanged} // Use the new function here
             placeholder="Molimo precizirajte"
           />
-        )}
-        </form>
-        </div></SlideDiv>
+        </div> 
         </CSSTransition>
         
         <CSSTransition in={is_Q13_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
@@ -2115,7 +2121,12 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label><input type="checkbox" value="option9"  checked={value_q13.includes('option9')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op9}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option10"  checked={value_q13.includes('option10')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op10}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option11" checked={value_q13.includes('option11')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op11}</span></label></div>
-        {value_q13.includes('option11') && (
+
+        </form>
+        </div></SlideDiv>
+        </CSSTransition>
+        <CSSTransition in={is_Q13_visible && value_q13.includes('option1')} timeout={1000} classNames="slide" unmountOnExit >
+        <div id='Q13_text'>
           <textarea
             className={classes.label2}
             rows={4}
@@ -2123,9 +2134,7 @@ const handleUserNameChange = async (e) => {
             onChange={handleQ13TextChanged} // Use the new function here
             placeholder="Molimo precizirajte"
           />
-        )}
-        </form>
-        </div></SlideDiv>
+        </div> 
         </CSSTransition>
  
         <CSSTransition in={is_Q15_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
