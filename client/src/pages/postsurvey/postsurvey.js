@@ -2045,10 +2045,7 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label><input type="checkbox" value="option6"  checked={value_q9.includes('option6')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op6}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option7"  checked={value_q9.includes('option7')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op7}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option8"  checked={value_q9.includes('option8')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op8}</span></label></div>
-        <div className={classes.label}><label><input type="checkbox" value="option9" checked={value_q9.includes('option9')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op9}</span></label></div>
-
-        <hr style={{ borderTop: '1px solid #000' }}/>
-      
+        <div className={classes.label}><label><input type="checkbox" value="option9" checked={value_q9.includes('option9')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op9}</span></label></div>      
         </form>
         </div></SlideDiv>
         </CSSTransition>
@@ -2089,7 +2086,7 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label ><input type="checkbox" value="option18"  checked={value_q11.includes('option18')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op18}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option19"  checked={value_q11.includes('option19')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op19}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option20"  checked={value_q11.includes('option20')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op20}</span></label></div>
-        <div className={classes.label}><label><input type="checkbox" value="option21" checked={value_q11.includes('option11')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op11}</span></label></div>
+        <div className={classes.label}><label><input type="checkbox" value="option21" checked={value_q11.includes('option21')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op21}</span></label></div>
 
         </form>
         </div></SlideDiv>
