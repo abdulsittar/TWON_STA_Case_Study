@@ -1041,7 +1041,7 @@ const handleUserNameChange = async (e) => {
             stValue_q11((prev) => [...prev, value]);
           } else {
             stValue_q11((prev) => prev.filter((item) => item !== value));
-            if (value === 'option11') setTextInputQ11(''); // Clear text input for option11
+            if (value === 'option21') setTextInputQ11(''); // Clear text input for option11
           }
         };
         
@@ -1414,7 +1414,7 @@ const handleUserNameChange = async (e) => {
         q8_10: value_q14,
         q9: value_q8,
         q10: value_q9.map((item) => (item === 'option9' ? `${item}: ${textInputQ9}` : item)).join(', '),
-        q11: value_q11.map((item) => (item === 'option11' ? `${item}: ${textInputQ11}` : item)).join(', '),
+        q11: value_q11.map((item) => (item === 'option21' ? `${item}: ${textInputQ11}` : item)).join(', '),
         q12: value_q13.map((item) => (item === 'option11' ? `${item}: ${textInputQ13}` : item)).join(', '),
         q13: value_q15.join(', '),
         q14: value_q16,
@@ -2086,8 +2086,8 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label ><input type="checkbox" value="option18"  checked={value_q11.includes('option18')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op18}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option19"  checked={value_q11.includes('option19')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op19}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option20"  checked={value_q11.includes('option20')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op20}</span></label></div>
-        <div className={classes.label}><label><input type="checkbox" value="option11" checked={value_q11.includes('option11')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op11}</span></label></div>
-        {value_q11.includes('option11') && (
+        <div className={classes.label}><label><input type="checkbox" value="option21" checked={value_q11.includes('option11')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op11}</span></label></div>
+        {value_q11.includes('option21') && (
           <textarea
             className={classes.label2}
             rows={4}
