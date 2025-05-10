@@ -546,7 +546,7 @@ export const post_q9_op5 = "5 Rad na ličnim projektima ili hobijima";
 export const post_q9_op6 = "6 Putovanje ili istraživanje novih mesta";
 export const post_q9_op7 = "7 Volontiranje ili društveno korisni rad";
 export const post_q9_op8 = "8 Šoping ili izlazak na večeru";
-export const post_q9_op9 = "9 Drugo (molimo precizirajte):";
+export const post_q9_op9 = "9 Drugo:";
 
 export const post_q11 = "11. Koje žanrove knjiga, filmova ili muzike preferirate? (Odaberite sve šta je primenjivo)";
 export const post_q11_op1 = "1 Fikcija";
@@ -569,7 +569,7 @@ export const post_q11_op17 = "17 Hip-hop/Rap";
 export const post_q11_op18 = "18 Kantri";
 export const post_q11_op19 = "19 Elektronska/Dens";
 export const post_q11_op20 = "20 Svetska muzika";
-export const post_q11_op21 = "21 Drugo (molimo precizirajte):";
+export const post_q11_op21 = "21 Drugo:";
 
 export const post_q13 = "12. Koje aktivnosti najviše volite u slobodno vreme? (Odaberite sve šta je primenjivo)";
 export const post_q13_op1 = "1 Čitanje knjiga";
@@ -582,7 +582,7 @@ export const post_q13_op7 = "7 Umetnost i zanati";
 export const post_q13_op8 = "8 Slušanje ili sviranje muzike";
 export const post_q13_op9 = "9 Sport ili fitnes";
 export const post_q13_op10 = "10 Druženje sa prijateljima i porodicom";
-export const post_q13_op11 = "11 Drugo (molimo precizirajte):";
+export const post_q13_op11 = "11 Drugo:";
 
 export const post_q15 = "13. Koje izvore vesti redovno koristite? (Odaberite sve šta je primenjivo)";
 export const post_q15_op1 = "1 Tradicionalne novine i časopisi";

@@ -269,7 +269,9 @@ function Postsurvey({ classes }) {
   const [is_Q42_visible, setIs_Q42_visible] = useState(false);
 
 
-    
+  const [textInputQ9, setTextInputQ9] = useState('');
+  const [textInputQ11, setTextInputQ11] = useState('');
+  const [textInputQ13, setTextInputQ13] = useState('');
     
   const fadeInOut = keyframes`
 0% {
@@ -1023,41 +1025,36 @@ const handleUserNameChange = async (e) => {
           
 
           
-        const handle_Q9_Changed =  (e) => {                           
+        const handle_Q9_Changed = (e) => {
           const value = e.target.value;
           if (e.target.checked) {
-            // Add the value to the array if checked
-            stValue_q9(prev => [...prev, value]);
+            stValue_q9((prev) => [...prev, value]);
           } else {
-            // Remove the value from the array if unchecked
-            stValue_q9(prev => prev.filter(item => item !== value));
+            stValue_q9((prev) => prev.filter((item) => item !== value));
+            if (value === 'option9') setTextInputQ9(''); // Clear text input for option9
           }
-          console.log(value_q9);
         };
-    
-        const handle_Q11_Changed =  (e) => { 
+        
+        const handle_Q11_Changed = (e) => {
           const value = e.target.value;
           if (e.target.checked) {
-            // Add the value to the array if checked
-            stValue_q11(prev => [...prev, value]);
+            stValue_q11((prev) => [...prev, value]);
           } else {
-            // Remove the value from the array if unchecked
-            stValue_q11(prev => prev.filter(item => item !== value));
+            stValue_q11((prev) => prev.filter((item) => item !== value));
+            if (value === 'option11') setTextInputQ11(''); // Clear text input for option11
           }
-          console.log(value_q11);};
-              
-    
-        const handle_Q13_Changed =  (e) => { 
+        };
+        
+        const handle_Q13_Changed = (e) => {
           const value = e.target.value;
           if (e.target.checked) {
-            // Add the value to the array if checked
-            stValue_q13(prev => [...prev, value]);
+            stValue_q13((prev) => [...prev, value]);
           } else {
-            // Remove the value from the array if unchecked
-            stValue_q13(prev => prev.filter(item => item !== value));
+            stValue_q13((prev) => prev.filter((item) => item !== value));
+            if (value === 'option11') setTextInputQ13(''); // Clear text input for option11
           }
-          console.log(value_q13);};
-          
+        };
+        
     
         const handle_Q15_Changed =  (e) => {
           const value = e.target.value;
@@ -1201,6 +1198,17 @@ const handleUserNameChange = async (e) => {
           setFeedback3(e.target.value); 
           }
             
+        const handleQ9TextChanged = (e) => {
+          setTextInputQ9(e.target.value);
+        };
+        
+        const handleQ11TextChanged = (e) => {
+          setTextInputQ11(e.target.value);
+        };
+        
+        const handleQ13TextChanged = (e) => {
+          setTextInputQ13(e.target.value);
+        };
           
 
                 
@@ -1405,9 +1413,9 @@ const handleUserNameChange = async (e) => {
         q8_9: value_q12,
         q8_10: value_q14,
         q9: value_q8,
-        q10: value_q9.join(', '),
-        q11: value_q11.join(', '),
-        q12: value_q13.join(', '),
+        q10: value_q9.map((item) => (item === 'option9' ? `${item}: ${textInputQ9}` : item)).join(', '),
+        q11: value_q11.map((item) => (item === 'option11' ? `${item}: ${textInputQ11}` : item)).join(', '),
+        q12: value_q13.map((item) => (item === 'option11' ? `${item}: ${textInputQ13}` : item)).join(', '),
         q13: value_q15.join(', '),
         q14: value_q16,
         q15: value_q17,
@@ -2037,7 +2045,17 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label><input type="checkbox" value="option6"  checked={value_q9.includes('option6')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op6}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option7"  checked={value_q9.includes('option7')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op7}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option8"  checked={value_q9.includes('option8')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op8}</span></label></div>
-        <div className={classes.label}><label><input type="checkbox" value="option9"  checked={value_q9.includes('option9')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op9}</span></label></div>
+        <div className={classes.label}><label><input type="checkbox" value="option9" checked={value_q9.includes('option9')} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q9_op9}</span></label></div>
+        {value_q9.includes('option9') && (
+          <textarea
+            className={classes.label2}
+            rows={4}
+            value={textInputQ9}
+            onChange={handleQ9TextChanged} // Use the new function here
+            placeholder="Molimo precizirajte"
+          />
+          )}
+
         <hr style={{ borderTop: '1px solid #000' }}/>
       
         </form>
@@ -2068,7 +2086,16 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label ><input type="checkbox" value="option18"  checked={value_q11.includes('option18')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op18}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option19"  checked={value_q11.includes('option19')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op19}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option20"  checked={value_q11.includes('option20')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op20}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option21"  checked={value_q11.includes('option21')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op21}</span></label></div>
+        <div className={classes.label}><label><input type="checkbox" value="option11" checked={value_q11.includes('option11')} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q11_op11}</span></label></div>
+        {value_q11.includes('option11') && (
+          <textarea
+            className={classes.label2}
+            rows={4}
+            value={textInputQ11}
+            onChange={handleQ11TextChanged} // Use the new function here
+            placeholder="Molimo precizirajte"
+          />
+        )}
         </form>
         </div></SlideDiv>
         </CSSTransition>
@@ -2087,8 +2114,16 @@ const handleUserNameChange = async (e) => {
         <div className={classes.label}><label ><input type="checkbox" value="option8"  checked={value_q13.includes('option8')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op8}</span></label></div>
         <div className={classes.label}><label><input type="checkbox" value="option9"  checked={value_q13.includes('option9')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op9}</span></label></div>
         <div className={classes.label}><label ><input type="checkbox" value="option10"  checked={value_q13.includes('option10')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op10}</span></label></div>
-        <div className={classes.label}><label ><input type="checkbox" value="option11"  checked={value_q13.includes('option11')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op11}</span></label></div>
-
+        <div className={classes.label}><label><input type="checkbox" value="option11" checked={value_q13.includes('option11')} onChange={handle_Q13_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{post_q13_op11}</span></label></div>
+        {value_q13.includes('option11') && (
+          <textarea
+            className={classes.label2}
+            rows={4}
+            value={textInputQ13}
+            onChange={handleQ13TextChanged} // Use the new function here
+            placeholder="Molimo precizirajte"
+          />
+        )}
         </form>
         </div></SlideDiv>
         </CSSTransition>
