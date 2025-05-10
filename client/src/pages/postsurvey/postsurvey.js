@@ -2122,7 +2122,7 @@ const handleUserNameChange = async (e) => {
         </form>
         </div></SlideDiv>
         </CSSTransition>
-        <CSSTransition in={is_Q13_visible && value_q13.includes('option1')} timeout={1000} classNames="slide" unmountOnExit >
+        <CSSTransition in={is_Q13_visible && value_q13.includes('option11')} timeout={1000} classNames="slide" unmountOnExit >
         <div id='Q13_text'>
           <textarea
             className={classes.label2}
