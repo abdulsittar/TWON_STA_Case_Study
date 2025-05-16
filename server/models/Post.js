@@ -53,6 +53,14 @@ weight: {
     type: Number,
     default: 0.0
 },
+ukraine: {
+    type: Number,
+    default: 0.0
+},
+disinfo: {
+    type: Number,
+    default: 0.0
+},
 likes: [{
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'PostLike'

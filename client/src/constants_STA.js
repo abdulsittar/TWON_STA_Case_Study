@@ -1,5 +1,5 @@
 export const disclaimor_1 = "Poštovani/a,";
-export const dear_part_2 = "Dobrodošli u istraživačku studiju naučnog projekta “TWON – Twin of an online social network” (TWON – Dvojnik onlajn društvene mreže), koji finansira EU, a sprovodi Fakultet društvenih i bihejvioralnih nauka Univerziteta u Amsterdamu (UvA) u saradnji sa Univerzitetom u Triru u Nemačkoj, Institutom Robert Koh i Institutom Jožef Stefan (JSI) u Sloveniji.";
+export const dear_part_2 = "Dobrodošli u istraživačku studiju naučnog projekta “TWON – Twin of an online social network” (TWON – Dvojnik onlajn društvene mreže), koji finansira EU, a sprovodi Fakultet društvenih i bihejvioralnih nauka Univerziteta u Amsterdamu (UvA) u saradnji sa Univerzitetom u Triru u Nemačkoj, Institutom Robert Koh i Institutom Jožef Stefan (JSI) u Sloveniji i Institutom za filozofiju i društvenu teoriju Univerziteta u Beogradu.";
 export const bitte_4 = "Molimo Vas da pažljivo pročitate sledeći tekst pre nego što započnete učešće. Ako Vam nešto nije jasno, slobodno nas kontaktirajte preko kolege Majkla Hazeltajna (Michael Heseltine) na mejl adresu: m.j.heseltine@uva.nl. Rado ćemo odgovoriti na Vaša pitanja.";
 
 export const aimHEADING_5 = [<strong>Cilj istraživanja</strong>];
