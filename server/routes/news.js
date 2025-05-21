@@ -382,8 +382,6 @@ router.get('/uncensoredtruth_6',  async (req, res) => {
     }
 });
 
-
-
 // Submit pre survey
 router.get('/not_relevant_1',  async (req, res) => {
     logger.info('Data received news', { data: req.body });

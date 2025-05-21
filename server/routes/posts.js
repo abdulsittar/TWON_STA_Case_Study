@@ -18,7 +18,7 @@
     const webPush = require('web-push');
     const mongoose = require('mongoose');
     const { ObjectId } = require('mongoose').Types;
-    const conn = mongoose.createConnection('mongodb+srv://abdulsittar72:2106010991As@cluster0.gsnbbwq.mongodb.net/test?retryWrites=true&w=majority');
+    const conn = mongoose.createConnection(process.env.MONGO_URI);
     const verifyToken = require('../middleware/verifyToken');
     const axios = require('axios');
     const cheerio = require('cheerio');
@@ -29,6 +29,7 @@
     const { JSDOM } = require('jsdom');
     const window = new JSDOM('').window;
     const DOMPurifyInstance = DOMPurify(window);
+    
     /**
      * @swagger
      * components:

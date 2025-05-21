@@ -66,8 +66,6 @@ function sanitizeInput(input) {
     return val.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-
-
 // like a comment
 router.put('/:id/like', verifyToken, async(req, res) => {
 
@@ -165,8 +163,6 @@ router.put('/:id/like', verifyToken, async(req, res) => {
     }else{console.log(isAlreadyLiked);
     }
 });
-
-
 
 // like a post
 router.put('/:id/dislike', verifyToken, async(req, res) =>{

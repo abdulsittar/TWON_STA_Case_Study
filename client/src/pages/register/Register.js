@@ -233,6 +233,7 @@ function Register({classes}) {
   const [username, setUsername] = useState("");
   const [proPic, setProPic] = useState("");
   const [version, setVersion] = useState("");
+  const [demographics, setDemographics] = useState(null);
   
   const [version1, setVersion1] = useState("");
   const [version2, setVersion2] = useState("");
@@ -963,8 +964,24 @@ const handle_feedback_Changed = async (e) => {
   };
 
 
+const fetchDemographics = async () => {
+  try {
+    const response = await axios.get('/presurvey/demographics');
+    console.log("Demographics Data:", response.data);
+
+    // Optional: do something with the data
+    // e.g., set it in a state variable: setDemographics(response.data);
+  } catch (error) {
+    console.error("Failed to fetch demographics:", error);
+  }
+};
+
   const reviewButtonChanged = async (e) => { 
     e.preventDefault()
+    
+    
+    
+    
     if(value_q0 != "option2"){
     setIsUserReviewing(true);
     
@@ -989,7 +1006,7 @@ const handle_feedback_Changed = async (e) => {
 
   const companyButtonChanged = async (e) => { 
     e.preventDefault()
-    
+    await fetchDemographics();
     if(value_q0 != "option2"){
     //if(prolific_Code == ""){
     //  e.preventDefault()

@@ -257,4 +257,52 @@ router.post('/isSubmitted/:val', async (req, res) => {
     }
 });
 
+router.get('/demographics', async (req, res) => {
+    try {
+        const ageBuckets = [
+            { min: 18, max: 24, label: '18-24' },
+            { min: 25, max: 34, label: '25-34' },
+            { min: 35, max: 44, label: '35-44' },
+            { min: 45, max: 54, label: '45-54' },
+            { min: 55, max: 200, label: '55+' },
+        ];
+
+        // Fetch all surveys
+        const surveys = await PreSurvey.find({}, 'q1 q2'); // Only fetch age (q1) and gender (q2)
+
+        const genderCount = { male: 0, female: 0 };
+        const ageGroups = {
+            '18-24': 0,
+            '25-34': 0,
+            '35-44': 0,
+            '45-54': 0,
+            '55+': 0
+        };
+
+        surveys.forEach(survey => {
+            // Count gender
+            const gender = survey.q2?.toLowerCase();
+            if (gender === 'male') genderCount.male++;
+            else if (gender === 'female') genderCount.female++;
+
+            // Count age group
+            const age = parseInt(survey.q1);
+            if (!isNaN(age)) {
+                const bucket = ageBuckets.find(b => age >= b.min && age <= b.max);
+                if (bucket) ageGroups[bucket.label]++;
+            }
+        });
+
+        res.status(200).json({
+            genderCount,
+            ageGroups
+        });
+
+    } catch (err) {
+        console.error("Error in demographics aggregation:", err);
+        res.status(500).json({ error: 'Failed to fetch demographics' });
+    }
+});
+
+
     module.exports = router;
