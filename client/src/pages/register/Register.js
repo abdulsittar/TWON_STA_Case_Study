@@ -968,7 +968,8 @@ const fetchDemographics = async () => {
   try {
     const response = await axios.get('/presurvey/demographics');
     console.log("Demographics Data:", response.data);
-
+    
+  return response;
     // Optional: do something with the data
     // e.g., set it in a state variable: setDemographics(response.data);
   } catch (error) {
@@ -1006,7 +1007,54 @@ const fetchDemographics = async () => {
 
   const companyButtonChanged = async (e) => { 
     e.preventDefault()
-    await fetchDemographics();
+   const response = await fetchDemographics();
+  const data = response?.data;
+
+  if (!data) {
+    toast.error("Fehler beim Laden der Demografie-Daten. Bitte versuchen Sie es erneut.");
+    return;
+  }
+
+  // 2. Destructure values from the demographics API
+  const maleCount = data.genderCount?.male || 0;
+  const femaleCount = data.genderCount?.female || 0;
+
+  const ageGroup_18_24 = data.ageGroups?.["18-24"] || 0;
+  const ageGroup_25_34 = data.ageGroups?.["25-34"] || 0;
+  const ageGroup_35_44 = data.ageGroups?.["35-44"] || 0;
+  const ageGroup_45_54 = data.ageGroups?.["45-54"] || 0;
+  const ageGroup_55_plus = data.ageGroups?.["55+"] || 0;
+
+  // 3. Prevent submission if overrepresented
+  if (value_q2 === "option1" && maleCount >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für Männer ist erreicht. Bitte wählen Sie eine andere Option.");
+    return;
+  }
+
+  if (value_q2 === "option2" && femaleCount >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für Frauen ist erreicht. Bitte wählen Sie eine andere Option.");
+    return;
+  }
+
+  if (age >= 18 && age <= 24 && ageGroup_18_24 >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 18-24 ist erreicht.");
+    return;
+  } else if (age >= 25 && age <= 34 && ageGroup_25_34 >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 25-34 ist erreicht.");
+    return;
+  } else if (age >= 35 && age <= 44 && ageGroup_35_44 >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 35-44 ist erreicht.");
+    return;
+  } else if (age >= 45 && age <= 54 && ageGroup_45_54 >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 45-54 ist erreicht.");
+    return;
+  } else if (age >= 55 && ageGroup_55_plus >= 10) {
+    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 55+ ist erreicht.");
+    return;
+  }
+   
+   
+   
     if(value_q0 != "option2"){
     //if(prolific_Code == ""){
     //  e.preventDefault()

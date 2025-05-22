@@ -51,6 +51,7 @@ import {
   post_q13, post_q13_op1, post_q13_op2, post_q13_op3, post_q13_op4, post_q13_op5, 
   post_q13_op6, post_q13_op7, post_q13_op8, post_q13_op9, post_q13_op10, post_q13_op11,
   post_q14, post_q14_op1, post_q14_op2, post_q14_op3, post_q14_op4, post_q14_op5,
+  post_q14_1, post_q14_1_op1, post_q14_1_op2, post_q14_1_op3, post_q14_1_op4, post_q14_1_op5,
   post_q15, post_q15_op1, post_q15_op2, post_q15_op3, post_q15_op4, post_q15_op5, 
   post_q15_op6, post_q15_op7, post_q15_op8,
   post_q16, post_q16_op1, post_q16_op2, post_q16_op3, post_q16_op4, post_q16_op5,
@@ -81,9 +82,7 @@ import {
   post_q29_5_op1, post_q29_5_op2, post_q29_5_op3, post_q29_5_op4, post_q29_5_op5, post_q29_5_op6, post_q29_5_op7,
   post_q29_6_op1, post_q29_6_op2, post_q29_6_op3, post_q29_6_op4, post_q29_6_op5, post_q29_6_op6, post_q29_6_op7,
   post_q29_7_op1, post_q29_7_op2, post_q29_7_op3, post_q29_7_op4, post_q29_7_op5, post_q29_7_op6, post_q29_7_op7,
-  post_q42
-
-} from '../../constants_STA';
+  post_q42} from '../../constants_STA';
 import { set } from 'mongoose';
 
 
@@ -162,6 +161,7 @@ function Postsurvey({ classes }) {
     
     const [value_q13, stValue_q13] = useState([]);
     const [value_q14, stValue_q14] = useState('');
+        const [value_q14_1, stValue_q14_1] = useState('');
     const [value_q15, stValue_q15] = useState([]);
     
     const [value_q16, stValue_q16] = useState('');
@@ -783,7 +783,7 @@ const handleUserNameChange = async (e) => {
       stValue_q1(e.target.value); 
       console.log(e.target.value);
       if(isUserReviewing == false){
-      if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+      if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" && value_q14_1 != ""){
         setIs_Q1_visible(false);
         setIs_Q8_visible(true);
         setIs_Q9_visible(true);
@@ -805,7 +805,7 @@ const handleUserNameChange = async (e) => {
         stValue_q2(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q1 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q1 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -827,7 +827,7 @@ const handleUserNameChange = async (e) => {
         stValue_q3(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q2 != "" && value_q1 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q2 != "" && value_q1 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -849,7 +849,7 @@ const handleUserNameChange = async (e) => {
         stValue_q4(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q1 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q1 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -871,7 +871,7 @@ const handleUserNameChange = async (e) => {
         stValue_q5(e.target.value); 
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q1 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q1 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -893,7 +893,7 @@ const handleUserNameChange = async (e) => {
         stValue_q6(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q1 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q1 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -915,7 +915,7 @@ const handleUserNameChange = async (e) => {
         stValue_q7(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
-        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q1 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
+        if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q1 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" && value_q14_1 != "" ){
           setIs_Q1_visible(false);
           setIs_Q8_visible(true);
           setIs_Q9_visible(true);
@@ -937,7 +937,7 @@ const handleUserNameChange = async (e) => {
         stValue_q10(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
-          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q1 != "" && value_q12 != "" && value_q14 != "" ){
+          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q1 != "" && value_q12 != "" && value_q14 != ""  && value_q14_1 != ""){
             setIs_Q1_visible(false);
             setIs_Q8_visible(true);
             setIs_Q9_visible(true);
@@ -959,7 +959,7 @@ const handleUserNameChange = async (e) => {
         stValue_q12(e.target.value);
         console.log(e.target.value);
         if(isUserReviewing == false){
-          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q1 != "" && value_q14 != "" ){
+          if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q1 != "" && value_q14 != ""  && value_q14_1 != ""){
             setIs_Q1_visible(false);
             setIs_Q8_visible(true);
             setIs_Q9_visible(true);
@@ -981,7 +981,29 @@ const handleUserNameChange = async (e) => {
           stValue_q14(e.target.value);
           console.log(e.target.value);
           if(isUserReviewing == false){
-            if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q1 != "" ){
+            if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q1 != "" && value_q14_1 != "" ){
+              setIs_Q1_visible(false);
+              setIs_Q8_visible(true);
+              setIs_Q9_visible(true);
+              setIs_Q11_visible(true);
+              setIs_Q13_visible(true);
+              setIs_Q15_visible(true);
+              setIs_Q16_visible(true);
+              } else {
+                setIs_Q8_visible(false);
+                setIs_Q9_visible(false);
+                setIs_Q11_visible(false);
+                setIs_Q13_visible(false);
+                setIs_Q15_visible(false);
+                setIs_Q16_visible(false);
+              }
+            }};
+            
+            const handle_Q14_1_Changed =  (e) => {
+          stValue_q14_1(e.target.value);
+          console.log(e.target.value);
+          if(isUserReviewing == false){
+            if(e.target.value != "" && value_q2 != "" && value_q3 != "" && value_q4 != "" && value_q5 != "" && value_q6 != "" && value_q7 != "" && value_q10 != "" && value_q12 != "" && value_q14 != "" ){
               setIs_Q1_visible(false);
               setIs_Q8_visible(true);
               setIs_Q9_visible(true);
@@ -1313,6 +1335,9 @@ const handleUserNameChange = async (e) => {
       }else if (value_q14 == ""){
         toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
         return
+      }else if (value_q14_1 == ""){
+        toast.error("Pitanje 8. Molimo izaberite jednu od ponuđenih opcija!");
+        return
       }else if (value_q15 == ""){
         toast.error("Pitanje 13. Molimo izaberite jednu od ponuđenih opcija!");
         return
@@ -1412,6 +1437,7 @@ const handleUserNameChange = async (e) => {
         q8_8: value_q10,
         q8_9: value_q12,
         q8_10: value_q14,
+        q8_10_1: value_q14_1,
         q9: value_q8,
         q10: value_q9.map((item) => (item === 'option9' ? `${item}: ${textInputQ9}` : item)).join(', '),
         q11: value_q11.map((item) => (item === 'option21' ? `${item}: ${textInputQ11}` : item)).join(', '),
@@ -1979,7 +2005,7 @@ const handleUserNameChange = async (e) => {
                 <tr>
                   <td>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                      <span>{post_q10}</span>
+                      <span>{post_q12}</span>
                     </div>
                   </td>
                   <td><input type="radio" name="q12" value="option1" checked={value_q12 === 'option1'} onChange={handle_Q12_Changed} style={{"accentColor":'red'}} /></td>
@@ -1993,7 +2019,7 @@ const handleUserNameChange = async (e) => {
                 <tr>
                   <td>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                      <span>{post_q10}</span>
+                      <span>{post_q14}</span>
                     </div>
                   </td>
                   <td><input type="radio" name="q14" value="option1" checked={value_q14 === 'option1'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
@@ -2001,6 +2027,20 @@ const handleUserNameChange = async (e) => {
                   <td><input type="radio" name="q14" value="option3" checked={value_q14 === 'option3'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
                   <td><input type="radio" name="q14" value="option4" checked={value_q14 === 'option4'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
                   <td><input type="radio" name="q14" value="option5" checked={value_q14 === 'option5'} onChange={handle_Q14_Changed} style={{"accentColor":'red'}} /></td>
+                </tr>
+                
+                {/* Test Question */}
+                <tr>
+                  <td>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <span>{post_q14_1}</span>
+                    </div>
+                  </td>
+                  <td><input type="radio" name="q14_1" value="option1" checked={value_q14_1 === 'option1'} onChange={handle_Q14_1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14_1" value="option2" checked={value_q14_1 === 'option2'} onChange={handle_Q14_1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14_1" value="option3" checked={value_q14_1 === 'option3'} onChange={handle_Q14_1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14_1" value="option4" checked={value_q14_1 === 'option4'} onChange={handle_Q14_1_Changed} style={{"accentColor":'red'}} /></td>
+                  <td><input type="radio" name="q14_1" value="option5" checked={value_q14_1 === 'option5'} onChange={handle_Q14_1_Changed} style={{"accentColor":'red'}} /></td>
                 </tr>
 
               </tbody>

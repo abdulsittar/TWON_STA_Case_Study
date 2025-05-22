@@ -104,6 +104,20 @@ router.get('/news_6',  async (req, res) => {
     }
 });
 
+router.get('/news_62',  async (req, res) => {
+    logger.info('Data received news', { data: req.body });
+    try {
+        //const uniqId = req.params.uniqId;
+        //logger.info(`Serving news page for ID: ${uniqId}`);
+
+        // Send the HTML file located in the 'public' directory
+        res.sendFile(path.join(__dirname, '../public/html2/news_6.html'));
+    } catch (err) {
+        logger.error('Error serving news page', { error: err.message });
+        res.status(500).send('Error loading the page');
+    }
+});
+
 router.get('/news_7',  async (req, res) => {
     logger.info('Data received news', { data: req.body });
     try {

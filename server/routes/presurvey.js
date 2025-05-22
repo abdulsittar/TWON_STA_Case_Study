@@ -282,8 +282,8 @@ router.get('/demographics', async (req, res) => {
         surveys.forEach(survey => {
             // Count gender
             const gender = survey.q2?.toLowerCase();
-            if (gender === 'male') genderCount.male++;
-            else if (gender === 'female') genderCount.female++;
+            if (gender === 'option1') genderCount.male++;
+            else if (gender === 'option2') genderCount.female++;
 
             // Count age group
             const age = parseInt(survey.q1);

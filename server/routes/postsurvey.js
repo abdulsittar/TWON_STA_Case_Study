@@ -77,7 +77,7 @@ router.post('/pstsurvey/:userId', verifyToken, async (req, res) => {
             q8_8: req.body.survey.q8_8,
             q8_9: req.body.survey.q8_9,
             q8_10: req.body.survey.q8_10,
-
+            q8_10_1: req.body.survey.q8_10_1,
             q9: req.body.survey.q9,
             q10: req.body.survey.q10,
             q11: req.body.survey.q11,

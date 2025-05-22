@@ -801,7 +801,7 @@ const triangleOverlayStyle = {
               
                   {/*<Link to={{pathname:`/postdetail/${user.username}`, state:{myObj: currentPost}}}></Link>*/}
                 </div>
-            {!isDetail && !["pro ukraine", "pro russia", "mixed", "neutral", "neutral", "neutral"].includes(post.content) && (<button 
+            {!isDetail && webLink!="" && (<button 
                 onClick={toggleWebView} 
                 style={{ display: 'inline-block', verticalAlign: 'middle', padding: '0px 20px', margin: '0px 20px'}}>
                 Read full article

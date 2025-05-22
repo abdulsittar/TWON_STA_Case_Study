@@ -1168,17 +1168,17 @@
             if (newTreatment == 1) {
                 if (userGroup == "control") {
                     trainPosts = [
-                        `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                        `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
                         `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
-                        `<p>5.1. Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
-                        `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                        `<p>Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
+                        `<p>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
                         `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
                         `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
-                        `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
+                        `<p>Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                         `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
                         `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
-                        `<p>1.2. Zelenski prihvata da Ukrajina možda neće učestvovati u mirovnim pregovorima<br/></p>`,
-                        `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                        `<p>Zelenski prihvata da Ukrajina možda neće učestvovati u mirovnim pregovorima<br/></p>`,
+                        `<p>Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
                         `<p>Ukrajina se bori, mir visi o koncu. Teško je verovati.<br/></p>`
                     ];
 
@@ -1260,16 +1260,16 @@
                         ];
 
                         trainPosts = [
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
-                            `<p>3.1. Zelenski u Davosu zagovara evropsku nezavisnost od NATO-a<br/></p>`,
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                            `<p>Zelenski u Davosu zagovara evropsku nezavisnost od NATO-a<br/></p>`,
                             `<p>Primirje na čekanju—ni pobeda ni poraz. Svejedno.<br/></p>`,
                             `<p>Mir se odlaže, Ukrajina se troši, Rusija smireno čeka.<br/></p>`,
                             `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
-                            `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                             `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                             `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
                             `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`
                         ];
@@ -1340,16 +1340,16 @@
 
                         trainPosts = [
                             `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
-                            `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
-                            `<p>5.1. Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
+                            `<p>Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
+                            `<p>Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
                             `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
                             `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
                             `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                             `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                             `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`
                         ];
 
@@ -1418,16 +1418,16 @@
 
                         trainPosts = [
                             `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                             `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
                             `<p>Rat stoji, primirje visi. Obema stranama dosta, al’ šta sad?<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                             `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
                             `<p>Primirje se čeka, ali Ukrajina krvari. Nada i bol zajedno.<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
-                            `<p>5.1. Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
-                            `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>Oružje iz Zapada za Ukrajinu podmazuje crno tržište<br/></p>`,
+                            `<p>Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                             `<p>Ukrajina se bori, mir visi o koncu. Teško je verovati.<br/></p>`
                         ];
 
@@ -1498,17 +1498,17 @@
                         ];
                         
                         trainPosts = [
-                            `<p>5. Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
+                            `<p>Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
                             `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`,
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
-                            `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                            `<p>Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
                             `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                            `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
+                            `<p>Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
                             `<p>Mir se odlaže, Ukrajina se troši, Rusija smireno čeka.<br/></p>`,
-                            `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
-                            `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                            `<p>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                            `<p>Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                             `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`
                         ];
 
@@ -1577,17 +1577,17 @@
 
                         trainPosts = [
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
-                            `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                            `<p>Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
                             `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                            `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
+                            `<p>Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                             `<p>Mir se odlaže, Ukrajina se troši, Rusija smireno čeka.<br/></p>`,
-                            `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                            `<p>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                             `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
                             `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
-                            `<p>5. Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
-                            `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`
+                            `<p>Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
+                            `<p>Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`
                         ];
 
                         webLinksPosts = [
@@ -1654,15 +1654,15 @@
                         ];
 
                         trainPosts = [
-                            `<p>5. Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,                         // neutral_ukraine
-                            `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,                         // pro ukraine
+                            `<p>Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,                         // neutral_ukraine
+                            `<p>Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,                         // pro ukraine
                             `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`,          // neutral (Brena)
                             `<p>Mir se odlaže, Ukrajina se troši, Rusija smireno čeka.<br/></p>`, // neutral_general
-                            `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,                        // mixed
-                            `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,                       // neutral_sports
+                            `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,                        // mixed
+                            `<p>Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,                       // neutral_sports
                             `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,                  // neutral (EXIT)
-                            `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,                           // pro russia
-                            `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,    // neutral_tainment
+                            `<p>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,                           // pro russia
+                            `<p>Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,    // neutral_tainment
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,                // light_ukraine
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,                             // disinfo_ukraine
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`      // neutral (Zvezda)
@@ -1858,14 +1858,14 @@
                     trainPosts = [
                         `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
                         `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                        `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
+                        `<p>Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`,
                         `<p>Primirje još nije tu. Ukrajina i Rusija na ivici. Ko zna?<br/></p>`,
-                        `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
-                        `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
-                        `<p>2. SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
-                        `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
+                        `<p>Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
+                        `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                        `<p>SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
+                        `<p>Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
                         `<p>Rusija čeka mir na svoj način—Ukrajina nema šanse.<br/></p>`,
-                        `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
+                        `<p>Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
                         `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
                         `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`
                     ];
@@ -1939,16 +1939,16 @@
                     if (scoreA > 0) {
 
                         trainPosts = [
-                            `<p>5.2. Oružje sa Zapada preplavljuje crno tržište u Ukrajini, ugrožavajući stabilnost Evrope<br/></p>`,                             // neutral_general
-                            `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,     // neutral
+                            `<p>Oružje sa Zapada preplavljuje crno tržište u Ukrajini, ugrožavajući stabilnost Evrope<br/></p>`,                             // neutral_general
+                            `<p>Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,     // neutral
                             `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,             // neutral
                             `<p>Ukrajina moli za primirje, Rusija odlučuje. Ko je gazda?<br/></p>`,     // neutral_tainment
                             `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,                        // mixed
-                            `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,// neutral
-                            `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,     // neutral_sports
-                            `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,                         // pro russia
+                            `<p>Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,// neutral
+                            `<p>Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,     // neutral_sports
+                            `<p>Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,                         // pro russia
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,                 // pro ukraine
-                            `<p>3. Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,      // neutral_ukraine
+                            `<p>Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,      // neutral_ukraine
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,           // disinfo_ukraine
                             `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`     // light_ukraine
                         ];
@@ -1963,7 +1963,7 @@
                             "https://socialapp2.ijs.si/news/news_6",      // pro russia
                             "https://socialapp2.ijs.si/news/breaking_7",  // pro ukraine
                             "",
-                            "https://socialapp2.ijs.si/news/news_6",  
+                            "https://socialapp2.ijs.si/news/news_62",  
                             "",
                             ""
                         ];
@@ -2018,17 +2018,17 @@
                     } else if (scoreB > 0 && scoreA < 0.05) {
 
                         trainPosts = [
-                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,   // neutral_ukraine
+                            `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,   // neutral_ukraine
                             `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici.<br/></p>`,              // pro ukraine
-                            `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`, // light_ukraine
+                            `<p>Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`, // light_ukraine
                             `<p>Rusija čeka mir na svoj način—Ukrajina nema šanse.<br/></p>`,                      // pro russia
                             `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,                     // mixed
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`, // neutral (Lepa Brena)
-                            `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`, // neutral_tainment
-                            `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,                           // neutral_general
+                            `<p>Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`, // neutral_tainment
+                            `<p>Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,                           // neutral_general
                             `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`, // neutral (Zvezda)
-                            `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,  // neutral_sports
-                            `<p>4.2. Putin i Tramp navodno planiraju podelu Ukrajine<br/></p>`,        // disinfo_ukraine
+                            `<p>Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,  // neutral_sports
+                            `<p>Putin i Tramp navodno planiraju podelu Ukrajine<br/></p>`,        // disinfo_ukraine
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`           // neutral (EXIT)
                         ];
 
@@ -2094,18 +2094,18 @@
                     } else if (scoreB < 0.05 && scoreA < 0.05) {
 
                         trainPosts = [
-                            `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,        // disinfo_ukraine
+                            `<p>Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,        // disinfo_ukraine
                             `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`, // light_ukraine
                             `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,                     // mixed
-                            `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,                      // pro russia
+                            `<p>Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,                      // pro russia
                             `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,              // pro ukraine
                             `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,  // neutral_sports
-                            `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`, // neutral_tainment
+                            `<p>Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`, // neutral_tainment
                             `<p>Rusija čeka mir na svoj način—Ukrajina nema šanse.<br/></p>`,                           // neutral_general
                             `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`, // neutral (Lepa Brena)
-                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,   // neutral_ukraine
-                            `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`, // neutral (Zvezda)
-                            `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`           // neutral (EXIT)
+                            `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,   // neutral_ukraine
+                            `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`, // neutral (Zvezda)
+                            `<p>Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`           // neutral (EXIT)
                         ];
 
                         webLinksPosts = [
@@ -2190,17 +2190,17 @@
                         ]
 
                         trainPosts = [
-                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                            `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
                             `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                             `<p>Rusija slabi, Ukrajina stoji. Mir dolazi, pravda sledi.<br/></p>`,
                             `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                             `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
                             `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
-                            `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
-                            `<p>2.1. SAD zamrzava većinu strane pomoći, dovodeći u pitanje finansiranje Ukrajine<br/></p>`,
+                            `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                            `<p>SAD zamrzava većinu strane pomoći, dovodeći u pitanje finansiranje Ukrajine<br/></p>`,
                             `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`
                         ]
 
@@ -2268,17 +2268,17 @@
 
                         trainPosts = [
                             `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                             `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
                             `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                             `<p>Primirje? Možda, al’ Rusija drži konce. Kijev u zamci.<br/></p>`,
                             `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
-                            `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
                             `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
-                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
-                            `<p>2.1. SAD zamrzava većinu strane pomoći, dovodeći u pitanje finansiranje Ukrajine<br/></p>`
+                            `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                            `<p>SAD zamrzava većinu strane pomoći, dovodeći u pitanje finansiranje Ukrajine<br/></p>`
                         ]
 
                         webLinksPosts = [
@@ -2344,17 +2344,17 @@
                         ]
 
                         trainPosts = [
-                            `<p>4. Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
-                            `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,
-                            `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                            `<p>Putin spreman za pregovore sa Trampom o Ukrajini<br/></p>`,
+                            `<p>Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`,
+                            `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
                             `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
                             `<p>Mir je blizu, al’ rane su sveže. Ukrajina čeka u tišini.<br/></p>`,
-                            `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
-                            `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                            `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                            `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
                             `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
                             `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
                             `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
-                            `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                            `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                             `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`
                         ]
 
@@ -2642,7 +2642,7 @@
 
     router.post('/:id/createInitialData', verifyToken, async (req, res) => {
         logger.info('Data received', { data: req.body });
-        const group = Math.floor(Math.random() * 3)
+        const group = 0;//Math.floor(Math.random() * 3)
         let userType = "control";
         let trainPosts;
         let webLinksPosts;
@@ -2655,18 +2655,18 @@
         if (group == 0) {
             userType = "control"
             trainPosts = [
-                `<p>7. Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
+                `<p>Zajedničko domaćinstvo Srbije i Albanije U-21 prvenstva Evrope: Istorijski trenutak<br/></p>`,
                 `<p>EXIT festival objavio prve izvođače za 2025. Leto će biti ludo!<br/></p>`,
-                `<p>2.2. Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
+                `<p>Trump ukida stranu pomoć, uključujući vojnu podršku Ukrajini<br/></p>`,
                 `<p>Ukrajina čeka mir, Rusija se smeje. Rat ide dalje.<br/></p>`,
                 `<p>Lepa Brena najavila koncert u Beogradu za proleće. Karte već u prodaji!<br/></p>`,
-                `<p>3. Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,
-                `<p>4. MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
+                `<p>Zelenski u Davosu poziva na jedinstvenu evropsku odbrambenu politiku<br/></p>`,
+                `<p>MMF upozorava na fiskalne rizike zbog srpskih projekata Ekspo i Nacionalni stadion<br/></p>`,
                 `<p>Primirje na vidiku—Ukrajina čeka pobedu, Rusija gubi dah!<br/></p>`,
                 `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
-                `<p>9. Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
+                `<p>Najavljeni headlineri EXIT Festivala 2025<br/></p>`,
                 `<p>Crvena Zvezda izgubila od Olimpije Milano u Evroligi, 78-75. Borba do kraja!<br/></p>`,
-                `<p>1.1. Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`
+                `<p>Zelenski: Evropa i SAD moraju preuzeti inicijativu u okončanju rata<br/></p>`
             ];
 
             webLinksPosts = [
@@ -2675,7 +2675,7 @@
                 "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
                 "",                                           // pro russia
                 "",                                           // neutral (EXIT)
-                "https://socialapp2.ijs.si/news/news_6",
+                "https://socialapp2.ijs.si/news/news_62",
                 "https://socialapp2.ijs.si/news/news_7",  
                 "",                                           // pro ukraine
                 "",                                           // neutral (Zvezda)
@@ -2704,18 +2704,18 @@
         } else if (group == 1) {
             userType = "opposing"
             trainPosts = [
-                `<p>2. Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
+                `<p>Srbija pokreće Nacionalno e-sport prvenstvo 2027. godine<br/></p>`,
                 `<p>Partizan slavio protiv FMP-a u ABA ligi—88-82. Sjajna atmosfera u Areni!<br/></p>`,
-                `<p>5.2. Oružje sa Zapada preplavljuje crno tržište u Ukrajini, ugrožavajući stabilnost Evrope<br/></p>`,
+                `<p>Oružje sa Zapada preplavljuje crno tržište u Ukrajini, ugrožavajući stabilnost Evrope<br/></p>`,
                 `<p>Ukrajina moli za primirje, Rusija odlučuje. Ko je gazda?<br/></p>`,
                 `<p>Premijera filma ‘Snovi u magli’ oduševila publiku u Novom Sadu!<br/></p>`,
-                `<p>1. Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
-                `<p>3. Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
+                `<p>Zelenski: Ukrajina mora biti uključena u pregovore o okončanju rata<br/></p>`,
+                `<p>Protesti u Beogradu protiv projekta nekretnina Džareda Kušnera<br/></p>`,
                 `<p>Još malo pa mir—Ukrajina jaka, Putin na ivici. #Slava<br/></p>`,
                 `<p>Novak Đoković gost na otvaranju teniskog kampa za klince u Novom Sadu.<br/></p>`,
-                `<p>1. Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
+                `<p>Filmska industrija Srbije u porastu privlači međunarodne produkcije<br/></p>`,
                 `<p>Mir se čeka, al’ bombe i dalje padaju. Sve je mutno.<br/></p>`,
-                `<p>3.1. Zelenski u Davosu zagovara evropsku nezavisnost od NATO-a<br/></p>`
+                `<p>Zelenski u Davosu zagovara evropsku nezavisnost od NATO-a<br/></p>`
             ];
             webLinksPosts = [
                 "https://socialapp2.ijs.si/news/not_relevant_1",       // neutral_sports
@@ -2753,18 +2753,18 @@
         } else if (group == 2) {
             userType = "reinforcing"
             trainPosts = [
-                `<p>5. Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
+                `<p>Kontroverze oko raspodele budžeta za sport Vlade Srbije<br/></p>`,
                 `<p>Bokserska zvezda Sara na TV šou—priča o zlatu i snovima!<br/></p>`,
-                `<p>3.2. Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
+                `<p>Zelenski poziva Evropu da napusti NATO i uskladi se sa Rusijom<br/></p>`,
                 `<p>Rat još traje, primirje daleko. Ukrajina plaća visoku cenu.<br/></p>`,
                 `<p>Riblja Čorba slavi 45 godina karijere koncertom u Štark Areni!<br/></p>`,
-                `<p>2. SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
-                `<p>6. Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
+                `<p>SAD privremeno zamrzava skoro svu stranu pomoć<br/></p>`,
+                `<p>Srbija potpisala sporazum o slobodnoj trgovini sa Kinom radi povećanja izvoza<br/></p>`,
                 `<p>Ukrajina drži liniju, primirje je blizu. Heroji čekaju!<br/></p>`,
                 `<p>Srbija čeka Novaka u Kopenhagenu za Devis Kup, al’ povreda ga možda stopira.<br/></p>`,
-                `<p>8. Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
+                `<p>Nikola Đuričko izgubio veliku holivudsku ulogu zbog terminskih preklapanja<br/></p>`,
                 `<p>Ukrajina i Rusija čekaju mir. Ili kraj. Ko će popustiti?<br/></p>`,
-                `<p>4.1. Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`
+                `<p>Putin i Tramp pripremaju tajni dogovor o Ukrajini bez učešća Kijeva<br/></p>`
             ]
 
             webLinksPosts = [
