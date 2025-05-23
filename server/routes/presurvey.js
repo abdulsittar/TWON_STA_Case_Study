@@ -202,8 +202,8 @@ router.post('/isSubmitted/:val', async (req, res) => {
                 const users = await SelectedUsers.aggregate([
                     {                                             
                         $match: {
-                            available: true,           // Ensure users are available
-                            version: String(idstor[0].version) // Ensure the version matches the given version
+                            available: true//,           // Ensure users are available
+                            //version: String(idstor[0].version) // Ensure the version matches the given version
                         }
                     },
                     {
@@ -233,6 +233,7 @@ router.post('/isSubmitted/:val', async (req, res) => {
                     version: user.version
                 }));
                 
+                 console.log("Selected Users:", users);
                 console.log("Selected Users:", users[0][0]);
                 
                 const users2 = [users[0],users[1],users[2],users[3] ]
@@ -268,7 +269,7 @@ router.get('/demographics', async (req, res) => {
         ];
 
         // Fetch all surveys
-        const surveys = await PreSurvey.find({}, 'q1 q2'); // Only fetch age (q1) and gender (q2)
+        const surveys = await PreSurvey.find({}, 'q1 q2 q6'); // Only fetch age (q1) and gender (q2)
 
         const genderCount = { male: 0, female: 0 };
         const ageGroups = {
@@ -278,12 +279,25 @@ router.get('/demographics', async (req, res) => {
             '45-54': 0,
             '55+': 0
         };
+        
+        const regions = {
+            'option1': 0,
+            'option2': 0,
+            'option3': 0,
+            'option4': 0 
+        };
 
         surveys.forEach(survey => {
             // Count gender
             const gender = survey.q2?.toLowerCase();
             if (gender === 'option1') genderCount.male++;
             else if (gender === 'option2') genderCount.female++;
+            
+            const region = survey.q6?.toLowerCase();
+            if (region === 'option1') regions.option1++;
+            else if (region === 'option2') regions.option2++;
+            else if (region === 'option3') regions.option3++;
+            else if (region === 'option4') regions.option4++;
 
             // Count age group
             const age = parseInt(survey.q1);
@@ -295,7 +309,8 @@ router.get('/demographics', async (req, res) => {
 
         res.status(200).json({
             genderCount,
-            ageGroups
+            ageGroups,
+            regions
         });
 
     } catch (err) {

@@ -1271,6 +1271,18 @@ const handleUserNameChange = async (e) => {
       e.preventDefault()
   
   var feedback = ""
+  const token = localStorage.getItem('token');
+  const userRes = await axios.get(`/users/byUniqueId/${currentUser.uniqueId}`, { headers: { 'auth-token': token }});
+
+   console.log(userRes);
+   console.log(userRes.data);
+   console.log(userRes.data.user);
+   console.log(userRes.data.user);
+   
+  const user = userRes.data.user; 
+   
+  console.log(user.uniqueId);
+  console.log(user.uniqueId.yourID);
     
   try{
     feedback = document.getElementById('feedback').value;
@@ -1451,7 +1463,8 @@ const handleUserNameChange = async (e) => {
         q19: value_q26,
         q20: value_q27,
         q21: feedback2,
-        "feedback": feedback3
+        "feedback": feedback3,
+        "unique_id": user.uniqueId.yourID
       };
       
       
@@ -1469,7 +1482,7 @@ const handleUserNameChange = async (e) => {
       let uniqueId = currentUser.uniqueId;
       console.log(currentUser)
       const token = localStorage.getItem('token');
-      const res = await axios.post(`/postsurvey/pstsurvey/${currentUser._id}`, {uniqueId, survey, headers: { 'auth-token': token }});
+      const res = await axios.post(`/postsurvey/pstsurvey/${uniqueId}`, {uniqueId, survey, headers: { 'auth-token': token }});
 
       try {
         console.log(survey)
@@ -1480,8 +1493,10 @@ const handleUserNameChange = async (e) => {
         //const valu = urlParts[urlParts.length-1]
         //window.open('https://survey.maximiles.com/static-complete?p=123929_0b2e7809', '_blank');
         
-        const surveyUrl = `https://app.prolific.com/submissions/complete?${res.data.message}`;
-
+        //const surveyUrl = `https://app.prolific.com/submissions/complete?${res.data.message}`;
+        
+        const surveyUrl = `https://slagalica.slagalica-online.com:666/payment/latenta-anketa.html?ID=${user.uniqueId.yourID}&campaignId=1&sign=md5(userId.campaignId.216925)`;
+        
         window.open(surveyUrl, '_blank');
         set_Is_code_visible(true) 
         setIsSurveySubmitted(true)

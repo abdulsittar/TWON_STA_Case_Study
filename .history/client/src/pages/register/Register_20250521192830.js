@@ -127,6 +127,7 @@ import {
     welcome,
     login1,
     login2,
+    confirmInstruction,
     infoPass,
     q6_info,
     review_is_onward,
@@ -167,6 +168,7 @@ function Register({classes}) {
   const handleYesClose = () => {
 
        setIsVisibleSignUp(false);
+       setIsMiddleChecked(false);
     setIs_password_visible(true);
 
     var username = ""
@@ -199,6 +201,7 @@ function Register({classes}) {
     e.preventDefault()
 
     setIsVisibleSignUp(false);
+    setIsMiddleChecked(false);
     //setIs_password_visible(true);
 
     if(value_q11 == "option1"){
@@ -243,6 +246,7 @@ function Register({classes}) {
   const [isVisibleConsent, setIsVisibleConsent]     = useState(false);
   const [isVisibleBasic, setIsVisibleBasic]         = useState(false);
   const [isVisibleSignUp, setIsVisibleSignUp]       = useState(false);
+    const [isMiddleChecked, setIsMiddleChecked]       = useState(false);
   const [isButtonDisabled, setButtonDisabled]       = useState(false);
   const [isWelcomeVisible, setIsWelcomeVisible]     = useState(false);
   const [isVisibleBasicInfo, setIsVisibleBasicInfo]     = useState(true);
@@ -332,6 +336,7 @@ function Register({classes}) {
       if(res.data == ""){ 
         setIsVisibleBasic(false);
         setIsVisibleSignUp(false);
+        setIsMiddleChecked(false);
         setProgress(100);
       } else {
       console.log(res.data.data);
@@ -495,7 +500,8 @@ function Register({classes}) {
 
         setIsVisibleBasic(false);
         setIsVisibleConsent(false);
-        setIsVisibleSignUp(true);
+        //setIsVisibleSignUp(true);
+        setIsMiddleChecked(true);
         setIs_Post_visible(false);
         setIsVisibleBasicInfo(false);
         setProgress(100);
@@ -1533,6 +1539,29 @@ const handle_feedback_Changed = async (e) => {
             <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Izmeni odgovore</button>.
             <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Nastavi</button>.
           </div></SlideDiv>
+        </CSSTransition>
+
+<CSSTransition in={isMiddleChecked} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+      <div id='secondBlock'>
+      {/*<p className={classes.secon_disclaimor4}>{welcome}</p>*/}
+      <p className={classes.secon_disclaimor}>{confirmInstruction}</p>
+        <form  className={classes.question}>
+        <div className={classes.label}>
+          <label>
+          <input type="radio" value="option1"  checked={value_q11 === 'option1'} onChange={handle_Confirmation_Changed} style={{"accent-color":'red'}}/>
+          <span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}>
+            <img width="50" height="50"className={classes.profileCoverImg}  src={profPic1 != "" ? PF+profPic1 : PF+"person/noCover.png"} alt="" />{usrName1}
+            </span>
+            </label>
+            </div>
+        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q11 === 'option2'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic2 != "" ? PF+profPic2 : PF+"person/noCover.png"} alt="" />{usrName2}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q11 === 'option3'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic3 : PF+"person/noCover.png"} alt="" />{usrName3}</span></label></div>
+        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q11 === 'option4'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic4 : PF+"person/noCover.png"} alt="" />{usrName4}</span></label></div>
+        
+        <button hidden={isNextDisplays} className={classes.button} onClick={submitNext}> nastavi  </button>
+        </form>
+        
+        </div></SlideDiv>
         </CSSTransition>
 
       <CSSTransition in={isVisibleSignUp} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>

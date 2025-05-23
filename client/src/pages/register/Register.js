@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { withStyles } from '@material-ui/core/styles';
-import {styles} from './registerPageStyle'
+import { styles } from './registerPageStyle'
 import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import { render } from "react-dom";
@@ -19,9 +19,9 @@ import LoadingBar from "react-top-loading-bar";
 
 import { Buffer } from 'buffer';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify'; 
+import { ToastContainer } from 'react-toastify';
 import { useScrollBy } from "react-use-window-scroll";
-import {  AlertDialog,  AlertDialogLabel,  AlertDialogDescription,  AlertDialogOverlay,  AlertDialogContent,} from "@reach/alert-dialog";
+import { AlertDialog, AlertDialogLabel, AlertDialogDescription, AlertDialogOverlay, AlertDialogContent, } from "@reach/alert-dialog";
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -62,78 +62,85 @@ import {
   dataprot_13,
   datasharingHEADING_14,
   datasharing_15,
-    retentionHEADING_16,
-    retention_17,
-    furtherHEADING_18,
-    further_19,
-    complaints_20,
-    best_21,
-    nme_22,
-    q0_info,
-    q0,
-    welcome2,
-    consentHEADING_23,
-    consent_24,
-    weitere,
-    jaa,
-    neinn,
-    heading_one,
-    q1,
-    ja2,
-    nein2,
-    q2,
-    plzCon,
-    screen, 
-    enony,
-    note,
-    q2_op1,
-    q2_op2,
-    q2_op3,
-    q3,
-    q3_op1,
-    q3_op2,
-    q3_op3,
-    q3_op4,
-    q3_op5,
-    q3_op6,
-    q3_op7,
-    q4,
-    q4_op1,
-    q4_op2,
-    q4_op3,
-    q4_op4,
-    q4_op5,
-    q4_op6,
-    q4_op7,
-    q5,
-    q5_op1,
-    q5_op2,
-    q6, 
-    q7,
-    q7_op1,
-    q7_op2,
-    q7_op3,
-    q7_op4,
-    q7_op5,
-    q7_op6,
-    q7_op7,
-    q8,
-    q8_op1,
-    q8_op2,
-    q8_op3,
-    q8_op4,
-    q8_op5,
-    dank,
-    welcome,
-    login1,
-    login2,
-    infoPass,
-    q6_info,
-    review_is_onward,
+  retentionHEADING_16,
+  retention_17,
+  furtherHEADING_18,
+  further_19,
+  complaints_20,
+  best_21,
+  nme_22,
+  q0_info,
+  q0,
+  welcome2,
+  consentHEADING_23,
+  consent_24,
+  weitere,
+  jaa,
+  neinn,
+  heading_one,
+  q1,
+  ja2,
+  nein2,
+  q2,
+  plzCon,
+  screen,
+  enony,
+  note,
+  q2_op1,
+  q2_op2,
+  q2_op3,
+  q3,
+  q3_op1,
+  q3_op2,
+  q3_op3,
+  q3_op4,
+  q3_op5,
+  q3_op6,
+  q3_op7,
+  q4,
+  q4_op1,
+  q4_op2,
+  q4_op3,
+  q4_op4,
+  q4_op5,
+  q4_op6,
+  q4_op7,
+  q5,
+  q5_op1,
+  q5_op2,
+  q6,
+  q7,
+  q7_op1,
+  q7_op2,
+  q7_op3,
+  q7_op4,
+  q7_op5,
+  q7_op6,
+  q7_op7,
+  q8,
+  q8_op1,
+  q8_op2,
+  q8_op3,
+  q8_op4,
+  q8_op5,
+  dank,
+  welcome,
+  login1,
+  login2,
+  confirmInstruction1,
+  confirmInstruction2,
+  confirmInstruction3,
+  confirmInstruction4,
+  confirmInstruction5,
+
+  infoPass,
+  q6_info,
+  q6_op1, q6_op2, q6_op3, q6_op4, q6_op5,
+  review_is_onward,
 } from '../../constants_STA';
 import { Unstable_Grid2 } from '@mui/material';
 
-function Register({classes}) {
+function Register({ classes }) {
   const history = useHistory();
   const scrollBy = useScrollBy();
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -142,7 +149,7 @@ function Register({classes}) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  const {user, isFetching, error, dispatch} = useContext(AuthContext);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const [passwordErr, setPasswordErr] = useState('');
   const [shouldSendEvent, setShouldSendEvent] = useState(false);
   const [isSurveyChecked, setIsSurveyChecked] = useState(true);
@@ -151,7 +158,7 @@ function Register({classes}) {
   const [zipcode, setZipcode] = useState("");
   const [prolific_Code, set_Prolific_Code] = useState("");
   const [isUserReviewing, setIsUserReviewing] = useState(false);
-  
+
   const [showDialog, setShowDialog] = React.useState(false);
   const cancelRef = React.useRef();
 
@@ -163,96 +170,103 @@ function Register({classes}) {
     setOpen(false);
     stValue_q11("");
   };
-  
+
   const handleYesClose = () => {
 
-       setIsVisibleSignUp(false);
+    setIsVisibleSignUp(false);
+    setIsMiddleChecked(false);
     setIs_password_visible(true);
 
     var username = ""
     var proPic = ""
 
-    if(value_q11 == "option1"){
+    if (value_q11 == "option1") {
       setUsername(usrName1)
       setProPic(profPic1)
-      
 
-    }else if(value_q11 == "option2"){
+
+    } else if (value_q11 == "option2") {
       setUsername(usrName2)
       setProPic(profPic2)
 
-    }else if(value_q11 == "option3"){
+    } else if (value_q11 == "option3") {
       setUsername(usrName3)
       setProPic(profPic3)
 
-    }else if(value_q11 == "option4"){
+    } else if (value_q11 == "option4") {
       setUsername(usrName4)
       setProPic(profPic4)
 
     }
 
-                  setOpen(false);    
-    
+    setOpen(false);
+
   };
 
-  const submitNext = async (e) => { 
+  const submitNext = async (e) => {
     e.preventDefault()
 
     setIsVisibleSignUp(false);
+    setIsMiddleChecked(false);
     //setIs_password_visible(true);
 
-    if(value_q11 == "option1"){
+    if (value_q11 == "option1") {
       setUsername(usrName1)
       setProPic(profPic1)
       setVersion(version1)
       submitPost(password, usrName1, version1, profPic1)
 
-    }else if(value_q11 == "option2"){
+    } else if (value_q11 == "option2") {
       setUsername(usrName2)
       setProPic(profPic2)
       setVersion(version2)
       submitPost(password, usrName2, version2, profPic2)
 
-    }else if(value_q11 == "option3"){
+    } else if (value_q11 == "option3") {
       setUsername(usrName3)
       setProPic(profPic3)
       setVersion(version3)
       submitPost(password, usrName3, version3, profPic3)
-    }else if(value_q11 == "option4"){
+    } else if (value_q11 == "option4") {
       setUsername(usrName4)
       setProPic(profPic4)
       setVersion(version4)
       submitPost(password, usrName4, version4, profPic4)
 
-    }  
-};
+    }
+  };
 
 
-  const destroyStuff = () => {    console.log("Destroyed!");    setShowDialog(false);  };
+  const destroyStuff = () => { console.log("Destroyed!"); setShowDialog(false); };
 
   const [username, setUsername] = useState("");
   const [proPic, setProPic] = useState("");
   const [version, setVersion] = useState("");
-  const [demographics, setDemographics] = useState(null);
-  
+
   const [version1, setVersion1] = useState("");
   const [version2, setVersion2] = useState("");
   const [version3, setVersion3] = useState("");
   const [version4, setVersion4] = useState("");
 
   const [uniqId, setUniqId] = useState('');
-  const [isVisibleConsent, setIsVisibleConsent]     = useState(false);
-  const [isVisibleBasic, setIsVisibleBasic]         = useState(false);
-  const [isVisibleSignUp, setIsVisibleSignUp]       = useState(false);
-  const [isButtonDisabled, setButtonDisabled]       = useState(false);
-  const [isWelcomeVisible, setIsWelcomeVisible]     = useState(false);
-  const [isVisibleBasicInfo, setIsVisibleBasicInfo]     = useState(true);
-  const [is_review_is_onward, setIs_review_is_onward]     = useState(true);
-  
-  
+  const [isVisibleConsent, setIsVisibleConsent] = useState(false);
+  const [isVisibleBasic, setIsVisibleBasic] = useState(false);
+  const [isVisibleSignUp, setIsVisibleSignUp] = useState(false);
+  const [isMiddleChecked, setIsMiddleChecked] = useState(false);
+  const [isMiddleChecked2, setIsMiddleChecked2] = useState(false);
+
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const [isWelcomeVisible, setIsWelcomeVisible] = useState(false);
+  const [isVisibleBasicInfo, setIsVisibleBasicInfo] = useState(true);
+  const [is_review_is_onward, setIs_review_is_onward] = useState(true);
+
+
   const [isPostButtonDisplays, setIsPostButtonDisplays] = useState(true);
-  const [isNextDisplays, setIsNextDisplays]     = useState(true);
-  
+  const [isNextDisplays, setIsNextDisplays] = useState(true);
+
+
+  const [valueRUS, setValueRUS] = useState(false);
+
 
   const [is_Q1_visible, setIs_Q1_visible] = useState(false);
   const [is_Q2_visible, setIs_Q2_visible] = useState(false);
@@ -282,11 +296,13 @@ function Register({classes}) {
   const [usrName2, setUsrName2] = useState("");
   const [usrName3, setUsrName3] = useState("");
   const [usrName4, setUsrName4] = useState("");
-  
+
+  const [demographics, setDemographics] = useState(null);
+
   const [originalName, setOriginalName] = useState("");
 
   const [password4, setPassword4] = useState("");
-  
+
 
   const [value_q0, stValue_q0] = useState('');
   const [value_q2, stValue_q2] = useState('');
@@ -300,228 +316,230 @@ function Register({classes}) {
   const [value_q10, stValue_q10] = useState('');
   const [value_q11, stValue_q11] = useState('');
   const [value_confirmation, stValue_confirmation] = useState('');
-  
+
 
   const initialized = useRef(false);
 
   useEffect(() => {
     console.log("uniqId");
     const urlParts = window.location.pathname.split('/');
-    const valu = urlParts[urlParts.length-1]
+    const valu = urlParts[urlParts.length - 1]
     console.log(valu);
     setUniqId(valu);
     console.log(uniqId);
     isUserAlreadySubmittedSurvey(valu);
-    
+
     if (textareaRef.current) {
       textareaRef.current.focus();
     }
 
-	}, []);
+  }, []);
 
   const labels = [q1_op1, q1_op2, q1_op3, q1_op4, q1_op5];
   const labels2 = [procedure_8_2, procedure_8_3, procedure_8_4];
-  
+
   const getRandomNumber = () => Math.floor(Math.random() * 4) + 1;
   const isUserAlreadySubmittedSurvey = async (val) => {
     try {
       setProgress(30);
       const token = localStorage.getItem('token');
-      const res = await axios.post(`/presurvey/isSubmitted/${val}`,{ headers: { 'auth-token': token }}); 
+      const res = await axios.post(`/presurvey/isSubmitted/${val}`, { headers: { 'auth-token': token } });
       console.log(res);
       console.log(res.data);
-      if(res.data == ""){ 
+      if (res.data == "") {
         setIsVisibleBasic(false);
         setIsVisibleSignUp(false);
+        setIsMiddleChecked(false);
         setProgress(100);
       } else {
-      console.log(res.data.data);
-      setIsSurveyChecked(false);
-      console.log(isSurveyChecked);
-      setIs_review_is_onward(false);
-      setUniqId(val);
+        console.log(res.data.data);
+        setIsSurveyChecked(false);
+        console.log(isSurveyChecked);
+        setIs_review_is_onward(false);
+        setUniqId(val);
 
-      if(res.data.login == true){
-        const urlParts = window.location.pathname.split('/');
-        const valu = urlParts[urlParts.length-1]
-        history.push(`/login/${valu}`);
-        setProgress(100);
+        if (res.data.login == true) {
+          const urlParts = window.location.pathname.split('/');
+          const valu = urlParts[urlParts.length - 1]
+          history.push(`/login/${valu}`);
+          setProgress(100);
 
-      } else if(res.data.data == true){
-      
-        console.log(res.data.users[0])
-        
-        //const usr1 = Buffer.from(res.data.users[0], 'latin1').toString('utf8');
-        //const usr2 = Buffer.from(res.data.users[1], 'latin1').toString('utf8');
-        //const usr3 = Buffer.from(res.data.users[2], 'latin1').toString('utf8');
-        //const usr4 = Buffer.from(res.data.users[3], 'latin1').toString('utf8');
-        
-        const usr1 =  res.data.users[0]["user"] 
-        
-        console.log(usr1["user"])
-        
-        const usr2 =  res.data.users[1]["user"]
-        const usr3 =  res.data.users[2]["user"] 
-        const usr4 =  res.data.users[3]["user"] 
-        
-        const users = [usr1, usr2, usr3, usr4];
-        
-        console.log(users)
-        const shuffleArray = (array) => {
-          for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-          }
-          return array;
-        };
-        
-        const shuffledUsers = shuffleArray(users);
-        console.log(shuffledUsers);
+        } else if (res.data.data == true) {
 
+          console.log(res.data.users[0])
 
-        const fixSpecialCharacters = (text) => {
-          if (!text) return '';
-          
-          // Debug: Log the exact text we're getting to see character codes
-          console.log("Original text:", text);
-          console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
-          
-          // Case insensitive regex for Roze P ela that's more forgiving of spaces
-          if (/roze\s*p\s*ela/i.test(text)) {
-            return 'Roze Pčela';
-          }
-          
-          // First handle specific complete usernames
-          if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
-          if (text === 'Roze P ela') return 'Roze Pčela';
-          if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
-          if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
-          
-          // Then apply general character replacements
-          return text
-            .replace(/~/g, 'ž')           // Replace tilde with ž
-            .replace(/Je~/g, 'Jež')       // Fix specifically Je~
-            .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
-            .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
-            .replace(/P /g, 'Pč')         // More general case for P+space
-            .replace(/%7E/g, 'ž')         // URL-encoded tilde
-            .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
-            .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
-            .replace(/\+/g, 'č')          // Some systems encode č as +
-            .replace(/Ä/g, 'č')           // Common encoding issue
-            .replace(/Ä\u008D/g, 'č')     // Another possible encoding
-            .replace(/c\u030C/g, 'č');    // c with caron
-        };
+          //const usr1 = Buffer.from(res.data.users[0], 'latin1').toString('utf8');
+          //const usr2 = Buffer.from(res.data.users[1], 'latin1').toString('utf8');
+          //const usr3 = Buffer.from(res.data.users[2], 'latin1').toString('utf8');
+          //const usr4 = Buffer.from(res.data.users[3], 'latin1').toString('utf8');
 
-        const fixSpecialCharacters45 = (text) => {
-          if (!text) return '';
-          
-          // Debug: Log the exact text we're getting to see character codes
-          console.log("Original text:", text);
-          console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
-          
-          // Case insensitive regex for Roze P ela that's more forgiving of spaces
-          if (/roze\s*p\s*ela/i.test(text)) {
-            return 'Roze Pčela';
-          }
-          
-          // First handle specific complete usernames
-          if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
-          if (text === 'Roze P ela') return 'Roze Pčela';
-          if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
-          if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
-          
-          // Then apply general character replacements
-          return text
-            .replace(/~/g, 'ž')           // Replace tilde with ž
-            .replace(/Je~/g, 'Jež')       // Fix specifically Je~
-            .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
-            .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
-            .replace(/P /g, 'Pč')         // More general case for P+space
-            .replace(/%7E/g, 'ž')         // URL-encoded tilde
-            .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
-            .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
-            .replace(/\+/g, 'č')          // Some systems encode č as +
-            .replace(/Ä/g, 'č')           // Common encoding issue
-            .replace(/Ä\u008D/g, 'č')     // Another possible encoding
-            .replace(/c\u030C/g, 'č');    // c with caron
-        };
-        
-        setProfPic1(`${shuffledUsers[0].profilePicture}`);
-        setUsrName1(fixSpecialCharacters(Buffer.from(shuffledUsers[0].username, 'latin1').toString('utf8')));
-        setVersion1(`${shuffledUsers[0].version}`);
-        console.log(version1);
+          const usr1 = res.data.users[0]["user"]
 
-        setProfPic2(`${shuffledUsers[1].profilePicture}`);
-        setUsrName2(fixSpecialCharacters(Buffer.from(shuffledUsers[1].username, 'latin1').toString('utf8')));
-        setVersion2(`${shuffledUsers[1].version}`);
-        console.log(version2);
+          console.log(usr1["user"])
 
-        setProfPic3(`${shuffledUsers[2].profilePicture}`);
-        setUsrName3(fixSpecialCharacters(Buffer.from(shuffledUsers[2].username, 'latin1').toString('utf8')));
-        setVersion3(`${shuffledUsers[2].version}`);
-        console.log(version3);
+          const usr2 = res.data.users[1]["user"]
+          const usr3 = res.data.users[2]["user"]
+          const usr4 = res.data.users[3]["user"]
 
-        setProfPic4(`${shuffledUsers[3].profilePicture}`);
-        setUsrName4(fixSpecialCharacters(Buffer.from(shuffledUsers[3].username, 'latin1').toString('utf8')));
-        setVersion4(`${shuffledUsers[3].version}`);
-        console.log(version4);
-         
-        setOriginalName(Buffer.from(shuffledUsers[3].username_second, 'latin1').toString('utf8'));
+          const users = [usr1, usr2, usr3, usr4];
 
-        
-        //console.log(usr1);
-        //setProfPic1(`${usr1.profilePicture}`);
-        //setUsrName1(usr1.username);
-        //setVersion1(`${usr1.version}`);
-        //console.log(version1);
+          console.log(users)
+          const shuffleArray = (array) => {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+          };
+
+          const shuffledUsers = shuffleArray(users);
+          console.log(shuffledUsers);
 
 
-        //setProfPic2(`${usr2.profilePicture}`);
-        //setUsrName2(usr2.username);
-        //setVersion2(`${usr2.version}`);
-        //console.log(version2);
+          const fixSpecialCharacters = (text) => {
+            if (!text) return '';
 
-        //setProfPic3(`${usr3.profilePicture}`);
-        //setUsrName3(usr3.username);
-        //setVersion3(`${usr3.version}`);
-        //console.log(version3);
-        
-        //setProfPic4(`${usr4.profilePicture}`);
-        //setUsrName4(usr4.username);
-        //setVersion4(`${usr4.version}`);
-        //console.log(version4);
+            // Debug: Log the exact text we're getting to see character codes
+            console.log("Original text:", text);
+            console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
 
-        setPassword4(usr1.password);
+            // Case insensitive regex for Roze P ela that's more forgiving of spaces
+            if (/roze\s*p\s*ela/i.test(text)) {
+              return 'Roze Pčela';
+            }
 
-        setIsVisibleBasic(false);
-        setIsVisibleConsent(false);
-        setIsVisibleSignUp(true);
-        setIs_Post_visible(false);
-        setIsVisibleBasicInfo(false);
-        setProgress(100);
+            // First handle specific complete usernames
+            if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
+            if (text === 'Roze P ela') return 'Roze Pčela';
+            if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
+            if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
 
-      }else{
+            // Then apply general character replacements
+            return text
+              .replace(/~/g, 'ž')           // Replace tilde with ž
+              .replace(/Je~/g, 'Jež')       // Fix specifically Je~
+              .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
+              .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
+              .replace(/P /g, 'Pč')         // More general case for P+space
+              .replace(/%7E/g, 'ž')         // URL-encoded tilde
+              .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
+              .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
+              .replace(/\+/g, 'č')          // Some systems encode č as +
+              .replace(/Ä/g, 'č')           // Common encoding issue
+              .replace(/Ä\u008D/g, 'č')     // Another possible encoding
+              .replace(/c\u030C/g, 'č');    // c with caron
+          };
 
-        setIsVisibleBasic(true);
-        setProgress(100);
-        
-      }
+          const fixSpecialCharacters45 = (text) => {
+            if (!text) return '';
+
+            // Debug: Log the exact text we're getting to see character codes
+            console.log("Original text:", text);
+            console.log("Character codes:", Array.from(text).map(c => c.charCodeAt(0)));
+
+            // Case insensitive regex for Roze P ela that's more forgiving of spaces
+            if (/roze\s*p\s*ela/i.test(text)) {
+              return 'Roze Pčela';
+            }
+
+            // First handle specific complete usernames
+            if (text === 'Crni Je~' || text === 'Crni Je%7E') return 'Crni Jež';
+            if (text === 'Roze P ela') return 'Roze Pčela';
+            if (text === 'Siva Orka') return 'Siva Orka';  // Already correct
+            if (text === 'Plavo Pile') return 'Plavo Pile';  // Already correct
+
+            // Then apply general character replacements
+            return text
+              .replace(/~/g, 'ž')           // Replace tilde with ž
+              .replace(/Je~/g, 'Jež')       // Fix specifically Je~
+              .replace(/Roze P\s*ela/g, 'Roze Pčela')   // More flexible pattern
+              .replace(/P\s+ela/g, 'Pčela')   // More flexible pattern for P ela
+              .replace(/P /g, 'Pč')         // More general case for P+space
+              .replace(/%7E/g, 'ž')         // URL-encoded tilde
+              .replace(/\u00A0/g, 'č')      // Replace non-breaking space with č
+              .replace(/\u0020ela/g, 'čela') // Replace space+ela with čela
+              .replace(/\+/g, 'č')          // Some systems encode č as +
+              .replace(/Ä/g, 'č')           // Common encoding issue
+              .replace(/Ä\u008D/g, 'č')     // Another possible encoding
+              .replace(/c\u030C/g, 'č');    // c with caron
+          };
+
+          setProfPic1(`${shuffledUsers[0].profilePicture}`);
+          setUsrName1(fixSpecialCharacters(Buffer.from(shuffledUsers[0].username, 'latin1').toString('utf8')));
+          setVersion1(`${shuffledUsers[0].version}`);
+          console.log(version1);
+
+          setProfPic2(`${shuffledUsers[1].profilePicture}`);
+          setUsrName2(fixSpecialCharacters(Buffer.from(shuffledUsers[1].username, 'latin1').toString('utf8')));
+          setVersion2(`${shuffledUsers[1].version}`);
+          console.log(version2);
+
+          setProfPic3(`${shuffledUsers[2].profilePicture}`);
+          setUsrName3(fixSpecialCharacters(Buffer.from(shuffledUsers[2].username, 'latin1').toString('utf8')));
+          setVersion3(`${shuffledUsers[2].version}`);
+          console.log(version3);
+
+          setProfPic4(`${shuffledUsers[3].profilePicture}`);
+          setUsrName4(fixSpecialCharacters(Buffer.from(shuffledUsers[3].username, 'latin1').toString('utf8')));
+          setVersion4(`${shuffledUsers[3].version}`);
+          console.log(version4);
+
+          setOriginalName(Buffer.from(shuffledUsers[3].username_second, 'latin1').toString('utf8'));
+
+
+          //console.log(usr1);
+          //setProfPic1(`${usr1.profilePicture}`);
+          //setUsrName1(usr1.username);
+          //setVersion1(`${usr1.version}`);
+          //console.log(version1);
+
+
+          //setProfPic2(`${usr2.profilePicture}`);
+          //setUsrName2(usr2.username);
+          //setVersion2(`${usr2.version}`);
+          //console.log(version2);
+
+          //setProfPic3(`${usr3.profilePicture}`);
+          //setUsrName3(usr3.username);
+          //setVersion3(`${usr3.version}`);
+          //console.log(version3);
+
+          //setProfPic4(`${usr4.profilePicture}`);
+          //setUsrName4(usr4.username);
+          //setVersion4(`${usr4.version}`);
+          //console.log(version4);
+
+          setPassword4(usr1.password);
+
+          setIsVisibleBasic(false);
+          setIsVisibleConsent(false);
+          //setIsVisibleSignUp(true);
+          setIsMiddleChecked(true);
+          setIs_Post_visible(false);
+          setIsVisibleBasicInfo(false);
+          setProgress(100);
+
+        } else {
+
+          setIsVisibleBasic(true);
+          setProgress(100);
+
+        }
       }
     } catch (err) {
       console.log(err);
-      setPasswordErr({A_user_with});
+      setPasswordErr({ A_user_with });
       setProgress(100);
 
     }
     // if not submitted the survey
-        //show third block
+    //show third block
 
     // if submitted the survey, check if user registered
 
-    };
+  };
 
-    const fadeInOut = keyframes`
+  const fadeInOut = keyframes`
     0% {
       opacity: 0;
       transform: translateY(-20px);
@@ -531,7 +549,7 @@ function Register({classes}) {
       transform: translateY(0);
     }
   `;
-  
+
   const fadeOut = keyframes`
     0% {
       opacity: 1;
@@ -542,7 +560,7 @@ function Register({classes}) {
       transform: translateY(-20px);
     }
   `;
-  
+
   // Styled component with dynamic animation
   const AnimatedDiv = styled.div`
     &.fade-enter {
@@ -551,8 +569,8 @@ function Register({classes}) {
     &.fade-exit {
       animation: ${fadeOut} 1s forwards;
     }`;
-    
-    const slideIn = keyframes`
+
+  const slideIn = keyframes`
   from {
     opacity: 0;
     transform: translateX(100%);
@@ -563,7 +581,7 @@ function Register({classes}) {
   }
 `;
 
-const slideOut = keyframes`
+  const slideOut = keyframes`
   from {
     opacity: 1;
     transform: translateX(0);
@@ -574,18 +592,18 @@ const slideOut = keyframes`
   }
 `;
 
-/*const SlideDiv = styled.div`
-  &.slide-enter {
-    animation: ${slideIn} 1s forwards;
-    animation-fill-mode: forwards;
-  }
-  &.slide-exit {
-    animation: ${slideOut} 1s forwards;
-    animation-fill-mode: forwards;
-  }
-`;*/
+  /*const SlideDiv = styled.div`
+    &.slide-enter {
+      animation: ${slideIn} 1s forwards;
+      animation-fill-mode: forwards;
+    }
+    &.slide-exit {
+      animation: ${slideOut} 1s forwards;
+      animation-fill-mode: forwards;
+    }
+  `;*/
 
-const SlideDiv = styled.div`
+  const SlideDiv = styled.div`
   &.slide-enter {
     animation: ${slideIn} 1s forwards;
     opacity: 0;
@@ -603,360 +621,436 @@ const SlideDiv = styled.div`
     opacity: 0;
   }
 `;
-    
 
 
-    const handle_Confirm_Changed = async (e) => { 
-      stValue_confirmation(e.target.value);
-      const pass = document.getElementById('password').value;
-      setPassword(pass)
-      
-      if(e.target.value == "option1"){
-        setIs_password_visible(false);
-        setIsWelcomeVisible(true);
-        
-      } else {
-        setIsWelcomeVisible(false);
-        setIs_password_visible(true);
-      } 
+
+  const handle_Confirm_Changed = async (e) => {
+    stValue_confirmation(e.target.value);
+    const pass = document.getElementById('password').value;
+    setPassword(pass)
+
+    if (e.target.value == "option1") {
+      setIs_password_visible(false);
+      setIsWelcomeVisible(true);
+
+    } else {
+      setIsWelcomeVisible(false);
+      setIs_password_visible(true);
+    }
   };
-  
+
   const disableDivState = (divId) => {
     const div = document.getElementById(divId);
-    
+
     if (div) {
-      div.style.pointerEvents =  'none';  // Disable/enable interaction
-      div.style.opacity =  0.5 ; // Optional: dim the content when disabled
+      div.style.pointerEvents = 'none';  // Disable/enable interaction
+      div.style.opacity = 0.5; // Optional: dim the content when disabled
     }
   };
-  
+
   const enableDivState = (divId) => {
     const div = document.getElementById(divId);
-    
+
     if (div) {
-      div.style.pointerEvents =  'auto';  // Disable/enable interaction
-      div.style.opacity =  1; // Optional: dim the content when disabled
+      div.style.pointerEvents = 'auto';  // Disable/enable interaction
+      div.style.opacity = 1; // Optional: dim the content when disabled
     }
   };
-  
-  
-  const handle_Q0_Changed = async (e) => { 
-    stValue_q0(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value == "option1"){
-      //setIsVisibleConsent(true);
-      
-      
-      setIs_Q1_visible(true);
-      setIs_review_is_onward(true);
-      setIs_Q2_visible(false);
-      setIs_Q3_visible(false);
-      setIs_Q4_visible(false);
-      disableDivState('Q2');
-      disableDivState('Q3');
-      disableDivState('Q4');
-      setIsVisibleBasicInfo(false);
-      setIsVisibleBasic(false)
-    
-      
-      setIs_Q5_visible(false);
-      setIs_Q6_visible(false);
-      setIs_Q7_visible(false);
-      setIs_Q8_visible(false);
-      setIs_Q9_visible(false);
-      setIs_Q10_visible(false);
-      setIs_TestingFeedBack_visible(false); 
-      setIs_dank_visible(false);
-      //scrollBy({ top: 1000, left: 0, behavior: "smooth" })
 
-    } else if(e.target.value == "option2"){
-  
-      setIsVisibleBasicInfo(false);   
-      setIs_Q1_visible(false);
-      setIs_review_is_onward(false);
-      setIs_Q2_visible(false);
-      setIs_Q3_visible(false);
-      setIs_Q4_visible(false);
-      enableDivState('Q2');
-      enableDivState('Q3');
-      enableDivState('Q4');
-      setIs_Q5_visible(false);
-      setIs_Q6_visible(false);
-      setIs_Q7_visible(false);
-      setIs_Q8_visible(false);
-      setIs_Q9_visible(false);
-      setIs_Q10_visible(false);
-      setIs_TestingFeedBack_visible(false);
-      setIs_dank_visible(true);
-      alert("You are not eligible to proceed!");
-    } 
-  }
-};
+  const fetchDemographics = async () => {
+    try {
+      const response = await axios.get('/presurvey/demographics');
+      const data = response.data;
+      return response;
+
+      // Destructure values into variables
+      const maleCount = data.genderCount?.male || 0;
+      const femaleCount = data.genderCount?.female || 0;
+
+      const ageGroup_18_24 = data.ageGroups?.["18-24"] || 0;
+      const ageGroup_25_34 = data.ageGroups?.["25-34"] || 0;
+      const ageGroup_35_44 = data.ageGroups?.["35-44"] || 0;
+      const ageGroup_45_54 = data.ageGroups?.["45-54"] || 0;
+      const ageGroup_55_plus = data.ageGroups?.["55+"] || 0;
+
+      // Now you can use these variables as needed
+      console.log("Males:", maleCount);
+      console.log("Females:", femaleCount);
+      console.log("Age 18-24:", ageGroup_18_24);
+      console.log("Age 25-34:", ageGroup_25_34);
+      console.log("Age 35-44:", ageGroup_35_44);
+      console.log("Age 45-54:", ageGroup_45_54);
+      console.log("Age 55+:", ageGroup_55_plus);
+
+      return response;
+      // You could also set them in state if needed
+      // setMaleCount(maleCount);
+      // setFemaleCount(femaleCount);
+      // ...
+    } catch (error) {
+      console.error("Error fetching demographics:", error);
+    }
+  };
 
 
-const handle_prolific_code = async (e) => { 
-  if(e.target.value != ""){
-    if (/^\d*$/.test(e.target.value)) {
-      let value = e.target.value; 
-      set_Prolific_Code(e.target.value)
-      if(isUserReviewing == false){
-         console.log("nothin")
-      }
-    }else{
-      console.log("nothin")
-    } 
-    } else {
-    
-      set_Prolific_Code("")
-      if(isUserReviewing == false){
-        console.log("nothin")
-      }
-    
-    }  };
+  const handle_Q0_Changed = async (e) => {
+    stValue_q0(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value == "option1") {
+        //setIsVisibleConsent(true);
 
 
-const handle_feedback_Changed = async (e) => {
-    setFeedback(e.target.value); 
-}
-  const handle_age_Changed = async (e) => {
-    if(e.target.value != ""){
-      if (/^\d*$/.test(e.target.value)) {
-        setAge(e.target.value); 
-      if(e.target.value > 17){
-        setIs_Q2_visible(true);
-        setIs_Q3_visible(true);
-        setIs_Q4_visible(true);
-      
+        setIs_Q1_visible(true);
+        setIs_review_is_onward(true);
+        setIs_Q2_visible(false);
+        setIs_Q3_visible(false);
+        setIs_Q4_visible(false);
+        disableDivState('Q2');
+        disableDivState('Q3');
+        disableDivState('Q4');
+        setIsVisibleBasicInfo(false);
+        setIsVisibleBasic(false)
+
+
+        setIs_Q5_visible(false);
+        setIs_Q6_visible(false);
+        setIs_Q7_visible(false);
+        setIs_Q8_visible(false);
+        setIs_Q9_visible(false);
+        setIs_Q10_visible(false);
+        setIs_TestingFeedBack_visible(false);
+        setIs_dank_visible(false);
+        //scrollBy({ top: 1000, left: 0, behavior: "smooth" })
+
+      } else if (e.target.value == "option2") {
+
+        setIsVisibleBasicInfo(false);
+        setIs_Q1_visible(false);
+        setIs_review_is_onward(false);
+        setIs_Q2_visible(false);
+        setIs_Q3_visible(false);
+        setIs_Q4_visible(false);
         enableDivState('Q2');
         enableDivState('Q3');
         enableDivState('Q4');
+        setIs_Q5_visible(false);
+        setIs_Q6_visible(false);
+        setIs_Q7_visible(false);
+        setIs_Q8_visible(false);
+        setIs_Q9_visible(false);
+        setIs_Q10_visible(false);
+        setIs_TestingFeedBack_visible(false);
+        setIs_dank_visible(true);
+        alert("You are not eligible to proceed!");
       }
+    }
+  };
+
+
+  const handle_prolific_code = async (e) => {
+    if (e.target.value != "") {
+      if (/^\d*$/.test(e.target.value)) {
+        let value = e.target.value;
+        set_Prolific_Code(e.target.value)
+        if (isUserReviewing == false) {
+          console.log("nothin")
+        }
+      } else {
+        console.log("nothin")
+      }
+    } else {
+
+      set_Prolific_Code("")
+      if (isUserReviewing == false) {
+        console.log("nothin")
+      }
+
+    }
+  };
+
+
+  const handle_feedback_Changed = async (e) => {
+    setFeedback(e.target.value);
+  }
+  const handle_age_Changed = async (e) => {
+    if (e.target.value != "") {
+      if (/^\d*$/.test(e.target.value)) {
+        setAge(e.target.value);
+        if (e.target.value > 17) {
+          setIs_Q2_visible(true);
+          setIs_Q3_visible(true);
+          setIs_Q4_visible(true);
+
+          enableDivState('Q2');
+          enableDivState('Q3');
+          enableDivState('Q4');
+        }
       }
       //scrollBy({ top: 500, left: 0, behavior: "smooth" })
 
-    } else {  
-      setAge(e.target.value); 
+    } else {
+      setAge(e.target.value);
       disableDivState('Q2');
       disableDivState('Q3');
       disableDivState('Q4');
-      
+
       //setIs_Q2_visible(false);
     }
   };
-  
+
 
   const handPostTextChange = async (e) => {
-    if(e.target.value != ""){
+    if (e.target.value != "") {
       setIsPostButtonDisplays(false)
       //scrollBy({ top: 500, left: 0, behavior: "smooth" })
 
     } else {
       setIsPostButtonDisplays(true);
 
-    }  
-  };
-  
-
-  const handle_Q2_Changed = async (e) => { 
-    stValue_q2(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value != "" && value_q3 != "" && value_q2 != "" ){
-    
-      setIs_Q5_visible(true);
-      setIs_Q6_visible(true);
-      setIs_Q4_visible(false);
-      setIs_Q3_visible(false);
-      setIs_Q2_visible(false);
-      setIs_Q1_visible(false);
-      setIs_review_is_onward(false);
-      setIsVisibleBasic(false);
-      
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-
-    }
-    //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-    /*if(e.target.value != ""){
-      setIs_Q3_visible(true);
-      scrollBy({ top: 500, left: 0, behavior: "smooth" })
-
-    } else {
-      setIs_Q3_visible(false);
-    } */ 
     }
   };
-  const handle_Q3_Changed = async (e) => { 
-    stValue_q3(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value != "" && value_q4 != "" && value_q2 != "" ){
-      setIs_Q5_visible(true);
-      setIs_Q6_visible(true);
-      
-      setIs_Q4_visible(false);
-      setIs_Q3_visible(false);
-      setIs_Q2_visible(false);
-      setIs_Q1_visible(false);
-      setIs_review_is_onward(false);
-      
-      setIsVisibleBasic(false);
-      
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
 
-    } else {
-      //setIs_Q4_visible(false);
-    }  
-  }
-  };
 
-  const handle_Q4_Changed = async (e) => { 
-    stValue_q4(e.target.value); 
-    if(isUserReviewing == false){
-    //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-    if(e.target.value != "" && value_q3 != "" && value_q2 != "" ){
-      setIs_Q5_visible(true);
-      setIs_Q6_visible(true);
-      
-      setIs_Q4_visible(false);
-      setIs_Q3_visible(false);
-      setIs_Q2_visible(false);
-      setIs_Q1_visible(false);
-      setIs_review_is_onward(false);
-      
-      setIsVisibleBasic(false);
-      
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+  const handle_Q2_Changed = async (e) => {
+    stValue_q2(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value != "" && value_q3 != "" && value_q2 != "") {
 
-    } else {
-      setIs_Q5_visible(false);
-      setIs_Q6_visible(false);
-    
-      setIs_Q4_visible(true); 
-      setIs_Q3_visible(true);
-      setIs_Q2_visible(true);
-      setIs_Q1_visible(true);
-      setIs_review_is_onward(true);
-      
-      setIsVisibleBasic(false);
-    } 
-  }
-    
-    
-  };
-  const handle_Q5_Changed = async (e) => { 
-    stValue_q5(e.target.value); 
-    if(isUserReviewing == false){
-    //scrollBy({ top: 500, left: 0, behavior: "smooth" });
-    if(e.target.value != ""){
-      setIs_Q6_visible(true);
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-
-    } else {
-      setIs_Q6_visible(false);
-    }
-  }
-  };
-  
-  const handle_age_Changed2 = async (e) => { 
-    if(e.target.value != ""){
-      if (/^\d*$/.test(e.target.value)) {
-      let value = e.target.value;
-
-      // Only allow numeric input and ensure it's not longer than two digits
-       
-        stValue_q6(e.target.value);
-        
-        setZipcode(e.target.value)
-        if(isUserReviewing == false){
+        setIs_Q5_visible(true);
         setIs_Q6_visible(true);
-        setIs_Q7_visible(true);
-        setIs_Q8_visible(true);
-        }
-      }else{
-      }
+        setIs_Q4_visible(false);
+        setIs_Q3_visible(false);
+        setIs_Q2_visible(false);
+        setIs_Q1_visible(false);
+        setIs_review_is_onward(false);
+        setIsVisibleBasic(false);
+
         //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      }
+      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+      /*if(e.target.value != ""){
+        setIs_Q3_visible(true);
+        scrollBy({ top: 500, left: 0, behavior: "smooth" })
+  
       } else {
-      
-        setZipcode("")
-        if(isUserReviewing == false){
+        setIs_Q3_visible(false);
+      } */
+    }
+  };
+  const handle_Q3_Changed = async (e) => {
+    stValue_q3(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value != "" && value_q4 != "" && value_q2 != "") {
+        setIs_Q5_visible(true);
+        setIs_Q6_visible(true);
+
+        setIs_Q4_visible(false);
+        setIs_Q3_visible(false);
+        setIs_Q2_visible(false);
+        setIs_Q1_visible(false);
+        setIs_review_is_onward(false);
+
+        setIsVisibleBasic(false);
+
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        //setIs_Q4_visible(false);
+      }
+    }
+  };
+
+  const handle_Q4_Changed = async (e) => {
+    stValue_q4(e.target.value);
+    if (isUserReviewing == false) {
+      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+      if (e.target.value != "" && value_q3 != "" && value_q2 != "") {
+        setIs_Q5_visible(true);
+        setIs_Q6_visible(true);
+
+        setIs_Q4_visible(false);
+        setIs_Q3_visible(false);
+        setIs_Q2_visible(false);
+        setIs_Q1_visible(false);
+        setIs_review_is_onward(false);
+
+        setIsVisibleBasic(false);
+
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        setIs_Q5_visible(false);
         setIs_Q6_visible(false);
-      setIs_Q7_visible(false);
-      setIs_Q8_visible(false);
+
+        setIs_Q4_visible(true);
+        setIs_Q3_visible(true);
+        setIs_Q2_visible(true);
+        setIs_Q1_visible(true);
+        setIs_review_is_onward(true);
+
+        setIsVisibleBasic(false);
+      }
+    }
+
+
+  };
+  const handle_Q5_Changed = async (e) => {
+    stValue_q5(e.target.value);
+    if (isUserReviewing == false) {
+      //scrollBy({ top: 500, left: 0, behavior: "smooth" });
+      if (e.target.value != "") {
+        setIs_Q6_visible(true);
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        setIs_Q6_visible(false);
+      }
+    }
+  };
+
+  const handle_age_Changed2 = async (e) => {
+    if (e.target.value != "") {
+      if (/^\d*$/.test(e.target.value)) {
+        let value = e.target.value;
+
+        // Only allow numeric input and ensure it's not longer than two digits
+
+        stValue_q6(e.target.value);
+
+        setZipcode(e.target.value)
+        if (isUserReviewing == false) {
+          setIs_Q6_visible(true);
+          setIs_Q7_visible(true);
+          setIs_Q8_visible(true);
         }
-      
-      }  };
-      
-  const handle_Q7_Changed = async (e) => { 
-    stValue_q7(e.target.value); 
-    if(e.target.value != ""){
-      if(isUserReviewing == false){
-      setIs_Q8_visible(true);
+      } else {
+      }
       //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-      setIs_Q6_visible(false);
-      setIs_Q5_visible(false);
+    } else {
+
+      setZipcode("")
+      if (isUserReviewing == false) {
+        setIs_Q6_visible(false);
+        setIs_Q7_visible(false);
+        setIs_Q8_visible(false);
+      }
+
+    }
+  };
+
+  const handle_Q6_Changed = async (e) => {
+    stValue_q6(e.target.value);
+    if (e.target.value != "") {
+      if (isUserReviewing == false) {
+        setIs_Q8_visible(true);
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+        setIs_Q7_visible(true);
+        setIs_Q6_visible(true);
+        setIs_Q5_visible(true);
       }
 
     } else {
-      if(isUserReviewing == false){
-      setIs_Q8_visible(false);
+      if (isUserReviewing == false) {
+        setIs_Q8_visible(false);
       }
     }
   };
-  const handle_Q8_Changed = async (e) => { 
-    stValue_q8(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value != ""){
-    
-      setIs_dank_visible(true);
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+
+  const handle_Q7_Changed = async (e) => {
+    stValue_q7(e.target.value);
+    if (e.target.value != "") {
+      if (isUserReviewing == false) {
+        setIs_Q8_visible(true);
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+        setIs_Q6_visible(false);
+        setIs_Q5_visible(false);
+      }
 
     } else {
-      setIs_dank_visible(false);
+      if (isUserReviewing == false) {
+        setIs_Q8_visible(false);
+      }
     }
-  }
-  };
-  const handle_Q9_Changed = async (e) => { 
-    stValue_q9(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value != ""){
-      setIs_Q10_visible(true);
-      
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
-
-    } else {
-      setIs_Q10_visible(false);
-      setIs_TestingFeedBack_visible(false);
-    }
-  }
   };
 
-  const handle_Q10_Changed = async (e) => { 
-    stValue_q10(e.target.value); 
-    if(isUserReviewing == false){
-    if(e.target.value != ""){
-      setIs_dank_visible(true);
-      //scrollBy({ top: 500, left: 0, behavior: "smooth" })
 
-    } else {
-      setIs_dank_visible(false);
+
+  const handle_Q8_Changed = async (e) => {
+    stValue_q8(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value != "") {
+
+        setIs_dank_visible(true);
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        setIs_dank_visible(false);
+      }
     }
-  }
-    
+  };
+  const handle_Q9_Changed = async (e) => {
+    stValue_q9(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value != "") {
+        setIs_Q10_visible(true);
+
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        setIs_Q10_visible(false);
+        setIs_TestingFeedBack_visible(false);
+      }
+    }
   };
 
-  const handle_Q11_Changed = async (e) => { 
-    
-    stValue_q11(e.target.value); 
+  const handle_Q10_Changed = async (e) => {
+    stValue_q10(e.target.value);
+    if (isUserReviewing == false) {
+      if (e.target.value != "") {
+        setIs_dank_visible(true);
+        //scrollBy({ top: 500, left: 0, behavior: "smooth" })
+
+      } else {
+        setIs_dank_visible(false);
+      }
+    }
+
+  };
+
+  const handle_Confirmation_Changed = async (e) => {
+    setValueRUS(e.target.value);
+    setIsMiddleChecked2(true);
+
+  };
+
+
+  const handle_Confirmation_Changed2 = async (e) => {
+
+
+    setIsMiddleChecked2(false);
+    setIsMiddleChecked(false);
+    setIsVisibleSignUp(true)
+  };
+
+
+
+  const handle_Q11_Changed = async (e) => {
+
+    stValue_q11(e.target.value);
     setIsNextDisplays(false);
-    if(e.target.value == "option1"){
+    if (e.target.value == "option1") {
       setSelectedUserName(usrName1);
       setPassword(password)
-      
+
       //handleClickOpen();
 
-    }else if(e.target.value == "option2"){
+    } else if (e.target.value == "option2") {
       setSelectedUserName(usrName2);
       //handleClickOpen();
 
-    }else if(e.target.value == "option3"){
+    } else if (e.target.value == "option3") {
       setSelectedUserName(usrName3);
       //handleClickOpen();
 
@@ -964,31 +1058,12 @@ const handle_feedback_Changed = async (e) => {
   };
 
 
-const fetchDemographics = async () => {
-  try {
-    const response = await axios.get('/presurvey/demographics');
-    console.log("Demographics Data:", response.data);
-    
-  return response;
-    // Optional: do something with the data
-    // e.g., set it in a state variable: setDemographics(response.data);
-  } catch (error) {
-    console.error("Failed to fetch demographics:", error);
-  }
-};
-
-  const reviewButtonChanged = async (e) => { 
+  const reviewButtonChanged = async (e) => {
     e.preventDefault()
-    
-    
-    
-    
-    if(value_q0 != "option2"){
-    setIsUserReviewing(true);
-    
+    if (value_q0 != "option2") {
+      setIsUserReviewing(true);
       setIs_Q1_visible(true);
       setIs_review_is_onward(true);
-      
       setIs_Q2_visible(true);
       setIs_Q3_visible(true);
       setIs_Q4_visible(true);
@@ -998,107 +1073,141 @@ const fetchDemographics = async () => {
       setIs_Q5_visible(true);
       setIs_Q6_visible(true);
       setIs_Q7_visible(true);
-      setIs_Q8_visible(true); 
+      setIs_Q8_visible(true);
       setIs_TestingFeedBack_visible(false);
-      
+
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
     }
   };
 
-  const companyButtonChanged = async (e) => { 
-    e.preventDefault()
-   const response = await fetchDemographics();
-  const data = response?.data;
+  const companyButtonChanged = async (e) => {
+    e.preventDefault();
+const blankUrl = `https://latenta.co/sorry/`;
+    if(value_q6 == "option5"){
 
-  if (!data) {
-    toast.error("Fehler beim Laden der Demografie-Daten. Bitte versuchen Sie es erneut.");
-    return;
-  }
-
-  // 2. Destructure values from the demographics API
-  const maleCount = data.genderCount?.male || 0;
-  const femaleCount = data.genderCount?.female || 0;
-
-  const ageGroup_18_24 = data.ageGroups?.["18-24"] || 0;
-  const ageGroup_25_34 = data.ageGroups?.["25-34"] || 0;
-  const ageGroup_35_44 = data.ageGroups?.["35-44"] || 0;
-  const ageGroup_45_54 = data.ageGroups?.["45-54"] || 0;
-  const ageGroup_55_plus = data.ageGroups?.["55+"] || 0;
-
-  // 3. Prevent submission if overrepresented
-  if (value_q2 === "option1" && maleCount >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für Männer ist erreicht. Bitte wählen Sie eine andere Option.");
-    return;
-  }
-
-  if (value_q2 === "option2" && femaleCount >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für Frauen ist erreicht. Bitte wählen Sie eine andere Option.");
-    return;
-  }
-
-  if (age >= 18 && age <= 24 && ageGroup_18_24 >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 18-24 ist erreicht.");
-    return;
-  } else if (age >= 25 && age <= 34 && ageGroup_25_34 >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 25-34 ist erreicht.");
-    return;
-  } else if (age >= 35 && age <= 44 && ageGroup_35_44 >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 35-44 ist erreicht.");
-    return;
-  } else if (age >= 45 && age <= 54 && ageGroup_45_54 >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 45-54 ist erreicht.");
-    return;
-  } else if (age >= 55 && ageGroup_55_plus >= 10) {
-    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 55+ ist erreicht.");
-    return;
-  }
-   
-   
-   
-    if(value_q0 != "option2"){
-    //if(prolific_Code == ""){
-    //  e.preventDefault()
-    //  toast.error("Bitte geben Sie den Prolific-Code ein!");
-     // return
-
- // }else 
- if(age == ""){
-      e.preventDefault()
-      toast.error("Frage 1. Bitte geben Sie Ihr Alter ein!");
-      return
-    }else if (age < 18){
-      toast.error("Frage 1. Nur Personen ab 18 Jahren können teilnehmen. Bitte geben Sie Ihr Alter ein!");
-    }else if (value_q2 == ""){
-      e.preventDefault()
-      toast.error("Frage 2. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
-    }else if (value_q3 == ""){
-      e.preventDefault()
-      toast.error("Frage 3. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
-    }else if (value_q4 == ""){
-      e.preventDefault()
-      toast.error("Frage 4. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
-    //}else if (value_q5 == ""){
-    //  e.preventDefault()
-    //  toast.error("Frage 5. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-    //  return
-    }else if(zipcode == ""){
-      e.preventDefault()
-      toast.error("Frage 6. Bitte Postleitzahl eingeben!");
-      return
+      window.open(blankUrl, '_blank'); 
+      return;
     }
-    else if (value_q7 == ""){
-      e.preventDefault()
-      toast.error("Frage 7. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
-    }else if (value_q8 == ""){
-      e.preventDefault()
-      toast.error("Frage 8. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
-      return
+
+    // 1. Fetch demographics data first
+    const response = await fetchDemographics();
+    const data = response?.data;
+
+    if (!data) {
+      toast.error("Fehler beim Laden der Demografie-Daten. Bitte versuchen Sie es erneut.");
+      return;
     }
-  }
+
+    // 2. Destructure values from the demographics API
+    const maleCount = data.genderCount?.male || 0;
+    const femaleCount = data.genderCount?.female || 0;
+
+    const ageGroup_18_24 = data.ageGroups?.["18-24"] || 0;
+    const ageGroup_25_34 = data.ageGroups?.["25-34"] || 0;
+    const ageGroup_35_44 = data.ageGroups?.["35-44"] || 0;
+    const ageGroup_45_54 = data.ageGroups?.["45-54"] || 0;
+    const ageGroup_55_plus = data.ageGroups?.["55+"] || 0;
+    
+    const belgrade = data.regions?.["option1"] || 0;
+    const southerneastern = data.regions?.["option2"] || 0;
+    const western = data.regions?.["option3"] || 0;
+    const vojvodina = data.regions?.["option4"] || 0;
+    
+    // 3. Prevent submission if overrepresented
+    if (value_q2 === "option1" && maleCount >= 100) {
+
+      window.open(blankUrl, '_blank');
+      //toast.error("Die maximale Teilnehmeranzahl für Männer ist erreicht. Bitte wählen Sie eine andere Option.");
+      return;
+    }
+
+    if (value_q2 === "option2" && femaleCount >= 100) {
+      window.open(blankUrl, '_blank');
+      //toast.error("Die maximale Teilnehmeranzahl für Frauen ist erreicht. Bitte wählen Sie eine andere Option.");
+      return;
+    }
+
+    if (age >= 18 && age <= 24 && ageGroup_18_24 >= 100) {
+      window.open(blankUrl, '_blank');
+      //toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 18-24 ist erreicht.");
+      return;
+    } else if (age >= 25 && age <= 34 && ageGroup_25_34 >= 5) {
+      window.open(blankUrl, '_blank');
+      //    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 25-34 ist erreicht.");
+      return;
+    } else if (age >= 35 && age <= 44 && ageGroup_35_44 >= 100) {
+      window.open(blankUrl, '_blank');
+      //    toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 35-44 ist erreicht.");
+      return;
+    } else if (age >= 45 && age <= 54 && ageGroup_45_54 >= 100) {
+      window.open(blankUrl, '_blank');
+      //toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 45-54 ist erreicht.");
+      return;
+    } else if (age >= 55 && ageGroup_55_plus >= 100) {
+      window.open(blankUrl, '_blank');
+      //toast.error("Die maximale Teilnehmeranzahl für die Altersgruppe 55+ ist erreicht.");
+      return;
+    }
+    
+    if (value_q6 === "option1" && belgrade >= 100) {
+      window.open(blankUrl, '_blank'); 
+      return;
+    } else if (value_q6 === "option2" && southerneastern >= 100) {
+      window.open(blankUrl, '_blank'); 
+      return;
+    } else if (value_q6 === "option3" && western >= 100) {
+      window.open(blankUrl, '_blank'); 
+      return;
+    } else if (value_q6 === "option1" && vojvodina >= 100) {
+      window.open(blankUrl, '_blank'); 
+      return;
+    }
+    
+
+    if (value_q0 != "option2") {
+      //if(prolific_Code == ""){
+      //  e.preventDefault()
+      //  toast.error("Bitte geben Sie den Prolific-Code ein!");
+      // return
+
+      // }else 
+      if (age == "") {
+        e.preventDefault()
+        toast.error("Frage 1. Bitte geben Sie Ihr Alter ein!");
+        return
+      } else if (age < 18) {
+        toast.error("Frage 1. Nur Personen ab 18 Jahren können teilnehmen. Bitte geben Sie Ihr Alter ein!");
+      } else if (value_q2 == "") {
+        e.preventDefault()
+        toast.error("Frage 2. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+        return
+      } else if (value_q3 == "") {
+        e.preventDefault()
+        toast.error("Frage 3. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+        return
+      } else if (value_q4 == "") {
+        e.preventDefault()
+        toast.error("Frage 4. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+        return
+        }else if (value_q6 == ""){
+          e.preventDefault()
+          toast.error("Frage 5. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+          return
+      //} else if (zipcode == "") {
+      //  e.preventDefault()
+       // toast.error("Frage 6. Bitte Postleitzahl eingeben!");
+       // return
+      }
+      else if (value_q7 == "") {
+        e.preventDefault()
+        toast.error("Frage 7. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+        return
+      } else if (value_q8 == "") {
+        e.preventDefault()
+        toast.error("Frage 8. Bitte wählen Sie eine der vorgegebenen Möglichkeiten aus!");
+        return
+      }
+    }
     /*else if (value_q9 == ""){
      % e.preventDefault()
      % toast.error("Question 9. Please select one given choice!");
@@ -1109,6 +1218,10 @@ const fetchDemographics = async () => {
       return
     }*/
     
+    
+    
+
+
     const survey = {
       q1: age,
       q2: value_q2,
@@ -1124,41 +1237,41 @@ const fetchDemographics = async () => {
       "feedback": feedback,
 
     };
-  
-        try {
-          setProgress(30);
-          console.log(survey);
-          const res = await axios.post(`/presurvey/psurvey/${uniqId}`, survey);
-          
-          setButtonDisabled(true); 
-          setIs_Q1_visible(false);
-          setIs_review_is_onward(false);
-          setIs_Q2_visible(false);
-          setIs_Q3_visible(false);
-          setIs_Q4_visible(false);
-          setIs_Q5_visible(false);
-          setIs_Q6_visible(false);
-          setIs_Q7_visible(false);
-          setIs_Q8_visible(false);
-          setIs_Q9_visible(false);
-          setIs_Q10_visible(false);
-          setIs_TestingFeedBack_visible(false);
-          setIs_dank_visible(false);
-          if(value_q0 != "option2"){
-            const urlParts = window.location.pathname.split('/');
-            const valu = urlParts[urlParts.length-1]
-            isUserAlreadySubmittedSurvey(valu);
-            
-          }else{
-            setIsVisibleBasic(false);
-          }
-          setProgress(100);
-        } catch (err) {
-          console.log(err);
-          setPasswordErr({A_user_with});
-          setProgress(100);
-  
-        }
+
+    try {
+      setProgress(30);
+      console.log(survey);
+      const res = await axios.post(`/presurvey/psurvey/${uniqId}`, survey);
+
+      setButtonDisabled(true);
+      setIs_Q1_visible(false);
+      setIs_review_is_onward(false);
+      setIs_Q2_visible(false);
+      setIs_Q3_visible(false);
+      setIs_Q4_visible(false);
+      setIs_Q5_visible(false);
+      setIs_Q6_visible(false);
+      setIs_Q7_visible(false);
+      setIs_Q8_visible(false);
+      setIs_Q9_visible(false);
+      setIs_Q10_visible(false);
+      setIs_TestingFeedBack_visible(false);
+      setIs_dank_visible(false);
+      if (value_q0 != "option2") {
+        const urlParts = window.location.pathname.split('/');
+        const valu = urlParts[urlParts.length - 1]
+        isUserAlreadySubmittedSurvey(valu);
+
+      } else {
+        setIsVisibleBasic(false);
+      }
+      setProgress(100);
+    } catch (err) {
+      console.log(err);
+      setPasswordErr({ A_user_with });
+      setProgress(100);
+
+    }
   };
 
 
@@ -1177,10 +1290,10 @@ const fetchDemographics = async () => {
       const usr = {
         username: username,
         password: password,
-        "username_second":originalName,
-        "uniqueId":uniqId,
+        "username_second": originalName,
+        "uniqueId": uniqId,
         profilePicture: proPic,
-        pool: version 
+        pool: version
       };
 
       console.log(usr)
@@ -1195,11 +1308,11 @@ const fetchDemographics = async () => {
         console.log(user);
         console.log(user._id);
         console.log(postText);
-        if(user){
+        if (user) {
           console.log("registered!!!");
           try {
             setProgress(30);
-            const res2 = await axios.post(`/posts/${uniqId}/create/`, { userId: user._id, desc: postText, pool:user.pool, headers: { 'auth-token': token }});
+            const res2 = await axios.post(`/posts/${uniqId}/create/`, { userId: user._id, desc: postText, pool: user.pool, headers: { 'auth-token': token } });
             console.log(res2);
             //window.open('https://survey.maximiles.com/static-complete?p=123928_220ce61d', '_blank');
             // refresh the page after posting something
@@ -1207,18 +1320,19 @@ const fetchDemographics = async () => {
             try {
               setProgress(30);
               //await axios.post("/posts/" + user._id + "/createInitialData");
-              await axios.post(`/posts/${uniqId}/createInitialData/`, { version: user.pool, userId: user._id, headers: { 'auth-token': token }});
-               //await axios.post("/posts/create", newPost);
-               // refresh the page after posting something
-               //window.location.reload();
-               dispatch({ type: "LOGIN_SUCCESS", payload: user });
+              await axios.post(`/posts/${uniqId}/createInitialData/`, { version: user.pool, userId: user._id, headers: { 'auth-token': token } });
+              //await axios.post("/posts/create", newPost);
+              // refresh the page after posting something
+              //window.location.reload();
+              dispatch({ type: "LOGIN_SUCCESS", payload: user });
               history.push("/");
-     
-             } catch (err) {
+
+            } catch (err) {
               setProgress(100);
-             console.log(err);}
-             
-            
+              console.log(err);
+            }
+
+
           } catch (err) {
             setProgress(100);
             console.log(err)
@@ -1234,271 +1348,272 @@ const fetchDemographics = async () => {
     }
   };
   const submitPost = async (pass, username, ver, profPic) => {
-  //const submitPost //= async (e) => {
+    //const submitPost //= async (e) => {
     //e.preventDefault();
-    
+
     //const email = document.getElementById('email').value;
-    
+
     //const passwordAgain = document.getElementById('passwordAgain').value;
 
     //if (passwordAgain !== password) {
     //  setPasswordErr("Passwords don't match!");
-//
+    //
     //  setTimeout(() => { setPasswordErr(''); }, 5000) 
-    
+
     //} else {
-      //const pass = //document.getElementById('password').value;
-      setPassword(pass)
-      const usr = {
-        username: username,
-        password: pass,
-        profilePicture: profPic,
-        "username_second":originalName,
-        pool: ver
-      };
-      console.log(pass)
-      console.log(usr)
-      //const postText = document.getElementById('post').value;
+    //const pass = //document.getElementById('password').value;
+    setPassword(pass)
+    const usr = {
+      username: username,
+      password: pass,
+      profilePicture: profPic,
+      "username_second": originalName,
+      pool: ver
+    };
+    console.log(pass)
+    console.log(usr)
+    //const postText = document.getElementById('post').value;
 
-      try {
-        setProgress(30);
-        const userRes = await axios.post(`/auth/register/${uniqId}`, usr)
-        console.log(userRes.data.user);
-        console.log(userRes.data.token);
-        const user = userRes.data.user;
-        console.log(user);
-        console.log(user._id);
-        //console.log(postText);
-        if(user){
-          localStorage.setItem('token', userRes.data.token);
-          console.log("registered!!!");
-          const token = localStorage.getItem('token');
-          //try {
-            //const res2 = await axios.post(`/posts/${uniqId}/create/`, { userId: user._id, desc: postText, headers: { 'auth-token': token }});
-            //console.log(res2);
-            
-            try {
-              setProgress(30);
-               await axios.post(`/posts/${uniqId}/createInitialData/`, { version: user.pool, userId: user._id, headers: { 'auth-token': token }});
-                //await axios.post("/posts/create", newPost);
-                // refresh the page after posting something
-                //window.location.reload();
-                
-                dispatch({ type: "LOGIN_SUCCESS", payload: user });
-                history.push("/");
-      
-              } catch (err) {
-                setProgress(100);
-                console.log(err);}
-            
-            
-          //} catch (err) {
-          //  console.log(err)
-          //}
+    try {
+      setProgress(30);
+      const userRes = await axios.post(`/auth/register/${uniqId}`, usr)
+      console.log(userRes.data.user);
+      console.log(userRes.data.token);
+      const user = userRes.data.user;
+      console.log(user);
+      console.log(user._id);
+      //console.log(postText);
+      if (user) {
+        localStorage.setItem('token', userRes.data.token);
+        console.log("registered!!!");
+        const token = localStorage.getItem('token');
+        //try {
+        //const res2 = await axios.post(`/posts/${uniqId}/create/`, { userId: user._id, desc: postText, headers: { 'auth-token': token }});
+        //console.log(res2);
+
+        try {
+          setProgress(30);
+          await axios.post(`/posts/${uniqId}/createInitialData/`, { version: user.pool, userId: user._id, headers: { 'auth-token': token } });
+          //await axios.post("/posts/create", newPost);
+          // refresh the page after posting something
+          //window.location.reload();
+
+          dispatch({ type: "LOGIN_SUCCESS", payload: user });
+          history.push("/");
+
+        } catch (err) {
+          setProgress(100);
+          console.log(err);
         }
-      } catch (err) {
-        setProgress(100);
-        setPasswordErr("Error");
-        console.log(err)
 
+
+        //} catch (err) {
+        //  console.log(err)
+        //}
       }
+    } catch (err) {
+      setProgress(100);
+      setPasswordErr("Error");
+      console.log(err)
+
+    }
     //}
   };
 
 
   const MemoizedSlideDiv = React.memo(({ children }) => <SlideDiv>{children}</SlideDiv>);
 
-    return (
-      <>
-      <LoadingBar color="#f11946" progress={progress} onLoaderFinished={() => setProgress(0)}/>
+  return (
+    <>
+      <LoadingBar color="#f11946" progress={progress} onLoaderFinished={() => setProgress(0)} />
       <ToastContainer></ToastContainer>
       <div className={classes.register}>
 
-      <React.Fragment>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleNoClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <DialogTitle id="responsive-dialog-title">
-          {"Confirmation"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-          Are you sure you want to select "{selectedUserName}" as your username?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleYesClose}>
-            Yes
-          </Button>
-          <Button onClick={handleNoClose} autoFocus>
-            No
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+        <React.Fragment>
+          <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            onClose={handleNoClose}
+            aria-labelledby="responsive-dialog-title"
+          >
+            <DialogTitle id="responsive-dialog-title">
+              {"Confirmation"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Are you sure you want to select "{selectedUserName}" as your username?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button autoFocus onClick={handleYesClose}>
+                Yes
+              </Button>
+              <Button onClick={handleNoClose} autoFocus>
+                No
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </React.Fragment>
 
-    
+
         <form className={classes.form} noValidate autoComplete="off">
-				<h1 style={{marginBottom: '2vh'}}>Sign Up</h1>
+          <h1 style={{ marginBottom: '2vh' }}>Sign Up</h1>
 
-        <CSSTransition in={isVisibleBasicInfo} timeout={1000} classNames="slide" unmountOnExit >
-        <SlideDiv>
-        <div id='sixBlock'>
-        <p className={classes.secon_disclaimor}>{disclaimor_1}</p>
-        <p className={classes.secon_disclaimor}>{dear_part_2}</p>
-        <p className={classes.secon_disclaimor}>{bitte_4}</p>
+          <CSSTransition in={isVisibleBasicInfo} timeout={1000} classNames="slide" unmountOnExit >
+            <SlideDiv>
+              <div id='sixBlock'>
+                <p className={classes.secon_disclaimor}>{disclaimor_1}</p>
+                <p className={classes.secon_disclaimor}>{dear_part_2}</p>
+                <p className={classes.secon_disclaimor}>{bitte_4}</p>
 
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{aimHEADING_5}</h1>
-        <p className={classes.secon_disclaimor}>{aim_6}</p>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{aimHEADING_5}</h1>
+                <p className={classes.secon_disclaimor}>{aim_6}</p>
 
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{procedureHEADING_7}</h1>
-        <p className={classes.secon_disclaimor}>{procedure_8}</p>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{procedureHEADING_7}</h1>
+                <p className={classes.secon_disclaimor}>{procedure_8}</p>
 
-        {/*<p className={classes.secon_disclaimor}>{voluntaryHEADING_9}</p>
+                {/*<p className={classes.secon_disclaimor}>{voluntaryHEADING_9}</p>
         <p className={classes.secon_disclaimor}>{voluntary_10}</p>
         <p className={classes.secon_disclaimor}>{other_11}</p>
         <p className={classes.secon_disclaimor}>{dataprotHEADING_12}</p>*/}
- 
-        <p className={classes.secon_disclaimor}>{procedure_8_1}</p>
-        <ul>
-        {labels2.map((label, index) => (
-          <li className={classes.secon_disclaimor} key={index}>{label}</li>
-        ))}
-      </ul>
- 
-        <p className={classes.secon_disclaimor}>{dataprot_13}</p>
 
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{datasharingHEADING_14}</h1>
-        <p className={classes.secon_disclaimor}>{datasharing_15}</p>
-        
+                <p className={classes.secon_disclaimor}>{procedure_8_1}</p>
+                <ul>
+                  {labels2.map((label, index) => (
+                    <li className={classes.secon_disclaimor} key={index}>{label}</li>
+                  ))}
+                </ul>
 
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{retentionHEADING_16}</h1>
-        <p className={classes.secon_disclaimor}>{retention_17}</p>
+                <p className={classes.secon_disclaimor}>{dataprot_13}</p>
 
-        {<p className={classes.secon_disclaimor}>{furtherHEADING_18}</p>}
-        {/*<p className={classes.secon_disclaimor}>{}</p>*/}
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{further_19}</h1>
-        <p className={classes.secon_disclaimor}>{complaints_20}</p> 
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{best_21}</h1>
-        
-        
-        <p className={classes.disclaimor2}>{nme_22}</p>
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{consentHEADING_23}</h1>
-        
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        <CSSTransition in={isVisibleBasicInfo} timeout={1000} classNames="slide" unmountOnExit >
-        <SlideDiv>
-        <div id='sixBlock'>
-        
-        <p className={classes.disclaimor2}>{weitere}</p>
-        <p className={classes.disclaimor2}>{consent_24}</p>
-        
-        {/*<p className={classes.disclaimor2}>{jaa}</p>*/}
-        <p className={classes.disclaimor2}>{neinn}</p>
-        <p className={classes.disclaimor2}>{name}</p>
-        
-        <h1 style={{marginBottom: '1vh', textAlign: 'Left'}}>{heading_one}</h1>
-        <p className={classes.secon_disclaimor}>{q1}</p>
-        <ul>
-        {labels.map((label, index) => (
-          <li className={classes.secon_disclaimor} key={index}>{label}</li>
-        ))}
-      </ul>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        
-        
-        <CSSTransition in={is_TestingFeedBack_visible} timeout={1000} classNames="slide" unmountOnExit>
-        
-        <div id='feeback2'>
-        
-        <p className={classes.secon_disclaimor}>{"Please report any issues that you found"}</p>
-        <textarea  className={classes.label2} id="feedback" onChange={handle_feedback_Changed} ref={textareaRef} value={feedback} rows={4} placeholder={"Provide your feedback about the pre-survey here. A text area for feedback will also be available in the post-survey. Additionally, feel free to use these text fields to mention any other concerns or issues. You can also leave comments to highlight any problems encountered on the platform."}/>
-        
-        </div>
-         
-        </CSSTransition>
-        
-        <CSSTransition in={isVisibleBasic} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-         <div id='thirdBlock'>
-
-        <form className={classes.question} style={{textAlign: 'Left'}}>
-        <div className={classes.label}><label><input type="radio" value="option1" checked={value_q0 === 'option1'} onChange={handle_Q0_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{ja2}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option2" checked={value_q0 === 'option2'} onChange={handle_Q0_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{nein2}</span></label></div>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{datasharingHEADING_14}</h1>
+                <p className={classes.secon_disclaimor}>{datasharing_15}</p>
 
 
-        <CSSTransition in={false} timeout={1000} classNames="slide" unmountOnExit>
-        <div id='Qrolific'>
-        <p className={classes.secon_disclaimor}>{review_is_onward}</p>
-        <p className={classes.label}> <input type="text" className="age-input" id="prolificcode" maxLength="7" onChange={handle_prolific_code} value={prolific_Code} placeholder="Upišite prolific code"/> </p>
-        </div></CSSTransition>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{retentionHEADING_16}</h1>
+                <p className={classes.secon_disclaimor}>{retention_17}</p>
+
+                {<p className={classes.secon_disclaimor}>{furtherHEADING_18}</p>}
+                {/*<p className={classes.secon_disclaimor}>{}</p>*/}
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{further_19}</h1>
+                <p className={classes.secon_disclaimor}>{complaints_20}</p>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{best_21}</h1>
 
 
-        <CSSTransition in={is_Q1_visible} timeout={1000} classNames="slide" unmountOnExit >
-         
-        <div id='Q1'>
-        <p className={classes.secon_disclaimor}>{q0_info}</p>
-        <p className={classes.secon_disclaimor}>{q0}</p> 
-        
-        <p className={classes.label}> Imam <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="upišite broj"/> godina. Ukoliko ste mlađi od 18 godina ne možete da učestvujete u studiji.</p>
-        
-        </div>
-         
-        </CSSTransition>
+                <p className={classes.disclaimor2}>{nme_22}</p>
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{consentHEADING_23}</h1>
 
-        <CSSTransition in={is_Q2_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q2'>
-        <p className={classes.secon_disclaimor}>{q2}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label ><input type="radio" value="option1"  checked={value_q2 === 'option1'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q2_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q2 === 'option2'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q2_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q2 === 'option3'} onChange={handle_Q2_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q2_op3}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
+              </div></SlideDiv>
+          </CSSTransition>
 
-        <CSSTransition in={is_Q3_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q3'>
-        <p className={classes.secon_disclaimor}>{q3}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q3 === 'option1'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q3 === 'option2'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q3 === 'option3'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q3 === 'option4'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op4}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option5"  checked={value_q3 === 'option5'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op5}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option6"  checked={value_q3 === 'option6'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op6}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q3 === 'option7'} onChange={handle_Q3_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q3_op7}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-          
-        <CSSTransition in={is_Q4_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q4'>
-        <p className={classes.secon_disclaimor}>{q4}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"   checked={value_q4 === 'option1'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q4 === 'option2'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q4 === 'option3'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q4 === 'option4'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op4}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q4 === 'option5'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op5}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option6"  checked={value_q4 === 'option6'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op6}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q4 === 'option7'} onChange={handle_Q4_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q4_op7}</span></label></div>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
+          <CSSTransition in={isVisibleBasicInfo} timeout={1000} classNames="slide" unmountOnExit >
+            <SlideDiv>
+              <div id='sixBlock'>
 
-        {/*
+                <p className={classes.disclaimor2}>{weitere}</p>
+                <p className={classes.disclaimor2}>{consent_24}</p>
+
+                {/*<p className={classes.disclaimor2}>{jaa}</p>*/}
+                <p className={classes.disclaimor2}>{neinn}</p>
+                <p className={classes.disclaimor2}>{name}</p>
+
+                <h1 style={{ marginBottom: '1vh', textAlign: 'Left' }}>{heading_one}</h1>
+                <p className={classes.secon_disclaimor}>{q1}</p>
+                <ul>
+                  {labels.map((label, index) => (
+                    <li className={classes.secon_disclaimor} key={index}>{label}</li>
+                  ))}
+                </ul>
+              </div></SlideDiv>
+          </CSSTransition>
+
+
+
+          <CSSTransition in={is_TestingFeedBack_visible} timeout={1000} classNames="slide" unmountOnExit>
+
+            <div id='feeback2'>
+
+              <p className={classes.secon_disclaimor}>{"Please report any issues that you found"}</p>
+              <textarea className={classes.label2} id="feedback" onChange={handle_feedback_Changed} ref={textareaRef} value={feedback} rows={4} placeholder={"Provide your feedback about the pre-survey here. A text area for feedback will also be available in the post-survey. Additionally, feel free to use these text fields to mention any other concerns or issues. You can also leave comments to highlight any problems encountered on the platform."} />
+
+            </div>
+
+          </CSSTransition>
+
+          <CSSTransition in={isVisibleBasic} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='thirdBlock'>
+
+              <form className={classes.question} style={{ textAlign: 'Left' }}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q0 === 'option1'} onChange={handle_Q0_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{ja2}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option2" checked={value_q0 === 'option2'} onChange={handle_Q0_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{nein2}</span></label></div>
+                <hr style={{ borderTop: '1px solid #000' }} />
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+
+          <CSSTransition in={false} timeout={1000} classNames="slide" unmountOnExit>
+            <div id='Qrolific'>
+              <p className={classes.secon_disclaimor}>{review_is_onward}</p>
+              <p className={classes.label}> <input type="text" className="age-input" id="prolificcode" maxLength="7" onChange={handle_prolific_code} value={prolific_Code} placeholder="Upišite prolific code" /> </p>
+            </div></CSSTransition>
+
+
+          <CSSTransition in={is_Q1_visible} timeout={1000} classNames="slide" unmountOnExit >
+
+            <div id='Q1'>
+              <p className={classes.secon_disclaimor}>{q0_info}</p>
+              <p className={classes.secon_disclaimor}>{q0}</p>
+
+              <p className={classes.label}> Imam <input type="text" className="age-input" id="age" maxLength="2" onChange={handle_age_Changed} value={age} placeholder="upišite broj" /> godina. Ukoliko ste mlađi od 18 godina ne možete da učestvujete u studiji.</p>
+
+            </div>
+
+          </CSSTransition>
+
+          <CSSTransition in={is_Q2_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q2'>
+              <p className={classes.secon_disclaimor}>{q2}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label ><input type="radio" value="option1" checked={value_q2 === 'option1'} onChange={handle_Q2_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q2_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q2 === 'option2'} onChange={handle_Q2_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q2_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q2 === 'option3'} onChange={handle_Q2_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q2_op3}</span></label></div>
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={is_Q3_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q3'>
+              <p className={classes.secon_disclaimor}>{q3}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q3 === 'option1'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q3 === 'option2'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q3 === 'option3'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op3}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q3 === 'option4'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op4}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option5" checked={value_q3 === 'option5'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op5}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option6" checked={value_q3 === 'option6'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op6}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option7" checked={value_q3 === 'option7'} onChange={handle_Q3_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q3_op7}</span></label></div>
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={is_Q4_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q4'>
+              <p className={classes.secon_disclaimor}>{q4}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q4 === 'option1'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q4 === 'option2'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q4 === 'option3'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op3}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q4 === 'option4'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op4}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q4 === 'option5'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op5}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option6" checked={value_q4 === 'option6'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op6}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option7" checked={value_q4 === 'option7'} onChange={handle_Q4_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q4_op7}</span></label></div>
+                <hr style={{ borderTop: '1px solid #000' }} />
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          {/*
         <CSSTransition in={is_Q5_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
         <div id='Q5'>
         <p className={classes.secon_disclaimor}>{q5}</p>
@@ -1510,121 +1625,146 @@ const fetchDemographics = async () => {
         </CSSTransition>
         */}
 
-        <CSSTransition in={is_Q6_visible} timeout={1000} classNames="slide" unmountOnExit > 
-        <div id='Q6'>
-        <p className={classes.secon_disclaimor}>{q6}</p>
-        <p className={classes.secon_disclaimor} style={{ fontStyle: 'italic' }}>{q6_info}</p>
-        <form  className={classes.question}> 
-        <p className={classes.label}> Moj poštanski kod počinje sa ova dva broja:  <input type="text" className="age-input" id="age2"  value={zipcode} maxLength="2" onChange={handle_age_Changed2} placeholder="Poštanski broj"/> </p>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-        </form>
-        </div> 
-        </CSSTransition>
-
-        <CSSTransition in={is_Q7_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q7'>
-        <p className={classes.secon_disclaimor}>{q7}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q7 === 'option1'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q7 === 'option2'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q7 === 'option3'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q7 === 'option4'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op4}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q7 === 'option5'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op5}</span></label></div>
-        {/*<div className={classes.label}><label><input type="radio" value="option6"  checked={value_q7 === 'option6'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op6}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q7 === 'option7'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op7}</span></label></div>*/}
-        </form>
-        </div>
-        </SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q8_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q8'>
-        <p className={classes.secon_disclaimor}>{q8}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q8 === 'option1'}  onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op1}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q8 === 'option2'}  onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q8 === 'option3'}  onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op3}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q8 === 'option4'} onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op4}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q8 === 'option5'} onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op5}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option6"  checked={value_q8 === 'option6'} onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op6}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q8 === 'option7'} onChange={handle_Q8_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q8_op7}</span></label></div>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q9_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q9'>
-        <p className={classes.secon_disclaimor}>{"test"}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q9 === 'option1'} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q9 === 'option2'} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q9 === 'option3'} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q9 === 'option4'} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q9 === 'option5'} onChange={handle_Q9_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-
-        <CSSTransition in={is_Q10_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='Q10'>
-        <p className={classes.secon_disclaimor}>{"test"}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}><label><input type="radio" value="option1"  checked={value_q10 === 'option1'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q10 === 'option2'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q10 === 'option3'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option4"  checked={value_q10 === 'option4'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <div className={classes.label}><label><input type="radio" value="option5"  checked={value_q10 === 'option5'} onChange={handle_Q10_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{"test"}</span></label></div>
-        <hr style={{ borderTop: '1px solid #000' }}/>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
-        
-        
-
-        <CSSTransition in={is_dank_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-          <div id='dank'>
-            <p className={classes.secon_disclaimor}>{dank}</p>
-            <p className={classes.secon_disclaimor}>{login1}</p>
-            <p className={classes.secon_disclaimor}>{login2}</p>
-        
-				    {/*<p className={classes.text}>already have an account? <Link  style={{textDecoration: 'none'}} to={"/login/" + userId}>log in now</Link></p><p className={classes.disclaimor}>{disclaimor_1}</p>*/}
-				    {/*<Avatar alt='choose avatar' src="" className={classes.avatar}/>
-            	<TextField className={classes.textField} id='username' name='username' label="Username" required/>
-				      <TextField className={classes.textField} id='email' name='email' label="Email" type="email" required />
-				      <TextField className={classes.textField} id="password" label="Password" type="password" minLength="6" autoComplete="current-password"/>
-				      <TextField className={classes.textField} id='passwordAgain' name='passwordAgain' label="Password Again" type="password" required/>
-              <p className={classes.errorMessage}>{passwordErr}</p>*/}
-            <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Izmeni odgovore</button>.
-            <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Nastavi</button>.
-          </div></SlideDiv>
-        </CSSTransition>
-
-      <CSSTransition in={isVisibleSignUp} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-      <div id='secondBlock'>
-      {/*<p className={classes.secon_disclaimor4}>{welcome}</p>*/}
-      <p className={classes.secon_disclaimor}>{login1}</p>
-      <p className={classes.secon_disclaimor}>{login2}</p>
-        <form  className={classes.question}>
-        <div className={classes.label}>
-          <label>
-          <input type="radio" value="option1"  checked={value_q11 === 'option1'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/>
-          <span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}>
-            <img width="50" height="50"className={classes.profileCoverImg}  src={profPic1 != "" ? PF+profPic1 : PF+"person/noCover.png"} alt="" />{usrName1}
-            </span>
-            </label>
+          <CSSTransition in={is_Q6_visible} timeout={1000} classNames="slide" unmountOnExit >
+            <div id='Q6'>
+              <p className={classes.secon_disclaimor}>{q6}</p> 
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q6 === 'option1'} onChange={handle_Q6_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q6_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q6 === 'option2'} onChange={handle_Q6_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q6_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q6 === 'option3'} onChange={handle_Q6_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q6_op3}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q6 === 'option4'} onChange={handle_Q6_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q6_op4}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q6 === 'option5'} onChange={handle_Q6_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q6_op5}</span></label></div>
+              </form>
             </div>
-        <div className={classes.label}><label ><input type="radio" value="option2"  checked={value_q11 === 'option2'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic2 != "" ? PF+profPic2 : PF+"person/noCover.png"} alt="" />{usrName2}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option3"  checked={value_q11 === 'option3'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic3 : PF+"person/noCover.png"} alt="" />{usrName3}</span></label></div>
-        <div className={classes.label}><label ><input type="radio" value="option4"  checked={value_q11 === 'option4'} onChange={handle_Q11_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem", "margin-top": "0.5rem"}}><img width="50" height="50" className={classes.profileCoverImg}  src={profPic3 != "" ? PF+profPic4 : PF+"person/noCover.png"} alt="" />{usrName4}</span></label></div>
-        
-        <button hidden={isNextDisplays} className={classes.button} onClick={submitNext}> nastavi  </button>
-        </form>
-        
-        </div></SlideDiv>
-        </CSSTransition>
+          </CSSTransition>
 
-        {/*<CSSTransition in={is_password_visible} timeout={1000} classNames="fade" unmountOnExit >
+          <CSSTransition in={is_Q7_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q7'>
+              <p className={classes.secon_disclaimor}>{q7}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q7 === 'option1'} onChange={handle_Q7_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q7_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q7 === 'option2'} onChange={handle_Q7_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q7_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q7 === 'option3'} onChange={handle_Q7_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q7_op3}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q7 === 'option4'} onChange={handle_Q7_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q7_op4}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q7 === 'option5'} onChange={handle_Q7_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q7_op5}</span></label></div>
+                {/*<div className={classes.label}><label><input type="radio" value="option6"  checked={value_q7 === 'option6'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op6}</span></label></div>
+        <div className={classes.label}><label><input type="radio" value="option7"  checked={value_q7 === 'option7'}  onChange={handle_Q7_Changed} style={{"accent-color":'red'}}/><span style={{"margin-left": "0.5rem"}}>{q7_op7}</span></label></div>*/}
+              </form>
+            </div>
+          </SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={is_Q8_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q8'>
+              <p className={classes.secon_disclaimor}>{q8}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q8 === 'option1'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op1}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q8 === 'option2'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q8 === 'option3'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op3}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q8 === 'option4'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op4}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q8 === 'option5'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op5}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option6" checked={value_q8 === 'option6'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op6}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option7" checked={value_q8 === 'option7'} onChange={handle_Q8_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{q8_op7}</span></label></div>
+                <hr style={{ borderTop: '1px solid #000' }} />
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={is_Q9_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q9'>
+              <p className={classes.secon_disclaimor}>{"test"}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q9 === 'option1'} onChange={handle_Q9_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q9 === 'option2'} onChange={handle_Q9_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q9 === 'option3'} onChange={handle_Q9_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q9 === 'option4'} onChange={handle_Q9_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q9 === 'option5'} onChange={handle_Q9_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={is_Q10_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='Q10'>
+              <p className={classes.secon_disclaimor}>{"test"}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={value_q10 === 'option1'} onChange={handle_Q10_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q10 === 'option2'} onChange={handle_Q10_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q10 === 'option3'} onChange={handle_Q10_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option4" checked={value_q10 === 'option4'} onChange={handle_Q10_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <div className={classes.label}><label><input type="radio" value="option5" checked={value_q10 === 'option5'} onChange={handle_Q10_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{"test"}</span></label></div>
+                <hr style={{ borderTop: '1px solid #000' }} />
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+
+
+          <CSSTransition in={is_dank_visible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='dank'>
+              <p className={classes.secon_disclaimor}>{dank}</p>
+              <p className={classes.secon_disclaimor}>{login1}</p>
+              <p className={classes.secon_disclaimor}>{login2}</p>
+
+              {/*<p className={classes.text}>already have an account? <Link  style={{textDecoration: 'none'}} to={"/login/" + userId}>log in now</Link></p><p className={classes.disclaimor}>{disclaimor_1}</p>*/}
+              {/*<Avatar alt='choose avatar' src="" className={classes.avatar}/>
+              <TextField className={classes.textField} id='username' name='username' label="Username" required/>
+              <TextField className={classes.textField} id='email' name='email' label="Email" type="email" required />
+              <TextField className={classes.textField} id="password" label="Password" type="password" minLength="6" autoComplete="current-password"/>
+              <TextField className={classes.textField} id='passwordAgain' name='passwordAgain' label="Password Again" type="password" required/>
+              <p className={classes.errorMessage}>{passwordErr}</p>*/}
+              <button onClick={reviewButtonChanged} disabled={isButtonDisabled} className={classes.button}>Izmeni odgovore</button>.
+              <button onClick={companyButtonChanged} disabled={isButtonDisabled} className={classes.button}>Nastavi</button>.
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={isMiddleChecked} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='secondBlock'>
+              {/*<p className={classes.secon_disclaimor4}>{welcome}</p>*/}
+              <p className={classes.secon_disclaimor}>{confirmInstruction1}</p>
+              <p className={classes.secon_disclaimor}>{confirmInstruction2}</p>
+              <p className={classes.secon_disclaimor}>{confirmInstruction3}</p>
+              <form className={classes.question}>
+                <div className={classes.label}><label><input type="radio" value="option1" checked={valueRUS === 'option1'} onChange={handle_Confirmation_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem" }}>{confirmInstruction4}</span></label></div>
+              </form>
+
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={isMiddleChecked2} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='secondBlock'>
+              {/*<p className={classes.secon_disclaimor4}>{welcome}</p>*/}
+              <p className={classes.secon_disclaimor}>{confirmInstruction5}</p>
+              <form className={classes.question}>
+                <button onClick={handle_Confirmation_Changed2} className={classes.button}>Nastavi</button>.
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
+
+          <CSSTransition in={isVisibleSignUp} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='secondBlock'>
+              {/*<p className={classes.secon_disclaimor4}>{welcome}</p>*/}
+              <p className={classes.secon_disclaimor}>{login1}</p>
+              <p className={classes.secon_disclaimor}>{login2}</p>
+              <form className={classes.question}>
+                <div className={classes.label}>
+                  <label>
+                    <input type="radio" value="option1" checked={value_q11 === 'option1'} onChange={handle_Q11_Changed} style={{ "accent-color": 'red' }} />
+                    <span style={{ "margin-left": "0.5rem", "margin-top": "0.5rem" }}>
+                      <img width="50" height="50" className={classes.profileCoverImg} src={profPic1 != "" ? PF + profPic1 : PF + "person/noCover.png"} alt="" />{usrName1}
+                    </span>
+                  </label>
+                </div>
+                <div className={classes.label}><label ><input type="radio" value="option2" checked={value_q11 === 'option2'} onChange={handle_Q11_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem", "margin-top": "0.5rem" }}><img width="50" height="50" className={classes.profileCoverImg} src={profPic2 != "" ? PF + profPic2 : PF + "person/noCover.png"} alt="" />{usrName2}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option3" checked={value_q11 === 'option3'} onChange={handle_Q11_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem", "margin-top": "0.5rem" }}><img width="50" height="50" className={classes.profileCoverImg} src={profPic3 != "" ? PF + profPic3 : PF + "person/noCover.png"} alt="" />{usrName3}</span></label></div>
+                <div className={classes.label}><label ><input type="radio" value="option4" checked={value_q11 === 'option4'} onChange={handle_Q11_Changed} style={{ "accent-color": 'red' }} /><span style={{ "margin-left": "0.5rem", "margin-top": "0.5rem" }}><img width="50" height="50" className={classes.profileCoverImg} src={profPic3 != "" ? PF + profPic4 : PF + "person/noCover.png"} alt="" />{usrName4}</span></label></div>
+
+                <button hidden={isNextDisplays} className={classes.button} onClick={submitNext}> nastavi  </button>
+              </form>
+
+            </div></SlideDiv>
+          </CSSTransition>
+
+          {/*<CSSTransition in={is_password_visible} timeout={1000} classNames="fade" unmountOnExit >
         <div id='Q5'>
         <p className={classes.secon_disclaimor4}>{welcome2}</p>
         <p className={classes.secon_disclaimor4}>{infoPass}</p>
@@ -1632,7 +1772,7 @@ const fetchDemographics = async () => {
             <img width="50" height="50"className={classes.profileCoverImg}  src={proPic != "" ? PF+proPic : PF+"person/noCover.png"} alt="" /> {" "+username}
             </span>
         <TextField className={classes.textField3} id="password" label="Password" value={password4}/>
-				
+        
         <p className={classes.secon_disclaimor5}>{note}</p>
         <p className={classes.secon_disclaimor4}>{[...enony, "https://socialapp.ijs.si/register/" +uniqId]}</p>
         <p className={classes.secon_disclaimor4}>{screen}</p>
@@ -1644,20 +1784,20 @@ const fetchDemographics = async () => {
         </div>
         </CSSTransition>*/}
 
-        <CSSTransition in={isWelcomeVisible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
-        <div id='posts'>
-        <form  className={classes.question}>
-        <p className={classes.secon_disclaimor4}>{""}</p>
-        <p className={classes.secon_disclaimor4}>{"test"}</p>
-        <p className={classes.secon_disclaimor4}>{"test"}</p>
-        <p className={classes.secon_disclaimor4}>{"test"}</p>
-        <input className={classes.label2} id='post' onChange={handPostTextChange} placeholder={""} onKeyPress={handleKeyPress}/>
-        <button type="submit" hidden={isPostButtonDisplays} className={classes.button} onClick={submitPost}> Post </button>
-        </form>
-        </div></SlideDiv>
-        </CSSTransition>
+          <CSSTransition in={isWelcomeVisible} timeout={1000} classNames="slide" unmountOnExit ><SlideDiv>
+            <div id='posts'>
+              <form className={classes.question}>
+                <p className={classes.secon_disclaimor4}>{""}</p>
+                <p className={classes.secon_disclaimor4}>{"test"}</p>
+                <p className={classes.secon_disclaimor4}>{"test"}</p>
+                <p className={classes.secon_disclaimor4}>{"test"}</p>
+                <input className={classes.label2} id='post' onChange={handPostTextChange} placeholder={""} onKeyPress={handleKeyPress} />
+                <button type="submit" hidden={isPostButtonDisplays} className={classes.button} onClick={submitPost}> Post </button>
+              </form>
+            </div></SlideDiv>
+          </CSSTransition>
 
-        {
+          {
         //handle_Confirm_Changed
         /*<CSSTransition in={is_Post_visible} timeout={300} classNames="fade" unmountOnExit >
         <div id='Q5'>
@@ -1667,9 +1807,9 @@ const fetchDemographics = async () => {
         </div>
             </CSSTransition>*/}
         </form>
-        </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default withStyles(styles)(Register);

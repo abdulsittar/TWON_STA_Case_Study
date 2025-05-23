@@ -88,8 +88,15 @@ export const q4_op7 = "Nezaposlen/a sam";
 //export const q5_op1 = "Ja";
 //export const q5_op2 = "Nein";
 
-export const q6 = "5. Molimo Vas da navedete prva dva broja poštanskog broja Vašeg glavnog prebivališta.";
+export const q6 = "5. U kom delu Srbije živite?";
 export const q6_info = [<italic>Napomena: Na primer, ako je Vaš poštanski broj „11000“, unesite „11“ u polje.</italic>];
+export const q6_op1 = "1 Belgrade";
+export const q6_op2 = "2 Southern and Eastern Serbia";
+export const q6_op3 = "3 Šumadija and Western Serbia";
+export const q6_op4 = "4 Vojvodina";
+export const q6_op5 = "5 Ne živim u Srbiji";
+
+
 
 export const q7 = "6. Govoreći uopšteno, koliko ste zainteresovani za politiku? ";
 export const q7_op1 = "1 Uopšte me ne zanima";
@@ -112,6 +119,21 @@ export const q8_op1 = "(Skoro) stalno / sve vreme";
 export const dank = "Hvala Vam!";
 export const login1 = "Sada ćete biti preusmereni na platformu TWON. Molimo vas da odaberete jedno od četiri ponuđena imena naloga i avatara."; 
 export const login2 = [<strong>Zatim kliknite na „Nastavi“ kako biste bili preusmereni na TWON.</strong>];
+
+
+
+export const confirmInstruction1 = "Bićete preusmereni na TWON platformu.";
+export const confirmInstruction2 = "Na platformi će vam biti prikazan feed, sličan tipu feed-a koji se obično nalazi na drugim društvenim mrežama. Molimo vas da čitate, lajkujete i komentarišete ove objave kao što biste to radili i na bilo kojoj drugoj društvenoj mreži. Kada završite sa interakcijom sa objavama u svom feed-u, možete kliknuti dugme za osvežavanje u gornjem levom uglu. Feed će se osvežiti za nekoliko sekundi. Nastavite da komunicirate i osvežavate feed dok ne dobijete obaveštenje da pređete na sledeću fazu istraživanja.";
+
+export const confirmInstruction3 = "Molimo vas da potvrdite da razumete ova uputstva pre nego što nastavite:\n-da, razumem.\n\nHvala vam. Sada, izaberite jedno od četiri ponuđena korisnička imena i avatara.\nZatim kliknite na \"Nastavi\" da biste bili preusmereni na TWON.";
+
+export const confirmInstruction4 = "da, razumem.";
+
+export const confirmInstruction5 = "Hvala vam. Sada, izaberite jedno od četiri ponuđena korisnička imena i avatara.\nZatim kliknite na \"Nastavi\" da biste bili preusmereni na TWON.";
+
+
+
+
 
 
 export const welcome = "Hvala Vam što ste aktivno koristili platformu TWON!"
@@ -524,7 +546,7 @@ export const post_q14_op3 = "3 Ni slažem se ni ne slažem se";
 export const post_q14_op4 = "4 Slažem se";
 export const post_q14_op5 = "5 U potpunosti se slažem";
 
-export const post_q14_1 = "Молимо изаберите опцију 2: Ne slažem se";
+export const post_q14_1 = "molimo izaberite opciju 2: Ne slažem se";
 export const post_q14_1_op1 = "1 U potpunosti se ne slažem";
 export const post_q14_1_op2 = "2 Ne slažem se";
 export const post_q14_1_op3 = "3 Ni slažem se ni ne slažem se";
@@ -532,9 +554,9 @@ export const post_q14_1_op4 = "4 Slažem se";
 export const post_q14_1_op5 = "5 U potpunosti se slažem";
 
 
-export const post_q8_0 = "9. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 0 do 10: "
+export const post_q8_0 = "9. Molimo Vas da navedete koliko se slažete ili ne slažete sa sledećom izjavom odabirom broja od 1 do 10: "
 export const post_q8 = "Mislim da postoje tajne organizacije koje u velikoj meri utiču na političke odluke.";
-export const post_q8_op1 = "1 U potpunosti se ne slažem [0]";
+export const post_q8_op1 = "1 U potpunosti se ne slažem [1]";
 export const post_q8_op2 = "2";
 export const post_q8_op3 = "3";
 export const post_q8_op4 = "4";

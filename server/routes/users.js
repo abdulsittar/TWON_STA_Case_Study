@@ -155,6 +155,27 @@ router.get('/', verifyToken, async (req, res) => {
     }
 })
 
+
+router.get('/byUniqueId/:uniqueId', verifyToken, async (req, res) => {
+    logger.info('Data received', { data: req.params.uniqueId });
+    
+    try {
+        const user = await User.findOne({ uniqueId: req.params.uniqueId }).populate('uniqueId');
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found with provided uniqueId" });
+        }
+
+        // Optionally exclude sensitive data like password
+        const { password, ...userData } = user._doc;
+        res.status(200).json({ success: true, user: userData });
+
+    } catch (err) {
+        logger.error('Error fetching user by uniqueId', { error: err.message });
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // get a user
 router.post('/getUser/:uniqId', verifyToken, async (req, res) => {
     logger.info('Data received', { data: req.body });

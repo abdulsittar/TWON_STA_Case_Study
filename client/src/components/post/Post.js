@@ -780,7 +780,7 @@ const triangleOverlayStyle = {
             </span>
             </Link>
             <span className={classes.postDate} style={{ background: repost>0 ? "#F5F5F5" : "#ffffff" }}>{format(post.createdAt, 'sr')}</span>
-            {<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" | round# "+ post.treatment+" | post label= "+ post.content+" | ranking= "+post.rank+" | ukraine score= "+post.ukraine+" | disinfo score= "+post.disinfo}</span>}
+            {/*<span className={classes.postDate} style={{margin: '0px 0px 0px 20px',}}>{"group= "+ post.userGroup +" | round# "+ post.treatment+" | post label= "+ post.content+" | ranking= "+post.rank+" | ukraine score= "+post.ukraine+" | disinfo score= "+post.disinfo}</span>*/}
           </div>
           
           { /*(repost < 1)?

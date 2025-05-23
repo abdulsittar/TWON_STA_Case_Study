@@ -94,7 +94,7 @@ router.post('/pstsurvey/:userId', verifyToken, async (req, res) => {
             q21: req.body.survey.q21, // feedback2
             feedback: sanitizeInput(req.body.survey.feedback), // feedback3
 
-            prolific_code: gen_code
+            prolific_code: req.body.survey.unique_id
         });
         console.log("newSurvey");
         console.log(newSurvey)

@@ -29,7 +29,7 @@
     const { JSDOM } = require('jsdom');
     const window = new JSDOM('').window;
     const DOMPurifyInstance = DOMPurify(window);
-    
+
     /**
      * @swagger
      * components:
@@ -1043,7 +1043,7 @@
 
                 // Generate unique random ranks from 1 to 12
                 const availableRanks = //Array.from({ length: 12 }, (_, i) => i + 1);
-                availableRanks.sort(() => Math.random() - 0.5); // Shuffle ranks randomly
+                    availableRanks.sort(() => Math.random() - 0.5); // Shuffle ranks randomly
                 console.log(availableRanks);
                 try {
                     for (let i = 0; i < posts.length; i++) {
@@ -1152,7 +1152,7 @@
             const userGroup = lastPost.userGroup;
 
             console.log("newTreatment:", newTreatment);
-            
+
             const { scoreA, scoreB } = await getUserABScores(currentUser.id);
             console.log("User Score scoreDisinfoA:", scoreA);
             console.log("User Score scoreUkraine:", scoreB);
@@ -1275,10 +1275,10 @@
                         ];
 
                         webLinksPosts = [
-                            "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                             "https://socialapp2.ijs.si/news/breaking_3",  // light_ukraine
-                            "",    
-                            "", 
+                            "",
+                            "",
                             "", // mixed
                             "https://socialapp2.ijs.si/news/news_1",      // pro russia
                             "https://socialapp2.ijs.si/news/news_10",  // pro ukraine
@@ -1331,7 +1331,7 @@
                             "mixed",               // animal 1
                             "neutral",             // Lepa Brena
                             "neutral tainment",    // Der Spiegel
-                            "neutral",  
+                            "neutral",
                             "neutral sports",  // EXIT festival
                             "neutral general",     // faznet 
                             "disinfo ukraine",     // animal 1
@@ -1359,12 +1359,12 @@
                             "https://socialapp2.ijs.si/news/not_relevant_7",  // light_ukraine
                             "",                                           // mixed
                             "",                                           // neutral (Lepa Brena)
-                            "", 
+                            "",
                             "https://socialapp2.ijs.si/news/news_10",      // pro russia 
                             "",                                           // neutral (EXIT) ,
                             "https://socialapp2.ijs.si/news/breaking_9",  // disinfo_ukraine
                             "https://socialapp2.ijs.si/news/news_7",        // neutral_sports
-                           "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                             ""                                            // neutral (Zvezda)
                         ];
 
@@ -1433,16 +1433,16 @@
 
                         webLinksPosts = [
                             "",                                           // neutral (Lepa Brena)
-                             "https://socialapp2.ijs.si/news/news_7",  
+                            "https://socialapp2.ijs.si/news/news_7",
                             "",                                           // neutral_general
                             "",                                           // neutral (Zvezda)
-                             "https://socialapp2.ijs.si/news/news_10",      // pro russia
+                            "https://socialapp2.ijs.si/news/news_10",      // pro russia
                             "",                                           // neutral_tainment
                             "",                                           // neutral (EXIT)  
                             "https://socialapp2.ijs.si/news/breaking_9", // light_ukraine
                             "https://socialapp2.ijs.si/news/not_relevant_7",  // disinfo_ukraine
-                             "https://socialapp2.ijs.si/news/news_1",      // neutral_ukraine
-                          "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                            "https://socialapp2.ijs.si/news/news_1",      // neutral_ukraine
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                             ""
                         ];
 
@@ -1481,7 +1481,7 @@
                 } else if (userGroup == "opposing") {
 
                     if (scoreA > 0) {
-                    
+
                         contents = [
                             "neutral ukraine",     // Netflix
                             "pro ukraine",         // animal 1
@@ -1496,7 +1496,7 @@
                             "disinfo ukraine",     // Tagesspiegel
                             "neutral"              // Crvena Zvezda
                         ];
-                        
+
                         trainPosts = [
                             `<p>Preko 20 lica uhapšeno u Ukrajini zbog trgovine oružjem<br/></p>`,
                             `<p>Primirje u zraku—Ukrajina ne posustaje. Svet je uz nas!<br/></p>`,
@@ -1518,12 +1518,12 @@
                             "",
                             "https://socialapp2.ijs.si/news/news_8", // light_ukraine
                             "",                                              // pro ukraine
-                            "https://socialapp2.ijs.si/news/breaking_8", 
+                            "https://socialapp2.ijs.si/news/breaking_8",
                             "",
-                            "", 
+                            "",
                             "https://socialapp2.ijs.si/news/news_9",
-                            "https://socialapp2.ijs.si/news/breaking_4", 
-                           "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                            "https://socialapp2.ijs.si/news/breaking_4",
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                             ""                                             // neutral (Zvezda)
                         ];
 
@@ -1595,10 +1595,10 @@
                             "https://socialapp2.ijs.si/news/news_8",         // neutral_general
                             "",                                              // neutral (Lepa Brena)
                             "",                                              // neutral (EXIT)
-                            "https://socialapp2.ijs.si/news/breaking_8",   
+                            "https://socialapp2.ijs.si/news/breaking_8",
                             "",                                              // pro russia
                             "https://socialapp2.ijs.si/news/news_9",         // neutral_tainment
-                           "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                             "",                                              // neutral (Zvezda)
                             "",                                              // pro ukraine
                             "https://socialapp2.ijs.si/news/news_5",         // neutral_ukraine
@@ -1669,12 +1669,12 @@
                         ];
 
                         webLinksPosts = [
-                            "https://socialapp2.ijs.si/news/news_5",   
-                            "https://socialapp2.ijs.si/news/breaking_4",  
+                            "https://socialapp2.ijs.si/news/news_5",
+                            "https://socialapp2.ijs.si/news/breaking_4",
                             "",                                              // pro ukraine
                             "",                                              // neutral (Brena)
-                          "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
-                            "https://socialapp2.ijs.si/news/breaking_8",    
+                            "https://socialapp2.ijs.si/news/uncensoredtruth_2",
+                            "https://socialapp2.ijs.si/news/breaking_8",
                             "",                                              // pro russia
                             "https://socialapp2.ijs.si/news/news_9",         // neutral_tainment
                             "https://socialapp2.ijs.si/news/news_8", // light_ukraine
@@ -1871,7 +1871,7 @@
                     ];
 
                     webLinksPosts = [
-                        "",  
+                        "",
                         "",// pro ukraine
                         "https://socialapp2.ijs.si/news/breaking_4", // neutral_general
                         "",
@@ -1897,7 +1897,7 @@
                         "pro russia",            // animal 1 (Partizan)
                         "neutral tainment",         // animal 1
                         "neutral",   // Der Spiegel
-                        "neutral" 
+                        "neutral"
                     ];
 
                     ukraineScore = [
@@ -1963,7 +1963,7 @@
                             "https://socialapp2.ijs.si/news/news_6",      // pro russia
                             "https://socialapp2.ijs.si/news/breaking_7",  // pro ukraine
                             "",
-                            "https://socialapp2.ijs.si/news/news_62",  
+                            "https://socialapp2.ijs.si/news/news_62",
                             "",
                             ""
                         ];
@@ -2044,7 +2044,7 @@
                             "",                                            // mixed
                             "https://socialapp2.ijs.si/news/not_relevant_1",   // disinfo_ukraine
                             "https://socialapp2.ijs.si/news/uncensoredtruth_4",       // neutral_sports
-                            "" 
+                            ""
                         ];
 
                         contents = [
@@ -2113,11 +2113,11 @@
                             "",
                             "",
                             "https://socialapp2.ijs.si/news/news_6",   // light_ukraine
-                            "",                                
+                            "",
                             "", // mixed
-                             "https://socialapp2.ijs.si/news/not_relevant_1",   // pro ukraine
-                             "",
-                             "",
+                            "https://socialapp2.ijs.si/news/not_relevant_1",   // pro ukraine
+                            "",
+                            "",
                             "https://socialapp2.ijs.si/news/news_4",       // pro russia
                             "https://socialapp2.ijs.si/news/uncensoredtruth_3",       // neutral_sports
                             "https://socialapp2.ijs.si/news/breaking_1"   // pro ukraine
@@ -2174,7 +2174,7 @@
 
                     if (scoreA > 0) {
 
-                         contents = [
+                        contents = [
                             "neutral ukraine",     // Netflix
                             "neutral",             // animal 1 (Lepa Brena)
                             "neutral general",     // faznet 
@@ -2207,11 +2207,11 @@
                         webLinksPosts = [
                             "https://socialapp2.ijs.si/news/news_4", // neutral_ukraine
                             "",
-                            "https://socialapp2.ijs.si/news/news_7",  
+                            "https://socialapp2.ijs.si/news/news_7",
                             "",
                             "",
                             "https://socialapp2.ijs.si/news/breaking_9",
-                            "https://socialapp2.ijs.si/news/news_10", 
+                            "https://socialapp2.ijs.si/news/news_10",
                             "",
                             "",
                             "https://socialapp2.ijs.si/news/uncensoredtruth_3", // disinfo_ukraine
@@ -2283,9 +2283,9 @@
 
                         webLinksPosts = [
                             "",                                                  // Riblja Čorba
-                            "https://socialapp2.ijs.si/news/news_7",  
+                            "https://socialapp2.ijs.si/news/news_7",
                             "",                                                  // mixed
-                            "", 
+                            "",
                             "https://socialapp2.ijs.si/news/news_10",           // EXIT festival                                             // neutral_tainment
                             "",                                                  // pro russia
                             "",                                                  // Novak
@@ -2360,16 +2360,16 @@
 
                         webLinksPosts = [
                             "https://socialapp2.ijs.si/news/news_4",
-                            "https://socialapp2.ijs.si/news/breaking_1", 
+                            "https://socialapp2.ijs.si/news/breaking_1",
                             "https://socialapp2.ijs.si/news/uncensoredtruth_3", // neutral_ukraine
-                            "",  
+                            "",
                             "",                                                 // pro ukraine
                             "https://socialapp2.ijs.si/news/news_10",                                                 // mixed
-                            "https://socialapp2.ijs.si/news/breaking_9", 
+                            "https://socialapp2.ijs.si/news/breaking_9",
                             "",                                                 // neutral_tainment
                             "",                                                 // pro russia
                             "",                                                 // neutral (Riblja Čorba)
-                           "https://socialapp2.ijs.si/news/news_7",  
+                            "https://socialapp2.ijs.si/news/news_7",
                             ""
                         ]
 
@@ -2672,11 +2672,11 @@
             webLinksPosts = [
                 "https://socialapp2.ijs.si/news/breaking_9",  // neutral_sports
                 "",                                           // neutral (Lepa Brena)
-                "https://socialapp2.ijs.si/news/uncensoredtruth_2", 
+                "https://socialapp2.ijs.si/news/uncensoredtruth_2",
                 "",                                           // pro russia
                 "",                                           // neutral (EXIT)
                 "https://socialapp2.ijs.si/news/news_62",
-                "https://socialapp2.ijs.si/news/news_7",  
+                "https://socialapp2.ijs.si/news/news_7",
                 "",                                           // pro ukraine
                 "",                                           // neutral (Zvezda)
                 "https://socialapp2.ijs.si/news/news_10",     // neutral_tainment
@@ -2776,7 +2776,7 @@
                 "https://socialapp2.ijs.si/news/news_2",         // neutral_ukraine 
                 "https://socialapp2.ijs.si/news/news_8",     // pro ukraine
                 "",                                               // neutral (Zvezda)
-                "", 
+                "",
                 "https://socialapp2.ijs.si/news/news_9",// neutral_tainment (Lepa Brena again)
                 "",                                               // mixed
                 "https://socialapp2.ijs.si/news/breaking_4"      // light_ukraine
@@ -2953,6 +2953,24 @@
             console.log(err)
         }
     })
+
+    router.post('/store-id', async (req, res) => {
+        const { yourID } = req.body;
+
+        if (!yourID) {
+            return res.status(400).json({ message: "ID is required" });
+        }
+
+        try {
+            const newID = new IDStorage({ yourID, "version": 1 });
+            console.log("newID:", newID);
+            await newID.save();
+            res.status(200).json({ message: "ID saved successfully" });
+        } catch (error) {
+            console.error("Error saving ID:", error);
+            res.status(500).json({ message: "Failed to save ID" });
+        }
+    });
 
 
     //update a post
