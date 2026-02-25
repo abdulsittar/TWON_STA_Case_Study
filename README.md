@@ -1,82 +1,80 @@
 Website : [(https://socialapp.ijs.si/)](https://socialapp.ijs.si/)
 
 # TWON Social Application
-A MERN stack based social media application (MongoDB Express React Redux NodeJs).
 
-# Featurs included in this project:
+## Overview
 
-**Admin features:**
- - admin panel shows total number of post ,users, and comments.
- - admin can create, edit, and delete posts, users, and comments. 
- - admin can like, dislike comments, and posts. 
+This tool supports multi-round social media experiments designed to study user engagement with news and information content. It allows researchers to simulate realistic feed dynamics and observe how users interact with different types of content over time.
 
-**user features:**
- - register and login users. 
- - pagination on every pages.
- - light and dark mode.
- - admin panel is included.
- - explore page to view other posts by random users.
- - profile page.
- - edit profile page user data.
- - password is stored in database in encrypted format with salt.
- - create posts.
- - like, dislike, and comment on posts.
- - like, and dislike a comment.
- - followings.
- - followers.
- - recording viewed posts by users.
- - recording read posts by users.
- - profile page shows user details and posts with following and followers menu.
+In one study conducted with Serbian participants in collaboration with the Slovenian Press Agency (STA), the platform was used to examine engagement with news related to the war in Ukraine. The experiment included manipulated Serbian-language news articles and general social media posts. Some Ukraine-related articles contained varying levels of disinformation, allowing researchers to study who clicks on such content and how users respond when exposed to it.
 
+The study was conducted in May 2025 and included 272 participants recruited through a Serbian recruitment platform. Participants accessed the study via desktop and interacted with a simulated social media feed.
 
-**How to run this application**
-1. Make sure MongoDB is running on your system or online.
-2. Include MongoDB database link in .env file.
-3. Include public and private keys for push notifications.
-4. Clone this repository
-5. Open command line in the cloned folder,
-    - To install dependencies for backend, run  `npm install` in `/server` folder.
-    - To run backend type command `npm start` in main folder.
-    - To install dependencies for frontend , run  `npm install` in `/client` folder.
-    - To run frontend type command `npm run build` in `/client` folder.
-6.  Open  [localhost:3000](http://localhost:3000/)  in the browser.
- **And application will be up and running.**
+A key feature of this tool is its multi-round design. Users can refresh their feed to simulate returning to a platform over time. After the initial round, participants were assigned to one of three groups: a control group, a reinforcing group, or an opposing group. While the control group continued to see randomized content, the reinforcing group saw more content aligned with what they previously engaged with, and the opposing group saw that type of content downranked. This process was repeated across multiple rounds.
 
-# Screenshots showcasing the desktop view:
-![login page](screenshots/2-Theme1And2-Login-Web.png)
-![registration page](screenshots/1-Theme1And2-Signup-Web.png)
+Content ranking was based on user engagement. Likes increased a post’s score, dislikes reduced it, and clicking on news articles counted as positive interaction. This setup enables researchers to study feedback loops, selective exposure, and the effects of algorithmic ranking in a controlled experimental environment.
 
+## App Flow (STA Study)
 
-# The desktop view with dark mode:
-![home page](screenshots/3-Theme1-Home-Web.png)
-![post detail](screenshots/4-Theme1-Post-detail-Web.png)
-![profile page](screenshots/5-Theme1-Profile-Scroll1-Web.png)
-![profile page](screenshots/6-Theme1-Profile-Scroll2-Web.png)
+1. **Consent Form** – Participants first review and accept the informed consent.
+
+    ![Consent form](screenshots/sta%20screenshots/consent%20form.png)
+
+2. **Pre-Survey** – Baseline responses are collected before feed exposure begins.
+
+    ![Pre-survey](screenshots/sta%20screenshots/presurvey.png)
+
+3. **Study Information** – Instructions explain the task and how interaction data will be collected.
+
+    ![Study information](screenshots/sta%20screenshots/information.png)
+
+4. **Username Selection** – Participants choose a username before starting the experiment.
+
+    ![Username choice](screenshots/sta%20screenshots/username_choice.png)
+
+5. **Main Feed Interaction** – Participants browse the simulated social feed, like/dislike posts, and open news articles.
+
+    ![Feed](screenshots/sta%20screenshots/feed.png)
+
+6. **Article View** – Clicking a news item opens the article and records engagement.
+
+    ![Article view](screenshots/sta%20screenshots/article.png)
+
+After 3 feed refreshes (three rounds of interaction), participants can proceed to the post-survey.
+
+7. **Post-Survey** – Participants complete a follow-up survey at the end.
+
+    ![Post-survey](screenshots/sta%20screenshots/postsurvey.png)
 
 
-# The desktop view with light mode:
-![home page](screenshots/7-Theme2-Home-Web.png)
-![post detail](screenshots/8-Theme2-Post-detail-Web.png)
-![profile page](screenshots/9-Theme2-Profile-Scroll1-Web.png)
-![profile page](screenshots/10-Theme2-Profile-Scroll2-Web.png)
+## Project Structure
 
+- `client/` – React frontend (UI, feed, surveys, and interaction components).
+- `server/` – Node.js/Express backend (API routes, controllers, models, auth middleware).
+- `screenshots/sta screenshots/` – STA study flow screenshots used in this README.
+- `docker-compose.yml` – Multi-container setup for client, server, and MongoDB.
 
-# The mobile view:
-![login page](screenshots/13-Theme2And1-Login-Mobile.jpg)
-![registration page](screenshots/11-Theme2And1-Signup-Scroll1-Mobile.jpg)
-![registration page](screenshots/12-Theme2And1-Signup-Scroll2-Mobile.jpg)
+## How to Run
 
-# The mobile view with dark mode:
-![home page](screenshots/14-Theme1-Home-Mobile.jpg)
-![post detail](screenshots/15-Theme1-Post-Detail-Mobile.jpg)
-![profile page](screenshots/16-Theme1-Profile-Scroll1-Mobile.jpg)
-![profile page](screenshots/17-Theme1-Profile-Scroll2-Mobile.jpg)
+Prerequisites:
+- Node.js `20.x`
+- npm
+- MongoDB running locally or a MongoDB URI in `server/.env`
 
+Steps:
+1. Install backend dependencies:
+    - `cd server && npm install`
+2. In a new terminal, install frontend dependencies:
+    - `cd client && npm install`
+3. Build frontend assets:
+    - `cd client && npm run build`
+4. Configure environment variables in `server/.env` (at minimum database connection and required app settings).
+5. Start backend server in production mode (serves `client/build` and runs on port `1075`):
+    - `cd server && NODE_ENV=production npm start`
 
-# The mobile view with light mode:
-![home page](screenshots/18-Theme2-Home-Mobile.jpg)
-![post detail](screenshots/19-Theme2-Post-Detail-Mobile.jpg)
-![profile page](screenshots/20-Theme2-Profile-Scroll1-Mobile.jpg)
-![profile page](screenshots/21-Theme2-Profile-Scroll2-Mobile.jpg)
+Open the app in your browser at `http://localhost:1075`.
 
+Notes:
+- After any frontend change, run `cd client && npm run build` again so the server serves the updated `client/build` files.
+- If the app is running on the IJS server deployment, access it at `https://socialapp.ijs.si/` instead of localhost.
 
